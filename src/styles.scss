@@ -12,7 +12,11 @@
   --color-gray-1: #45413C;
   --color-black-alpha: #141414BF;
   --color-orange-3: #FF9800;
-
+    --accent: #ff7a00;
+    --muted: #9aa4b2;
+    --card-bg: #ffffff;
+    --page-bg: #f7fafc;
+    --radius: 16px;
   --gradient-1: linear-gradient(98.88deg, rgba(0, 0, 0, 0) 0.6%, rgba(0, 0, 0, 0.9) 96.39%);
   --gradient-2: linear-gradient(98.12deg, rgba(0, 0, 0, 0) 1.81%, rgba(0, 0, 0, 0.9) 97.19%);
   --gradient-3: linear-gradient(97.86deg, rgba(0, 0, 0, 0) 1.76%, rgba(0, 0, 0, 0.9) 96.81%);
@@ -28,7 +32,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: var(--color-white);
+  background: #FAF8F6;
   color: var(--color-black-1);
 }
 

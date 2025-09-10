@@ -1,0 +1,17 @@
+.btn {
+  padding: 12px 32px;
+  border: 2px solid #ff7a00;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  background: transparent;
+  color: #ff7a00;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn:hover {
+  background: #ff7a00 !important;
+  color: #fff !important;
+  transform: translateY(-3px) scale(1.02);
+}
