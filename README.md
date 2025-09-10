@@ -1,22 +1,29 @@
-# 🧠 Angular Project Structure
-
-This project is a modern Angular application that demonstrates a scalable and maintainable architecture. It leverages Bootstrap for responsive UI design, FontAwesome for a rich icon set, and JWT Decode for handling user authentication and session management.
-
----
-
-## 🚀 Key Technologies
-
--   **Angular 20**: The core framework for building the single-page application.
--   **Bootstrap**: Used for creating responsive layouts and UI components, ensuring a consistent look and feel across devices.
--   **FontAwesome**: Provides a comprehensive library of icons used throughout the application to enhance user experience.
--   **JWT Decode**: A lightweight library used to decode JSON Web Tokens (JWTs) on the client-side for managing user authentication state and permissions.
+# Rashed 🛠️  
+Rashed is a web application built with **Angular 20** that helps users easily request workers for home maintenance services.  
+The platform allows users to choose the type of worker they need (plumber, carpenter, electrician, etc.) and request the service instantly.  
 
 ---
 
-## 📁 Project Structure
+## ✨ Features
+- User-friendly interface built with **Angular 20**.  
+- Select worker type (plumber, carpenter, electrician, and more).  
+- Quick and easy service request.  
+- Manage workers and services data.  
+- Fully responsive design (mobile, tablet, desktop).  
 
-The project is organized to separate concerns, making it easy to navigate, scale, and maintain.
+---
 
+## 🏗️ Tech Stack
+- **Angular 20**  
+- **TypeScript**  
+- **SCSS / CSS**  
+- **HTML5**  
+- **RxJS** for state and async data management  
+- **Angular Router** for page navigation  
+
+---
+
+## 📂 Project Structure
 ```
 src/
 ├── app/
@@ -54,38 +61,43 @@ src/
 └── styles.css
 ```
 
+---
 
-## Installation
+## ⚙️ Prerequisites
+Before running the project, make sure you have installed:  
+- [Node.js](https://nodejs.org/) (v20 or higher)  
+- [Angular CLI](https://angular.dev/tools/cli) (v20)  
 
-1. Clone the repository
-```bash
-git clone <repository-url>
-cd structureAngular
-```
+---
 
-2. Install dependencies
-```bash
-npm install
-```
+## 🚀 Getting Started
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/username/rashed.git
+   cd rashed
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   ng serve
+   ```
+4. Open in your browser:
+   ```
+   http://localhost:4200
+   ```
 
-3. Start the development server
-```bash
-ng serve
-```
+---
 
-4. Navigate to `http://localhost:4200/`
+## 🔮 Future Plans
+- Add scheduling system for booking workers.  
+- Support for online payments.  
+- Create an Admin Dashboard.  
+- Enable real-time push notifications.  
 
-## Development
+---
 
-- Run `ng generate component component-name` to generate a new component
-- Run `ng build` to build the project
-- Run `ng test` to execute unit tests
-
-## 👨‍💻 Developed By
-
-# ✨ Mostafa Hamed ✨
-
-🚀 Frontend Developer | Angular • React • Next.js  
-📧 Email: [mostafahamed3003@gmail.com](mailto:mostafahamed3003@gmail.com)  
-🌐 Portfolio: [portfoliomostafa-hamed.vercel.app](https://portfoliomostafa-hamed.vercel.app/)  
-
+## 👨‍💻 Author
+**Rashed** project was developed using **Angular 20** by *Mostafa Hamed*.
