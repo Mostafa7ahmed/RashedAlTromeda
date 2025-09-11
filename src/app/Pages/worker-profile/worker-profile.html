@@ -1,0 +1,47 @@
+<div class="heroPorfile">
+    <div class="ImagePorfile">
+        <img src="Image/workerProfile.png" alt="" width="587">
+    </div>
+    <div class="contentBooking container-fluid">
+        <div class="experiance container-fluid">
+            @for (item of experiences(); track $index) {
+            <div class="cardsEx">
+                <div class="Icons {{item.color}}">
+                    @if (item.isImage) {
+                    <img [src]="item.icon" alt="icon">
+                    } @else {
+                    <i [class]="item.icon"></i>
+                    }
+                </div>
+                <div class="info">
+                    <span>{{ item.value }}</span>
+                    <p>{{ item.label }}</p>
+                </div>
+            </div>
+            }
+        </div>
+
+
+        <div class="serviceSelect">
+            <div class="headerText d-flex justify-content-between align-items-center">
+                <h4>مصطفي حامد</h4>
+                <div class="IconImage">
+                    <img src="Icons/message.svg" alt="">
+                </div>
+            </div>
+            <div class="cardSelects">
+                @for (s of services(); track s.id) {
+                <div class="selected" (click)="toggleService(s)" [class.active]="isSelected(s)">
+                    <div class="Imageservice d-flex align-items-center gap-2">
+                        <img [src]="s.image" alt="" width="24" height="24" class="rounded-circle">
+                        <h5 class="m-0">{{ s.name }}</h5>
+                    </div>
+                    <h5 class="m-0">{{ s.price }} $</h5>
+                </div>
+                }
+            </div>
+
+        </div>
+        
+    </div>
+</div>

@@ -19,6 +19,10 @@ export const routes: Routes = [
         loadComponent: () => import('./Pages/service/service').then(m => m.Service),
     },
     {
+        path: 'workerprofile',
+        loadComponent: () => import('./Pages/worker-profile/worker-profile').then(m => m.WorkerProfile),
+    },
+    {
         path: 'login',
         loadComponent: () => import('./Pages/Auth/login/login').then(m => m.Login),
     },
