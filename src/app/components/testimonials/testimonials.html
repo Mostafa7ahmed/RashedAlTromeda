@@ -1,0 +1,49 @@
+<div class="testimonials-section container-fluid">
+    <div class="title-side">
+        <h2>تعليقات حول تجربتهم معنا</h2>
+        <p>
+            اقرأ شهادات عملائنا الراضين. شاهد كيف أحدثت خدمات التنظيف لدينا فرقًا إيجابيًا في حياتهم
+            ومنازلهم.
+        </p>
+        <div class="custom-arrows">
+                <button class="arrow prev" (click)="prev()">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button class="arrow next" (click)="next()">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+        </div>
+    </div>
+
+    <owl-carousel-o [options]="customOptions" #owlCar>
+
+        @for (slide of testimonials; track $index) {
+        <ng-template carouselSlide [id]="slide.role">
+            <div class="testimonial-card">
+        <div class="testimonial-image">
+          <img [src]="slide.img" class="rounded-3" alt="testimonial user" width="170" height="244px" />
+        </div>
+        <div class="testimonial-content flex-grow-1 mt-4">
+          <div class="testimonial-text">
+            <div class="headerText d-flex justify-content-between w-100 align-items-center">
+              <div class="infoTest">
+                <h3 class="name">{{ slide.name }}</h3>
+                <p class="role mb-1">{{ slide.role }}</p>
+              </div>
+              <div class="icon p-2">
+                <img src="Icons/tesyimoal.svg" alt="" />
+              </div>
+            </div>
+            <div class="rateing">
+              <i class="fa-solid fa-star" *ngFor="let star of [1,2,3,4,5]"></i>
+            </div>
+            <p>{{ slide.text }}</p>
+          </div>
+        </div>
+      </div>
+        </ng-template>
+        }
+
+    </owl-carousel-o>
+
+</div>

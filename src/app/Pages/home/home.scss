@@ -232,13 +232,14 @@
  background: var(--accent);
 
  .leftExperience{
+    width: 650px;
     h2{
         font-family: Cairo;
     font-weight: 700;
     font-style: Bold;
     font-size: 48px;
-    line-height: 100%;
-    letter-spacing: -1%;
+    line-height: 1.7;
+    letter-spacing: 1.7;
     text-align: right;
     vertical-align: middle;
     text-transform: capitalize;
@@ -260,16 +261,13 @@
  }
  .circle-container {
   position: relative;
-  width: 400px;
-  height: 400px;
-  margin: auto;
-  background: #f9d65d; // نفس الخلفية الصفراء
-
+  width: 600px;
+  height: 550px;
+  background-image: url("../../../../public/Icons/effect.svg") ;
+    background-repeat: no-repeat;
+    background-position: 4% 21%;
   .circle {
     position: absolute;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -278,7 +276,7 @@
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
   }
 
@@ -286,16 +284,20 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+
   }
 
   .left {
     bottom: 0;
     left: 0;
+    height: 300px;
   }
 
   .right {
     bottom: 0;
     right: 0;
+            width:285.64208984375px;
+    height: 270px;
   }
 }
 }
