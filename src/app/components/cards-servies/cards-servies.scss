@@ -1,0 +1,59 @@
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 60px !important;
+
+    .card {
+        position: relative;
+        height: 200px;
+        border-radius: 12px;
+        padding: 20px 30px;
+        overflow: hidden;
+        border: none;
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(96.2deg,
+                    rgba(0, 0, 0, 0) 2.28%,
+                    rgba(0, 0, 0, 0.9) 97.21%);
+        }
+
+        .content {
+            display: flex;
+            align-items: self-start;
+            gap: 10px;
+            color: #fff;
+            height: 100%;
+            z-index: 55555;
+
+            img {
+                width: 50px;
+                height: 50px;
+            }
+
+            h3 {
+                font-family: Cairo;
+                font-weight: 600;
+                font-style: SemiBold;
+                font-size: 24px;
+                line-height: 36px;
+                letter-spacing: -1%;
+
+            }
+            .text i{
+                rotate: -45deg;
+                font-size: 18px;
+            }
+        }
+    }
+}

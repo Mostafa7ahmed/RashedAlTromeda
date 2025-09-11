@@ -7,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './cards-servies.scss'
 })
 export class CardsServies {
-
+  services = [
+    { title: 'طلاء الحائط', icon: 'Icons/Chisel.svg', image: 'Image/plumbing.png' },
+    { title: 'السباكة',  icon: 'Icons/repair.svg', image: 'Image/house-repair.png' },
+    { title: 'نجارة',  icon: 'Icons/Chisel.svg', image: 'Image/carpentry.png' },
+    { title: 'تجميع الأثاث',  icon: 'Icons/Chisel.svg', image: 'Image/furniture-assembly.png' },
+    { title: 'تنظيف البيت',  icon: 'Icons/Chisel.svg', image: 'Image/house-cleaning.png' },
+    { title: 'صيانة المنزل',  icon: 'Icons/Chisel.svg', image: 'Image/reduies1.png' },
+  ];
 }

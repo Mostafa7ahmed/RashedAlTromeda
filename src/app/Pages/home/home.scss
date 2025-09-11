@@ -228,6 +228,77 @@
     width: 50%;
   }
 }
+.experience{
+ background: var(--accent);
+
+ .leftExperience{
+    h2{
+        font-family: Cairo;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: -1%;
+    text-align: right;
+    vertical-align: middle;
+    text-transform: capitalize;
+
+    }
+    p{
+        font-family: Cairo;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 18px;
+        line-height: 150%;
+        letter-spacing: 0%;
+        text-align: right;
+        vertical-align: middle;
+        color: #141414BF;
+
+
+    }
+ }
+ .circle-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  background: #f9d65d; // نفس الخلفية الصفراء
+
+  .circle {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .top {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .left {
+    bottom: 0;
+    left: 0;
+  }
+
+  .right {
+    bottom: 0;
+    right: 0;
+  }
+}
+}
 
 @media (max-width: 1500px) {
   .contentHero {

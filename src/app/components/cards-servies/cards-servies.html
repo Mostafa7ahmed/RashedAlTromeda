@@ -1,1 +1,14 @@
-<p>cards-servies works!</p>
+<section class="services">
+  @for (s of services; track s.title) {
+    <div class="card" [style.background-image]="'url(' + s.image + ')'">
+      <div class="overlay"></div>
+      <div class="content justify-content-between flex-column">
+        <img [src]="s.icon" alt="service icon" />
+        <div class="text d-flex align-items-center gap-2">
+                    <h3>{{ s.title }}</h3>
+                    <i class="fa-solid fa-arrow-up"></i>
+        </div>
+      </div>
+    </div>
+  }
+</section>

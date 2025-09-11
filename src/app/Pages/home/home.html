@@ -115,14 +115,68 @@
 </div>
 
 
-<app-features/>
+<app-features />
 
 
-<div class="services  container-fluid">
-   <div class="content">
-    
-    <h2 class="text-center">خدماتنا الأعلى تقييمًا لدينا</h2>
-    <p>اعتمد علينا كشريك موثوق به لحلول صيانة استثنائية تُحوّل مساحاتك إلى ملاذٍ جميل. يقدم فريقنا المتخصص مجموعة واسعة من الخدمات المصممة خصيصًا لتلبية احتياجاتك الفريدة.</p>
-   </div>
-   
+<div class="services  container-fluid mb-5">
+    <div class="content mb-5">
+
+        <h2 class="text-center">خدماتنا الأعلى تقييمًا لدينا</h2>
+        <p>اعتمد علينا كشريك موثوق به لحلول صيانة استثنائية تُحوّل مساحاتك إلى ملاذٍ جميل. يقدم فريقنا المتخصص مجموعة
+            واسعة من الخدمات المصممة خصيصًا لتلبية احتياجاتك الفريدة.</p>
+    </div>
+
+    <app-cards-servies />
+
+    <div class="d-flex align-items-center justify-content-center">
+        <app-book-btn [route]="'/service'" [label]="'عرض جميع الخدمات'" [color]="buttonColor()">
+        </app-book-btn>
+    </div>
+
+</div>
+
+
+<div class="experience py-5">
+
+    <div class="container-fluid">
+
+
+        <div class="leftExperience d-flex flex-column gap-4">
+            <h2>أكثر من 25 عامًا من الخبرة في خدمة الصيانة</h2>
+            <p>بخبرة تزيد عن 25 عامًا، نُعدُّ الخبراءَ المُعتمدين لتلبية جميع احتياجاتكم من خدمات الصيانة اليدوية. ثقوا
+                بمهاراتنا واحترافيتنا لتحقيق نتائج ممتازة.</p>
+
+            <div class="infoExperience d-flex gap-5 ">
+                <div class="leftInfo">
+                    <div class="heaerInfo d-flex gap-2 align-items-center mb-3">
+                        <img src="Icons/true.svg" alt="">
+                        <h3 class="m-0">الفريق المؤهل</h3>
+                    </div>
+                    <p>فريق مدرَّب بخبرة وكفاءة لتقديم أفضل خدمة لمنزلك</p>
+                </div>
+                <div class="RightInfo">
+                    <div class="heaerInfo d-flex gap-2 align-items-center mb-3">
+                        <img src="Icons/true.svg" alt="">
+                        <h3 class="m-0">عمل عالي الجودة</h3>
+                    </div>
+                    <p>نقدّم لك عملًا عالي الجودة يضمن راحة بالك ورضاك التام</p>
+                </div>
+            </div>
+            <app-book-btn [label]="'المزيد عنا'" [background]="buttonColor()" [color]="buttonColorText()" />
+        </div>
+
+        <div class="circle-container">
+            <div class="circle top">
+                <img src="assets/img/network.jpg" alt="network" />
+            </div>
+            <div class="circle left">
+                <img src="assets/img/mechanic.jpg" alt="mechanic" />
+            </div>
+            <div class="circle right">
+                <img src="assets/img/carpenter.jpg" alt="carpenter" />
+            </div>
+        </div>
+
+    </div>
+
 </div>

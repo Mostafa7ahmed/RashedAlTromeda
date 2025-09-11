@@ -1,3 +1,22 @@
-    <button class="btn" [style.background]="background()" [style.color]="color()">
-      {{ label() }}
-    </button>
+@for (r of [route()]; track r) {
+  <ng-container>
+    @if (r) {
+      <a 
+        class="btn"
+        [routerLink]="r"
+        [style.background]="background()"
+        [style.color]="color()"
+      >
+        {{ label() }}
+      </a>
+    } @else {
+      <button 
+        class="btn"
+        [style.background]="background()"
+        [style.color]="color()"
+      >
+        {{ label() }}
+      </button>
+    }
+  </ng-container>
+}
