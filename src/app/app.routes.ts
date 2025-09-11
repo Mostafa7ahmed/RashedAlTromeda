@@ -14,7 +14,7 @@ export const routes: Routes = [
         path: 'home',
         component: Home,
     },
-      {
+    {
         path: 'service',
         loadComponent: () => import('./Pages/service/service').then(m => m.Service),
     },
@@ -22,7 +22,6 @@ export const routes: Routes = [
         path: 'login',
         loadComponent: () => import('./Pages/Auth/login/login').then(m => m.Login),
     },
-
     {
         path: '**',
         redirectTo: 'home'
