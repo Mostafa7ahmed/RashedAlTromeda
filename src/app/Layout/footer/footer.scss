@@ -1,0 +1,63 @@
+.footer {
+  background: #1f1f1f;
+  color: #fff;
+  padding: 20px 40px;
+  text-align: center;
+  direction: rtl;
+
+  .footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+
+    .social {
+      display: flex;
+      gap: 15px;
+
+      a {
+        color: #fff;
+        font-size: 20px;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #f97316; // برتقالي hover
+        }
+      }
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 40px;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #f97316;
+        }
+      }
+    }
+
+    .logo img {
+      height: 60px;
+      object-fit: contain;
+    }
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid #444;
+    margin: 15px 0;
+  }
+
+  .copy {
+    font-size: 14px;
+    color: #aaa;
+    margin: 0;
+  }
+}
