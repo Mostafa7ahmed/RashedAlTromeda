@@ -18,8 +18,9 @@ export class Testimonials {
     dots: false,
     rtl: true,
     autoplay: true,
+    autoplayHoverPause:true,
     items:1,
-    autoplayTimeout: 4000,
+    autoplayTimeout: 2000,
    
   };
   next() {
