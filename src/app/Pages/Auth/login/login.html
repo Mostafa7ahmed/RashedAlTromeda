@@ -1,1 +1,45 @@
-<p>login works!</p>
+<div class="card">
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+<div class="field">
+<label>الاسم</label>
+<input type="text" formControlName="name" />
+<div class="error" *ngIf="form.controls.name.touched && form.controls.name.invalid">الاسم مطلوب</div>
+</div>
+
+
+<div class="field">
+<label>البريد الإلكتروني</label>
+<input type="email" formControlName="email" />
+<div class="error" *ngIf="form.controls.email.touched && form.controls.email.invalid">
+الرجاء إدخال بريد إلكتروني صحيح
+</div>
+</div>
+
+
+<div class="field">
+<label>رقم (number)</label>
+<input type="number" formControlName="number" />
+<div class="error" *ngIf="form.controls.number.touched && form.controls.number.invalid">ارقم صحيح مطلوب</div>
+</div>
+
+
+<div class="field">
+<label>الهاتف</label>
+<ngx-intl-tel-input
+[cssClass]="'form-control'"
+[preferredCountries]="[CountryISO.Egypt, CountryISO.UnitedStates]"
+[searchCountryField]="[SearchCountryField.All]"
+[selectFirstCountry]="false"
+[separateDialCode]="true"
+formControlName="phone">
+</ngx-intl-tel-input>
+<div class="error" *ngIf="form.controls.phone.touched && form.controls.phone.invalid">رقم التليفون مطلوب وصحيح</div>
+</div>
+
+
+<button type="submit">إرسال</button>
+</form>
+
+
+<pre *ngIf="submitted">{{ result | json }}</pre>
+</div>

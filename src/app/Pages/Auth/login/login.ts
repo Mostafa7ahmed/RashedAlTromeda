@@ -2,37 +2,57 @@ import { Component } from '@angular/core';
 import { LoginService } from '../../../Core/service/login';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { SearchCountryField, CountryISO } from 'ngx-intl-tel-input';
 
 @Component({
   selector: 'app-login',
-  imports: [...ReactiveModeuls],
+  imports: [...ReactiveModeuls, NgxIntlTelInputModule],
   templateUrl: './login.html',
   styleUrl: './login.scss'
 })
 export class Login {
-   loginForm: any; 
-
-  constructor(private fb: FormBuilder, private loginService: LoginService) {}
-
-  ngOnInit() {
-    this.loginForm = this.fb.group({
+  SearchCountryField = SearchCountryField;
+  CountryISO = CountryISO;
+  form: any;
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      number: [null, [Validators.required, Validators.min(0)]],
+      phone: [undefined, Validators.required]
     });
   }
 
-  onLogin() {
-    if (this.loginForm.valid) {
-      this.loginService.login(this.loginForm.value)
-        .subscribe((res: any) => {
-          this.loginService.saveToken(res.token);
-          console.log('Logged in successfully ✅');
-        });
-    }
-  }
 
-  onCheckUser() {
-    console.log('Decoded User:', this.loginService.getUser());
-    console.log('Is Logged In:', this.loginService.isLoggedIn());
+
+
+  submitted = false;
+  result: any = null;
+
+
+
+
+  submit() {
+    this.submitted = true;
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+
+    // الـ phone control يرجّع كائن يحتوي e164Number وnationalNumber الخ.
+    const phoneValue = this.form.value.phone;
+
+
+    this.result = {
+      name: this.form.value.name,
+      email: this.form.value.email,
+      number: this.form.value.number,
+      phone: phoneValue?.e164Number ?? phoneValue
+    };
+
+
+    console.log('form payload:', this.result);
   }
 }

@@ -1,0 +1,74 @@
+/* login.scss */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input, .form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.error {
+  color: #d9534f;
+  font-size: 13px;
+}
+
+button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #0056b3;
+}
+/* login.scss */
+
+/* container الأساسي للـ ngx-intl-tel-input */
+::ng-deep .iti {
+  width: 100%;                /* يخلي input ياخد العرض كله */
+  display: flex;
+}
+
+::ng-deep .iti input {
+  width: 100% !important;     /* input نفسه */
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* dropdown بتاع الدول */
+::ng-deep .iti__flag-container {
+  margin-right: 8px;
+}
+
+/* عند الفوكس */
+::ng-deep .iti input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0,123,255,.25);
+}
