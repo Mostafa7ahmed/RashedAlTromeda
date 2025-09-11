@@ -1,5 +1,5 @@
 <section class="services">
-  @for (s of services; track s.title) {
+  @for (s of services.slice(0, number()); track s.title) {
     <div class="card" [style.background-image]="'url(' + s.image + ')'">
       <div class="overlay"></div>
       <div class="content justify-content-between flex-column">

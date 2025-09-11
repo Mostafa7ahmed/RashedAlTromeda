@@ -1,0 +1,131 @@
+.contentService {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-direction: column;
+
+    h1 {
+        font-family: Cairo;
+        font-weight: 700;
+        font-style: Bold;
+        font-size: 48px;
+        line-height: 100%;
+        letter-spacing: -1%;
+        vertical-align: middle;
+
+    }
+
+    p {
+        font-family: Cairo;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 18px;
+        line-height: 1.7;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #666;
+        width: 65%;
+
+    }
+
+    margin-bottom: 50px;
+}
+
+.searchInput {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    .inputSerch {
+        width: 100%;
+        border: 1px solid #FBD1B6;
+        background: var(--color-white);
+        height: 60px;
+        border-radius: 50px;
+        padding: 0 30px;
+
+        i {
+            color: #1B2431;
+            font-size: 20px;
+        }
+
+        input {
+            width: 95%;
+            height: 100%;
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            padding: 0 20px;
+
+        }
+
+    }
+    .filtter{
+        padding: 10px 8px;
+        border: 1px solid #FBD1B6;
+        background: var(--color-white);
+        height: 60px;
+        border-radius: 22px;
+        cursor: pointer;
+        img{
+            width: 40px;
+        }
+}
+}
+
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+    margin-bottom: 50px;
+
+  .nav-btn {
+    border: 1px solid #ff6600;
+    background: transparent;
+    color: #ff6600;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #ff6600;
+      color: #fff;
+    }
+  }
+
+  .pages {
+    display: flex;
+    gap: 6px;
+
+    .page {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background: #fff;
+      color: #000;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: #ff6600;
+        color: #ff6600;
+      }
+
+      &.active {
+        color: #ff6600;
+        border: 1px solid #ff6600;
+      }
+    }
+  }
+}
