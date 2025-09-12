@@ -1,45 +1,56 @@
-<div class="card">
-<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
-<div class="field">
-<label>الاسم</label>
-<input type="text" formControlName="name" />
-<div class="error" *ngIf="form.controls.name.touched && form.controls.name.invalid">الاسم مطلوب</div>
+<div class="loginCard relative">
+    <span>مرحبا بعودتك</span>
+    <h4 class="mt-4">سجل الدخول لحسابك</h4>
+
+    <form action="" [formGroup]="form" class="mt-5" (ngSubmit)="submit()" >
+        <div class="cardsForm d-flex gap-3">
+            <div class="position-relative w-100  p-0 border-0">
+                <ngx-intl-tel-input
+                [cssClass]="'custom'"
+                [enableAutoCountrySelect]="true"
+                [enablePlaceholder]="true"
+                [customPlaceholder]="'اكتب رقم الهاتف هنا'"
+                [searchCountryFlag]="true"
+                [searchCountryField]="[SearchCountryField.All]"
+                [selectFirstCountry]="false"
+                [selectedCountryISO]="CountryISO.Egypt"
+                [separateDialCode]="true"
+                [phoneValidation]="true"
+                formControlName="phone"
+                name="phone"
+                class="input-cal p-0 input-base inputFloating">
+                </ngx-intl-tel-input>
+                <label id="label-input"> رقم الهاتف</label>
+            </div>
+            <!-- <div class="position-relative flex-grow-1 border-0 w-75">
+                <input class="input-cal input-base inputFloating" placeholder="" />
+                <label id="label-input"> رقم الهاتف</label>
+            </div> -->
+        </div>
+        <div class="position-relative mt-4">
+            <input class="input-cal input-base inputFloating" formControlName="password" placeholder=""
+                [type]="passwordFieldType ? 'password' : 'text'" />
+            <label id="label-input">كلمه المرور</label>
+            <i (click)="togglePasswordVisibility()" role="button"  class="fa-solid position-absolute passicon"
+                [class.fa-eye]="passwordFieldType" [class.fa-eye-slash]="!passwordFieldType">
+            </i>
+        </div>
+        <div class="login-options">
+            <label class="remember-me">
+                <input type="checkbox" />
+                <span>تذكرني</span>
+            </label>
+            <a class="forgot-password">نسيت كلمة المرور؟</a>
+        </div>
+
+        <button type="submit" class="login-btn">تسجيل الدخول</button>
+    </form>
+
+
+ 
 </div>
 
 
-<div class="field">
-<label>البريد الإلكتروني</label>
-<input type="email" formControlName="email" />
-<div class="error" *ngIf="form.controls.email.touched && form.controls.email.invalid">
-الرجاء إدخال بريد إلكتروني صحيح
-</div>
-</div>
-
-
-<div class="field">
-<label>رقم (number)</label>
-<input type="number" formControlName="number" />
-<div class="error" *ngIf="form.controls.number.touched && form.controls.number.invalid">ارقم صحيح مطلوب</div>
-</div>
-
-
-<div class="field">
-<label>الهاتف</label>
-<ngx-intl-tel-input
-[cssClass]="'form-control'"
-[preferredCountries]="[CountryISO.Egypt, CountryISO.UnitedStates]"
-[searchCountryField]="[SearchCountryField.All]"
-[selectFirstCountry]="false"
-[separateDialCode]="true"
-formControlName="phone">
-</ngx-intl-tel-input>
-<div class="error" *ngIf="form.controls.phone.touched && form.controls.phone.invalid">رقم التليفون مطلوب وصحيح</div>
-</div>
-
-
-<button type="submit">إرسال</button>
-</form>
-
-
-<pre *ngIf="submitted">{{ result | json }}</pre>
-</div>
+   <div class="resiterRoute ">
+        <h5>ليس لديك حساب؟ <a routerLink="/auth/register" href="" class="reg">إنشاء حساب جديد</a></h5>
+    </div>

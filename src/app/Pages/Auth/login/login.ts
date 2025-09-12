@@ -1,58 +1,57 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../../Core/service/login';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgxIntlTelInputModule, SearchCountryField, CountryISO } from 'ngx-intl-tel-input';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
-import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
-import { SearchCountryField, CountryISO } from 'ngx-intl-tel-input';
 
 @Component({
   selector: 'app-login',
-  imports: [...ReactiveModeuls, NgxIntlTelInputModule],
+  imports: [ReactiveModeuls, NgxIntlTelInputModule],
   templateUrl: './login.html',
-  styleUrl: './login.scss'
+  styleUrls: ['./login.scss', '../../../Shared/CSS/input.scss']
 })
 export class Login {
   SearchCountryField = SearchCountryField;
   CountryISO = CountryISO;
-  form: any;
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      number: [null, [Validators.required, Validators.min(0)]],
-      phone: [undefined, Validators.required]
-    });
-  }
+form: FormGroup;
 
 
 
-
+  passwordFieldType: boolean = true;
   submitted = false;
   result: any = null;
 
+  constructor(private fb: FormBuilder, private loginService: LoginService) {
+      this.form = this.fb.group({
+    phone: ['', Validators.required],
+    password: ['', [Validators.required, Validators.minLength(6)]]
+  });
+  }
 
-
+  togglePasswordVisibility() {
+    this.passwordFieldType = !this.passwordFieldType;
+  }
 
   submit() {
     this.submitted = true;
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
+
+
+    const phoneInput = this.form.value.phone;
+    const password = this.form.value.password;
+
+    if (!phoneInput || !phoneInput.e164Number) {
+      console.error('لم يتم اختيار كود الدولة');
       return;
     }
 
-
-    // الـ phone control يرجّع كائن يحتوي e164Number وnationalNumber الخ.
-    const phoneValue = this.form.value.phone;
-
-
-    this.result = {
-      name: this.form.value.name,
-      email: this.form.value.email,
-      number: this.form.value.number,
-      phone: phoneValue?.e164Number ?? phoneValue
+    const body = {
+      phone: phoneInput.e164Number,  // +20123456789
+      password: password,
     };
 
+    console.log('form payload:', body);
 
-    console.log('form payload:', this.result);
+    // API call
+ 
   }
 }

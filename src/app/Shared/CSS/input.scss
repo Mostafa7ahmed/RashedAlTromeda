@@ -1,0 +1,80 @@
+.relative {
+    position: relative;
+  }
+  
+  #label-input {
+    transition: all 0.1s ease-in-out;
+    position: absolute;
+    top: 30%;
+    inset-inline-start: 18px;
+    transform: scale(0.95);
+    opacity: 1;
+    pointer-events: none;
+    color:#777777;
+
+  }
+  
+  .input-base {
+    border-radius: 6px;
+  }
+  
+ .inputFloating:focus ~ label#label-input,
+.inputFloating:not(:placeholder-shown) ~ #label-input {
+    top: -23% !important;
+    inset-inline-start: 4px !important;
+    transform: scale(0.8);
+    background: white;
+    color: var(--gray2);
+    font-size: 15px;
+    padding: 0px 8px;
+    opacity: 1;
+  }
+  
+  .inputFloating {
+    transition: outline 0.2s ease;
+    font-size: 1rem;
+    outline-color: var(--button-text);
+    outline: unset;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    height: 48px;
+  
+  padding:  10px 10px ;
+    width: 100%;
+
+    border-radius: 8px ;
+
+
+  }
+  .success{
+    border: 1px solid var(--color-orange) !important;
+
+  }
+  .invalid{
+    border: 1px solid var(--error) !important;
+
+  }
+
+  
+  .input-Icon {
+    position: absolute;
+    right: 14px;
+    top: 18px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    padding: 10px !important;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+  }
+
+  .input-Icon-success{
+    background-color: var(--success);
+    color: var(--white);
+  }
+
+  .input-Icon-failed{
+    background-color: var(--error);
+    color: var(--white);
+  }

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-sigin',
   imports: [],
   templateUrl: './sigin.html',
-  styleUrl: './sigin.scss'
+  styleUrls: ['./sigin.scss' ]
 })
 export class Sigin {
 
