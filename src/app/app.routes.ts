@@ -31,20 +31,20 @@ export const routes: Routes = [
       }
     ]
   },
-   {
-    path: 'auth',
-    component: Authoutlet, 
-    children: [
-        {
-        path: 'auth',
-        pathMatch: 'full',
-        redirectTo: 'login'
-      },
-      {
-        path: 'login',
-        loadComponent: () =>
-          import('./Pages/Auth/login/login').then(m => m.Login),
-      },
+  {
+  path: 'auth',
+  component: Authoutlet, 
+  children: [
+    {
+      path: '',
+      pathMatch: 'full',
+      redirectTo: 'login'
+    },
+    {
+      path: 'login',
+      loadComponent: () =>
+        import('./Pages/Auth/login/login').then(m => m.Login),
+    },
       {
         path: 'register',
         loadComponent: () =>

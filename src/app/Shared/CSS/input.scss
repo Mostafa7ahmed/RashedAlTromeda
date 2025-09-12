@@ -1,6 +1,230 @@
 .relative {
     position: relative;
   }
+  .loginCard {
+  height: 97%;
+
+  span {
+    font-family: Cairo;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-align: right;
+    text-transform: uppercase;
+    color: #1F1F1F;
+
+  }
+
+  h4 {
+    font-family: Cairo;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-align: right;
+
+  }
+}
+
+
+
+
+.custom {
+  width: 100px !important;
+  border: none !important;
+
+}
+
+.resiterRoute {
+
+  display: flex;
+  justify-content: center !important;
+  align-items: center;
+  margin-bottom: 35px !important;
+
+  h5 {
+    font-family: Cairo;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 12.8px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #212121 !important;
+
+
+  }
+
+  h5 a.reg {
+    font-family: Cairo;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 12.8px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #212121 !important;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0;
+
+  .remember-me {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #f36b14;
+      /* اللون البرتقالي */
+      cursor: pointer;
+    }
+  }
+
+  .forgot-password {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.login-btn {
+  width: 100%;
+  height: 56px;
+  background-color: #f36b14;
+  /* اللون البرتقالي */
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background-color: #e65f0e;
+  }
+}
+
+i.passicon {
+  bottom: 35%;
+  inset-inline-end: 25px;
+  color: #666;
+  transition: transform 0.8s ease;
+}
+
+ngx-intl-tel-input {
+  display: block;
+  width: 100%;
+
+  .iti {
+    width: 100%;
+
+    input {
+      border: none !important;
+      height: 46px !important;
+      font-size: 14px;
+      padding-left: 40px !important;
+      background: transparent;
+    }
+
+    .iti__flag-container {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+::ng-deep ngx-intl-tel-input .iti input {
+  height: 100%;
+  width: 100%;
+  border: none !important;
+  height: 46px !important;
+  font-size: 14px;
+  padding-left: 20px !important;
+  padding-right: 100px !important;
+
+  background: transparent;
+  outline: none;
+  // display:  none !important;
+
+}
+
+::ng-deep .search-container {
+  outline-color: var(--button-text);
+  outline: unset;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding-right: 0 !important;
+  padding-left: 00px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 !important;
+  margin: 10px;
+}
+
+::ng-deep #country-search-box {
+  padding: 0 !important;
+  padding-right: 10px !important;
+
+}
+
+::ng-deep ngx-intl-tel-input .iti {
+  width: auto !important;
+  border-radius: 8px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+::ng-deep .iti__country-list {
+  scrollbar-width: none !important;
+}
+
+::ng-deep .dropdown-menu.show {
+  display: block;
+  min-width: 270px !important;
+  height: 250px;
+  padding: 10px;
+  overflow: scroll;
+  scrollbar-width: none !important;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border: 1px solid #ddd;
+  margin: 10px;
+
+}
+
+::ng-deep .iti__country-name {
+  display: inline-block;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
   
   #label-input {
     transition: all 0.1s ease-in-out;
