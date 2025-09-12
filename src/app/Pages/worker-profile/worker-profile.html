@@ -1,47 +1,155 @@
-<div class="heroPorfile">
-    <div class="ImagePorfile">
-        <img src="Image/workerProfile.png" alt="" width="587">
+<div class="heroPorfile mb-5">
+  <div class="ImagePorfile">
+    <img src="Image/workerProfile.png" alt="" width="587" />
+  </div>
+  <div class="contentBooking container-fluid">
+    <div class="experiance container-fluid">
+      @for (item of experiences(); track $index) {
+      <div class="cardsEx">
+        <div class="Icons {{ item.color }}">
+          @if (item.isImage) {
+          <img [src]="item.icon" alt="icon" />
+          } @else {
+          <i [class]="item.icon"></i>
+          }
+        </div>
+        <div class="info">
+          <span>{{ item.value }}</span>
+          <p>{{ item.label }}</p>
+        </div>
+      </div>
+      }
     </div>
-    <div class="contentBooking container-fluid">
-        <div class="experiance container-fluid">
-            @for (item of experiences(); track $index) {
-            <div class="cardsEx">
-                <div class="Icons {{item.color}}">
-                    @if (item.isImage) {
-                    <img [src]="item.icon" alt="icon">
-                    } @else {
-                    <i [class]="item.icon"></i>
-                    }
-                </div>
-                <div class="info">
-                    <span>{{ item.value }}</span>
-                    <p>{{ item.label }}</p>
-                </div>
-            </div>
-            }
+
+    <div class="serviceSelect">
+      <div class="headerText d-flex justify-content-between align-items-center">
+        <h4>مصطفي حامد</h4>
+        <div class="IconImage">
+          <img src="Icons/message.svg" alt="" />
         </div>
-
-
-        <div class="serviceSelect">
-            <div class="headerText d-flex justify-content-between align-items-center">
-                <h4>مصطفي حامد</h4>
-                <div class="IconImage">
-                    <img src="Icons/message.svg" alt="">
-                </div>
-            </div>
-            <div class="cardSelects">
-                @for (s of services(); track s.id) {
-                <div class="selected" (click)="toggleService(s)" [class.active]="isSelected(s)">
-                    <div class="Imageservice d-flex align-items-center gap-2">
-                        <img [src]="s.image" alt="" width="24" height="24" class="rounded-circle">
-                        <h5 class="m-0">{{ s.name }}</h5>
-                    </div>
-                    <h5 class="m-0">{{ s.price }} $</h5>
-                </div>
-                }
-            </div>
-
+      </div>
+      <div class="cardSelects">
+        @for (s of services(); track s.id) {
+        <div class="selected" (click)="toggleService(s)" [class.active]="isSelected(s)">
+          <div class="Imageservice d-flex align-items-center gap-2">
+            <img [src]="s.image" alt="" width="24" height="24" class="rounded-circle" />
+            <h5 class="m-0">{{ s.name }}</h5>
+          </div>
+          <h5 class="m-0">{{ s.price }} $</h5>
         </div>
+        }
+      </div>
+    </div>
+
+    <div class="description">
+      <h4>الوصف</h4>
+      <p>
+        نحن نقدم حلول سباكة شاملة، بما في ذلك إصلاح التسربات، وتركيب وصيانة السباكة، ومعالجة انسداد
+        المجاري، والدقة العالية @if (isExpanded) { نقدم أيضًا استشارات فنية، وضمان جودة في جميع
+        أعمالنا، لضمان راحتك وأمانك في كل الأوقات. }
+
+        <span class="readMore" (click)="toggleText()">
+          {{ isExpanded ? 'اقرأ أقل' : ' .... اقرأ المزيد ' }}
+        </span>
+      </p>
+    </div>
+
+    <div class="selectDate">
+      <h4>اختيار التاريخ</h4>
+
+      <div class="days-container">
+        @for (day of days; track day.id) {
+        <div class="bodyCard d-flex justify-content-between align-items-center gap-2 flex-column">
+          <span class="day-name">
+            {{ day.name }}
+          </span>
+          <div
+            class="day-card"
+            [class.active]="selectedDay() === day.id"
+            (click)="selectDay(day.id)"
+          >
+            <span class="day-number">
+              {{ day.id | number : '2.0' }}
+            </span>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="reating">
+      <h4>المراجعات</h4>
+
+      <div class="cardsReatiing">
+        @for (r of reviews(); track r.name) {
+        <div class="review-card">
+          <div class="review-header">
+            <div class="user-info">
+              <img [src]="r.image" alt="user" class="avatar" />
+              <div>
+                <h4>{{ r.name }}</h4>
+                <h5>
+                  <span class="rate"><i class="fa-solid fa-star"></i> {{ r.rate }}</span>
+                </h5>
+              </div>
+            </div>
+            <span class="date"> <i class="fa-regular fa-calendar"></i> {{ r.date }} </span>
+          </div>
+
+          <div class="footerreview d-flex justify-content-between align-items-center">
+            <p class="review-text">{{ r.text }}</p>
+
+            <div class="review-footer">
+              <span class="likes"> <i class="fa-regular fa-thumbs-up"></i> {{ r.likes }} </span>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- إضافة تعليق جديد -->
+    <div class="add-review">
+      <h4>التقييم</h4>
+      <div class="stars">
+        @for (s of [1,2,3,4,5]; track s) {
+        <i
+          class="fa-star"
+          [class.fa-regular]="newRate() < s"
+          [class.fa-solid]="newRate() >= s"
+          (click)="newRate.set(s)"
+        >
+        </i>
+        }
+      </div>
+      <h4>اترك تعليق</h4>
+
+      <div class="addComments d-flex gap-3 w-100 align-items-center">
         
+        <div class="input-box">
+          <img [src]="userImage" class="avatar" />
+
+          <input
+            type="text"
+            placeholder="اكتب تعليقك"
+            [value]="newText()"
+            (input)="newText.set($any($event.target).value)"
+          />
+        </div>
+        <button class="send-btn" (click)="addReview()">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </div>
     </div>
+
+
+    <div class="booking d-flex gap-3 align-items-center">
+        <div class="priceBooking">
+            <span>{{totalPrice()}}$ </span>
+        </div>
+        <div class="btnBooking" >
+            <button (click)="print()">الدفع</button>
+        </div>
+    </div>
+  </div>
 </div>
