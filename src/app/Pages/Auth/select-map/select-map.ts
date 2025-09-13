@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import * as L from 'leaflet';
 import 'leaflet-control-geocoder';
@@ -6,12 +6,12 @@ import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 
 @Component({
   selector: 'app-select-map',
-  imports: [ ReactiveModeuls],
+  imports: [ReactiveModeuls],
   templateUrl: './select-map.html',
   styleUrl: './select-map.scss'
 })
-export class SelectMap {
- form: FormGroup;
+export class SelectMap implements OnDestroy {
+  form: FormGroup;
   private map!: L.Map;
   private marker!: L.Marker;
 
@@ -21,6 +21,19 @@ export class SelectMap {
       latitude: [null],
       longitude: [null]
     });
+
+const DefaultIcon = L.icon({
+  iconUrl: 'assets/marker-icon.png',
+  iconRetinaUrl: 'assets/marker-icon-2x.png',
+  shadowUrl: 'assets/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+// خلي أي Marker جديد يستخدم الأيقونة دي
+L.Marker.prototype.options.icon = DefaultIcon;
   }
 
   ngAfterViewInit(): void {
@@ -30,19 +43,30 @@ export class SelectMap {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(this.map);
 
+    // marker أساسي
     this.marker = L.marker([30.0444, 31.2357], { draggable: true })
       .addTo(this.map)
       .bindPopup('اسحب العلامة لتغيير موقعك')
       .openPopup();
 
-    // لما اضغط على الخريطة
+    // كليك على الخريطة
     this.map.on('click', (e: any) => this.setMarker(e.latlng.lat, e.latlng.lng));
 
-    // لما أسحب العلامة
+    // سحب العلامة
     this.marker.on('dragend', (e: any) => {
       const { lat, lng } = e.target.getLatLng();
       this.setMarker(lat, lng);
     });
+
+    // Geocoder control
+    // @ts-ignore
+    L.Control.geocoder({
+      defaultMarkGeocode: false
+    }).on('markgeocode', (e: any) => {
+      const latlng = e.geocode.center;
+      this.setMarker(latlng.lat, latlng.lng);
+      this.form.patchValue({ address: e.geocode.name });
+    }).addTo(this.map);
   }
 
   private setMarker(lat: number, lon: number) {
@@ -87,7 +111,12 @@ export class SelectMap {
   }
 
   submit() {
-    console.log(this.form.value);
-    // ابعته للباك إند
+    console.log('📌 البيانات:', this.form.value);
+  }
+
+  ngOnDestroy(): void {
+    if (this.map) {
+      this.map.remove(); // تنظيف الخريطة عند تدمير الكمبوننت
+    }
   }
 }
