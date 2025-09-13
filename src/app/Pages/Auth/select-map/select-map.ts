@@ -23,9 +23,9 @@ export class SelectMap implements OnDestroy {
     });
 
 const DefaultIcon = L.icon({
-  iconUrl: 'assets/marker-icon.png',
-  iconRetinaUrl: 'assets/marker-icon-2x.png',
-  shadowUrl: 'assets/marker-shadow.png',
+  iconUrl: 'marker-icon.png',
+  iconRetinaUrl: 'marker-icon-2x.png',
+  shadowUrl: 'marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
