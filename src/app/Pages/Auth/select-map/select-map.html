@@ -4,8 +4,10 @@
   <button type="button" (click)="useMyLocation()">استخدم موقعي</button>
 
 <div class="map-wrapper">
-  <div leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)"></div>
-</div>
+<div
+  id="map"
+  style=" width:100%; border-radius:12px; overflow:hidden;"
+></div></div>
 
   <button type="submit">تسجيل</button>
 </form>
