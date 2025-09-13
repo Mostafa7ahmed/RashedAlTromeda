@@ -1,3 +1,4 @@
+import { SelectMap } from './Pages/Auth/select-map/select-map';
 import { Routes } from '@angular/router';
 import { authGuard } from './Core/guards/auth.guard';
 import { isAuthGuard } from './Core/guards/is-auth.guard';
@@ -44,6 +45,11 @@ export const routes: Routes = [
       path: 'login',
       loadComponent: () =>
         import('./Pages/Auth/login/login').then(m => m.Login),
+    },
+        {
+      path: 'selectMap',
+      loadComponent: () =>
+        import('./Pages/Auth/select-map/select-map').then(m => m.SelectMap),
     },
       {
         path: 'register',

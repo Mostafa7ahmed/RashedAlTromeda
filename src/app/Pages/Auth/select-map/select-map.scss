@@ -1,0 +1,96 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 16px;
+  font-family: "Cairo", sans-serif;
+
+  input {
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s;
+
+    &:focus {
+      border-color: #f97316; 
+    }
+  }
+
+  button {
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  button[type="button"] {
+    background: #f3f4f6; 
+    color: #333;
+  }
+
+  button[type="submit"] {
+    background: #f97316;
+    color: white;
+  }
+
+  .map-wrapper {
+    width: 100%;
+    height: 460px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+    .leaflet-container {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+::ng-deep  .leaflet-control-geocoder.leaflet-bar.leaflet-control {
+        display: none !important;
+
+}
+
+::ng-deep .leaflet-control-zoom {
+  border: none !important;
+  box-shadow: none !important;
+
+  a {
+    background: #ffffff;
+    color: #333;
+    border: none !important;
+    border-radius: 50% !important;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    margin: 6px auto;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #f97316;
+      color: #fff;
+      transform: scale(1.01);
+      -webkit-transform: scale(1.01);
+      -moz-transform: scale(1.01);
+      -ms-transform: scale(1.01);
+      -o-transform: scale(1.01);
+}
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
