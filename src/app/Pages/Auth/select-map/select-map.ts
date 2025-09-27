@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import * as L from 'leaflet';
 import 'leaflet-control-geocoder';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
+import { ProfileCompletion } from '../../../Core/service/Customer/profile-completion';
 
 @Component({
   selector: 'app-select-map',
@@ -15,25 +16,24 @@ export class SelectMap implements OnDestroy {
   private map!: L.Map;
   private marker!: L.Marker;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder , private  ProfileCompletion:ProfileCompletion) {
     this.form = this.fb.group({
       address: [''],
       latitude: [null],
       longitude: [null]
     });
 
-const DefaultIcon = L.icon({
-  iconUrl: 'marker-icon.png',
-  iconRetinaUrl: 'marker-icon-2x.png',
-  shadowUrl: 'marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
+    const DefaultIcon = L.icon({
+      iconUrl: 'marker-icon.png',
+      iconRetinaUrl: 'marker-icon-2x.png',
+      shadowUrl: 'marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
 
-// خلي أي Marker جديد يستخدم الأيقونة دي
-L.Marker.prototype.options.icon = DefaultIcon;
+    L.Marker.prototype.options.icon = DefaultIcon;
   }
 
   ngAfterViewInit(): void {
@@ -43,22 +43,19 @@ L.Marker.prototype.options.icon = DefaultIcon;
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(this.map);
 
-    // marker أساسي
+  
     this.marker = L.marker([30.0444, 31.2357], { draggable: true })
       .addTo(this.map)
       .bindPopup('اسحب العلامة لتغيير موقعك')
       .openPopup();
 
-    // كليك على الخريطة
     this.map.on('click', (e: any) => this.setMarker(e.latlng.lat, e.latlng.lng));
 
-    // سحب العلامة
     this.marker.on('dragend', (e: any) => {
       const { lat, lng } = e.target.getLatLng();
       this.setMarker(lat, lng);
     });
 
-    // Geocoder control
     // @ts-ignore
     L.Control.geocoder({
       defaultMarkGeocode: false
@@ -75,7 +72,6 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
     this.form.patchValue({ latitude: lat, longitude: lon });
 
-    // reverse geocode
     fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`)
       .then(r => r.json())
       .then(data => {
@@ -112,11 +108,19 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
   submit() {
     console.log('📌 البيانات:', this.form.value);
+    this.ProfileCompletion.ProfileCompletion(this.form.value).subscribe({
+      
+      next: (res) => {
+        console.log('Profile updated:', res);
+      }
+    })
+
   }
 
   ngOnDestroy(): void {
     if (this.map) {
-      this.map.remove(); // تنظيف الخريطة عند تدمير الكمبوننت
+      this.map.remove();
+
     }
   }
 }

@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './Core/guards/auth.guard';
 import { isAuthGuard } from './Core/guards/is-auth.guard';
-import { Home } from './Pages/home/home';
 import { MainOutlet } from './Layout/main-outlet/main-outlet';
 import { Authoutlet } from './Layout/authoutlet/authoutlet';
+import { Home } from './Pages/Customer/home/home';
 
 export const routes: Routes = [
   {
@@ -23,12 +23,12 @@ export const routes: Routes = [
       {
         path: 'service',
         loadComponent: () =>
-          import('./Pages/service/service').then(m => m.Service),
+          import('./Pages/Customer/service/service').then(m => m.Service),
       },
       {
         path: 'workerprofile',
         loadComponent: () =>
-          import('./Pages/worker-profile/worker-profile').then(m => m.WorkerProfile),
+          import('./Pages/Customer/worker-profile/worker-profile').then(m => m.WorkerProfile),
       }
     ]
   },
