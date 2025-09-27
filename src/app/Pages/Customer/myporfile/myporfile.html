@@ -1,0 +1,86 @@
+<app-header-pages [title]="'الملف الشخصي'" />
+
+<div class="sidebar container">
+
+    <!-- Right side -->
+    <div class="profile-card">
+        <div class="avatar">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" />
+            <span class="camera"><i class="fa-regular fa-camera"></i></span>
+        </div>
+        <h3 class="name">Ahmed Mohammed</h3>
+        <p class="points">1,456 points</p>
+    </div>
+    <div class="menu">
+
+
+        <ul class="menu-list">
+            <li>
+                <div class="items">
+                    <p><span class="icon"><i class="fa-solid fa-lightbulb"></i></span> الوضع الليلي</p>
+                </div>
+                <div class="Route">
+                    <div class="toggle-dark">
+                        <input type="checkbox" id="darkMode"  (click)="toggleTheme()" />
+                        <label for="darkMode"></label>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="items">
+                    <p><span class="icon"><i class="fa-solid fa-earth-asia"></i></span> تغيير اللغة</p>
+                </div>
+                <div class="Route">
+                    <div class="icon"><i class="fa-solid fa-angle-left"></i></div>
+                </div>
+            </li>
+            <li>
+                <div class="items">
+                    <p><span class="icon"><i class="fa-solid fa-user"></i></span>المعلومات الشخصية</p>
+                </div>
+                <div class="Route">
+                    <div class="icon"><i class="fa-solid fa-angle-left"></i></div>
+                </div>
+            </li>
+            <li>
+                <div class="items">
+                    <p><span class="icon"><i class="fa-solid fa-map-location-dot"></i></span> تعيين موقع</p>
+                </div>
+                <div class="Route">
+                    <div class="icon"><i class="fa-solid fa-angle-left"></i></div>
+                </div>
+            </li>
+            <li>
+                <div class="items">
+                    <p><span class="icon"><i class="fa-solid fa-person-circle-question"></i></span>الشكاوي </p>
+                </div>
+                <div class="Route">
+                    <div class="icon"><i class="fa-solid fa-angle-left"></i></div>
+                </div>
+            </li>
+            <li>
+                <div class="items">
+                    <p><span class="icon"><i class="fa-solid fa-message"></i></span>الاقتراحات </p>
+                </div>
+                <div class="Route">
+                    <div class="icon"><i class="fa-solid fa-angle-left"></i></div>
+                </div>
+            </li>
+            <li>
+                <div class="items">
+                    <p><span class="icon"><i class="fa-solid fa-user-lock"></i></span>تغيير كلمة المرور </p>
+                </div>
+                <div class="Route">
+                    <div class="icon"><i class="fa-solid fa-angle-left"></i></div>
+                </div>
+            </li>
+            <li class="align-items-end justify-content-end">
+                <div class="logout-btn" (click)="logout()"> 
+                    <p>Log out<span class="me-2 arrow"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>  </p>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+</div>

@@ -1,0 +1,160 @@
+.sidebar {
+    display: flex;
+    gap: 50px;
+    background: var(--bgBody);
+    border-radius: 1rem;
+    padding: 1rem;
+    gap: 1rem;
+
+    .menu {
+        flex: 1;
+
+        background-color: var(--color-white);
+        padding: 1.5rem;
+        border: 1px solid #DFDFDF;
+        border-radius: 16px;
+        height: fit-content;
+
+        .toggle-dark {
+            display: flex;
+            margin-bottom: 1rem;
+
+            input[type="checkbox"] {
+                display: none;
+            }
+
+            label {
+                width: 40px;
+                height: 20px;
+                border-radius: 20px;
+                background: #ccc;
+                display: block;
+                position: relative;
+                cursor: pointer;
+
+                &::after {
+                    content: '';
+                    width: 18px;
+                    height: 18px;
+                    background: #fff;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 1px;
+                    left: 1px;
+                    transition: 0.3s;
+                }
+            }
+
+            input:checked+label {
+                background: #333;
+
+                &::after {
+                    left: 21px;
+                }
+            }
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            li {
+                font-size: 14px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.5rem;
+                color: var(--color-black-2);
+                cursor: pointer;
+
+                .icon {
+                    color: #F36B14;
+                    margin-left: 10px;
+
+                }
+            }
+        }
+
+        .logout-btn {
+          box-shadow: 0px 0px 4px 0px #00000040;
+            height: 43px;
+            border-radius: 21px;
+            gap: 8px;
+            padding-top: 12px;
+            padding-right: 16px;
+            padding-bottom: 12px;
+            padding-left: 16px;
+            background: #FFFFFF;
+            color:  #FF0000 !important;
+            .arrow i{
+                rotate: -180deg;
+            }
+        }
+    }
+
+    .profile-card {
+        width: 220px;
+        background: var(--color-white);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        text-align: center;
+        height: fit-content;
+
+        border: 1px solid #DFDFDF;
+
+        .avatar {
+            position: relative;
+            margin-bottom: 1rem;
+
+            img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                border: 4px solid #FEA420;
+                object-fit: cover;
+            }
+
+            .camera {
+                position: absolute;
+                bottom: 10px;
+                right: 15px;
+                background: #fff;
+                border: 2px solid #FEA420;
+                color: #FEA420;
+                border-radius: 50%;
+                width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                cursor: pointer;
+            }
+        }
+
+        .name {
+            font-weight: 600;
+            font-size: 25px;
+            line-height: 120%;
+            text-align: center;
+            color: var(--color-black-2);
+
+        }
+
+        .points {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 120%;
+            letter-spacing: -3%;
+            text-align: center;
+            color: #FEA420;
+
+        }
+    }
+}

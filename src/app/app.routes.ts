@@ -29,7 +29,13 @@ export const routes: Routes = [
         path: 'workerprofile',
         loadComponent: () =>
           import('./Pages/Customer/worker-profile/worker-profile').then(m => m.WorkerProfile),
-      }
+      },
+      { 
+        path: 'myporfile',
+        loadComponent: () =>
+          import('./Pages/Customer/myporfile/myporfile').then(m => m.Myporfile),
+      },
+      
     ]
   },
   {

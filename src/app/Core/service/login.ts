@@ -1,9 +1,10 @@
 import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IDecode } from '../Interface/idecode';
 import { jwtDecode } from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { jwtDecode } from 'jwt-decode';
 export class LoginService  {
   private readonly TOKEN_KEY = 'auth_token';
   private readonly API_URL = `${environment.apiUrl}`; 
-
+  private router = inject(Router);
   constructor(private http: HttpClient) {}
 
   login(credentials: { phone: string; password: string }): Observable<any> {
@@ -52,5 +53,6 @@ export class LoginService  {
 
   logout(): void {
     localStorage.removeItem(this.TOKEN_KEY);
+    this.router.navigate(['/auth/login']); // هيشتغل صح
   }
 }
