@@ -30,12 +30,21 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./Pages/Customer/worker-profile/worker-profile').then(m => m.WorkerProfile),
       },
-      { 
+      {
         path: 'myporfile',
         loadComponent: () =>
           import('./Pages/Customer/myporfile/myporfile').then(m => m.Myporfile),
       },
-      
+      {
+        path: 'myporfile/changepassword',
+        loadComponent: () =>
+          import('./Pages/Customer/changepassword/changepassword').then(m => m.Changepassword),
+      },
+      {
+        path: 'myporfile/infomation',
+        loadComponent: () =>
+          import('./Pages/Customer/infomation/infomation').then(m => m.Infomation),
+      }
     ]
   },
   {
