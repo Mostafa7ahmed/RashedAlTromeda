@@ -1,0 +1,26 @@
+<div class="loginCard relative">
+  <h4>التحقق من رقم هاتفك</h4>
+  <p>أدخل الرمز المرسل إلى رقم هاتفك {{ phoneNumber }}</p>
+
+  <form [formGroup]="formOtp" class="otp-wrapper" (ngSubmit)="submitOtp()">
+    <div class="otp-inputs">
+      <input type="text" maxlength="1" formControlName="d1" />
+      <input type="text" maxlength="1" formControlName="d2" />
+      <input type="text" maxlength="1" formControlName="d3" />
+      <input type="text" maxlength="1" formControlName="d4" />
+    </div>
+
+    <div class="otp-text mb-4">
+      <p class="no-code">لم تستلم الرمز؟</p>
+      <p class="expire">
+        تنتهي صلاحية الكود في <span class="time">{{ timerDisplay }}</span>
+      </p>
+      <!-- ربط الزرار مع resendOtp() -->
+      <button class="resend-btn" type="button" (click)="resendOtp()" [disabled]="timer > 0">
+        إعادة إرسال رمز التحقق
+      </button>
+    </div>
+
+    <button type="submit" class="login-btn" [disabled]="formOtp.invalid">ارسال</button>
+  </form>
+</div>

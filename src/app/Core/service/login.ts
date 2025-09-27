@@ -10,12 +10,12 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class LoginService  {
   private readonly TOKEN_KEY = 'auth_token';
-  private readonly API_URL = `${environment.apiUrl}/auth`; 
+  private readonly API_URL = `${environment.apiUrl}`; 
 
   constructor(private http: HttpClient) {}
 
-  login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post(`${this.API_URL}/login`, credentials);
+  login(credentials: { phone: string; password: string }): Observable<any> {
+    return this.http.post(`${this.API_URL}user/session`, credentials);
   }
 
   saveToken(token: string): void {

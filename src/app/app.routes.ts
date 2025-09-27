@@ -1,4 +1,3 @@
-import { SelectMap } from './Pages/Auth/select-map/select-map';
 import { Routes } from '@angular/router';
 import { authGuard } from './Core/guards/auth.guard';
 import { isAuthGuard } from './Core/guards/is-auth.guard';
@@ -10,6 +9,7 @@ export const routes: Routes = [
   {
     path: '',
     component: MainOutlet,
+    canActivate: [authGuard],
     children: [
       {
         path: '',
@@ -33,30 +33,35 @@ export const routes: Routes = [
     ]
   },
   {
-  path: 'auth',
-  component: Authoutlet, 
-  children: [
-    {
-      path: '',
-      pathMatch: 'full',
-      redirectTo: 'login'
-    },
-    {
-      path: 'login',
-      loadComponent: () =>
-        import('./Pages/Auth/login/login').then(m => m.Login),
-    },
-        {
-      path: 'selectMap',
-      loadComponent: () =>
-        import('./Pages/Auth/select-map/select-map').then(m => m.SelectMap),
-    },
+    path: 'auth',
+    component: Authoutlet,
+    canActivate: [isAuthGuard],
+    children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'login'
+      },
+      {
+        path: 'login',
+        loadComponent: () =>
+          import('./Pages/Auth/login/login').then(m => m.Login),
+      },
+      {
+        path: 'selectMap',
+        loadComponent: () =>
+          import('./Pages/Auth/select-map/select-map').then(m => m.SelectMap),
+      },
+      {
+        path: 'otp',
+        loadComponent: () =>
+          import('./Pages/Auth/otp/otp').then(m => m.Otp),
+      }
+      , {
         path: 'register',
         loadComponent: () =>
           import('./Pages/Auth/sigin/sigin').then(m => m.Sigin),
-      }
-      ,
+      },
       {
         path: 'forgetpassword',
         loadComponent: () =>

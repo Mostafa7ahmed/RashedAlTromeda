@@ -3,6 +3,7 @@ import { LoginService } from '../../../Core/service/login';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxIntlTelInputModule, SearchCountryField, CountryISO } from 'ngx-intl-tel-input';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ form: FormGroup;
   submitted = false;
   result: any = null;
 
-  constructor(private fb: FormBuilder, private loginService: LoginService) {
+  constructor(private fb: FormBuilder, private loginService: LoginService , private router: Router) {
       this.form = this.fb.group({
     phone: ['', Validators.required],
     password: ['', [Validators.required, Validators.minLength(6)]]
@@ -45,13 +46,22 @@ form: FormGroup;
     }
 
     const body = {
-      phone: phoneInput.e164Number,  // +20123456789
+      phone: phoneInput.e164Number,  
       password: password,
     };
 
-    console.log('form payload:', body);
+    this.loginService.login(body).subscribe({
+      next: (response) => {
+        this.result = response;
+        this.loginService.saveToken(response.result.accessToken);
+        console.log('تم تسجيل الدخول بنجاح', response);
+          this.router.navigate(['/'] );
+      },
+      error: (error) => {
+        console.error('خطأ في تسجيل الدخول', error);
+      }
+    });
 
-    // API call
  
   }
 }

@@ -5,7 +5,7 @@
     <form action="" [formGroup]="form" class="mt-5" (ngSubmit)="submit()">
 
         <div class="position-relative mt-4 mb-4">
-            <input class="input-cal input-base inputFloating" formControlName="password" placeholder="" />
+            <input class="input-cal input-base inputFloating" formControlName="name" placeholder="" />
             <label id="label-input"> الاسم بالكامل </label>
 
         </div>
@@ -34,7 +34,7 @@
             </i>
         </div>
         <div class="position-relative mb-4">
-            <input class="input-cal input-base inputFloating" formControlName="password" placeholder=""
+            <input class="input-cal input-base inputFloating" formControlName="confirmedPassword" placeholder=""
                 [type]="passwordFieldType ? 'password' : 'text'" />
             <label id="label-input"> تأكيد كلمه المرور </label>
             <i (click)="togglePasswordVisibility()" role="button" class="fa-solid position-absolute passicon"
