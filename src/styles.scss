@@ -4,16 +4,16 @@
 
 :root {
   --color-white: #FFFFFF;
-  --color-orange: #F36B14;
+  --color-orange: #F36B14 !important;
   --color-dark: #231F20;
   --color-black-1: #141414;
   --color-black-2: #000000;
   --color-purple: #640D5F;
-  --color-orange-2: #FF9D00;
+  --color-orange-2: #FF9D00 ;
   --color-gray-1: #45413C;
   --color-black-alpha: #141414BF;
   --color-orange-3: #FF9800;
-
+  --color-text-p:#646464;
   --accent: #FAE084;
   --muted: #9aa4b2;
   --card-bg: #ffffff;
@@ -83,4 +83,14 @@ body {
 .container-fluid{
   padding-inline: clamp(15px, 5vw, 150px) !important;
 
+}
+
+// Color stylee
+
+.colorOrgane{
+  color: var(--color-orange);
+}
+
+.error-msg{
+  color: rgba(255, 0, 0, 1);
 }

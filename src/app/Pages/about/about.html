@@ -1,0 +1,91 @@
+<div class="aboutHero  container-fluid ">
+    <div class="oveerlay"></div>
+    <div class="info d-flex flex-column gap-4">
+        <h3>خدمات منزلية موثوقة وسريعة في متناول يدك</h3>
+        <p>من التنظيف للصيانة، وفّر وقتك وجهدك ودع خبراءنا يعتنون بكل تفاصيل منزلك</p>
+
+        <app-book-btn [label]="buttonLabel()" [background]="buttonColor()" [color]="buttonColorText()">
+        </app-book-btn>
+    </div>
+</div>
+<div class="aboutUs container-fluid py-5 d-flex gap-4">
+    <div class="leftSide">
+        <img src="Image/aboutCompany.png" alt="">
+    </div>
+    <div class="rightSide py-3">
+        <p class="m-0 mb-3 d-flex align-items-center gap-2 colorOrgane ">أهدافنا <img src="Icons/searchAbout.svg"
+                alt=""> </p>
+
+        <h4>نحن نعمل لتوفير خدمات صيانة موثوقة <span class="colorOrgane">تُسهّل حياتك اليومية</span></h4>
+
+        <p class="textAbout">نحن منصة متخصصة في تقديم خدمات الصيانة المنزلية بجودة عالية وموثوقية تامة. نسعى لتسهيل
+            حياتك اليومية من خلال فريق محترف يهتم بكل تفاصيل منزلك، لنضمن لك راحة وأمانًا في كل خدمة نقدمها. <br>نوفر
+            مجموعة
+            شاملة من الخدمات تشمل الكهرباء، السباكة، التكييف، الدهانات، النجارة، والتنظيف، مع إمكانية الحجز بسهولة في أي
+            وقت ومن أي مكان. هدفنا هو أن نكون شريكك الدائم في الحفاظ على منزلك في أفضل حال، من خلال سرعة الاستجابة،
+            الأسعار المناسبة، والنتائج التي تفوق توقعاتك.</p>
+
+
+
+
+        <div class="contact d-flex justify-content-between align-items-center mt-4">
+            <app-book-btn [label]="contactLabel()" [background]="buttonColor()" [color]="buttonColorText()">
+            </app-book-btn>
+
+
+            <div class="emailDev d-flex align-items-center justify-content-center gap-2">
+                <div class="iconEmai">
+                    <img src="Icons/bx_mail-send.svg" alt="">
+                </div>
+                <div class="email">
+                    <p class="m-0">البريد الالكتروني</p>
+                    <p class="m-0">Info@gmail.com</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="cards-grid  container-fluid">
+    @for (card of rates; track $index) {
+    <div class="card-box">
+        <img [src]="card.icon" alt="" class="card-icon" />
+        <h3 class="card-title">{{ card.title }}</h3>
+        <p class="card-text">{{ card.text }}</p>
+    </div>
+    }
+</div>
+<div class="aboutUs container-fluid py-5 d-flex gap-4">
+
+    <div class="rightSide py-3">
+        <p class="m-0 mb-3 d-flex align-items-center gap-2 colorOrgane ">ما نقدمه <img src="Icons/searchAbout.svg"
+                alt=""> </p>
+
+        <h4> نقدّم لك خدمات الصيانة والمعرفة بكل ما <span class="colorOrgane">يحتاجه منزلك</span> ليبقى في أفضل حال
+            دائمًا .</h4>
+
+        <p class="textAbout">نسعى لتقديم خدمات صيانة موثوقة تعكس احتياجات منزلك الحقيقية، من خلال فريق متخصص يوفر حلولًا
+            شاملة تشمل الإصلاح، المتابعة، والصيانة الدورية لضمان راحتك وجودة حياتك اليومية.</p>
+
+
+
+
+        <div class="features-grid  ">
+            @for (feature of features; track $index) {
+            <div class="feature-item">
+                <img src="Icons/octicon_goal-24.svg" alt="check icon" class="feature-icon" />
+                <p class="feature-text">{{ feature }}</p>
+            </div>
+            }
+             <div class="mt-4">
+                                        <app-book-btn [label]="explorLabel()" [background]="buttonColor()" [color]="buttonColorText()">
+            </app-book-btn>
+             </div>
+        </div>
+    </div>
+    <div class="leftSide">
+        <img src="Image/explore.png" alt="">
+    </div>
+</div>

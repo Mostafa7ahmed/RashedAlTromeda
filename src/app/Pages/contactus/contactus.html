@@ -1,0 +1,66 @@
+<div class="contact-section  container-fluid">
+
+
+  <!-- Right Side (Form) -->
+  <div class="contact-right">
+    <h2 class="section-title">تواصل مع فريقنا</h2>
+    <p class="section-subtitle">
+      نحن هنا لمساعدتك! تواصل معنا لأي استفسار أو ملاحظة أو طلب خدمة، وسنقوم بالرد عليك
+      في أسرع وقت ممكن لضمان راحتك وجودة تجربتك معنا.
+    </p>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>الاسم</label>
+          <input type="text" formControlName="name" placeholder="ادخل اسمك بالكامل" />
+          <small *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="error-msg">
+            الاسم مطلوب ويجب أن يحتوي على 3 أحرف على الأقل
+          </small>
+        </div>
+        <div class="form-group">
+          <label>البريد الالكتروني</label>
+          <input type="email" formControlName="email" placeholder="ادخل بريدك الالكتروني" />
+          <small *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="error-msg">
+            أدخل بريد إلكتروني صالح
+          </small>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>رقم الهاتف</label>
+          <input type="tel" formControlName="phone" placeholder="ادخل رقم هاتفك" />
+          <small *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" class="error-msg">
+            أدخل رقم هاتف صحيح (10 إلى 15 رقم)
+          </small>
+        </div>
+       
+      </div>
+     <div class="form-row">
+         <div class="form-group">
+          <label>الموضوع</label>
+          <textarea formControlName="subject" placeholder="اكتب الموضوع هنا"></textarea>
+          <small *ngIf="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched" class="error-msg">
+            الموضوع مطلوب ويجب أن يكون أكثر من 5 أحرف
+          </small>
+        </div>
+     </div>
+      <button type="submit" class="btn-submit">إرسال <i class="fa-solid fa-arrow-left"></i></button>
+    </form>
+  </div>
+
+    <!-- Left Side (Image & Text) -->
+  <div class="contact-left">
+        <img src="Image/contactUS.jpg" class="rounded-3" alt="">
+    <div class="contact-overlay">
+      <p>
+        نحن نقدر رأيك ونسعد دائماً بالتواصل معك، سواء كانت لديك استفسارات، تحتاج إلى
+        مساعدة، أو ترغب في مشاركتنا ملاحظاتك حول خدماتنا. لا تتردد في الاتصال بنا،
+        ففريقنا المتخصص جاهز دائماً لتقديم الدعم وضمان تجربة صيانة سهلة ومريحة تلبي
+        توقعاتك.
+      </p>
+    </div>
+    <div class="oveerlay"></div>
+  </div>
+</div>

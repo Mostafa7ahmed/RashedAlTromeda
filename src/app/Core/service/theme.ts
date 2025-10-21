@@ -11,18 +11,15 @@ export class Theme {
     if (saved) {
       this.setTheme(saved);
     } else {
-      // تأكد من تطبيق القيمة الافتراضية أيضاً
       this.applyClass(this.theme());
     }
 
-    // كل تغيير يتخزن
     effect(() => {
       localStorage.setItem('app-theme', this.theme());
     });
   }
 
   private applyClass(t: 'light' | 'dark') {
-    // حط الكلاس على عنصر html (documentElement) — أفضل للـ :root vars
     if (t === 'dark') {
       document.documentElement.classList.add('dark-theme');
     } else {
