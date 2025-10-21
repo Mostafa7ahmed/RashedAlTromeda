@@ -4,36 +4,21 @@ import { effect, Injectable, signal } from '@angular/core';
   providedIn: 'root'
 })
 export class Theme {
-   theme = signal<'light' | 'dark'>('light');
+ // Get saved theme or default to light
+  private storedTheme = localStorage.getItem('theme') || 'light';
+  currentTheme = this.storedTheme;
+  themeSignal = signal(this.storedTheme);
 
   constructor() {
-    const saved = localStorage.getItem('app-theme') as 'light' | 'dark' | null;
-    if (saved) {
-      this.setTheme(saved);
-    } else {
-      this.applyClass(this.theme());
-    }
-
-    effect(() => {
-      localStorage.setItem('app-theme', this.theme());
-    });
-  }
-
-  private applyClass(t: 'light' | 'dark') {
-    if (t === 'dark') {
-      document.documentElement.classList.add('dark-theme');
-    } else {
-      document.documentElement.classList.remove('dark-theme');
-    }
-  }
-
-  setTheme(t: 'light' | 'dark') {
-    this.theme.set(t);
-    this.applyClass(t);
-    console.log('[ThemeService] setTheme ->', t);
+    document.body.classList.toggle('dark-theme', this.currentTheme === 'dark');
   }
 
   toggleTheme() {
-    this.setTheme(this.theme() === 'light' ? 'dark' : 'light');
+    this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+    localStorage.setItem('theme', this.currentTheme);
+
+    document.body.classList.toggle('dark-theme', this.currentTheme === 'dark');
+
+    this.themeSignal.set(this.currentTheme);
   }
 }

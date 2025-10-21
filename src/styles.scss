@@ -9,11 +9,11 @@
   --color-black-1: #141414;
   --color-black-2: #000000;
   --color-purple: #640D5F;
-  --color-orange-2: #FF9D00 ;
+  --color-orange-2: #FF9D00;
   --color-gray-1: #45413C;
   --color-black-alpha: #141414BF;
   --color-orange-3: #FF9800;
-  --color-text-p:#646464;
+  --color-text-p: #646464;
   --accent: #FAE084;
   --muted: #9aa4b2;
   --card-bg: #ffffff;
@@ -55,20 +55,20 @@
 }
 
 body::-webkit-scrollbar {
-  width: 10px;         
+  width: 10px;
 }
 
 body::-webkit-scrollbar-track {
-  background: #2c2c2c;      
+  background: #2c2c2c;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #555;   
-  border-radius: 5px;       
+  background-color: #555;
+  border-radius: 5px;
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background-color: #777;   
+  background-color: #777;
 }
 
 body {
@@ -76,21 +76,29 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: var( --page-bg);
+  background: var(--page-bg);
   color: var(--color-black-1);
 }
 
-.container-fluid{
+input[type="tel"] {
+  text-align: end !important;
+}
+
+.container-fluid {
   padding-inline: clamp(15px, 5vw, 150px) !important;
 
 }
 
 // Color stylee
 
-.colorOrgane{
+.colorOrgane {
   color: var(--color-orange);
 }
 
-.error-msg{
+.error-msg {
   color: rgba(255, 0, 0, 1);
+}
+
+.cr {
+  cursor: pointer;
 }

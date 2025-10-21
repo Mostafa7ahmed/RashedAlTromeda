@@ -1,11 +1,11 @@
 <nav class="navbar container-fluid">
-  <div class="navbar-logo"  routerLink="/home">
+  <div class="navbar-logo" routerLink="/home">
     <img src="Icons/logoNavbar.svg" alt="Logo">
   </div>
 
-  <ul class="navbar-links">
+  <ul class="navbar-links m-0">
     <li>
-      <a routerLink="/home" routerLinkActive="active" >الرئيسية</a>
+      <a routerLink="/home" routerLinkActive="active">الرئيسية</a>
     </li>
     <li>
       <a routerLink="/service" routerLinkActive="active">خدماتنا</a>
@@ -18,18 +18,33 @@
     </li>
   </ul>
 
-  <div class="navbar-actions">
-    <!-- <button class="btn-outline" routerLink="/auth/login">
+  <!-- <div class="navbar-actions">
+   <button class="btn-outline" routerLink="/auth/login">
       <i class="fa fa-user"></i>
       تسجيل دخول
     </button>
     <button class="btn-fill" routerLink="/auth/register">
       <i class="fa fa-user-plus"></i>
       إنشاء حساب
-    </button> -->
-    <div class="porfile d-flex justify-content-center align-items-center gap-3  " routerLink="/myporfile">
-      <img src="Image/Imageporfile.png" alt="" width="40" height="40" class="rounded-circle">
-      <h4>مصطفي  حامد</h4>
+    </button> 
+
+  </div> -->
+      <div class="profileMore d-flex gap-3 align-items-center">
+      <app-darkmood-btn />
+      <div class="lang-select" (click)="dropdownOpen = !dropdownOpen">
+        <img [src]="selectedLang.flag" alt="flag" class="flag" />
+        <span class="code">{{ selectedLang.code | uppercase }}</span>
+        <i class="arrow" [class.open]="dropdownOpen"></i>
+
+        <ul class="dropdown" *ngIf="dropdownOpen">
+          <li *ngFor="let lang of languages" (click)="selectLanguage(lang)">
+            <img [src]="lang.flag" alt="{{ lang.name }}" class="flag" />
+            <span>{{ lang.name }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="profileImage cr" routerLink="/myporfile" >
+<img  src="Image/Imageporfile.png" alt="" width="40" height="40" class="rounded-circle">      </div>
     </div>
-  </div>
+
 </nav>

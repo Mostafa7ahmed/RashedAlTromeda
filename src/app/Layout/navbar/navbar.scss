@@ -3,12 +3,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 40px;
+  padding: 5px 40px;
   background: var(--color-white);
-  height: 114.04989624023438px;
+  height: 90px;
   
   .navbar-logo img {
-    height: 82.04989624023438px;
+    height: 60px;
   }
 
   .navbar-links {
@@ -80,5 +80,68 @@
   }
   .porfile{
     cursor: pointer;
+  }
+}
+
+.lang-select {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  cursor: pointer;
+    background: var(--color-white);
+  width: fit-content;
+  user-select: none;
+
+  .flag {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .code {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .arrow {
+    border: solid #777;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+    &.open {
+      transform: rotate(-135deg);
+    }
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: var(--color-white);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    list-style: none;
+    padding: 6px 0;
+    margin: 0;
+    width: 140px;
+    z-index: 10;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+
+    }
   }
 }

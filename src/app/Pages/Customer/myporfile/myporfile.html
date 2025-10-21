@@ -1,86 +1,67 @@
 <app-header-pages [title]="'الملف الشخصي'" />
+<div class="proflie container-fluid">
+ <div class="sidebar-card">
+    <ul class="sidebar-links">
+      <li>
+        <a
+          routerLink="personal-info"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <img src="Icons/proicons_person.svg" alt="" />
+          <span>المعلومات الشخصية</span>
+        </a>
+      </li>
 
-<div class="sidebar container">
+      <li>
+        <a routerLink="suggestions" routerLinkActive="active">
+          <img src="Icons/suggect.svg" alt="" />
+          <span>الاقتراحات</span>
+        </a>
+      </li>
 
-    <!-- Right side -->
-    <div class="profile-card">
-        <div class="avatar">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" />
-            <span class="camera"><i class="fa-regular fa-camera"></i></span>
-        </div>
-        <h3 class="name">Ahmed Mohammed</h3>
-        <p class="points">1,456 points</p>
+      <li>
+        <a routerLink="location" routerLinkActive="active">
+          <img src="Icons/mingcute_location-3-line.svg" alt="" />
+          <span>تعيين موقع</span>
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="complaints" routerLinkActive="active">
+          <img src="Icons/problem.svg" alt="" />
+          <span>الشكاوي</span>
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="bookings" routerLinkActive="active">
+          <img src="Icons/calendar.svg" alt="" />
+          <span>الحجوزات</span>
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="change-password" routerLinkActive="active">
+          <img src="Icons/password.svg" alt="" />
+          <span>تغيير كلمة المرور</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="logout">
+      <a routerLink="/logout">
+        <img src="Icons/logout.svg" alt="" />
+        <span>تسجيل الخروج</span>
+      </a>
     </div>
-    <div class="menu">
+  </div>
+
+<div class="routes">
+ <router-outlet />
+
+</div>
 
 
-        <ul class="menu-list">
-            <li>
-                <div class="items">
-                    <p><span class="icon"><i class="fa-solid fa-lightbulb"></i></span> الوضع الليلي</p>
-                </div>
-                <div class="Route">
-                    <div class="toggle-dark">
-                        <input type="checkbox" id="darkMode"  (click)="toggleTheme()" />
-                        <label for="darkMode"></label>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="items">
-                    <p><span class="icon"><i class="fa-solid fa-earth-asia"></i></span> تغيير اللغة</p>
-                </div>
-                <div class="Route">
-                    <div class="icon"><i class="fa-solid fa-angle-left"></i></div>
-                </div>
-            </li>
-            <li routerLink="infomation" >
-                <div class="items">
-                    <p><span class="icon"><i class="fa-solid fa-user"></i></span>المعلومات الشخصية</p>
-                </div>
-                <div class="Route">
-                    <div class="icon"><i class="fa-solid fa-angle-left"></i></div>
-                </div>
-            </li>
-            <li>
-                <div class="items">
-                    <p><span class="icon"><i class="fa-solid fa-map-location-dot"></i></span> تعيين موقع</p>
-                </div>
-                <div class="Route">
-                    <div class="icon"><i class="fa-solid fa-angle-left"></i></div>
-                </div>
-            </li>
-            <li>
-                <div class="items">
-                    <p><span class="icon"><i class="fa-solid fa-person-circle-question"></i></span>الشكاوي </p>
-                </div>
-                <div class="Route">
-                    <div class="icon"><i class="fa-solid fa-angle-left"></i></div>
-                </div>
-            </li>
-            <li>
-                <div class="items">
-                    <p><span class="icon"><i class="fa-solid fa-message"></i></span>الاقتراحات </p>
-                </div>
-                <div class="Route">
-                    <div class="icon"><i class="fa-solid fa-angle-left"></i></div>
-                </div>
-            </li>
-            <li routerLink="changepassword">
-                <div class="items">
-                    <p><span class="icon"><i class="fa-solid fa-user-lock"></i></span>تغيير كلمة المرور </p>
-                </div>
-                <div class="Route">
-                    <div class="icon"><i class="fa-solid fa-angle-left"></i></div>
-                </div>
-            </li>
-            <li class="align-items-end justify-content-end">
-                <div class="logout-btn" (click)="logout()"> 
-                    <p>Log out<span class="me-2 arrow"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>  </p>
-                </div>
-            </li>
-        </ul>
-
-    </div>
 
 </div>

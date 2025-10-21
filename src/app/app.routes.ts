@@ -25,12 +25,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./Pages/Customer/service/service').then(m => m.Service),
       },
-        {
+      {
         path: 'about',
         loadComponent: () =>
           import('./Pages/about/about').then(m => m.About),
       },
-         {
+      {
         path: 'contact',
         loadComponent: () =>
           import('./Pages/contactus/contactus').then(m => m.Contactus),
@@ -43,7 +43,30 @@ export const routes: Routes = [
       {
         path: 'myporfile',
         loadComponent: () =>
-          import('./Pages/Customer/myporfile/myporfile').then(m => m.Myporfile),
+          import('./Pages/Customer/myporfile/myporfile').then(
+            (m) => m.Myporfile
+          ),
+        children: [
+          {
+            path: '',
+            redirectTo: 'personal-info',
+            pathMatch: 'full',
+          },
+          {
+            path: 'personal-info',
+            loadComponent: () =>
+              import('./Pages/Customer/myporfile/components/personal-info/personal-info').then(
+                (m) => m.PersonalInfo
+              ),
+          },
+                {
+            path: 'suggestions',
+            loadComponent: () =>
+              import('./Pages/Customer/myporfile/components/suggestion/suggestion').then(
+                (m) => m.Suggestion
+              ),
+          },
+        ]
       },
       {
         path: 'myporfile/changepassword',

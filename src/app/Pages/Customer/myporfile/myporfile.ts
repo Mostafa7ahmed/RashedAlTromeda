@@ -2,21 +2,18 @@ import { Component, inject } from '@angular/core';
 import { HeaderPages } from "../../../components/header-pages/header-pages";
 import { Theme } from '../../../Core/service/theme';
 import { LoginService } from '../../../Core/service/login';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-myporfile',
-  imports: [HeaderPages , RouterLink],
+  imports: [HeaderPages , RouterModule , RouterOutlet],
   templateUrl: './myporfile.html',
-  styleUrl: './myporfile.scss'
+  styleUrls:[ './myporfile.scss', '../../../Shared/CSS/input.scss']
 })
 export class Myporfile {
-  themeService = inject(Theme);
   _login = inject(LoginService);
 
-  toggleTheme() {
-    this.themeService.toggleTheme();
-  }
+
   logout() {
     this._login.logout();
   }
