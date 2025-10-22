@@ -1,0 +1,77 @@
+.addsuggest {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 8888888888;
+    animation: grow 0.2s ease-out;
+    background-color: var(--bg-popup);
+
+    border-radius: 24px;
+    width: 800px;
+    height: 700px;
+}
+
+.bodyAdd {
+
+    padding: 24px;
+
+    .icons i {
+        color: #DB1F35;
+        font-size: 20px;
+    }
+
+    .fromGroup {
+        padding: 16px;
+        background-color: var(--color-white);
+        border-radius: 16px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        input,
+        textarea {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 10px 12px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+            background: transparent;
+            text-align: start;
+
+            &:focus {
+                border-color: var(--color-orange);
+            }
+        }
+
+
+        textarea {
+            height: 80px;
+            padding: 10px 40px;
+
+            resize: none;
+            background: url('../../../../../../../../../public/Icons/text.svg') no-repeat 10px center;
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: right 6px top 10px;
+
+            
+        }
+    }
+}
+
+
+
+@keyframes grow {
+    0% {
+        transform: translate(-50%, -50%) scale(0.6);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}

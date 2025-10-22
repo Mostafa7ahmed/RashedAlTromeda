@@ -66,7 +66,14 @@ export const routes: Routes = [
                 (m) => m.Suggestion
               ),
           },
+
         ]
+      },
+      {
+        path:"addsuggest",
+        loadComponent:()=> import('./Pages/Customer/myporfile/components/suggestion/components/addsuggest/addsuggest').then(m => m.Addsuggest),
+        outlet: 'popup'
+
       },
       {
         path: 'myporfile/changepassword',

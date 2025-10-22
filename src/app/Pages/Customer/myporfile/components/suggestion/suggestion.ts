@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-suggestion',
-  imports: [CommonModule],
+  imports: [CommonModule , RouterModule],
   templateUrl: './suggestion.html',
   styleUrl: './suggestion.scss'
 })
@@ -14,6 +15,7 @@ export class Suggestion {
   duration = 65; 
     Math = Math;
   suggestions = Array(20).fill(0); 
+  private router = inject(Router);
 
   progress = 0;
   audio = new Audio('Sound/ddddd.mp3');
@@ -52,7 +54,9 @@ export class Suggestion {
     this.expandedCard = this.expandedCard === id ? null : id;
   }
 
-
+  openPopup() {
+    this.router.navigate([{ outlets: { popup: ['addsuggest'] } }]);
+  }
 
   
   togglePlay() {
