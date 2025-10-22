@@ -1,1 +1,62 @@
-<p>suggestion works!</p>
+<div class="suggestion">
+  <div class="headerTitle">
+    <h3>الاقتراحات</h3>
+    <button class="btn">اضافة اقتراح <i class="fa-solid fa-plus"></i></button>
+  </div>
+
+  <div class="post-container mt-4">
+    <div class="post-card" *ngFor="let card of cards">
+      <div class="header" (click)="toggleCard(card.id)">
+        <div class="title">
+          <h5 >محمد أحمد</h5>
+          <p class="author">{{ card.text }}</p>
+        </div>
+        <div class="date">
+          <img src="Icons/stash_data-date-light.svg" alt="">
+          <span>أغسطس 25</span>
+
+          <button class="toggle-btn">
+            <i
+              [class]="
+                expandedCard === card.id ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'
+              "
+            ></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="content" [class.open]="expandedCard === card.id">
+        <div class="d-flex mb-4 justify-content-between align-items-start">
+          <div class="images" *ngIf="card.images.length">
+            <img *ngFor="let img of card.images" [src]="img" alt="preview" />
+          </div>
+         <!-- Custom Voice Player -->
+      <div class="voice-player">
+        <button class="play-btn" (click)="togglePlay()">
+          <i [class]="isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play'"></i>
+        </button>
+
+        <div class="waveform">
+<div class="bar"
+     *ngFor="let bar of [].constructor(40); let i = index"
+     [style.height.px]="(Math.sin(i) * 10) + 20"
+     [style.opacity]="(i / 40) < (progress / 100) ? '1' : '0.3'">
+</div>
+        </div>
+
+        <span class="time">{{ formatTime(currentTime) }}</span>
+      </div>
+        </div>
+        <div class="resources" *ngIf="card.resources.length">
+          <div class="resource gap-2" *ngFor="let res of card.resources">
+          <img src="Icons/pdf.svg" alt="">
+            <div>
+              <h6>{{ res.name }} <span>(pdf)</span></h6>
+              <p>{{ res.size }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
