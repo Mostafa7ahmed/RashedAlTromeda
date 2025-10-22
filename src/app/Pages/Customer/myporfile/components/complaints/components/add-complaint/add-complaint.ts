@@ -1,16 +1,25 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
+import { ReactiveModeuls } from '../../../../../../../Shared/Modules/ReactiveForms.module';
 import { Router } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+interface Engineer {
+  id: number;
+  name: string;
+  projects: number;
+  color: string;
+  image?: string;
+}
 @Component({
-  selector: 'app-addsuggest',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './addsuggest.html',
-  styleUrls: ['./addsuggest.scss' , '../../../../../../../Shared/CSS/popup.scss'],
+  selector: 'app-add-complaint',
+  imports: [ReactiveModeuls ,  ],
+  templateUrl: './add-complaint.html',
+    styleUrls: [ './add-complaint.scss', '../../../../../../../Shared/CSS/popup.scss'],
+
 })
-export class Addsuggest {
-  private router = inject(Router);
+export class AddComplaint {
+ private router = inject(Router);
 
   images = signal<string[]>([]);
   uploadedFiles = signal<string[]>([]);
@@ -19,7 +28,24 @@ export class Addsuggest {
 
   private mediaRecorder!: MediaRecorder;
   private audioChunks: Blob[] = [];
+  engineers = signal<Engineer[]>([
+    { id: 1, name: 'م. أحمد', projects: 2000, color: '#FF6B6B' },
+    { id: 2, name: 'م. محمد', projects: 1000, color: '#E5E5E5' },
+    { id: 3, name: 'م. فاطمة', projects: 15300, color: '#FFD166' },
+    { id: 4, name: 'م. مصطفى', projects: 1300, color: '#FF9D00' },
+  ]);
 
+  selectedEngineer = signal<Engineer | null>(null);
+  isOpen = signal(false);
+
+  toggleDropdown() {
+    this.isOpen.update(v => !v);
+  }
+
+  selectEngineer(engineer: Engineer) {
+    this.toggleDropdown();
+    this.selectedEngineer.set(engineer);
+  }
   closePopup() {
     this.router.navigate([{ outlets: { popup: null } }]);
   }

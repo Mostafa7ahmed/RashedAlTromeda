@@ -14,7 +14,7 @@ export const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'home'
+        redirectTo: 'home',
       },
       {
         path: 'home',
@@ -22,30 +22,25 @@ export const routes: Routes = [
       },
       {
         path: 'service',
-        loadComponent: () =>
-          import('./Pages/Customer/service/service').then(m => m.Service),
+        loadComponent: () => import('./Pages/Customer/service/service').then((m) => m.Service),
       },
       {
         path: 'about',
-        loadComponent: () =>
-          import('./Pages/about/about').then(m => m.About),
+        loadComponent: () => import('./Pages/about/about').then((m) => m.About),
       },
       {
         path: 'contact',
-        loadComponent: () =>
-          import('./Pages/contactus/contactus').then(m => m.Contactus),
+        loadComponent: () => import('./Pages/contactus/contactus').then((m) => m.Contactus),
       },
       {
         path: 'workerprofile',
         loadComponent: () =>
-          import('./Pages/Customer/worker-profile/worker-profile').then(m => m.WorkerProfile),
+          import('./Pages/Customer/worker-profile/worker-profile').then((m) => m.WorkerProfile),
       },
       {
         path: 'myporfile',
         loadComponent: () =>
-          import('./Pages/Customer/myporfile/myporfile').then(
-            (m) => m.Myporfile
-          ),
+          import('./Pages/Customer/myporfile/myporfile').then((m) => m.Myporfile),
         children: [
           {
             path: '',
@@ -59,33 +54,63 @@ export const routes: Routes = [
                 (m) => m.PersonalInfo
               ),
           },
-                {
+          {
             path: 'suggestions',
             loadComponent: () =>
               import('./Pages/Customer/myporfile/components/suggestion/suggestion').then(
                 (m) => m.Suggestion
               ),
           },
-
-        ]
+          {
+            path: 'complaints',
+            loadComponent: () =>
+              import('./Pages/Customer/myporfile/components/complaints/complaints').then(
+                (m) => m.Complaints
+              ),
+          },
+          {
+            path: 'bookings',
+            loadComponent: () =>
+              import('./Pages/Customer/myporfile/components/bookings/bookings').then(
+                (m) => m.Bookings
+              ),
+          },
+          {
+            path: 'location',
+            loadComponent: () =>
+              import('./Pages/Customer/myporfile/components/location/location').then(
+                (m) => m.Location
+              ),
+          },
+        ],
       },
       {
-        path:"addsuggest",
-        loadComponent:()=> import('./Pages/Customer/myporfile/components/suggestion/components/addsuggest/addsuggest').then(m => m.Addsuggest),
-        outlet: 'popup'
-
+        path: 'addsuggest',
+        loadComponent: () =>
+          import(
+            './Pages/Customer/myporfile/components/suggestion/components/addsuggest/addsuggest'
+          ).then((m) => m.Addsuggest),
+        outlet: 'popup',
+      },
+        {
+        path: 'addcomplaint',
+        loadComponent: () =>
+          import(
+            './Pages/Customer/myporfile/components/complaints/components/add-complaint/add-complaint'
+          ).then((m) => m.AddComplaint),
+        outlet: 'popup',
       },
       {
         path: 'myporfile/changepassword',
         loadComponent: () =>
-          import('./Pages/Customer/changepassword/changepassword').then(m => m.Changepassword),
+          import('./Pages/Customer/changepassword/changepassword').then((m) => m.Changepassword),
       },
       {
         path: 'myporfile/infomation',
         loadComponent: () =>
-          import('./Pages/Customer/infomation/infomation').then(m => m.Infomation),
-      }
-    ]
+          import('./Pages/Customer/infomation/infomation').then((m) => m.Infomation),
+      },
+    ],
   },
   {
     path: 'auth',
@@ -95,37 +120,33 @@ export const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'login'
+        redirectTo: 'login',
       },
       {
         path: 'login',
-        loadComponent: () =>
-          import('./Pages/Auth/login/login').then(m => m.Login),
+        loadComponent: () => import('./Pages/Auth/login/login').then((m) => m.Login),
       },
       {
         path: 'selectMap',
-        loadComponent: () =>
-          import('./Pages/Auth/select-map/select-map').then(m => m.SelectMap),
+        loadComponent: () => import('./Pages/Auth/select-map/select-map').then((m) => m.SelectMap),
       },
       {
         path: 'otp',
-        loadComponent: () =>
-          import('./Pages/Auth/otp/otp').then(m => m.Otp),
-      }
-      , {
+        loadComponent: () => import('./Pages/Auth/otp/otp').then((m) => m.Otp),
+      },
+      {
         path: 'register',
-        loadComponent: () =>
-          import('./Pages/Auth/sigin/sigin').then(m => m.Sigin),
+        loadComponent: () => import('./Pages/Auth/sigin/sigin').then((m) => m.Sigin),
       },
       {
         path: 'forgetpassword',
         loadComponent: () =>
-          import('./Pages/Auth/forgetpassword/forgetpassword').then(m => m.Forgetpassword),
-      }
+          import('./Pages/Auth/forgetpassword/forgetpassword').then((m) => m.Forgetpassword),
+      },
     ],
   },
   {
     path: '**',
-    redirectTo: 'home'
-  }
+    redirectTo: 'home',
+  },
 ];

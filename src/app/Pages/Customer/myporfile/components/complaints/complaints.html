@@ -1,1 +1,109 @@
-<p>complaints works!</p>
+<div class="suggestion">
+  <div class="headerTitle">
+    <h3>الشكاوي</h3>
+    <button class="btn" (click)="openPopup()">
+      اضافة شكوى <i class="fa-solid fa-plus"></i>
+    </button>
+  </div>
+
+  <div class="searchBox mt-3 d-flex justify-content-between align-items-center">
+    <div class="fromSearch">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <input type="text" placeholder="ابحث عن شكوى..." />
+    </div>
+
+    <!-- Dropdown -->
+    <div class="lang-select" (click)="dropdownOpen = !dropdownOpen">
+      <div class="d-flex align-items-center gap-2">
+        <div class="lineColor" [style.background-color]="selectedLang.color"></div>
+        <span class="code">{{ selectedLang.name }}</span>
+      </div>
+      <i class="arrow" [class.open]="dropdownOpen"></i>
+
+      <ul class="dropdown" *ngIf="dropdownOpen">
+        @for (lang of languages; track lang.code) {
+          <li (click)="selectLang(lang, $event)">
+            <div class="d-flex align-items-center gap-2">
+              <div class="lineColor" [style.background-color]="lang.color"></div>
+              <span class="code">{{ lang.name }}</span>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="post-container mt-4">
+    @for (card of cards; track card.id) {
+      <div class="post-card">
+        <div class="header" (click)="toggleCard(card.id)">
+          <div class="title d-flex flex-column">
+            <div class="d-flex gap-2 align-items-center">
+              <div class="lineColor"></div>
+              <h5>محمد أحمد</h5>
+            </div>
+            <p class="author">{{ card.text }}</p>
+          </div>
+
+          <div class="date">
+          <img src="Icons/stash_data-date-light.svg" alt="">
+            <span>أغسطس 25</span>
+
+            <button class="toggle-btn">
+              <i
+                [class]="
+                  expandedCard === card.id
+                    ? 'fa-solid fa-chevron-up'
+                    : 'fa-solid fa-chevron-down'
+                "
+              ></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="content" [class.open]="expandedCard === card.id">
+          <div class="d-flex mb-4 justify-content-between align-items-start">
+            <!-- Images -->
+            <div class="images" *ngIf="card.images.length">
+              @for (img of card.images; track $index) {
+                <img [src]="img" alt="preview" />
+              }
+            </div>
+
+            <!-- Custom Voice Player -->
+            <div class="voice-player">
+              <button class="play-btn" (click)="togglePlay()">
+                <i [class]="isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play'"></i>
+              </button>
+
+              <div class="waveform">
+                @for (bar of [].constructor(40); track $index) {
+                  <div
+                    class="bar"
+                    [style.height.px]="(Math.sin($index) * 10) + 20"
+                    [style.opacity]="($index / 40) < (progress / 100) ? '1' : '0.3'"
+                  ></div>
+                }
+              </div>
+
+              <span class="time">{{ formatTime(currentTime) }}</span>
+            </div>
+          </div>
+
+          <!-- Resources -->
+          <div class="resources" *ngIf="card.resources.length">
+            @for (res of card.resources; track res.name) {
+              <div class="resource gap-2">
+                <img src="Icons/pdf.svg" alt="pdf" />
+                <div>
+                  <h6>{{ res.name }} <span>(pdf)</span></h6>
+                  <p>{{ res.size }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

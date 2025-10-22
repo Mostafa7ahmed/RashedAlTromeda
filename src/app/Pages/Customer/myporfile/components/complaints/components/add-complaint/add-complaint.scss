@@ -1,0 +1,157 @@
+
+.title {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #000;
+}
+
+.custom-select {
+  position: relative;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+      padding:8px 20px;
+
+  &:hover {
+    border-color: var(--color-orange);
+  }
+
+  .selected {
+    display: flex;
+    align-items: center;
+     justify-content: space-between;
+    .avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      margin-left: 10px;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+
+      span {
+        font-weight: 600;
+        color: #333;
+      }
+
+      p {
+        font-size: 0.85rem;
+        color: #777;
+        margin: 0;
+      }
+    }
+
+    .placeholderElement {
+      color: #aaa;
+      padding:8px 10px ;
+    }
+
+    .arrow {
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid var(--color-orange);
+      margin-right: 8px;
+      transition: transform 0.3s;
+    }
+
+    .rotate {
+      transform: rotate(180deg);
+    }
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: #fff;
+    border-radius: 0.75rem;
+    margin-top: 0.3rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 10;
+    animation: fadeSlide 0.2s ease;
+   padding: 0;
+   scrollbar-width: none;
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding:8px 20px;
+      transition: background 0.2s;
+
+      &:hover {
+        background: rgba(255, 157, 0, 0.1);
+      }
+
+      .avatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .info {
+        flex: 1;
+        text-align: right;
+        margin-right: 10px;
+
+        span {
+          font-weight: 600;
+          display: block;
+        }
+
+        p {
+          font-size: 0.85rem;
+          color: #777;
+          margin: 0;
+        }
+      }
+
+      .deal-btn {
+        background: rgba(255, 157, 0, 0.1);
+        border: none;
+        color: var(--color-orange);
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &:hover {
+          background: rgba(255, 157, 0, 0.2);
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

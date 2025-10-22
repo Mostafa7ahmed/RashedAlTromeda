@@ -1,7 +1,7 @@
 <div class="overlaypopup"></div>
 <div class="addsuggest">
     <div class="headerpopup d-flex justify-content-between align-items-center">
-        <h5>اضافة اقتراح</h5>
+        <h5> اضافة شكوى</h5>
         <div class="icons cr" (click)="closePopup()">
             <i class="fa-solid fa-circle-xmark"></i>
         </div>
@@ -10,13 +10,52 @@
 
         <div class="contentPopup d-flex flex-column gap-3 mt-4">
             <div class="fromGroup">
-                <label for="">عنوان الاقتراح</label>
-                <input type="text" placeholder="ادخل عنوان الاقتراح" />
+                <label for="">عنوان الشكوي</label>
+                <input type="text" placeholder="ادخل عنوان الشكوى" />
             </div>
             <div class="fromGroup">
-                <label for=""> وصف الاقتراح</label>
+                <label for="">عنوان الشكوي</label>
                 <textarea placeholder="اكتب الموضوع هنا"></textarea>
             </div>
+            <div class="engineer-select-container fromGroup">
+                <label class="title">المهندس</label>
+                <div class="custom-select" (click)="toggleDropdown()">
+                    <div class="selected">
+                          <div class="d-flex">
+                                  @if (selectedEngineer()) {
+                        <div class="avatar" [style.background-color]="selectedEngineer()?.color">
+                            {{ selectedEngineer()?.name?.charAt(0) }}
+                        </div>
+                        <div class="info">
+                            <span>{{ selectedEngineer()?.name }}</span>
+                        </div>
+                        } @else {
+                        <span class="placeholderElement">اختر المهندس</span>
+                        }
+                          </div>
+
+                        <span class="arrow" [class.rotate]="isOpen()"></span>
+                    </div>
+
+                    @if (isOpen()) {
+                    <ul class="dropdown">
+                        @for (eng of engineers(); track eng.id) {
+                        <li (click)="selectEngineer(eng)">
+                            <div class="avatar" [style.background-color]="eng.color">
+                                {{ eng.name.charAt(0) }}
+                            </div>
+                            <div class="info">
+                                <span>{{ eng.name }}</span>
+                            </div>
+                            <button class="deal-btn">With Deals</button>
+                        </li>
+                        }
+                    </ul>
+                    }
+                </div>
+
+            </div>
+
             <div class="upload-images">
                 <div class="upload-box" (click)="fileInputImages.click()">
                     <img src="Icons/addimage.svg" alt="">

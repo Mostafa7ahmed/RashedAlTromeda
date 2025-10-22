@@ -5,7 +5,8 @@
   </div>
 
   <div class="post-container mt-4">
-    <div class="post-card" *ngFor="let card of cards">
+     @for (card of cards; track $index) {
+        <div class="post-card" >
       <div class="header" (click)="toggleCard(card.id)">
         <div class="title">
           <h5 >محمد أحمد</h5>
@@ -58,5 +59,6 @@
         </div>
       </div>
     </div>
+     }
   </div>
 </div>
