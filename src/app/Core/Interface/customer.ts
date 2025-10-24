@@ -4,6 +4,12 @@ export interface Customer {
     password: string;
     confirmedPassword: string;
 }
+export interface Organization {
+    name: string;
+    phoneNumber: string;
+    password: string;
+    confirmPassword: string;
+}
 
 export interface IProfileCompletion {
     address: string;

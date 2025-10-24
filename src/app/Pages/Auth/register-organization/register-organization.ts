@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxIntlTelInputModule, SearchCountryField, CountryISO } from 'ngx-intl-tel-input';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
-import { Customer } from '../../../Core/Interface/customer';
+import { Customer, Organization } from '../../../Core/Interface/customer';
 import { Register } from '../../../Core/service/register';
 import { Otpservice } from '../../../Core/service/otp';
 import { Router } from '@angular/router';
@@ -31,7 +31,7 @@ export class RegisterOrganization {
       name: ['', Validators.required],
       phone: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmedPassword: ['', [Validators.required]]
+      confirmPassword: ['', [Validators.required]]
     });
   }
 
@@ -48,11 +48,11 @@ export class RegisterOrganization {
       return;
     }
 
-    const body: Customer = {
+    const body: Organization = {
       name: this.form.value.name,
       phoneNumber: phoneInput.e164Number,
       password: this.form.value.password,
-      confirmedPassword: this.form.value.confirmedPassword
+      confirmPassword: this.form.value.confirmPassword
     };
 
     console.log('Register payload:', body);

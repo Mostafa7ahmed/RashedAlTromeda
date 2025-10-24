@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxIntlTelInputModule, SearchCountryField, CountryISO } from 'ngx-intl-tel-input';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SweetAlert } from '../../../Core/service/sweet-alert';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +22,8 @@ export class Login {
   type: number = 0;
   welcomeText = 'مرحباً بعودتك';
   registerLink: string | null = null;
-
-  constructor(private fb: FormBuilder, private loginService: LoginService ,     private route: ActivatedRoute
+ 
+  constructor(private fb: FormBuilder, private aleart:SweetAlert , private loginService: LoginService ,     private route: ActivatedRoute
 , private router: Router) {
       this.form = this.fb.group({
     phone: ['', Validators.required],
@@ -80,7 +81,8 @@ export class Login {
     const password = this.form.value.password;
 
     if (!phoneInput || !phoneInput.e164Number) {
-      console.error('لم يتم اختيار كود الدولة');
+
+          this.aleart.toast('لم يتم اختيار كود الدولة' , 'warning');
       return;
     }
 
@@ -92,11 +94,16 @@ export class Login {
     this.loginService.login(body).subscribe({
       next: (response) => {
         this.result = response;
-        this.loginService.saveToken(response.result.accessToken);
-        console.log('تم تسجيل الدخول بنجاح', response);
+       const { accessToken, refreshToken } = response.result;
+
+    this.loginService.saveTokens(accessToken, refreshToken);
+          this.aleart.toast(response.message, 'success');
+
           this.router.navigate(['/'] );
       },
       error: (error) => {
+          this.aleart.toast(error.error.message, 'error');
+
         console.error('خطأ في تسجيل الدخول', error);
       }
     });

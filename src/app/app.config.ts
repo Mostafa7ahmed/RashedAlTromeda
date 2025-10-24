@@ -6,12 +6,13 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { routes } from './app.routes';
 import { authInterceptor } from './Core/interceptors/headers-interceptor';
 import { errorInterceptor } from './Core/interceptors/error-interceptor';
+import { refreshTokenInterceptor } from './Core/interceptors/refresh-token-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideHttpClient(withFetch(),withInterceptors([authInterceptor,errorInterceptor])),
+    provideHttpClient(withFetch(),withInterceptors([authInterceptor,errorInterceptor , refreshTokenInterceptor])),
     provideRouter(routes),
         provideAnimations(),
 
