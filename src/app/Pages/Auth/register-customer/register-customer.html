@@ -1,9 +1,16 @@
 <div class="loginCard relative">
-    <span>{{welcomeText }}</span>
-    <h4 class="mt-4">سجل الدخول لحسابك</h4>
+    <span> دعنا نبدأ معك</span>
+    <h4 class="mt-4">  إنشاء حساب لعميل جديد</h4>
 
     <form action="" [formGroup]="form" class="mt-5" (ngSubmit)="submit()">
-        <div class="cardsForm d-flex gap-3">
+
+        <div class="position-relative mt-4 mb-4">
+            <input class="input-cal input-base inputFloating" formControlName="name" placeholder="" />
+            <label id="label-input"> الاسم بالكامل </label>
+
+        </div>
+
+        <div class="cardsForm d-flex gap-3 mb-4">
             <div class="position-relative w-100  p-0 border-0">
                 <ngx-intl-tel-input [cssClass]="'custom'" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
                     [customPlaceholder]="'اكتب رقم الهاتف هنا'" [searchCountryFlag]="true"
@@ -13,12 +20,9 @@
                 </ngx-intl-tel-input>
                 <label id="label-input"> رقم الهاتف</label>
             </div>
-            <!-- <div class="position-relative flex-grow-1 border-0 w-75">
-                <input class="input-cal input-base inputFloating" placeholder="" />
-                <label id="label-input"> رقم الهاتف</label>
-            </div> -->
+ 
         </div>
-        <div class="position-relative mt-4">
+        <div class="position-relative mb-4">
             <input class="input-cal input-base inputFloating" formControlName="password" placeholder=""
                 [type]="passwordFieldType ? 'password' : 'text'" />
             <label id="label-input">كلمه المرور</label>
@@ -26,15 +30,18 @@
                 [class.fa-eye]="passwordFieldType" [class.fa-eye-slash]="!passwordFieldType">
             </i>
         </div>
-        <div class="login-options">
-            <label class="remember-me">
-                <input type="checkbox" />
-                <span>تذكرني</span>
-            </label>
-            <a class="forgot-password" routerLink="/auth/forgetpassword">نسيت كلمة المرور؟</a>
+        <div class="position-relative mb-4">
+            <input class="input-cal input-base inputFloating" formControlName="confirmedPassword" placeholder=""
+                [type]="passwordFieldType ? 'password' : 'text'" />
+            <label id="label-input"> تأكيد كلمه المرور </label>
+            <i (click)="togglePasswordVisibility()" role="button" class="fa-solid position-absolute passicon"
+                [class.fa-eye]="passwordFieldType" [class.fa-eye-slash]="!passwordFieldType">
+            </i>
         </div>
 
-        <button type="submit" class="login-btn">تسجيل الدخول</button>
+
+
+        <button type="submit" class="login-btn"> انشاء حساب</button>
     </form>
 
 
@@ -42,10 +49,7 @@
 </div>
 
 
+
 <div class="resiterRoute ">
-    @if (registerLink) {
-    <h5>ليس لديك حساب؟
-        <a [routerLink]="registerLink" class="reg">إنشاء حساب جديد</a>
-    </h5>
-    }
+    <h5>لديك  حساب بالفعل ؟ <a routerLink="/auth/selectType" href="" class="reg">  تسجيل الدخول</a></h5>
 </div>

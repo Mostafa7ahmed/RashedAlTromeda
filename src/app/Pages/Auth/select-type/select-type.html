@@ -1,0 +1,15 @@
+<div class="slectType">
+  <div class="title">
+    <img src="Icons/bgSelect.svg" alt="">
+    <h4>Select Type To Login</h4>
+  </div>
+
+  <div class="cardSelects mt-5">
+    @for (item of types; track item.type) {
+      <div class="selectCard cr" [routerLink]="['/auth/login', item.type]">
+        <img [src]="item.icon" alt="">
+        <h5>{{ item.name }}</h5>
+      </div>
+    }
+  </div>
+</div>

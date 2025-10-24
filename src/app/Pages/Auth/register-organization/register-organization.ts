@@ -6,15 +6,13 @@ import { Customer } from '../../../Core/Interface/customer';
 import { Register } from '../../../Core/service/register';
 import { Otpservice } from '../../../Core/service/otp';
 import { Router } from '@angular/router';
-
 @Component({
-  selector: 'app-sigin',
-  standalone: true,
+  selector: 'app-register-organization',
   imports: [ReactiveModeuls, NgxIntlTelInputModule],
-  templateUrl: './sigin.html',
-  styleUrls: ['./sigin.scss', '../../../Shared/CSS/input.scss']
+  templateUrl: './register-organization.html',
+  styleUrls:[ './register-organization.scss' , '../../../Shared/CSS/input.scss']
 })
-export class Sigin {
+export class RegisterOrganization {
   SearchCountryField = SearchCountryField;
   CountryISO = CountryISO;
   form: FormGroup;
@@ -59,7 +57,7 @@ export class Sigin {
 
     console.log('Register payload:', body);
 
-    this.customerService.createCustomer(body).subscribe({
+    this.customerService.createOrganization(body).subscribe({
       next: (res) => {
         if (res.success) {
           console.log('Customer created:', res);
@@ -73,7 +71,6 @@ export class Sigin {
           this.otpService.OTPFun(otpBody).subscribe({
             next: (otpRes) => {
               console.log('OTP sent:', otpRes);
-              // redirect to OTP page
               this.router.navigate(['/auth/otp'], {
                 queryParams: { phone: body.phoneNumber }
               });

@@ -52,7 +52,7 @@ export class LoginService  {
   }
 
   logout(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
-    this.router.navigate(['/auth/login']); // هيشتغل صح
+    localStorage.clear();
+    this.router.navigate(['/auth/selectType']);
   }
 }

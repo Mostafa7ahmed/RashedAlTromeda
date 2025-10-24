@@ -92,7 +92,7 @@ export const routes: Routes = [
           ).then((m) => m.Addsuggest),
         outlet: 'popup',
       },
-        {
+      {
         path: 'addcomplaint',
         loadComponent: () =>
           import(
@@ -120,10 +120,14 @@ export const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'login',
+        redirectTo: 'selectType',
       },
       {
-        path: 'login',
+        path: 'selectType',
+        loadComponent: () => import('./Pages/Auth/select-type/select-type').then((m) => m.SelectType),
+      },
+      {
+        path: 'login/:type',
         loadComponent: () => import('./Pages/Auth/login/login').then((m) => m.Login),
       },
       {
@@ -135,8 +139,16 @@ export const routes: Routes = [
         loadComponent: () => import('./Pages/Auth/otp/otp').then((m) => m.Otp),
       },
       {
-        path: 'register',
-        loadComponent: () => import('./Pages/Auth/sigin/sigin').then((m) => m.Sigin),
+        path: 'register/customer',
+        loadComponent: () => import('./Pages/Auth/register-customer/register-customer').then((m) => m.RegisterCustomer),
+      },
+      {
+        path: 'register/engineer',
+        loadComponent: () => import('./Pages/Auth/register-engineer/register-engineer').then((m) => m.RegisterEngineer),
+      },
+      {
+        path: 'register/organization',
+        loadComponent: () => import('./Pages/Auth/register-organization/register-organization').then((m) => m.RegisterOrganization),
       },
       {
         path: 'forgetpassword',

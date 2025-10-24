@@ -1,0 +1,71 @@
+.slectType {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 30px;
+    gap: 10px;
+
+}
+
+.title {
+    position: relative;
+    width: 100%;
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    img {
+        width: 80%;
+
+    }
+
+    h4 {
+        font-weight: 400;
+        font-style: Italic;
+        font-size: 34px;
+        line-height: 40px;
+        letter-spacing: -4%;
+        position: absolute;
+        white-space: nowrap;
+
+
+    }
+}
+
+.cardSelects {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.selectCard {
+    box-shadow: 0px 0px 4px 0px #00000011;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    border-radius: 16px;
+    padding: 10px;
+    border: 1px solid #e5e5e581;
+            transition: transform 0.3s ease-in-out;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+
+    h5 {
+        font-weight: 700;
+        font-style: Italic;
+        font-size: 20px;
+        line-height: 40px;
+        letter-spacing: -4%;
+        white-space: nowrap;
+        margin: 0;
+
+    }
+}
