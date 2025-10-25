@@ -2,19 +2,20 @@
     <h3>المعلومات الشخصية</h3>
 
     <div class="aboutme">
-        <div class="avatar">
+            <div class="avatar" (click)="fileInput.click()">
             <img [src]="image()" alt="Profile" />
             <span class="camera"><i class="fa-regular fa-camera"></i></span>
-        </div>
+            <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" hidden />
+            </div>
         <div class="title">
-            <h3 class="name mb-4">{{ fullName() }}</h3>
+            <h3 class="name mb-2">{{ fullName() }}</h3>
             <p class="points mb-0">{{ points() }} points</p>
         </div>
     </div>
 
     <form (ngSubmit)="onSave()">
         <div class="position-relative mt-4 mb-5">
-            <input class="input-cal input-base inputFloating" placeholder="" name="fullName" [value]="fullName()" />
+<input class="input-cal input-base inputFloating" placeholder="" name="fullName" [(ngModel)]="fullName" />
             <label id="label-input">الاسم بالكامل</label>
         </div>
 
@@ -25,12 +26,13 @@
                     [searchCountryField]="[SearchCountryField.All]" [selectFirstCountry]="false"
                     [selectedCountryISO]="CountryISO.Egypt" [separateDialCode]="true" [phoneValidation]="true"
                     name="phone" class="input-cal p-0 input-base inputFloating" [(ngModel)]="phoneModel"
-                    (ngModelChange)="onPhoneChange($event)" name="phone">
+                    name="phone"  [disabled]="true">
                 </ngx-intl-tel-input>
                 <label id="label-input">رقم الهاتف</label>
             </div>
         </div>
 
-        <button class="btnsave">حفظ</button>
+        <button class="btnsave"  [disabled]="isUploading()"> حفظ
+</button>
     </form>
 </div>

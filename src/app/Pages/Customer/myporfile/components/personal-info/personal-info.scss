@@ -75,6 +75,13 @@
         border: none;
         outline: none;
         transition: background 0.3s ease, color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+          &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: #ccc;
+    color: #aaa;
+    background: #f8f8f8;
+  }
     }
 
 

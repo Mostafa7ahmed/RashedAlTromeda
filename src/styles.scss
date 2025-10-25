@@ -58,10 +58,12 @@ body::-webkit-scrollbar {
   width: 10px;
 }
 .swal2-toast{
-        background:linear-gradient(to right, rgb(243 107 20 / 31%), rgb(243 107 20)) !important ;
-    color: white !important;
+        background:var(--card-bg) !important ;
+    color: var(  --color-orange) !important;
     top: 20px !important;
+    border-radius: 15px !important;
 }
+
 .swal2-modal{
         background:linear-gradient(to right, rgb(243 107 20 / 31%), rgb(243 107 20)) !important ;
     color: white !important;

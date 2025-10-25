@@ -13,3 +13,13 @@ export interface UserDto {
   latitude: number
   longitude: number
 }
+
+
+export interface UpdateProfile {
+    id?: number
+  name: string
+  address: string
+  photoUrl: string
+  latitude: number
+  longitude: number
+}

@@ -60,7 +60,7 @@ export class SweetAlert {
       title: message,
       showConfirmButton: false,
       timer: 2000,
-      timerProgressBar: true,
+      timerProgressBar: false,
           didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer); 
       toast.addEventListener('mouseleave', Swal.resumeTimer); 
