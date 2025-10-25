@@ -26,6 +26,10 @@ export class LoginService  {
     localStorage.setItem(this.REFRESH_KEY, refreshToken);
   }
 
+  saveTokensMap(accessToken: string): void {
+    localStorage.setItem('auth_token_map', accessToken);
+  }
+
 
   getToken(): string | null {
     return localStorage.getItem(this.TOKEN_KEY);

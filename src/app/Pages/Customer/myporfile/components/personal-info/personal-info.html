@@ -1,40 +1,36 @@
 <div class="info">
-
     <h3>المعلومات الشخصية</h3>
-
 
     <div class="aboutme">
         <div class="avatar">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" />
+            <img [src]="image()" alt="Profile" />
             <span class="camera"><i class="fa-regular fa-camera"></i></span>
         </div>
         <div class="title">
-            <h3 class="name mb-4">مطصفي حامد</h3>
-            <p class="points mb-0">1,456 points</p>
+            <h3 class="name mb-4">{{ fullName() }}</h3>
+            <p class="points mb-0">{{ points() }} points</p>
         </div>
     </div>
 
-
-   <form action="">
-          <div class="position-relative mt-4 mb-5">
-            <input class="input-cal input-base inputFloating" placeholder="" />
-            <label id="label-input"> الاسم بالكامل </label>
-
+    <form (ngSubmit)="onSave()">
+        <div class="position-relative mt-4 mb-5">
+            <input class="input-cal input-base inputFloating" placeholder="" name="fullName" [value]="fullName()" />
+            <label id="label-input">الاسم بالكامل</label>
         </div>
 
         <div class="cardsForm d-flex gap-3 mb-5">
-            <div class="position-relative w-100  p-0 border-0">
+            <div class="position-relative w-100 p-0 border-0">
                 <ngx-intl-tel-input [cssClass]="'custom'" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
                     [customPlaceholder]="'اكتب رقم الهاتف هنا'" [searchCountryFlag]="true"
                     [searchCountryField]="[SearchCountryField.All]" [selectFirstCountry]="false"
                     [selectedCountryISO]="CountryISO.Egypt" [separateDialCode]="true" [phoneValidation]="true"
-              name="phone" class="input-cal p-0 input-base inputFloating">
+                    name="phone" class="input-cal p-0 input-base inputFloating" [(ngModel)]="phoneModel"
+                    (ngModelChange)="onPhoneChange($event)" name="phone">
                 </ngx-intl-tel-input>
-                <label id="label-input"> رقم الهاتف</label>
+                <label id="label-input">رقم الهاتف</label>
             </div>
- 
-        </div> 
+        </div>
 
         <button class="btnsave">حفظ</button>
-   </form>
+    </form>
 </div>

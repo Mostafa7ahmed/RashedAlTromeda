@@ -1,32 +1,33 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input, OnInit, signal } from '@angular/core';
+import { Categories } from '../../Core/service/categories';
+import { ICategory } from '../../Core/Interface/icategory';
+import { environment } from '../../../environments/environment';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cards-servies',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './cards-servies.html',
   styleUrl: './cards-servies.scss'
 })
-export class CardsServies {
-    number = input<number>(4);
+export class CardsServies implements OnInit {
+    number = input<number>(6);
+     private _categoryService = inject(Categories);
+       categories = signal<ICategory[]>([]);
+baseUrl = environment.baseUrl;
 
-  services = [
-    { title: 'طلاء الحائط', icon: 'Icons/Chisel.svg', image: 'Image/plumbing.png' },
-    { title: 'السباكة',  icon: 'Icons/repair.svg', image: 'Image/house-repair.png' },
-    { title: 'نجارة',  icon: 'Icons/Chisel.svg', image: 'Image/carpentry.png' },
-    { title: 'تجميع الأثاث',  icon: 'Icons/Chisel.svg', image: 'Image/furniture-assembly.png' },
-    { title: 'تنظيف البيت',  icon: 'Icons/Chisel.svg', image: 'Image/house-cleaning.png' },
-    { title: 'صيانة المنزل',  icon: 'Icons/Chisel.svg', image: 'Image/reduies1.png' },
-     { title: 'طلاء الحائط', icon: 'Icons/Chisel.svg', image: 'Image/plumbing.png' },
-    { title: 'السباكة',  icon: 'Icons/repair.svg', image: 'Image/house-repair.png' },
-    { title: 'نجارة',  icon: 'Icons/Chisel.svg', image: 'Image/carpentry.png' },
-    { title: 'تجميع الأثاث',  icon: 'Icons/Chisel.svg', image: 'Image/furniture-assembly.png' },
-    { title: 'تنظيف البيت',  icon: 'Icons/Chisel.svg', image: 'Image/house-cleaning.png' },
-    { title: 'صيانة المنزل',  icon: 'Icons/Chisel.svg', image: 'Image/reduies1.png' },
-     { title: 'طلاء الحائط', icon: 'Icons/Chisel.svg', image: 'Image/plumbing.png' },
-    { title: 'السباكة',  icon: 'Icons/repair.svg', image: 'Image/house-repair.png' },
-    { title: 'نجارة',  icon: 'Icons/Chisel.svg', image: 'Image/carpentry.png' },
-    { title: 'تجميع الأثاث',  icon: 'Icons/Chisel.svg', image: 'Image/furniture-assembly.png' },
-    { title: 'تنظيف البيت',  icon: 'Icons/Chisel.svg', image: 'Image/house-cleaning.png' },
-    { title: 'صيانة المنزل',  icon: 'Icons/Chisel.svg', image: 'Image/reduies1.png' },
-  ];
+
+  loadCategories() {
+    this._categoryService.getCategories().subscribe({
+      next: (res) => {
+        this.categories.set(res.result);
+      },
+      error: (err) => {
+        console.error('Error fetching categories:', err);
+      },
+    });
+  }
+  ngOnInit(): void {
+    this.loadCategories();
+  }
 }

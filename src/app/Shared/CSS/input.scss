@@ -213,6 +213,9 @@ ngx-intl-tel-input {
 ::ng-deep .iti__country-list {
   scrollbar-width: none !important;
 }
+::ng-deep  .intl-tel-input .selected-dial-code {
+  display: none !important;
+}
 
 ::ng-deep .dropdown-menu.show {
   display: block;

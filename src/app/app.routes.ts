@@ -3,7 +3,7 @@ import { authGuard } from './Core/guards/auth.guard';
 import { isAuthGuard } from './Core/guards/is-auth.guard';
 import { MainOutlet } from './Layout/main-outlet/main-outlet';
 import { Authoutlet } from './Layout/authoutlet/authoutlet';
-import { Home } from './Pages/Customer/home/home';
+import { Home } from './Pages/home/home';
 
 export const routes: Routes = [
   {
@@ -21,7 +21,11 @@ export const routes: Routes = [
         component: Home,
       },
       {
-        path: 'service',
+        path: 'category',
+        loadComponent: () => import('./Pages/Customer/service/service').then((m) => m.Service),
+      },
+        {
+        path: 'service/:id',
         loadComponent: () => import('./Pages/Customer/service/service').then((m) => m.Service),
       },
       {

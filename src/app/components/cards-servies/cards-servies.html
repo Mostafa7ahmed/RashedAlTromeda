@@ -1,12 +1,15 @@
 <section class="services">
-  @for (s of services.slice(0, number()); track s.title) {
-    <div class="card" [style.background-image]="'url(' + s.image + ')'">
+  @for (s of categories().slice(0, number()); track s.id) {
+    <div 
+      class="card" 
+      [routerLink]="['/service' , s.id]"
+      [style.background-image]="'url(' + baseUrl + s.photoUrl + ')'"
+    >
       <div class="overlay"></div>
-      <div class="content justify-content-between flex-column">
-        <img [src]="s.icon" alt="service icon" />
+      <div class="content justify-content-end flex-column">
         <div class="text d-flex align-items-center gap-2">
-                    <h3>{{ s.title }}</h3>
-                    <i class="fa-solid fa-arrow-up"></i>
+          <h3>{{ s.name }}</h3>
+          <i class="fa-solid fa-arrow-up"></i>
         </div>
       </div>
     </div>

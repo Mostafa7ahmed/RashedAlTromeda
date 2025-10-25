@@ -37,7 +37,6 @@ formOtp!: FormGroup;
       d1: ['', [Validators.required, Validators.pattern('[0-9]')]],
       d2: ['', [Validators.required, Validators.pattern('[0-9]')]],
       d3: ['', [Validators.required, Validators.pattern('[0-9]')]],
-      d4: ['', [Validators.required, Validators.pattern('[0-9]')]],
     });
 
     // بدء العداد
@@ -94,8 +93,7 @@ private updateTimerDisplay() {
     const otpCode =
       this.formOtp.value.d1 +
       this.formOtp.value.d2 +
-      this.formOtp.value.d3 +
-      this.formOtp.value.d4;
+      this.formOtp.value.d3 ;
 
     const body = {
       token: localStorage.getItem('token') || '',
@@ -104,12 +102,10 @@ private updateTimerDisplay() {
 
     console.log('OTP Verify Payload:', body);
 
-    // هنا تستدعي API verify (غيّر الـ endpoint لو مختلف)
     this.otpService.verifyOtp(body).subscribe({
       next: (res) => {
         console.log('OTP verified:', res);
-        // redirect بعد النجاح (مثلاً للـ dashboard)
-        this.router.navigate(['/auth/login']);
+        this.router.navigate(['/auth/selectMap']);
       },
       error: (err) => {
         console.error('OTP verify error:', err);

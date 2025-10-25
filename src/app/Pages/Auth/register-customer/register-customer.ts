@@ -6,12 +6,13 @@ import { Customer } from '../../../Core/Interface/customer';
 import { Register } from '../../../Core/service/register';
 import { Otpservice } from '../../../Core/service/otp';
 import { Router } from '@angular/router';
+import { LoginService } from '../../../Core/service/login';
 
 @Component({
   selector: 'app-register-customer',
   imports: [ReactiveModeuls, NgxIntlTelInputModule],
   templateUrl: './register-customer.html',
-   styleUrls: ['./register-customer.scss', '../../../Shared/CSS/input.scss']
+  styleUrls: ['./register-customer.scss', '../../../Shared/CSS/input.scss']
 
 })
 export class RegisterCustomer {
@@ -27,7 +28,8 @@ export class RegisterCustomer {
     private fb: FormBuilder,
     private customerService: Register,
     private otpService: Otpservice,
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -69,11 +71,11 @@ export class RegisterCustomer {
             type: 0
           };
 
-          // Call OTP API
-          this.otpService.OTPFun(otpBody).subscribe({
+          const { accessToken } = res.result;
+
+          this.loginService.saveTokensMap(accessToken); this.otpService.OTPFun(otpBody).subscribe({
             next: (otpRes) => {
               console.log('OTP sent:', otpRes);
-              // redirect to OTP page
               this.router.navigate(['/auth/otp'], {
                 queryParams: { phone: body.phoneNumber }
               });
