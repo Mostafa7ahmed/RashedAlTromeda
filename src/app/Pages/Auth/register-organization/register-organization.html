@@ -1,5 +1,8 @@
 <div class="loginCard relative">
-    <span> دعنا نبدأ معك</span>
+    <div class="d-flex justify-content-between ">
+        <span> دعنا نبدأ معك</span>
+        <span class="fw-bold cr link-underline-danger" routerLink="auth/selectType">عوده اللي الخلف</span>
+    </div>
     <h4 class="mt-4">  إنشاء حساب لمؤسسة جديد</h4>
 
     <form action="" [formGroup]="form" class="mt-5" (ngSubmit)="submit()">

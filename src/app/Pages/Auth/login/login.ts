@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { LoginService } from '../../../Core/service/login';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxIntlTelInputModule, SearchCountryField, CountryISO } from 'ngx-intl-tel-input';
@@ -22,16 +22,17 @@ export class Login {
   type: number = 0;
   welcomeText = 'مرحباً بعودتك';
   registerLink: string | null = null;
- 
-  constructor(private fb: FormBuilder, private aleart:SweetAlert , private loginService: LoginService ,     private route: ActivatedRoute
-, private router: Router) {
-      this.form = this.fb.group({
-    phone: ['', Validators.required],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    type:0
-  });
+  isLoading = signal(false);
+
+  constructor(private fb: FormBuilder, private aleart: SweetAlert, private loginService: LoginService, private route: ActivatedRoute
+    , private router: Router) {
+    this.form = this.fb.group({
+      phone: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      type: 0
+    });
   }
-  
+
 
 
   togglePasswordVisibility() {
@@ -40,22 +41,22 @@ export class Login {
   setWelcomeText(type: number) {
     switch (type) {
       case 1:
-        this.welcomeText = 'مرحباً بالمهندس';
+        this.welcomeText = ' بالمهندس';
         break;
       case 2:
-        this.welcomeText = 'مرحباً بالعميل';
+        this.welcomeText = ' بالعميل';
         break;
       case 3:
-        this.welcomeText = 'مرحباً بالمؤسسة';
+        this.welcomeText = ' بالمؤسسة';
         break;
       case 4:
-        this.welcomeText = 'مرحباً بالمركز';
+        this.welcomeText = ' بالمركز';
         break;
       default:
-        this.welcomeText = 'مرحباً بعودتك';
+        this.welcomeText = ' بعودتك';
     }
   }
-    setRegisterLink(type: number) {
+  setRegisterLink(type: number) {
     switch (type) {
       case 1:
         this.registerLink = '/auth/register/engineer';
@@ -82,7 +83,7 @@ export class Login {
 
     if (!phoneInput || !phoneInput.e164Number) {
 
-          this.aleart.toast('لم يتم اختيار كود الدولة' , 'warning');
+      this.aleart.toast('لم يتم اختيار كود الدولة', 'warning');
       return;
     }
 
@@ -91,30 +92,35 @@ export class Login {
       password: password,
       type: this.type
     };
+    this.isLoading.set(true);
+
     this.loginService.login(body).subscribe({
       next: (response) => {
+    this.isLoading.set(false);
         this.result = response;
-       const { accessToken, refreshToken } = response.result;
+        const { accessToken, refreshToken } = response.result;
 
-    this.loginService.saveTokens(accessToken, refreshToken);
-          this.aleart.toast(response.message, 'success');
+        this.loginService.saveTokens(accessToken, refreshToken);
+        this.aleart.toast(response.message, 'success');
 
-          this.router.navigate(['/'] );
+        this.router.navigate(['/']);
       },
       error: (error) => {
-          this.aleart.toast(error.error.message, 'error');
+    this.isLoading.set(false);
+
+        this.aleart.toast(error.error.message, 'error');
 
         console.error('خطأ في تسجيل الدخول', error);
       }
     });
 
- 
+
   }
 
-    ngOnInit() {
+  ngOnInit() {
     this.type = Number(this.route.snapshot.paramMap.get('type')) || 0;
     this.form.patchValue({ type: this.type });
-        this.setWelcomeText(this.type);
+    this.setWelcomeText(this.type);
     this.setRegisterLink(this.type);
 
   }

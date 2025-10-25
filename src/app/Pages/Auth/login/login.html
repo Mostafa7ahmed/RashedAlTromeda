@@ -1,5 +1,10 @@
 <div class="loginCard relative">
-    <span>{{welcomeText }}</span>
+    <div class="d-flex justify-content-between">
+        <span> مرحباً <span class="fw-bold "> {{welcomeText }}</span> </span>
+
+        <span class="fw-bold cr link-underline-danger" routerLink="auth/selectType">عوده اللي الخلف</span>
+
+    </div>
     <h4 class="mt-4">سجل الدخول لحسابك</h4>
 
     <form action="" [formGroup]="form" class="mt-5" (ngSubmit)="submit()">
@@ -34,7 +39,13 @@
             <a class="forgot-password" routerLink="/auth/forgetpassword">نسيت كلمة المرور؟</a>
         </div>
 
-        <button type="submit" class="login-btn">تسجيل الدخول</button>
+        <button type="submit" class="login-btn" [disabled]="isLoading()">
+            @if (!isLoading()) {
+            تسجيل الدخول
+            } @else {
+            <span class="spinner mx-2"></span> جاري التحميل...
+            }
+        </button>
     </form>
 
 

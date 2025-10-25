@@ -1,6 +1,10 @@
 <div class="loginCard relative">
-    <span> دعنا نبدأ معك</span>
-    <h4 class="mt-4">  إنشاء حساب لعميل جديد</h4>
+    <div class="d-flex justify-content-between ">
+        <span> دعنا نبدأ معك</span>
+        <span class="fw-bold cr link-underline-danger" routerLink="auth/selectType">عوده اللي الخلف</span>
+    </div>
+
+    <h4 class="mt-4"> إنشاء حساب لعميل جديد</h4>
 
     <form action="" [formGroup]="form" class="mt-5" (ngSubmit)="submit()">
 
@@ -20,7 +24,7 @@
                 </ngx-intl-tel-input>
                 <label id="label-input"> رقم الهاتف</label>
             </div>
- 
+
         </div>
         <div class="position-relative mb-4">
             <input class="input-cal input-base inputFloating" formControlName="password" placeholder=""
@@ -51,5 +55,5 @@
 
 
 <div class="resiterRoute ">
-    <h5>لديك  حساب بالفعل ؟ <a routerLink="/auth/selectType" href="" class="reg">  تسجيل الدخول</a></h5>
+    <h5>لديك حساب بالفعل ؟ <a routerLink="/auth/selectType" href="" class="reg"> تسجيل الدخول</a></h5>
 </div>

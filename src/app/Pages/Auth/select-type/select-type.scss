@@ -16,7 +16,7 @@
     align-items: center;
     flex-direction: column;
     img {
-        width: 80%;
+        width: 50%;
 
     }
 
@@ -67,5 +67,9 @@
         white-space: nowrap;
         margin: 0;
 
+    }
+    img{
+        height: 120px;
+        
     }
 }
