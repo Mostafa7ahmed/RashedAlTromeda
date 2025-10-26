@@ -42,12 +42,12 @@
 }
 
 .post-card {
-    background: #fff;
+    background: var(--color-white);
     border-radius: 18px;
     padding: 1rem 1.5rem;
     transition: all 0.3s ease;
         border: 1px solid #dfdfdf94;
-
+   position: relative;
     .header {
         display: flex;
         justify-content: space-between;
@@ -213,7 +213,10 @@
     }
 }
 
-.title {
+.title { 
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     h5 {
         font-weight: 500;
         font-style: Medium;
@@ -234,4 +237,9 @@
         color: var(--color-text-p);
 
     }
+}
+.iconsEy{
+    inset-inline-end: 30px;
+    position: absolute;
+    bottom: 10px;
 }

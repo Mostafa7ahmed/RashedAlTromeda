@@ -1,99 +1,126 @@
 <div class="overlaypopup"></div>
-<div class="addsuggest">
-    <div class="headerpopup d-flex justify-content-between align-items-center">
-        <h5>اضافة اقتراح</h5>
-        <div class="icons cr" (click)="closePopup()">
-            <i class="fa-solid fa-circle-xmark"></i>
+
+<div class="addsuggest" [formGroup]="form">
+  <div class="headerpopup d-flex justify-content-between align-items-center">
+    <h5>اضافة اقتراح</h5>
+    <div class="icons cr" (click)="closePopup()">
+      <i class="fa-solid fa-circle-xmark"></i>
+    </div>
+  </div>
+
+  <div class="bodyAdd">
+    <div class="contentPopup d-flex flex-column gap-3 mt-4">
+
+      <!-- 🟢 عنوان الاقتراح -->
+      <div class="fromGroup">
+        <label for="title">عنوان الاقتراح</label>
+        <input id="title" type="text" placeholder="ادخل عنوان الاقتراح" formControlName="title" />
+        <small class="error" *ngIf="form.get('title')?.touched && form.get('title')?.hasError('required')">
+          هذا الحقل مطلوب
+        </small>
+      </div>
+
+      <!-- 🟢 وصف الاقتراح -->
+      <div class="fromGroup">
+        <label for="description">وصف الاقتراح</label>
+        <textarea id="description" placeholder="اكتب الموضوع هنا" formControlName="description"></textarea>
+        <small class="error" *ngIf="form.get('description')?.touched && form.get('description')?.hasError('required')">
+          هذا الحقل مطلوب
+        </small>
+      </div>
+
+      <!-- 🟢 تحميل الصور -->
+      <div class="upload-images">
+        <div class="upload-box" (click)="fileInputImages.click()">
+          <img src="Icons/addimage.svg" alt="add-image" />
+          <p class="title">تحميل صور متعددة</p>
+          <label class="browse">تصفح</label>
+          <input type="file" #fileInputImages multiple accept="image/*" (change)="onFilesSelected($event)" hidden />
         </div>
-    </div>
-    <div class="bodyAdd">
 
-        <div class="contentPopup d-flex flex-column gap-3 mt-4">
-            <div class="fromGroup">
-                <label for="">عنوان الاقتراح</label>
-                <input type="text" placeholder="ادخل عنوان الاقتراح" />
-            </div>
-            <div class="fromGroup">
-                <label for=""> وصف الاقتراح</label>
-                <textarea placeholder="اكتب الموضوع هنا"></textarea>
-            </div>
-            <div class="upload-images">
-                <div class="upload-box" (click)="fileInputImages.click()">
-                    <img src="Icons/addimage.svg" alt="">
-                    <p class="title">تحميل صور متعددة</p>
-                    <label class="browse">تصفح</label>
-                    <input type="file" #fileInputImages multiple accept="image/*" (change)="onFilesSelected($event)"
-                        hidden />
+        <div class="preview-section" *ngIf="images().length > 0">
+          <div class="preview-header">
+            <span>تحميل {{ images().length }} صور</span>
+          </div>
+
+          <div class="preview-list">
+            <div class="preview-item" *ngFor="let img of images(); let i = index">
+              <ng-container *ngIf="img.isUploading; else uploadedImage">
+                <div class="loading-placeholder">
+                  <i class="fa-solid fa-spinner fa-spin"></i>
                 </div>
+              </ng-container>
 
-                <div class="preview-section" *ngIf="images().length > 0">
-                    <div class="preview-header">
-                        <span>تحميل {{ images().length }} صور</span>
-                    </div>
-
-                    <div class="preview-list">
-                        <div class="preview-item" *ngFor="let img of images(); let i = index">
-                            <img [src]="img" alt="preview" />
-                            <button class="remove-btn" (click)="removeImage(i)">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+              <ng-template #uploadedImage>
+                <img [src]="baseUrl + img.url" alt="preview" />
+                <button class="remove-btn" (click)="removeImage(i)">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </ng-template>
             </div>
-
-            <!-- 🔹 تحميل ملفات / تسجيل صوت -->
-            <div class="upload-record-container">
-                <!-- تحميل ملفات -->
-                <div class="card" (click)="fileInput.click()">
-                    <input type="file" #fileInput multiple (change)="onFileSelectedPDF($event)" hidden />
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                    <p class="m-0">تحميل ملفات</p>
-                </div>
-
-                <div class="record-card card">
-                    <!-- زر التسجيل -->
-                    <button class="record-btn btn" *ngIf="!audioUrl()" (click)="toggleRecording()">
-                        <i class="fa-solid" [ngClass]="isRecording() ? 'fa-stop' : 'fa-microphone'"></i>
-                        <p class="m-0" [ngClass]="!isRecording() ? 'd-block' : 'd-none'"> تسجيل صوت</p>
-
-                    </button>
-
-                    <!-- حالة التسجيل -->
-                    <div class="record-indicator" *ngIf="isRecording()">
-                        <span class="dot"></span>
-                        <span>يتم التسجيل الآن...</span>
-                    </div>
-
-
-                    <!-- عرض الصوت بعد التسجيل -->
-                    <div *ngIf="audioUrl()" class="audio-player d-flex gap-2">
-                        <audio controls [src]="audioUrl()"></audio>
-                        <button class="btndelete" (click)="deleteAudio()">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="files-preview" *ngIf="uploadedFiles().length > 0">
-                <div class="file-item" *ngFor="let file of uploadedFiles(); let i = index">
-                    <i class="fa-solid fa-file"></i>
-                    <span>{{ file }}</span>
-                    <button (click)="removeFile(i)">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-            </div>
-
+          </div>
         </div>
+      </div>
+
+      <div class="upload-record-container">
+        <div class="card" (click)="fileInput.click()">
+          <input type="file" #fileInput multiple (change)="onFileSelectedPDF($event)" hidden />
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+          <p class="m-0">تحميل ملفات</p>
+        </div>
+        <div class="record-card card">
+          <!-- زر التسجيل -->
+<button class="record-btn btn" *ngIf="!audioUrl()" (click)="toggleRecording()">
+  <i class="fa-solid" [ngClass]="isRecording() ? 'fa-stop' : 'fa-microphone'"></i>
+  <p class="m-0" [ngClass]="!isRecording() ? 'd-block' : 'd-none'">تسجيل صوت</p>
+</button>
+
+<!-- حالة التسجيل -->
+<div class="record-indicator" *ngIf="isRecording()">
+  <span class="dot"></span>
+  <span>يتم التسجيل الآن...</span>
+</div>
+
+<!-- حالة الرفع -->
+<div class="audio-uploading" *ngIf="isUploadingAudio()">
+  <i class="fa-solid fa-spinner fa-spin"></i>
+  <span>جاري رفع الصوت...</span>
+</div>
+
+<!-- عرض الصوت بعد الرفع -->
+<div *ngIf="!isUploadingAudio() && uploadedVoiceUrl()" class="audio-player d-flex gap-2">
+  <audio controls [src]="baseUrl + uploadedVoiceUrl()"></audio>
+  <button class="btndelete" (click)="deleteAudio()">
+    <i class="fa-solid fa-trash"></i>
+  </button>
+</div>
+        </div>
+      </div>
+
+
+      <div class="files-preview" *ngIf="uploadedFiles().length > 0">
+        <div class="file-item" *ngFor="let file of uploadedFiles(); let i = index">
+          <i class="fa-solid fa-file"></i>
+
+          <!-- أثناء التحميل -->
+          <span *ngIf="file.isUploading" class="uploading">
+            جاري رفع
+            <i class="fa-solid fa-spinner fa-spin"></i>
+          </span>
+
+          <span *ngIf="!file.isUploading">{{ file.name }}</span>
+
+          <button *ngIf="!file.isUploading" (click)="removeFile(i)">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
     </div>
+  </div>
 
-
-
-    <!-- زر إغلاق -->
-    <div class="actions">
-        <button (click)="closePopup()" class="close-btn">اضافة اقتراح</button>
-    </div>
-
+  <div class="actions">
+    <button (click)="addSuggest()" class="close-btn" [disabled]="form.invalid || isUploading() || isUploadingImage()">
+      اضافة اقتراح
+    </button>
+  </div>
 </div>

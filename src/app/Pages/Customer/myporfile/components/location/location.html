@@ -1,11 +1,11 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form [formGroup]="form">
        <div class="d-flex justify-content-between flex-column w-25">
             <div class="d-flex align-items-center gap-4 mb-3 flex-column ">
         <input formControlName="address" placeholder="ابحث عن العنوان" />
         <button type="button"  class="btnLocation" (click)="searchAddress()">بحث</button>
         <button type="button"   class="btnLocation" (click)="useMyLocation()">استخدم موقعي</button>
     </div>
-            <button type="button"  class=" btnLocation  btnSubmit align-items-end align-content-end">حفظ الموقع</button>
+            <button type="button"  (click)="submit()" class=" btnLocation  btnSubmit align-items-end align-content-end">حفظ الموقع</button>
 
        </div>
     <div class="flex-grow-1 d-flex flex-column">

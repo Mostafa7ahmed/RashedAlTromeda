@@ -13,9 +13,12 @@ export class Streem {
 
   constructor(private http: HttpClient) { }
 
-  uploadStreem(file: File): Observable<IResponseOf<IStreem>> {
+  uploadStreem(file: any): Observable<IResponseOf<IStreem>> {
     const formData = new FormData();
     formData.append('stream', file, file.name);
     return this.http.post<IResponseOf<IStreem>>(`${this.API_URL}stream`, formData);
+  }
+  deleteStreem(id: number): Observable<IResponseOf<null>> {
+    return this.http.delete<IResponseOf<null>>(`${this.API_URL}stream/${id}`);
   }
 }

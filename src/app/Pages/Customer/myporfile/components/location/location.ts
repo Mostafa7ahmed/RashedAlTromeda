@@ -1,21 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProfileCompletion } from '../../../../../Core/service/Customer/profile-completion';
 import * as L from 'leaflet';
 import { ReactiveModeuls } from '../../../../../Shared/Modules/ReactiveForms.module';
+import { Profile } from '../../../../../Core/service/Customer/profile';
+import { UpdateProfile, UserDto } from '../../../../../Core/Interface/iprofile-customer';
+import { SweetAlert } from '../../../../../Core/service/sweet-alert';
 
 @Component({
   selector: 'app-location',
   imports: [ReactiveModeuls],
   templateUrl: './location.html',
-  styleUrl: './location.scss'
+  styleUrls: ['./location.scss'] // صححت styleUrls
 })
 export class Location {
   form: FormGroup;
   private map!: L.Map;
   private marker!: L.Marker;
+  private _profile = inject(Profile);
+private _profileUser!: UserDto;
 
-  constructor(private fb: FormBuilder , private  ProfileCompletion:ProfileCompletion) {
+  private _alert = inject(SweetAlert);
+
+  constructor(private fb: FormBuilder, private ProfileCompletion: ProfileCompletion) {
     this.form = this.fb.group({
       address: [''],
       latitude: [null],
@@ -36,37 +43,57 @@ export class Location {
   }
 
   ngAfterViewInit(): void {
-    this.map = L.map('map').setView([30.0444, 31.2357], 13); // القاهرة
+    this.map = L.map('map').setView([30.0444, 31.2357], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(this.map);
 
-  
-    this.marker = L.marker([30.0444, 31.2357], { draggable: true })
-      .addTo(this.map)
-      .bindPopup('اسحب العلامة لتغيير موقعك')
-      .openPopup();
+    this.loadProfile();
+  }
 
-    this.map.on('click', (e: any) => this.setMarker(e.latlng.lat, e.latlng.lng));
+  private loadProfile() {
+    this._profile.getProfile().subscribe({
+      next: (res) => {
+        const user = res.result.userDto;
+          this._profileUser = user;
+        this.form.patchValue({
+          address: user.address,
+          latitude: user.latitude,
+          longitude: user.longitude
+        });
 
-    this.marker.on('dragend', (e: any) => {
-      const { lat, lng } = e.target.getLatLng();
-      this.setMarker(lat, lng);
+        this.marker = L.marker([user.latitude, user.longitude], { draggable: true })
+          .addTo(this.map)
+          .bindPopup('اسحب العلامة لتغيير موقعك')
+          .openPopup();
+
+        this.map.setView([user.latitude, user.longitude], 15);
+
+        this.marker.on('dragend', (e: any) => {
+          const { lat, lng } = e.target.getLatLng();
+          this.setMarker(lat, lng);
+        });
+
+        this.map.on('click', (e: any) => this.setMarker(e.latlng.lat, e.latlng.lng));
+
+        // @ts-ignore
+        L.Control.geocoder({ defaultMarkGeocode: false })
+          .on('markgeocode', (e: any) => {
+            const latlng = e.geocode.center;
+            this.setMarker(latlng.lat, latlng.lng);
+            this.form.patchValue({ address: e.geocode.name });
+          })
+          .addTo(this.map);
+      },
+      error: (err) => {
+        console.error('Error loading profile:', err);
+      }
     });
-
-    // @ts-ignore
-    L.Control.geocoder({
-      defaultMarkGeocode: false
-    }).on('markgeocode', (e: any) => {
-      const latlng = e.geocode.center;
-      this.setMarker(latlng.lat, latlng.lng);
-      this.form.patchValue({ address: e.geocode.name });
-    }).addTo(this.map);
   }
 
   private setMarker(lat: number, lon: number) {
-    this.marker.setLatLng([lat, lon]);
+    if (this.marker) this.marker.setLatLng([lat, lon]);
     this.map.setView([lat, lon], 15);
 
     this.form.patchValue({ latitude: lat, longitude: lon });
@@ -74,9 +101,7 @@ export class Location {
     fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`)
       .then(r => r.json())
       .then(data => {
-        if (data?.display_name) {
-          this.form.patchValue({ address: data.display_name });
-        }
+        if (data?.display_name) this.form.patchValue({ address: data.display_name });
       });
   }
 
@@ -92,34 +117,48 @@ export class Location {
           this.setMarker(+first.lat, +first.lon);
           this.form.patchValue({ address: first.display_name });
         } else {
-          alert('لم يتم العثور على العنوان');
+        this._alert.toast('لم يتم العثور على العنوان', 'error');
         }
       });
   }
 
-  useMyLocation() {
-    if (!navigator.geolocation) return alert('المتصفح لا يدعم الموقع الجغرافي');
-    navigator.geolocation.getCurrentPosition(
-      pos => this.setMarker(pos.coords.latitude, pos.coords.longitude),
-      err => alert(err.message)
-    );
+useMyLocation() {
+  if (!navigator.geolocation) {
+    this._alert.toast('المتصفح لا يدعم الموقع الجغرافي', 'error');
+    return;
   }
 
-  submit() {
-    console.log('📌 البيانات:', this.form.value);
-    this.ProfileCompletion.ProfileCompletion(this.form.value).subscribe({
-      
-      next: (res) => {
-        console.log('Profile updated:', res);
-      }
-    })
+  navigator.geolocation.getCurrentPosition(
+    pos => this.setMarker(pos.coords.latitude, pos.coords.longitude),
+    err => this._alert.toast(err.message || 'حدث خطأ أثناء الحصول على الموقع', 'error')
+  );
+}
 
-  }
+submit() {
+  const user = this._profileUser; 
 
-  ngOnDestroy(): void {
-    if (this.map) {
-      this.map.remove();
+  if (!user) return;
 
+  const payload: UpdateProfile = {
+    id: user.id,
+    name: user.name,
+    photoUrl: user.photoUrl ,
+    address: this.form.value.address,
+    latitude: this.form.value.latitude,
+    longitude: this.form.value.longitude
+  };
+
+
+  this.ProfileCompletion.ProfileCompletion(payload).subscribe({
+    next: res => {
+      this._alert.toast(res.message || 'تم الحفظ بنجاح', 'success');
+    },
+    error: err => {
+      this._alert.toast(err.error?.message || 'حدث خطأ أثناء حفظ البيانات', 'error');
     }
+  });
+}
+  ngOnDestroy(): void {
+    if (this.map) this.map.remove();
   }
 }

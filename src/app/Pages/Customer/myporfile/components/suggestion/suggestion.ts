@@ -1,54 +1,50 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { SuggestService } from '../../../../../Core/service/suggest-service';
+import { ISuggestion, ISuggestionWithAudio } from '../../../../../Core/Interface/isuggestion';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-suggestion',
-  imports: [CommonModule , RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './suggestion.html',
   styleUrl: './suggestion.scss'
 })
 export class Suggestion {
   expandedCard: number | null = null;
-  isPlaying = false;
-  currentTime = 0;
-  duration = 65; 
-    Math = Math;
-  suggestions = Array(20).fill(0); 
+  Math = Math;
+  SuggestionList = signal<ISuggestionWithAudio[]>([]);
+  baseurl = environment.baseUrl;
+
   private router = inject(Router);
+  private _suggest = inject(SuggestService);
+  constructor() {
+    effect(() => {
+      this._suggest.refreshSuggestions();
+      this.loadSuggestions();
+    });
+  }
 
-  progress = 0;
-  audio = new Audio('Sound/ddddd.mp3');
-  cards = [
-    {
-      id: 1,
-      text: `أقترح عليك إنشاء منصة إلكترونية تعليمية متكاملة تستهدف طالب الجامعات...`,
-      audio: 'Sound/ddddd.mp3',
-      resources: [
-        { name: 'Resource 1', size: '4 MB' },
-        { name: 'Resource 2', size: '4 MB' },
-        { name: 'Resource 3', size: '4 MB' }
-      ],
-      images: [
-        'Image/house-repair.png',         'Image/house-repair.png', 'Image/house-repair.png', 'Image/house-repair.png', 'Image/house-repair.png'
-,         'Image/house-repair.png', 'Image/house-repair.png', 'Image/house-repair.png', 'Image/house-repair.png'
- , 'Image/house-repair.png', 'Image/house-repair.png', 'Image/house-repair.png',         'Image/house-repair.png', 'Image/house-repair.png', 'Image/house-repair.png', 'Image/house-repair.png'
+  ngOnInit() {
+    this.loadSuggestions();
+  }
 
-      ]
-    },
-    {
-      id: 2,
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-      resources: [],
-      images: []
-    },
-    {
-      id: 3,
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-      resources: [],
-      images: []
-    }
-  ];
+  private loadSuggestions() {
+    this._suggest.getSuggestion(1,100).subscribe({
+      next: (res) => {
+        const suggestionsWithAudio: ISuggestionWithAudio[] = res.result.map(card => ({
+          ...card,
+          audio: card.voiceNoteUrl ? new Audio(this.baseurl + card.voiceNoteUrl) : null,
+          isPlaying: false,
+          progress: 0,
+          currentTime: 0
+        }));
+        this.SuggestionList.set(suggestionsWithAudio);
+      },
+      error: console.error
+    });
+  }
 
   toggleCard(id: number) {
     this.expandedCard = this.expandedCard === id ? null : id;
@@ -58,19 +54,26 @@ export class Suggestion {
     this.router.navigate([{ outlets: { popup: ['addsuggest'] } }]);
   }
 
-  
-  togglePlay() {
-    if (this.isPlaying) {
-      this.audio.pause();
+  togglePlay(card: any) {
+    if (!card.audio) return;
+
+    if (card.isPlaying) {
+      card.audio.pause();
     } else {
-      this.audio.play();
+      card.audio.play();
     }
 
-    this.isPlaying = !this.isPlaying;
+    card.isPlaying = !card.isPlaying;
 
-    this.audio.ontimeupdate = () => {
-      this.currentTime = this.audio.currentTime;
-      this.progress = (this.currentTime / this.audio.duration) * 100;
+    card.audio.ontimeupdate = () => {
+      card.currentTime = card.audio.currentTime;
+      card.progress = (card.currentTime / card.audio.duration) * 100;
+    };
+
+    card.audio.onended = () => {
+      card.isPlaying = false;
+      card.currentTime = 0;
+      card.progress = 0;
     };
   }
 
