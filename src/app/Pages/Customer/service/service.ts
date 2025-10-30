@@ -1,8 +1,9 @@
-import { Component, inject, input, signal } from '@angular/core';
-import { Categories } from '../../../Core/service/categories';
-import { ICategory } from '../../../Core/Interface/icategory';
-import { environment } from '../../../../environments/environment';
+import { Component, effect, inject, input, signal } from '@angular/core';
+
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
+import { SerciceCategory } from '../../../Core/service/sercice-category';
+import { IService } from '../../../Core/Interface/icategory';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-service',
@@ -11,85 +12,37 @@ import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
   styleUrl: './service.scss'
 })
 export class Service {
-   private _categoryService = inject(Categories);
+  
+  private _serviceCategory = inject(SerciceCategory);
+  private _route = inject(ActivatedRoute);
 
-  baseUrl = environment.baseUrl;
-  categories = signal<ICategory[]>([]);
-  currentPage = signal<number>(1);
-  totalPages = signal<number>(1);
-  totalCount = signal<number>(0);
-  moveNext = signal<boolean>(false);
-  movePrevious = signal<boolean>(false);
-  pageSize = 12;
+  // signals
+  services = signal<IService[]>([]);
   isLoading = signal<boolean>(false);
-searchTerm = signal('');
+  categoryId = signal<number>(0);
 
-  ngOnInit(): void {
-    this.loadCategories();
+  constructor() {
+    effect(() => {
+      const id = Number(this._route.snapshot.paramMap.get('categoryId')) || 0;
+      if (id !== this.categoryId()) {
+        this.categoryId.set(id);
+        this.loadServices(id);
+      }
+    });
   }
 
-loadCategories() {
-  this.isLoading.set(true);
-
-  this._categoryService
-    .getCategories(this.currentPage(), this.pageSize, this.searchTerm())
-    .subscribe({
+  loadServices(categoryId: number) {
+    this.isLoading.set(true);
+    this._serviceCategory.getServiceFromCategories(1, 10, categoryId).subscribe({
       next: (res) => {
-        this.categories.set(res.result || []);
-        this.totalPages.set(res.totalPages);
-        this.totalCount.set(res.totalCount);
-        this.moveNext.set(res.moveNext);
-        this.movePrevious.set(res.movePrevious);
+        this.services.set(res.result); // adjust if your API returns data differently
+        console.log(res)
         this.isLoading.set(false);
       },
       error: (err) => {
-        console.error('Error fetching categories:', err);
+        console.error('Error fetching services:', err);
         this.isLoading.set(false);
-      },
+      }
     });
-}
-timeoutId: any;
-
-onSearch(event: Event) {
-  const value = (event.target as HTMLInputElement).value;
-  clearTimeout(this.timeoutId);
-  this.timeoutId = setTimeout(() => {
-    this.searchTerm.set(value);
-    this.loadCategories();
-  }, 500); 
-}
-  nextPage() {
-    if (this.moveNext()) {
-      this.currentPage.update(v => v + 1);
-      this.loadCategories();
-    }
-  }
-get pagesArray() {
-  return Array.from({ length: this.totalPages() });
-}
-get visiblePages() {
-  const total = this.totalPages();
-  const current = this.currentPage();
-  const windowSize = 4;
-
-  let start = Math.max(1, current - Math.floor(windowSize / 2));
-  let end = start + windowSize - 1;
-
-  if (end > total) {
-    end = total;
-    start = Math.max(1, end - windowSize + 1);
-  }
-  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
-}
-  prevPage() {
-    if (this.movePrevious()) {
-      this.currentPage.update(v => v - 1);
-      this.loadCategories();
-    }
-  }
-
-  goToPage(page: number) {
-    this.currentPage.set(page);
-    this.loadCategories();
   }
 }

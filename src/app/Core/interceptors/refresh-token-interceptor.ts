@@ -25,7 +25,6 @@ const loginService = inject(LoginService);
             return next(newReq);
           }),
           catchError(refreshError => {
-            console.error('Token refresh failed', refreshError);
             loginService.logout();
             return throwError(() => refreshError);
           })

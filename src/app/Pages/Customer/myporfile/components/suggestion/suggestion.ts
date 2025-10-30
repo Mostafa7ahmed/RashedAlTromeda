@@ -16,6 +16,7 @@ export class Suggestion {
   Math = Math;
   SuggestionList = signal<ISuggestionWithAudio[]>([]);
   baseurl = environment.baseUrl;
+  selectedImage: string | null = null;
 
   private router = inject(Router);
   private _suggest = inject(SuggestService);
@@ -28,6 +29,13 @@ export class Suggestion {
 
   ngOnInit() {
     this.loadSuggestions();
+  }
+    openImage(imgUrl: string) {
+    this.selectedImage = imgUrl;
+  }
+
+  closeImage() {
+    this.selectedImage = null;
   }
 
   private loadSuggestions() {

@@ -22,10 +22,10 @@ export const routes: Routes = [
       },
       {
         path: 'category',
-        loadComponent: () => import('./Pages/Customer/service/service').then((m) => m.Service),
+        loadComponent: () => import('./Pages/Customer/categories/categories').then((m) => m.Categories),
       },
         {
-        path: 'service/:id',
+        path: 'service/:categoryId',
         loadComponent: () => import('./Pages/Customer/service/service').then((m) => m.Service),
       },
       {
@@ -84,6 +84,13 @@ export const routes: Routes = [
             loadComponent: () =>
               import('./Pages/Customer/myporfile/components/location/location').then(
                 (m) => m.Location
+              ),
+          },
+            {
+            path: 'change-password',
+            loadComponent: () =>
+              import('./Pages/Customer/changepassword/changepassword').then(
+                (m) => m.Changepassword
               ),
           },
         ],

@@ -1,58 +1,15 @@
 <div class="service mt-5 pt-5 container-fluid">
+  <div class="contentService">
+    <h1>خدماتنا</h1>
+    <p>
+      اعتمد علينا كشريك موثوق به لحلول صيانة استثنائية تُحوّل مساحاتك إلى ملاذٍ جميل. يقدم فريقنا
+      المتخصص مجموعة واسعة من الخدمات المصممة خصيصًا لتلبية احتياجاتك الفريدة.
+    </p>
 
-    <div class="contentService">
-        <h1>الفئات</h1>
-        <p>اعتمد علينا كشريك موثوق به لحلول صيانة استثنائية تُحوّل مساحاتك إلى ملاذٍ جميل. يقدم فريقنا المتخصص مجموعة
-            واسعة من الخدمات المصممة خصيصًا لتلبية احتياجاتك الفريدة.</p>
+ 
+  </div>
 
-        <div class="searchInput">
-            <div class="inputSerch">
-                <i class="fa fa-search"></i>
-
-                <input type="text" placeholder="ابحث عن فئة..." (input)="onSearch($event)">
-            </div>
-            <div class="filtter">
-                <img src="Icons/mynaui_filter.svg" alt="">
-            </div>
-        </div>
-    </div>
-    @if (isLoading()) {
-    <div class="loading">جارِ تحميل الفئات...</div>
-    }
-    @else {
-    <section class="services">
-        @for (s of categories(); track s.id) {
-        <div class="card"[routerLink]="['/service' , s.id]" [style.background-image]="'url(' + baseUrl + s.photoUrl + ')'">
-            <div class="overlay"></div>
-            <div class="content justify-content-end flex-column">
-                <div class="text d-flex align-items-center gap-2">
-                    <h3>{{ s.name }}</h3>
-                    <i class="fa-solid fa-arrow-up"></i>
-                </div>
-            </div>
-        </div>
-        }
-    </section>
-    }
-
-
-    <div class="pagination">
-        <button class="nav-btn" (click)="prevPage()" [disabled]="!movePrevious()">
-            ‹ السابق
-        </button>
-        <div class="pages">
-            @for (page of visiblePages; track page) {
-            <button class="page" [class.active]="page === currentPage()" [disabled]="page === currentPage()"
-                (click)="goToPage(page)">
-                {{ page }}
-            </button>
-            }
-        </div>
-        <button class="nav-btn" (click)="nextPage()" [disabled]="!moveNext()">
-            التالي ›
-        </button>
-    </div>
-
-
-
+  <div class="cardServices">
+    
+  </div>
 </div>

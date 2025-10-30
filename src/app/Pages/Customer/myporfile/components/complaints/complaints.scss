@@ -11,11 +11,15 @@
     border: 1px solid #FBD1B6;
     color: var(--color-text-p);
     display: flex;
+    background:transparent;
     align-items: center;
     margin-top: 10px;
     input{
         border: none;
         outline: none;
+            background:transparent;
+    color: var(--color-text-p);
+
         flex: 4;
     }
 }
@@ -87,3 +91,4 @@ background: #6EC733;
     }
   }
 }
+

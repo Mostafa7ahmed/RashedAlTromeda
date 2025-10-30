@@ -4,3 +4,13 @@ export interface ICategory {
   name: string
 }
 
+export interface IService {
+    id: number
+  name: string
+  description: any
+  photourl: string
+  point: number
+  categoryId: number
+  categoryName: string
+  engineerCount: number
+}

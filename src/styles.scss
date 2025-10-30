@@ -45,6 +45,8 @@
   --muted: #9aa4b2;
   --card-bg: #231F20;
   --page-bg: #141414;
+    --color-text-p: #fcfbfbff;
+
   --radius: 16px;
   --gradient-1: linear-gradient(98.88deg, rgba(255, 255, 255, 0) 0.6%, rgba(255, 255, 255, 0.9) 96.39%);
   --gradient-2: linear-gradient(98.12deg, rgba(255, 255, 255, 0) 1.81%, rgba(255, 255, 255, 0.9) 97.19%);
@@ -142,4 +144,14 @@ input[type="tel"] {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+.no-data{
+      display: flex
+;
+    justify-content: center;
+    align-items: center;
+    padding: 56px;
+    font-size: 18px;
+    color: var(--color-text-p);
+
 }

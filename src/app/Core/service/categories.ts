@@ -8,7 +8,7 @@ import { ICategory } from '../Interface/icategory';
 @Injectable({
   providedIn: 'root'
 })
-export class Categories {
+export class CategorieService {
 
   private _http = inject(HttpClient);
   private baseUrl: string = `${environment.apiUrl}category/paginate`;

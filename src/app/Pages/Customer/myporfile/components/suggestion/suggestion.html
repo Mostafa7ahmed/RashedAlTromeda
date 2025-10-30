@@ -35,35 +35,65 @@
                       </div>
       <div class="content" [class.open]="expandedCard === card.id">
         <div class="d-flex mb-4 justify-content-between align-items-start">
-          <div class="images" *ngIf="card.photoUrls.length">
-            <img *ngFor="let img of card.photoUrls" [src]="baseurl + img" alt="preview" />
+          @if (card.photoUrls.length) {
+          <div class="images">
+            @for (img of card.photoUrls; track img) {
+            <img [src]="baseurl + img" alt="preview" (click)="openImage(baseurl + img)" />
+            }
           </div>
-          <div class="voice-player" *ngIf="card.voiceNoteUrl">
+          } @if (selectedImage) {
+          <div class="overlay" (click)="closeImage()">
+            <div class="popup" (click)="$event.stopPropagation()">
+              <img [src]="selectedImage" alt="full view" />
+              <div class="icons cr" (click)="closeImage()">
+                <i class="fa-solid fa-circle-xmark"></i>
+              </div>
+            </div>
+          </div>
+          } @if (card.voiceNoteUrl) {
+          <div class="voice-player">
             <button class="play-btn" (click)="togglePlay(card)">
               <i [class]="card.isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play'"></i>
             </button>
 
             <div class="waveform">
-              <div class="bar" *ngFor="let bar of [].constructor(40); let i = index"
-                [style.height.px]="(Math.sin(i) * 10) + 20"
-                [style.opacity]="(i / 40) < ((card.progress ?? 0) / 100) ? '1' : '0.3'">
-              </div>
+              @for (bar of [].constructor(40); track $index ; let i = $index) {
+              <div
+                class="bar"
+                [style.height.px]="Math.sin(i) * 10 + 20"
+                [style.opacity]="i / 40 < (card.progress ?? 0) / 100 ? '1' : '0.3'"
+              ></div>
+              }
             </div>
 
             <span class="time">{{ formatTime(card.currentTime || 0) }}</span>
           </div>
+          }
         </div>
-        <div class="resources" *ngIf="card.fileUrls.length">
-          <div class="resource gap-2" *ngFor="let res of card.fileUrls ; let i = index">
-            <img src="Icons/pdf.svg" alt="">
+
+        @if (card.fileUrls.length) {
+        <div class="resources">
+          @for (res of card.fileUrls; track $index ; let i = $index) {
+          <a
+            class="resource gap-2"
+            [href]="baseurl + res"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="Icons/pdf.svg" alt="" />
             <div>
-              <h6> resource {{ i +1 }} <span>(pdf)</span></h6>
+              <h6>resource {{ i + 1 }} <span>(pdf)</span></h6>
               <p>1 MB</p>
             </div>
-          </div>
+          </a>
+          }
         </div>
+        }
       </div>
     </div>
+    }
+        @if (SuggestionList().length === 0) {
+    <div class="no-data">لا توجد مقترحات لعرضها.</div>
     }
   </div>
 </div>

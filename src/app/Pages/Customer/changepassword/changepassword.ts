@@ -1,11 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { HeaderPages } from "../../../components/header-pages/header-pages";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 
 @Component({
   selector: 'app-changepassword',
-  imports: [HeaderPages , ReactiveModeuls],
+  imports: [ ReactiveModeuls],
   templateUrl: './changepassword.html',
   styleUrl: './changepassword.scss'
 })
