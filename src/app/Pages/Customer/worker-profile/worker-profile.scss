@@ -152,11 +152,12 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 20px;
         opacity: 1;
         border-radius: 25px;
-        padding-top: 8px;
+        padding-top: 12px;
         padding-right: 10px;
-        padding-bottom: 8px;
+        padding-bottom: 12px;
         padding-left: 10px;
         background: #bcbaba;
         color: white;
@@ -245,7 +246,6 @@
     }
 
     .day-card {
-      min-width: 100px;
       height: 50px;
       border: 1px solid #949292;
       display: flex;
@@ -259,7 +259,7 @@
       font-family: 'Cairo', sans-serif;
       font-size: 14px;
       border-radius: 35px;
-
+      padding: 10px 16px;
       .day-number {
         font-size: 14px;
         font-weight: 500;
@@ -269,136 +269,14 @@
         background: #ff6600;
         color: #fff;
       }
-    }
-  }
 
-  .reating {
-    margin-top: 20px;
 
-    .review-card {
-      width: 100%;
-      margin: 20px 0;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      padding: 16px 20px;
-      font-family: 'Cairo', sans-serif;
-    }
-
-    .review-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-    }
-
-    .user-info h4 {
-      margin: 0;
-      font-size: 16px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .rate {
-      font-size: 14px;
-      color: #fea420;
-    }
-
-    .date {
-      font-size: 13px;
-      color: #777;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .review-text {
-      margin: 12px 0;
-      font-size: 15px;
-      line-height: 1.6;
-      color: #444;
-    }
-
-    .review-footer {
-      display: flex;
-      justify-content: flex-start;
-    }
-
-    .likes {
-      color: #f97316;
-      /* لون برتقالي */
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-  }
-
-  .add-review {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 20px;
-
-    .stars {
-      display: flex;
-      gap: 10px;
-      font-size: 26px;
-      color: orange;
-      cursor: pointer;
-    }
-
-    .input-box {
-      display: flex;
-      align-items: center;
-      background: #fff;
-      border-radius: 30px;
-      padding: 5px 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      width: 100%;
-    }
-
-    .input-box input {
-      flex: 1;
-      border: none;
-      outline: none;
-      padding: 10px;
-      font-size: 14px;
-      height: 56px;
-    }
-
-    .input-box .avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 8px;
-    }
-
-    .send-btn {
-      background: #f97316;
-      border: none;
-      border-radius: 25px;
-      width: 50px;
-      height: 50px;
-      color: #fff;
-      cursor: pointer;
-      -webkit-border-radius: 25px;
-      -moz-border-radius: 25px;
-      -ms-border-radius: 25px;
-      -o-border-radius: 25px;
+      &.holiday {
+        background-color: #d6d6d6; // رمادي
+        color: #777;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
     }
   }
 
@@ -436,4 +314,9 @@
       }
     }
   }
+}
+
+.location {
+  color: var(--color-orange);
+
 }

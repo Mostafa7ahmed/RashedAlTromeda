@@ -4,10 +4,11 @@ import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 import { SerciceCategory } from '../../../Core/service/sercice-category';
 import { IService } from '../../../Core/Interface/icategory';
 import { ActivatedRoute } from '@angular/router';
+import { ShortenPipe } from '../../../Shared/pipes/shorten-pipe';
 
 @Component({
   selector: 'app-service',
-  imports: [ReactiveModeuls],
+  imports: [ReactiveModeuls , ShortenPipe],
   templateUrl: './service.html',
   styleUrl: './service.scss'
 })
@@ -15,7 +16,6 @@ export class Service {
   
   private _serviceCategory = inject(SerciceCategory);
   private _route = inject(ActivatedRoute);
-
   // signals
   services = signal<IService[]>([]);
   isLoading = signal<boolean>(false);
@@ -35,7 +35,7 @@ export class Service {
     this.isLoading.set(true);
     this._serviceCategory.getServiceFromCategories(1, 10, categoryId).subscribe({
       next: (res) => {
-        this.services.set(res.result); // adjust if your API returns data differently
+        this.services.set(res.result); 
         console.log(res)
         this.isLoading.set(false);
       },

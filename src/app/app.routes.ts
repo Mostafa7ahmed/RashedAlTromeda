@@ -37,7 +37,12 @@ export const routes: Routes = [
         loadComponent: () => import('./Pages/contactus/contactus').then((m) => m.Contactus),
       },
       {
-        path: 'workerprofile',
+                path: 'chooseworker/:serviceId',
+        loadComponent: () =>
+          import('./Pages/Customer/choose-engineer/choose-engineer').then((m) => m.ChooseEngineer),
+      },
+      {
+        path: 'profile/:profileId',
         loadComponent: () =>
           import('./Pages/Customer/worker-profile/worker-profile').then((m) => m.WorkerProfile),
       },

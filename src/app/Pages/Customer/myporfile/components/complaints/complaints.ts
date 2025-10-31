@@ -74,7 +74,7 @@ onSearch(event: Event) {
   }
 
   openPopup() {
-    this.router.navigate([{ outlets: { popup: ['addsuggest'] } }]);
+    this.router.navigate([{ outlets: { popup: ['addcomplaint'] } }]);
   }
 
   private loadComplaints() {

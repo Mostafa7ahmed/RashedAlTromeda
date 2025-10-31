@@ -1,0 +1,96 @@
+
+.searchInput {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    .inputSerch {
+        width: 100%;
+        border: 1px solid #FBD1B6;
+        background: var(--color-white);
+        height: 60px;
+        border-radius: 50px;
+        padding: 0 30px;
+        i {
+            color: var(--color-black-2);
+            font-size: 20px;
+        }
+
+        input {
+            width: 95%;
+            height: 100%;
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            padding: 0 20px;
+            background: var(--color-white);
+            color: var(--color-black-2);
+
+        }
+
+    }
+    .filtter{
+        padding: 10px 8px;
+        border: 1px solid #FBD1B6;
+        background: var(--color-white);
+        height: 60px;
+        border-radius: 22px;
+        cursor: pointer;
+        img{
+            width: 40px;
+        }
+}
+}
+
+
+.cardServices {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.cardService {
+    border-radius: 16px;
+    padding: 10px;
+    background-color: var(--color-white);
+    max-height: 420px;
+    height: auto;
+
+    img.ImgeEngieer {
+        border-radius: 12px;
+        height: 100px;
+        object-fit: cover;
+        width: 100px;
+    }
+
+    cursor: pointer;
+   position: relative;
+   .poinst {
+    position: absolute;
+    top: 20px;
+    margin-inline-end: 10px;
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    inset-inline-end: 10px;
+   }
+   .infoService{
+    p{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
+        text-align: right;
+        color: #949292;
+        width: 85%;
+    }
+   }
+   .rate{
+    color: #FEA420;
+   }
+   .location{
+    color: var(--color-orange);
+ 
+   }
+}

@@ -1,4 +1,4 @@
-<div class="service mt-5 pt-5 container-fluid">
+<div class="service mt-5 mb-5 pt-5 container-fluid">
   <div class="contentService">
     <h1>خدماتنا</h1>
     <p>
@@ -6,10 +6,43 @@
       المتخصص مجموعة واسعة من الخدمات المصممة خصيصًا لتلبية احتياجاتك الفريدة.
     </p>
 
- 
-  </div>
 
-  <div class="cardServices">
-    
   </div>
+  <div class="category cr">
+    <div class="boxCategory d-flex gap-3 align-items-center">
+      <img src="Image/bgAuth.jpg" alt="plumbing" />
+      <div class="info">
+        <h5>السباكة</h5>
+        <p class="m-0">
+          25 حدمات
+        </p>
+      </div>
+    </div>
+
+  </div>
+  <div class="cardServices mt-5">
+    @for (card of services(); track $index) {
+    <div class="cardService d-flex  gap-3 " [routerLink]="['/chooseworker', card.id]">
+      <img src="Image/bgAuth.jpg" alt="service" width="100px" />
+      <div class="infoService">
+        <h5> {{card.categoryName}}</h5>
+       
+        @if(card.description){
+             <p>
+          {{card.description | shorten:200}}
+        </p>
+        }
+        @else {
+          <p>          لا يوجد  متاح لهذه الخدمة </p>
+        }
+      </div>
+      <div class="poinst">{{card.point}} نقطة </div>
+    </div>
+    }
+
+
+  </div>
+      @if (services().length === 0) {
+    <div class="no-data">لا توجد خدمات لعرضها.</div>
+    }
 </div>
