@@ -1,15 +1,17 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './Core/guards/auth.guard';
 import { isAuthGuard } from './Core/guards/is-auth.guard';
-import { MainOutlet } from './Layout/main-outlet/main-outlet';
 import { Authoutlet } from './Layout/authoutlet/authoutlet';
 import { Home } from './Pages/home/home';
+import { MainLayoutCoustomer } from './Layout/Coustomer/main-layout-coustomer/main-layout-coustomer';
+import { roleGuard } from './Core/guards/role.guard';
+import { MainLayoutEngineer } from './Layout/Engineer/main-layout-engineer/main-layout-engineer';
 
 export const routes: Routes = [
   {
     path: '',
-    component: MainOutlet,
-    canActivate: [authGuard],
+    component: MainLayoutCoustomer,
+    canActivate: [roleGuard(['customer'])],
     children: [
       {
         path: '',
@@ -24,7 +26,7 @@ export const routes: Routes = [
         path: 'category',
         loadComponent: () => import('./Pages/Customer/categories/categories').then((m) => m.Categories),
       },
-        {
+      {
         path: 'service/:categoryId',
         loadComponent: () => import('./Pages/Customer/service/service').then((m) => m.Service),
       },
@@ -37,7 +39,7 @@ export const routes: Routes = [
         loadComponent: () => import('./Pages/contactus/contactus').then((m) => m.Contactus),
       },
       {
-                path: 'chooseworker/:serviceId',
+        path: 'chooseworker/:serviceId',
         loadComponent: () =>
           import('./Pages/Customer/choose-engineer/choose-engineer').then((m) => m.ChooseEngineer),
       },
@@ -91,7 +93,7 @@ export const routes: Routes = [
                 (m) => m.Location
               ),
           },
-            {
+          {
             path: 'change-password',
             loadComponent: () =>
               import('./Pages/Customer/changepassword/changepassword').then(
@@ -127,6 +129,31 @@ export const routes: Routes = [
           import('./Pages/Customer/infomation/infomation').then((m) => m.Infomation),
       },
     ],
+  },
+  {
+    path: 'engineer',
+    component: MainLayoutEngineer,
+    canActivate: [roleGuard(['engineer'])],
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'home',
+      },
+      {
+        path: 'home',
+        component: Home,
+      },
+      {
+        path: 'about',
+        loadComponent: () => import('./Pages/about/about').then((m) => m.About),
+      },
+      {
+        path: 'contact',
+        loadComponent: () => import('./Pages/contactus/contactus').then((m) => m.Contactus),
+      }
+    ]
+
   },
   {
     path: 'auth',

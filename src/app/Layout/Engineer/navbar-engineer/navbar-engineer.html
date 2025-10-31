@@ -5,30 +5,21 @@
 
   <ul class="navbar-links m-0">
     <li>
-      <a routerLink="/home" routerLinkActive="active">الرئيسية</a>
+      <a routerLink="/engineer/home" routerLinkActive="active">الرئيسية</a>
     </li>
     <li>
-      <a routerLink="/category" routerLinkActive="active">الفئات</a>
+      <a routerLink="/engineer/ordersNew" routerLinkActive="active">الطلبات الجديدة</a>
+    </li>
+        <li>
+      <a routerLink="/engineer/organizations" routerLinkActive="active"> المنظمات</a>
     </li>
     <li>
-      <a routerLink="/about" routerLinkActive="active">من نحن</a>
+      <a routerLink="/engineer/about" routerLinkActive="active">من نحن</a>
     </li>
     <li>
-      <a routerLink="/contact" routerLinkActive="active">تواصل معنا</a>
+      <a routerLink="/engineer/contact" routerLinkActive="active">تواصل معنا</a>
     </li>
   </ul>
-
-  <!-- <div class="navbar-actions">
-   <button class="btn-outline" routerLink="/auth/login">
-      <i class="fa fa-user"></i>
-      تسجيل دخول
-    </button>
-    <button class="btn-fill" routerLink="/auth/register">
-      <i class="fa fa-user-plus"></i>
-      إنشاء حساب
-    </button> 
-
-  </div> -->
       <div class="profileMore d-flex gap-3 align-items-center">
       <app-darkmood-btn />
       <div class="lang-select" (click)="dropdownOpen = !dropdownOpen">
@@ -44,7 +35,7 @@
         </ul>
       </div>
       <div class="profileImage cr" routerLink="/myporfile" >
-<img  src="Image/Imageporfile.png" alt="" width="40" height="40" class="rounded-circle">      </div>
+<img  [src]="userImage" alt="" width="40" height="40" class="rounded-circle">      </div>
     </div>
 
 </nav>

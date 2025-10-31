@@ -5,6 +5,7 @@ import { NgxIntlTelInputModule, SearchCountryField, CountryISO } from 'ngx-intl-
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SweetAlert } from '../../../Core/service/sweet-alert';
+import { IDecode } from '../../../Core/Interface/idecode';
 
 @Component({
   selector: 'app-login',
@@ -94,25 +95,25 @@ export class Login {
     };
     this.isLoading.set(true);
 
-    this.loginService.login(body).subscribe({
-      next: (response) => {
+   this.loginService.login(body).subscribe({
+  next: (response) => {
     this.isLoading.set(false);
-        this.result = response;
-        const { accessToken, refreshToken } = response.result;
-
-        this.loginService.saveTokens(accessToken, refreshToken);
-        this.aleart.toast(response.message, 'success');
-
-        this.router.navigate(['/']);
-      },
-      error: (error) => {
+    this.result = response;
+    const { accessToken, refreshToken } = response.result;
+      
+    this.loginService.saveTokens(accessToken, refreshToken);
+       const user = this.loginService.getUser() as IDecode | null;
+  
+      localStorage.setItem('user_type', user?.role || ''); 
+    this.aleart.toast(response.message, 'success');
+    this.router.navigate(['/']);
+  },
+  error: (error) => {
     this.isLoading.set(false);
-
-        this.aleart.toast(error.error.message, 'error');
-
-        console.error('خطأ في تسجيل الدخول', error);
-      }
-    });
+    this.aleart.toast(error.error.message, 'error');
+    console.error('خطأ في تسجيل الدخول', error);
+  }
+});
 
 
   }
