@@ -1,0 +1,125 @@
+<div class="suggestion">
+  <div class="headerTitle">
+    <h3>الشكاوي</h3>
+    <button class="btn" (click)="openPopup()">اضافة شكوى <i class="fa-solid fa-plus"></i></button>
+  </div>
+
+  <div class="searchBox mt-3 d-flex justify-content-between align-items-center">
+    <div class="fromSearch">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <input type="text" placeholder="ابحث عن شكوى..."  (input)="onSearch($event)"/>
+    </div>
+
+    <!-- Dropdown -->
+    <div class="lang-select" (click)="dropdownOpen = !dropdownOpen">
+      <div class="d-flex align-items-center gap-2">
+        <div class="lineColor" [style.background-color]="selectedstatu.color"></div>
+        <span class="code">{{ selectedstatu.name }}</span>
+      </div>
+      <i class="arrow" [class.open]="dropdownOpen"></i>
+
+      @if (dropdownOpen) {
+      <ul class="dropdown">
+        @for (lang of status; track lang.code) {
+        <li (click)="selectstatus(lang, $event)">
+          <div class="d-flex align-items-center gap-2">
+            <div class="lineColor" [style.background-color]="lang.color"></div>
+            <span class="code">{{ lang.name }}</span>
+          </div>
+        </li>
+        }
+      </ul>
+      }
+    </div>
+  </div>
+
+  <div class="post-container mt-4">
+    @for (card of ComplaintList(); track card.id) {
+    <div class="post-card">
+      <div class="header" (click)="toggleCard(card.id)">
+        <div class="title d-flex flex-column">
+          <div class="d-flex gap-2 align-items-center">
+    <div class="lineColor" [style.background-color]="getStatusByCode(card.status).color"></div>
+            <h5 class="m-0">{{ card.title }}</h5>
+          </div>
+          <p class="author">{{ card.description }}</p>
+        </div>
+
+        <div class="date">
+          <img src="Icons/stash_data-date-light.svg" alt="" />
+          <span>{{ card.createdOn | date }}</span>
+
+          <button class="toggle-btn">
+            <i
+              [class]="
+                expandedCard === card.id ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'
+              "
+            ></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="content" [class.open]="expandedCard === card.id">
+        <div class="d-flex mb-4 justify-content-between align-items-start">
+          @if (card.photoUrls.length) {
+          <div class="images">
+            @for (img of card.photoUrls; track img) {
+            <img [src]="baseurl + img" alt="preview" (click)="openImage(baseurl + img)" />
+            }
+          </div>
+          } @if (selectedImage) {
+          <div class="overlay" (click)="closeImage()">
+            <div class="popup" (click)="$event.stopPropagation()">
+              <img [src]="selectedImage" alt="full view" />
+              <div class="icons cr" (click)="closeImage()">
+                <i class="fa-solid fa-circle-xmark"></i>
+              </div>
+            </div>
+          </div>
+          } @if (card.voiceNoteUrl) {
+          <div class="voice-player">
+            <button class="play-btn" (click)="togglePlay(card)">
+              <i [class]="card.isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play'"></i>
+            </button>
+
+            <div class="waveform">
+              @for (bar of [].constructor(40); track $index ; let i = $index) {
+              <div
+                class="bar"
+                [style.height.px]="Math.sin(i) * 10 + 20"
+                [style.opacity]="i / 40 < (card.progress ?? 0) / 100 ? '1' : '0.3'"
+              ></div>
+              }
+            </div>
+
+            <span class="time">{{ formatTime(card.currentTime || 0) }}</span>
+          </div>
+          }
+        </div>
+
+        @if (card.fileUrls.length) {
+        <div class="resources">
+          @for (res of card.fileUrls; track $index ; let i = $index) {
+          <a
+            class="resource gap-2"
+            [href]="baseurl + res"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="Icons/pdf.svg" alt="" />
+            <div>
+              <h6>resource {{ i + 1 }} <span>(pdf)</span></h6>
+              <p>1 MB</p>
+            </div>
+          </a>
+          }
+        </div>
+        }
+      </div>
+    </div>
+    }
+    @if (ComplaintList().length === 0) {
+    <div class="no-data">لا توجد شكاوي لعرضها.</div>
+    }
+  </div>
+</div>

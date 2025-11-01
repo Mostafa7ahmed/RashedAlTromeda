@@ -6,6 +6,7 @@ import { Home } from './Pages/home/home';
 import { MainLayoutCoustomer } from './Layout/Coustomer/main-layout-coustomer/main-layout-coustomer';
 import { roleGuard } from './Core/guards/role.guard';
 import { MainLayoutEngineer } from './Layout/Engineer/main-layout-engineer/main-layout-engineer';
+import { HomeCustomer } from './Pages/homeCustomer/home';
 
 export const routes: Routes = [
   {
@@ -20,7 +21,7 @@ export const routes: Routes = [
       },
       {
         path: 'home',
-        component: Home,
+        component: HomeCustomer,
       },
       {
         path: 'category',
@@ -143,6 +144,22 @@ export const routes: Routes = [
       {
         path: 'home',
         component: Home,
+      },
+      {
+        path: 'ordersNew',
+        loadComponent: () => import('./Pages/Engineer/orders/orders').then((m) => m.Orders),
+      },
+      {
+        path: 'organizations',
+        loadComponent: () => import('./Pages/Engineer/organizations/organizations').then((m) => m.Organizations),
+      },
+      {
+        path: 'center/:id',
+        loadComponent: () => import('./Pages/Engineer/centers/centers').then((m) => m.Centers),
+      },
+      {
+        path: 'centerDetails/:id',
+        loadComponent: () => import('./Pages/Engineer/center-details/center-details').then((m) => m.CenterDetails),
       },
       {
         path: 'about',

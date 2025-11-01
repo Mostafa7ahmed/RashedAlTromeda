@@ -1,0 +1,75 @@
+  // 🎤 تسجيل صوت
+  private mediaRecorder!: MediaRecorder;
+  private audioChunks: Blob[] = [];
+  isRecording = signal<boolean>(false);
+  audioUrl = signal<string | null>(null);
+
+  async toggleRecording() {
+    if (this.isRecording()) {
+      this.stopRecording();
+    } else {
+      await this.startRecording();
+    }
+  }
+
+  async startRecording() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      this.mediaRecorder = new MediaRecorder(stream);
+      this.audioChunks = [];
+
+      this.mediaRecorder.ondataavailable = (e) => {
+        if (e.data.size > 0) {
+          this.audioChunks.push(e.data);
+        }
+      };
+
+      this.mediaRecorder.onstop = () => {
+        const blob = new Blob(this.audioChunks, { type: 'audio/mp3' });
+        const url = URL.createObjectURL(blob);
+        this.audioUrl.set(url);
+      };
+
+      this.mediaRecorder.start();
+      this.isRecording.set(true);
+    } catch (err) {
+      console.error('Microphone access denied:', err);
+      alert('رجاءً اسمح بالوصول للميكروفون من المتصفح.');
+    }
+  }
+
+  stopRecording() {
+    this.mediaRecorder.stop();
+    this.isRecording.set(false);
+  }
+
+  deleteAudio() {
+    if (this.audioUrl()) {
+      URL.revokeObjectURL(this.audioUrl()!);
+      this.audioUrl.set(null);
+    }
+  }
+
+
+
+    <!-- زر التسجيل -->
+                    <button class="record-btn btn" *ngIf="!audioUrl()" (click)="toggleRecording()">
+                        <i class="fa-solid" [ngClass]="isRecording() ? 'fa-stop' : 'fa-microphone'"></i>
+                        <p class="m-0" [ngClass]="!isRecording() ? 'd-block' : 'd-none'"> تسجيل صوت</p>
+
+                    </button>
+
+                    <!-- حالة التسجيل -->
+                    <div class="record-indicator" *ngIf="isRecording()">
+                        <span class="dot"></span>
+                        <span>يتم التسجيل الآن...</span>
+                    </div>
+
+
+                    <!-- عرض الصوت بعد التسجيل -->
+                    <div *ngIf="audioUrl()" class="audio-player d-flex gap-2">
+                        <audio controls [src]="audioUrl()"></audio>
+                        <button class="btndelete" (click)="deleteAudio()">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>

@@ -1,0 +1,246 @@
+  .card {
+      position: relative;
+      height: 500px;
+      border-radius: 12px;
+      padding: 20px 30px;
+      overflow: hidden;
+      border: none;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+      background-image: url("../../../../../public/Image/center.jpg");
+
+      .overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(96.2deg,
+                  rgba(0, 0, 0, 0) 2.28%,
+                  rgba(0, 0, 0, 0.9) 97.21%);
+      }
+
+      .content {
+          display: flex;
+          align-items: self-start;
+          gap: 10px;
+          color: #fff;
+          height: 100%;
+          z-index: 55555;
+
+          img {
+              width: 50px;
+              height: 50px;
+          }
+
+          h3 {
+              font-family: Cairo;
+              font-weight: 600;
+              font-style: SemiBold;
+              font-size: 24px;
+              line-height: 36px;
+              letter-spacing: -1%;
+
+          }
+
+          .text i {
+              rotate: -45deg;
+              font-size: 18px;
+          }
+
+          .rate {
+              color: #FEA420;
+
+              .text {
+                  color: #DAD8D8;
+              }
+          }
+      }
+  }
+
+  .detalis {
+      color: #595959;
+
+  }
+  .tabs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  background: #EDEDED;
+  border-radius: 50px;
+  padding: 5px;
+  margin-bottom: 30px;
+  width: 100%;
+    padding: 10px 20px;
+
+  button {
+    flex: 1;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    color: #777;
+
+    &.active {
+      background: #fff;
+      color: #000;
+    }
+  }
+}
+
+/* --- Services Layout (grid view) --- */
+.grid-view {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  width: 100%;
+
+  .cardpordcut {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .image-wrapper {
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .hours {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: #ffffffcc;
+        color: #000;
+        font-size: 13px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-weight: 600;
+      }
+    }
+
+    .card-body {
+      padding: 15px;
+
+      h3 {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      .location {
+        font-size: 14px;
+        color: #777;
+        margin-bottom: 10px;
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 14px;
+
+        .star {
+          color: #ffb400;
+        }
+
+        .rate {
+          font-weight: 600;
+        }
+
+        .count {
+          color: #888;
+        }
+      }
+    }
+  }
+}
+
+/* --- Products Layout (full width card) --- */
+.full-view {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  .full-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+
+
+
+    .image {
+      flex: 0 0 250px;
+
+      img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+      }
+    }
+
+    .info {
+      flex: 1;
+      padding: 15px;
+
+      h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: #777;
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 14px;
+
+        .star {
+          color: #ffb400;
+        }
+
+        .rate {
+          font-weight: 600;
+        }
+
+        .count {
+          color: #888;
+        }
+      }
+    }
+  }
+}

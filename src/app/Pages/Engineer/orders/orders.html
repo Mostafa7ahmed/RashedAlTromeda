@@ -1,0 +1,63 @@
+<div class="service mt-5 pt-5 container-fluid">
+
+    <div class="contentService">
+        <h1>الفئات</h1>
+        <p>اعتمد علينا كشريك موثوق به لحلول صيانة استثنائية تُحوّل مساحاتك إلى ملاذٍ جميل. يقدم فريقنا المتخصص مجموعة
+            واسعة من الخدمات المصممة خصيصًا لتلبية احتياجاتك الفريدة.</p>
+
+        <div class="searchInput">
+            <div class="inputSerch">
+                <i class="fa fa-search"></i>
+
+                <input type="text" placeholder="ابحث عن فئة...">
+            </div>
+            <div class="filtter">
+                <img src="Icons/mynaui_filter.svg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="cards-wrapper">
+        @for (card of services; track card._id) {
+        <div class="card p-3 ">
+
+            <div class="d-flex gap-2 ">
+                <img [src]="card.image" alt="service" class="order" />
+
+                <div class="flex-grow-1">
+                    <div class="card-top">
+
+                        <div class="text">
+                            <h3>{{ card.title }}</h3>
+                            <p>{{ card.location }}</p>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <span class="distance">
+                            <img src="Icons/mi_location.svg" alt="">
+                            {{ card.distance }} كم
+                        </span>
+                        <span>|</span>
+                        <span class="date">
+                            <img src="Icons/stash_data-date-light.svg" alt="">
+                            {{ card.date }}
+                        </span>
+                    </div>
+                    <div class="card-bottom">
+
+
+                        <div class="actions">
+                            <button class="accept">قبول</button>
+                            <button class="reject">رفض</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        }
+    </div>
+
+
+</div>

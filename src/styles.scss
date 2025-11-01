@@ -155,3 +155,66 @@ input[type="tel"] {
     color: var(--color-text-p);
 
 }
+
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+    margin-bottom: 50px;
+
+  .nav-btn {
+    border: 1px solid #ff6600;
+    background: transparent;
+    color: #ff6600;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #ff6600;
+      color: #fff;
+    }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: #ccc;
+    color: #aaa;
+    background: #f8f8f8;
+  }
+  }
+
+  .pages {
+    display: flex;
+    gap: 6px;
+
+    .page {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background: #fff;
+      color: #000;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: #ff6600;
+        color: #ff6600;
+      }
+
+      &.active {
+        color: #ff6600;
+        border: 1px solid #ff6600;
+      }
+      
+    }
+  }
+}

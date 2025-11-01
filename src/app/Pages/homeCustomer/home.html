@@ -118,6 +118,23 @@
 <app-features />
 
 
+<div class="services  container-fluid mb-5">
+    <div class="content mb-5">
+
+        <h2 class="text-center">   اختر الفئة التي تناسب احتياجك</h2>
+        <p>اعتمد علينا كشريك موثوق به لحلول صيانة استثنائية تُحوّل مساحاتك إلى ملاذٍ جميل. يقدم فريقنا المتخصص مجموعة
+            واسعة من الخدمات المصممة خصيصًا لتلبية احتياجاتك الفريدة.</p>
+    </div>
+
+    <app-cards-servies   [number]="6"/>
+
+    <div class="d-flex align-items-center justify-content-center">
+        <app-book-btn [route]="'/category'" [label]="'عرض جميع الخدمات'" [color]="buttonColor()">
+        </app-book-btn>
+    </div>
+
+</div>
+
 
 <div class="experience py-5">
 

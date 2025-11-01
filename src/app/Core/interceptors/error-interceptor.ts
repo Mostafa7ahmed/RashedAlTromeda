@@ -10,7 +10,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((error) => {
       if (error.status === 333) {
         console.error('Session expired - redirecting to login.');
-        router.navigate(['/login']);
+        router.navigate(['/Auth']);
         return throwError(() => error);
       }
 

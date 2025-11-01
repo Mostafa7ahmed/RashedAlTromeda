@@ -99,7 +99,7 @@
         background-position: center;
         cursor: pointer;
         transition: transform 0.3s ease-in-out;
-
+        background-image: url("../../../../../public/Image/aboutBG.jpg");
         &:hover {
             transform: translateY(-5px);
         }
