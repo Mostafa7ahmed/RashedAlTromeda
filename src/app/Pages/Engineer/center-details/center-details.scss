@@ -244,3 +244,30 @@
     }
   }
 }
+@media (max-width: 992px) {
+  .grid-view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .grid-view {
+    grid-template-columns: 1fr;
+  }
+
+  .full-card {
+    flex-direction: column;
+    .image {
+      flex:none !important ;
+      width: 100%;
+    }
+  }
+
+  .tabs {
+    flex-direction: column;
+    border-radius: 16px;
+    button {
+      width: 100%;
+    }
+  }
+}

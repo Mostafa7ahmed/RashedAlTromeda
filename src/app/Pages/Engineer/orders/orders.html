@@ -6,14 +6,13 @@
             واسعة من الخدمات المصممة خصيصًا لتلبية احتياجاتك الفريدة.</p>
 
         <div class="searchInput">
-            <div class="inputSerch">
+            
+            <div class="inputSerch d-flex align-items-center ">
                 <i class="fa fa-search"></i>
 
                 <input type="text" placeholder="ابحث عن فئة...">
             </div>
-            <div class="filtter">
-                <img src="Icons/mynaui_filter.svg" alt="">
-            </div>
+     
         </div>
     </div>
 
@@ -21,7 +20,7 @@
         @for (card of services; track card._id) {
         <div class="card p-3 ">
 
-            <div class="d-flex gap-2 ">
+            <div class="d-flex cardRow gap-2 ">
                 <img [src]="card.image" alt="service" class="order" />
 
                 <div class="flex-grow-1">

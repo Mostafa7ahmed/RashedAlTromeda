@@ -139,3 +139,14 @@
         flex: 1 1 100%;
     }
 }
+@media (max-width: 600px) {
+  .contact-left {
+
+    img {
+        width: 100%;
+    height: 350px !important;
+        object-fit: cover;
+    }
+    }
+
+}

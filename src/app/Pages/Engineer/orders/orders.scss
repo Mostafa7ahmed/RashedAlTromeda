@@ -99,8 +99,8 @@ box-shadow: 0px 0px 4px 0px #0000001f;
   overflow: hidden;
 
   transition: all 0.25s ease;
-
-
+display: flex;
+gap: 20px;
 
   .card-top {
     display: flex;
@@ -189,4 +189,61 @@ box-shadow: 0px 0px 4px 0px #0000001f;
       object-fit: cover;
       flex-shrink: 0;
     }
+}
+
+/* 🔻 Responsive Design 🔻 */
+@media (max-width: 1200px) {
+  .cards-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contentService p {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .cardRow {
+    flex-direction: column !important;
+    text-align: center;
+  } 
+  
+  .card img.order {
+    width: 100%;
+    height: 150px;
+  }
+
+  .contentService p {
+    width: 90%;
+    font-size: 16px;
+  }
+
+  .contentService h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchInput .inputSerch {
+    padding: 0 15px;
+    height: 50px;
+
+    input {
+      font-size: 14px;
+    }
+  }
+
+
+
+  .contentService h1 {
+    font-size: 28px;
+  }
+
+  .contentService p {
+    font-size: 15px;
+  }
 }

@@ -45,6 +45,25 @@
 
     }
 }
+@media (max-width: 576px) {
+  .aboutHero {
+    height: 70vh;
+    align-items: center;
+    text-align: center;
+  }
+
+  .info {
+        width: 100%;
+
+    text-align: center;
+    h3 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+}
 .rightSide{
     h4{
         font-family: Cairo;
@@ -74,7 +93,28 @@
          border-radius: 50%;
     }
 }
+@media (max-width: 992px) {
+  .aboutUs {
+    flex-direction: column;
+    text-align: center;
 
+    .rightSide {
+      order: 2;
+    }
+
+    .leftSide {
+      order: 1;
+      img{
+        width: 90%;
+      }
+    }
+
+    .contact {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}
 
 .cards-grid {
   display: grid;
@@ -82,7 +122,13 @@
   gap: 25px;
 
 }
-
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0 15px;
+  }
+}
 .card-box {
   background: #fff;
   border-radius: 12px;
@@ -161,6 +207,11 @@
     line-height: 1.9;
     margin: 0;
     font-weight: 600;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
