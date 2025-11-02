@@ -1,22 +1,35 @@
 <app-header-pages [title]="'الملف الشخصي'" />
 <div class="proflie container-fluid">
- <div class="sidebar-card">
+  <div class="sidebar-card">
     <ul class="sidebar-links">
       <li>
-        <a
-          routerLink="personal-info"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
+        <a routerLink="personal-info" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <img src="Icons/proicons_person.svg" alt="" />
           <span>المعلومات الشخصية</span>
         </a>
       </li>
-
+      <li>
+        <a routerLink="Schedule" routerLinkActive="active">
+          <img src="Icons/solar_calendar-linear.svg" alt="" />
+          <span>جدول العمل</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="rates" routerLinkActive="active">
+          <img src="Icons/symbols_reviews.svg" alt="" />
+          <span>المراجعات</span>
+        </a>
+      </li>
       <li>
         <a routerLink="suggestions" routerLinkActive="active">
           <img src="Icons/suggect.svg" alt="" />
           <span>الاقتراحات</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="Advertisement" routerLinkActive="active">
+          <img src="Icons/megaphone.svg" alt="" />
+          <span> الاعلانات</span>
         </a>
       </li>
 
@@ -27,6 +40,12 @@
         </a>
       </li>
 
+      <li>
+        <a routerLink="new-job" routerLinkActive="active">
+          <img src="Icons/hugeicons_new-job.svg" alt="" />
+          <span> التخصص</span>
+        </a>
+      </li>
       <li>
         <a routerLink="complaints" routerLinkActive="active">
           <img src="Icons/problem.svg" alt="" />
@@ -57,10 +76,10 @@
     </div>
   </div>
 
-<div class="routes">
- <router-outlet />
+  <div class="routes">
+    <router-outlet />
 
-</div>
+  </div>
 
 
 

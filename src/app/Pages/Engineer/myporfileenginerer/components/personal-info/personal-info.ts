@@ -6,6 +6,8 @@ import { Streem } from '../../../../../Core/service/streem';
 import { environment } from '../../../../../../environments/environment';
 import { UpdateProfile } from '../../../../../Core/Interface/iprofile-customer';
 import { SweetAlert } from '../../../../../Core/service/sweet-alert';
+import { ProfileEngineerService } from '../../../../../Core/service/engineer/profile';
+import { IProfileEngineer, UpdateProfileEngineer } from '../../../../../Core/Interface/iprofile-engineer';
 
 @Component({
   selector: 'app-personal-info',
@@ -15,23 +17,20 @@ import { SweetAlert } from '../../../../../Core/service/sweet-alert';
   standalone: true
 })
 export class PersonalInfo implements OnInit {
-  // Constants
-  readonly SearchCountryField = SearchCountryField;
+ readonly SearchCountryField = SearchCountryField;
   readonly CountryISO = CountryISO;
   readonly defaultImage = 'https://randomuser.me/api/portraits/men/32.jpg';
   readonly baseUrl = environment.baseUrl;
 
-  // Signals
   fullName = signal('');
   phone = signal('');
-  phoneSend = signal('');
   points = signal(0);
-  address = signal('');
-  latitude = signal(0);
-  longitude = signal(0);
   image = signal<string>(this.defaultImage);
   isUploading = signal(false);
-  private _profile = inject(Profile);
+  summary = signal('');
+
+  private originalProfile?: IProfileEngineer;
+  private _profile = inject(ProfileEngineerService);
   private _upload = inject(Streem);
   private _alert = inject(SweetAlert);
 
@@ -42,13 +41,11 @@ export class PersonalInfo implements OnInit {
   private loadProfile() {
     this._profile.getProfile().subscribe({
       next: ({ result }) => {
+        this.originalProfile = result;
         const user = result.userDto;
         this.fullName.set(user.name);
         this.phone.set(user.phone);
-        this.points.set(result.totalPoint);
-        this.address.set(user.address || '');
-        this.latitude.set(user.latitude || 0);
-        this.longitude.set(user.longitude || 0);
+        this.summary.set(result.summary);
         this.setImage(user.photoUrl);
       },
       error: console.error
@@ -62,54 +59,64 @@ export class PersonalInfo implements OnInit {
       : `${this.baseUrl}${photoUrl.startsWith('/') ? photoUrl.slice(1) : photoUrl}`;
     this.image.set(fullUrl);
   }
-onFileSelected(event: Event) {
-  const file = (event.target as HTMLInputElement).files?.[0];
-  if (!file) return;
 
-  const reader = new FileReader();
-  reader.onload = () => this.image.set(reader.result as string);
-  reader.readAsDataURL(file);
+  onFileSelected(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
 
-  this.isUploading.set(true);
-  this._upload.uploadStreem(file).subscribe({
-    next: ({ result }) => {
-      this.setImage(result.url);
-      this.isUploading.set(false);
-    },
-    error: (err) => {
-      this._alert.toast(err.error?.message || 'حدث خطأ أثناء رفع الصورة', 'error');
-      this.isUploading.set(false);
-    }
-  });
-}
-  onSave() {
-    const profileData: UpdateProfile = {
-      name: this.fullName(),
-      address: this.address(),
-      photoUrl: this.image().replace(this.baseUrl, ''),
-      latitude: this.latitude(),
-      longitude: this.longitude(),
-    };
+    const reader = new FileReader();
+    reader.onload = () => this.image.set(reader.result as string);
+    reader.readAsDataURL(file);
 
-    this._profile.updateProfile(profileData).subscribe({
-      next: res => {
-        this._alert.toast( res.message || 'تم الحفظ بنجاح', 'success');
+    this.isUploading.set(true);
+    this._upload.uploadStreem(file).subscribe({
+      next: ({ result }) => {
+        this.setImage(result.url);
+        this.isUploading.set(false);
       },
-
-      error: err => {
-              this._alert.toast(err.error?.message || 'حدث خطأ أثناء  التحديث', 'error');
-
+      error: (err) => {
+        this._alert.toast(err.error?.message || 'حدث خطأ أثناء رفع الصورة', 'error');
+        this.isUploading.set(false);
       }
     });
   }
 
-  get phoneModel() {
+  onSave() {
+    if (!this.originalProfile) return;
+
+    // نحافظ على باقي البيانات كما هي ونغيّر فقط الاسم والصورة
+    const { summary, startYear, identityPhotoUrl, services, countryId, planId } = this.originalProfile;
+    const { latitude, longitude, address } = this.originalProfile.userDto;
+
+    const profileData: UpdateProfileEngineer = {
+      name: this.fullName(),
+      photoUrl: this.image().replace(this.baseUrl, ''),
+      address: address ?? '',
+      latitude: latitude ?? 0,
+      longitude: longitude ?? 0,
+      summary: this.summary(),
+      startYear: startYear ?? 0,
+      identityPhotoUrl: identityPhotoUrl ?? '',
+      services: services ?? [],
+      countryId: countryId ?? 0,
+      planId: planId ?? 0,
+    };
+
+    this._profile.updateProfile(profileData).subscribe({
+      next: res => {
+        this._alert.toast(res.message || 'تم تحديث البيانات بنجاح', 'success');
+      },
+      error: err => {
+        this._alert.toast(err.error?.message || 'حدث خطأ أثناء التحديث', 'error');
+      }
+    });
+  }
+    get phoneModel() {
     return this.phone();
   }
 
   set phoneModel(value: any) {
     this.phone.set(typeof value === 'string' ? value : value?.nationalNumber   ?? '');
   }
-
 
 }

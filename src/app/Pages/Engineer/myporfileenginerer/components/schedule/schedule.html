@@ -1,0 +1,37 @@
+<div class="suggestion">
+  <div class="headerTitle">
+    <h3>جدول العمل</h3>
+ 
+
+    <button class="btn"  (click)="openPopup()">اضافة يوم <i class="fa-solid fa-plus"></i></button>
+
+  </div>
+    <p class="subtitle"> أيام عملك</p>
+
+<div class="days-container">
+    @for (day of days(); track day.id) {
+      <!-- اسم اليوم -->
+      <div class="bodyCard d-flex justify-content-between align-items-center gap-2 flex-column">
+        <span class="day-name">{{ day.name }}</span>
+
+        <div
+          class="day-card"
+          [class.active]="getScheduleForDay(day.id)"
+        >
+          <span class="day-number">
+            @if (getScheduleForDay(day.id)) {
+              {{ getScheduleForDay(day.id)?.startTime?.slice(0, 5) }}
+              -
+              {{ getScheduleForDay(day.id)?.endTime?.slice(0, 5) }}
+            } @else {
+               اجازه
+            }
+          </span>
+        </div>
+      </div>
+    }
+  </div>
+
+
+
+</div>

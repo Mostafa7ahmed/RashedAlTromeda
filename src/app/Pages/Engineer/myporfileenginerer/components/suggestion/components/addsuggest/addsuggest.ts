@@ -34,7 +34,7 @@ images = signal<{ id?: number; url?: string; isUploading: boolean }[]>([]);
   });
 
   closePopup() {
-    this.router.navigate([{ outlets: { popup: null } }]);
+this.router.navigate(['/engineer', { outlets: { popup: null } }]);
   }
 
 onFilesSelected(event: Event): void {
@@ -65,7 +65,6 @@ onFilesSelected(event: Event): void {
       },
       error: (err) => {
         console.error('Upload image error:', err);
-        // حذف الصورة المؤقتة في حال فشل الرفع
         this.images.update((prev) => prev.filter((img) => img !== tempImg));
       },
     });

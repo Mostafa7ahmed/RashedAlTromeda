@@ -10,7 +10,7 @@ import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
   templateUrl: './myporfileenginerer.html',
   styleUrls:[ './myporfileenginerer.scss', '../../../Shared/CSS/input.scss']
 })
-export class Myporfile {
+export class MyporfileEngineer {
   _login = inject(LoginService);
 
 

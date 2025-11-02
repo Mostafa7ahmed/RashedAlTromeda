@@ -47,7 +47,8 @@ export class AddComplaint {
     this.selectedEngineer.set(engineer);
   }
   closePopup() {
-    this.router.navigate([{ outlets: { popup: null } }]);
+this.router.navigate(['/engineer', { outlets: { popup: null} }]);
+
   }
 
   onFilesSelected(event: Event): void {

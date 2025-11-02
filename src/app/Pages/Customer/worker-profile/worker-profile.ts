@@ -5,7 +5,7 @@ import { IEngineerProfile, Service } from '../../../Core/Interface/iengineer';
 import { IEngineerSchedule } from '../../../Core/Interface/iengineer-schedule';
 import { IRate } from '../../../Core/Interface/irate';
 import { Engineer } from '../../../Core/service/engineer';
-import { Schedule } from '../../../Core/service/schedule';
+import { ScheduleService } from '../../../Core/service/schedule';
 import { Rate } from '../../../Core/service/rate';
 import { ExperiencePipe } from '../../../Shared/pipes/experience-pipe';
 import { environment } from '../../../../environments/environment';
@@ -20,7 +20,7 @@ import { Rates } from './Components/rates/rates';
 export class WorkerProfile {
   private _engineerService = inject(Engineer);
   private _route = inject(ActivatedRoute);
-  private _scheduleService = inject(Schedule);
+  private _scheduleService = inject(ScheduleService);
 
   // ✅ signals
   engineerProfile = signal<IEngineerProfile | null>(null);

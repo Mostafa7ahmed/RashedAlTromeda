@@ -11,6 +11,29 @@
     width: 316px;
     border-radius: 16px;
     padding: 24px;
+        height: 610px;
+    overflow: scroll;
+      overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 10px;
+  }
+
+ 
+  scrollbar-width: thin;
+  scrollbar-color: #f36b14 #fff; 
+   &::-webkit-scrollbar-button {
+    display: none;
+    height: 0;
+    width: 0;
+  
+  }
     .sidebar-header {
     display: flex;
     align-items: center;

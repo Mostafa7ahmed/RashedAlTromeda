@@ -2,37 +2,40 @@
     <h3>المعلومات الشخصية</h3>
 
     <div class="aboutme">
-            <div class="avatar" (click)="fileInput.click()">
+        <div class="avatar" (click)="fileInput.click()">
             <img [src]="image()" alt="Profile" />
             <span class="camera"><i class="fa-regular fa-camera"></i></span>
             <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" hidden />
-            </div>
+        </div>
         <div class="title">
             <h3 class="name mb-2">{{ fullName() }}</h3>
-            <p class="points mb-0">{{ points() }} points</p>
         </div>
     </div>
 
     <form (ngSubmit)="onSave()">
         <div class="position-relative mt-4 mb-5">
-<input class="input-cal input-base inputFloating" placeholder="" name="fullName" [(ngModel)]="fullName" />
+            <input class="input-cal input-base inputFloating" placeholder="" name="fullName" [(ngModel)]="fullName" />
             <label id="label-input">الاسم بالكامل</label>
         </div>
-
+        <div class="position-relative mt-4 mb-5">
+            <textarea class="input-cal input-base inputFloating" cols="10" placeholder="" name="summary"
+                [(ngModel)]="summary"></textarea>
+            <label id="label-input"> وصف</label>
+        </div>
         <div class="cardsForm d-flex gap-3 mb-5">
             <div class="position-relative w-100 p-0 border-0">
                 <ngx-intl-tel-input [cssClass]="'custom'" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
                     [customPlaceholder]="'اكتب رقم الهاتف هنا'" [searchCountryFlag]="true"
                     [searchCountryField]="[SearchCountryField.All]" [selectFirstCountry]="false"
                     [selectedCountryISO]="CountryISO.Egypt" [separateDialCode]="true" [phoneValidation]="true"
-                    name="phone" class="input-cal p-0 input-base inputFloating" [(ngModel)]="phoneModel"
-                    name="phone"  [disabled]="true">
+                    name="phone" class="input-cal p-0 input-base inputFloating" [(ngModel)]="phoneModel" name="phone"
+                    [disabled]="true">
                 </ngx-intl-tel-input>
                 <label id="label-input">رقم الهاتف</label>
             </div>
         </div>
 
-        <button class="btnsave"  [disabled]="isUploading()"> حفظ
-</button>
+        <button class="btnsave" [disabled]="isUploading()"> حفظ
+        </button>
     </form>
 </div>

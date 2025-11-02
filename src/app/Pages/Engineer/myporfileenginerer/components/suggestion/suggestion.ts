@@ -59,7 +59,7 @@ export class Suggestion {
   }
 
   openPopup() {
-    this.router.navigate([{ outlets: { popup: ['addsuggest'] } }]);
+this.router.navigate(['/engineer', { outlets: { popup: ['addsuggest'] } }]);
   }
 
   togglePlay(card: any) {

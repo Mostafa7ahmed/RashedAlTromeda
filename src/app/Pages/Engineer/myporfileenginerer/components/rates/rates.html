@@ -1,0 +1,40 @@
+  <div class="headerTitle">
+    <h3>المراجعات</h3>
+ 
+
+
+  </div>
+@if (engineerRate().length ) {
+<div class="reating">
+  <div class="cardsReatiing">
+    @for (r of engineerRate(); track r.id) {
+    <div class="review-card">
+      <div class="review-header">
+        <div class="user-info">
+          <img [src]="baseUrl + r.craator.photoUrl" alt="user" class="avatar" />
+          <div>
+            <h4>{{ r.craator.name }}</h4>
+            <h5>
+              <span class="rate"><i class="fa-solid fa-star"></i> {{ r.value }}</span>
+            </h5>
+          </div>
+        </div>
+        <span class="date"> <i class="fa-regular fa-calendar"></i> {{ r.createdOn | date}} </span>
+      </div>
+
+      <div class="footerreview d-flex justify-content-between align-items-center">
+        <p class="review-text">{{ r.comment }}</p>
+        <div class="review-footer cr">
+          <span class="likes"> <i class="fa-regular fa-thumbs-up"></i> {{ getRandomLikes()}} </span>
+        </div>
+
+      </div>
+    </div>
+    }
+  </div>
+</div>
+
+}
+@else {
+  <div class="no-data"> لا يوجد مراجعات</div>
+}

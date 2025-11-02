@@ -7,3 +7,11 @@ export interface IEngineerSchedule {
   endTime: string;     // "HH:mm:ss"
   isHoliday: boolean;
 }
+
+export interface ISchedule {
+  id: number;
+  engineerId: number;
+  dayOfWeek: number;
+  startTime: string;
+  endTime: string;
+}

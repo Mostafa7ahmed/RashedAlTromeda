@@ -10,16 +10,20 @@ import { IAddRate, IRate } from '../Interface/irate';
   providedIn: 'root'
 })
 export class Rate {
-   
-    private _http = inject(HttpClient);
-    private baseUrl: string = `${environment.apiUrl}rating/paginate`;
+
+  private _http = inject(HttpClient);
+  private baseUrl: string = `${environment.apiUrl}rating/paginate`;
   private addUrl: string = `${environment.apiUrl}rating`;
 
-    getRateByEngineer(engineerId: number):Observable<IPaginationResponse<IRate>> {
-      const url = `${this.baseUrl}?engineerId=${engineerId}&sortDirection=0`;
-      return this._http.get<IPaginationResponse<IRate>>(url);
-    }
-      addRate(payload:IAddRate): Observable<IResponseOf<IRate>> {
+  getRateByEngineer(engineerId: number): Observable<IPaginationResponse<IRate>> {
+    const url = `${this.baseUrl}?engineerId=${engineerId}&sortDirection=0`;
+    return this._http.get<IPaginationResponse<IRate>>(url);
+  }
+  getAllRates(): Observable<IPaginationResponse<IRate>> {
+    const url = `${this.baseUrl}?sortDirection=0`;
+    return this._http.get<IPaginationResponse<IRate>>(url);
+  }
+  addRate(payload: IAddRate): Observable<IResponseOf<IRate>> {
     return this._http.post<IResponseOf<IRate>>(this.addUrl, payload);
   }
 }

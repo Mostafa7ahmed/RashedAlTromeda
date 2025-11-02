@@ -74,7 +74,8 @@ onSearch(event: Event) {
   }
 
   openPopup() {
-    this.router.navigate([{ outlets: { popup: ['addcomplaint'] } }]);
+    this.router.navigate(['/engineer', { outlets: { popup: ['addcomplaint'] } }]);
+
   }
 
   private loadComplaints() {

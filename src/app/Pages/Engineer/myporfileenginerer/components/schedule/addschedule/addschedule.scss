@@ -1,0 +1,73 @@
+form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        label {
+          font-weight: 600;
+          font-size: 14px;
+          margin-top: 4px;
+        }
+
+        .days-select {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          margin-bottom: 10px;
+
+          .day-option {
+            min-width: 90px;
+            height: 40px;
+            border: 1px solid #bfbfbf;
+            border-radius: 6px;
+            background-color: white;
+            color: #8c8c8c;
+            font-weight: 500;
+            font-size: 15px;
+            cursor: default;
+
+
+            &.selected {
+               background-color: #f37b1f;
+      color: white;
+      border-color: #f37b1f;
+            }
+
+        
+          }
+        }
+
+        input {
+          padding: 8px;
+          border-radius: 6px;
+          border: 1px solid #ccc;
+        }
+
+        .actions {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 12px;
+
+          .save {
+            background: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+          }
+
+          .cancel {
+            background: #ccc;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+          }
+        }
+      }
+
+
+.bodyAdd{
+    height: fit-content !important;
+}

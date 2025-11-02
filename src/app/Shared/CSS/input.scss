@@ -321,3 +321,8 @@ ngx-intl-tel-input {
   background-color: var(--error);
   color: var(--white);
 }
+textarea{
+  height: auto !important;
+  resize: none;
+  scrollbar-width: none;
+}

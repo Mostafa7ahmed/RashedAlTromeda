@@ -1,0 +1,81 @@
+ .cardsReatiing{
+      height: 500px;
+    overflow: scroll;
+    scrollbar-width: none;
+ }
+  .reating {
+    margin-top: 20px;
+
+    .review-card {
+      width: 100%;
+      margin: 20px 0;
+      background: #fff;
+      border: 1px solid #6c757d1c;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 16px 20px;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .user-info h4 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .rate {
+      font-size: 14px;
+      color: #fea420;
+    }
+
+    .date {
+      font-size: 13px;
+      color: #777;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .review-text {
+      margin: 12px 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .review-footer {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .likes {
+      color: #f97316;
+      /* لون برتقالي */
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+

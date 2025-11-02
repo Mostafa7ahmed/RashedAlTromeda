@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ProfileCompletion } from '../../../../../Core/service/Customer/profile-completion';
 import * as L from 'leaflet';
 import { ReactiveModeuls } from '../../../../../Shared/Modules/ReactiveForms.module';
 import { Profile } from '../../../../../Core/service/Customer/profile';
 import { UpdateProfile, UserDto } from '../../../../../Core/Interface/iprofile-customer';
 import { SweetAlert } from '../../../../../Core/service/sweet-alert';
+import { ProfileCompletion } from '../../../../../Core/service/engineer/profile-completion';
+import { ProfileEngineerService } from '../../../../../Core/service/engineer/profile';
+import { UpdateProfileEngineer } from '../../../../../Core/Interface/iprofile-engineer';
 
 @Component({
   selector: 'app-location',
@@ -17,8 +19,9 @@ export class Location {
   form: FormGroup;
   private map!: L.Map;
   private marker!: L.Marker;
-  private _profile = inject(Profile);
+  private _profile = inject(ProfileEngineerService);
 private _profileUser!: UserDto;
+private _profileData: any;
 
   private _alert = inject(SweetAlert);
 
@@ -52,45 +55,40 @@ private _profileUser!: UserDto;
     this.loadProfile();
   }
 
-  private loadProfile() {
-    this._profile.getProfile().subscribe({
-      next: (res) => {
-        const user = res.result.userDto;
-          this._profileUser = user;
-        this.form.patchValue({
-          address: user.address,
-          latitude: user.latitude,
-          longitude: user.longitude
-        });
+private loadProfile() {
+  this._profile.getProfile().subscribe({
+    next: (res) => {
+      const profile = res.result;
+      this._profileData = profile; 
 
-        this.marker = L.marker([user.latitude, user.longitude], { draggable: true })
-          .addTo(this.map)
-          .bindPopup('اسحب العلامة لتغيير موقعك')
-          .openPopup();
+      const user = profile.userDto;
+      this._profileUser = user;
 
-        this.map.setView([user.latitude, user.longitude], 15);
+      this.form.patchValue({
+        address: user.address,
+        latitude: user.latitude,
+        longitude: user.longitude
+      });
 
-        this.marker.on('dragend', (e: any) => {
-          const { lat, lng } = e.target.getLatLng();
-          this.setMarker(lat, lng);
-        });
+      this.marker = L.marker([user.latitude, user.longitude], { draggable: true })
+        .addTo(this.map)
+        .bindPopup('اسحب العلامة لتغيير موقعك')
+        .openPopup();
 
-        this.map.on('click', (e: any) => this.setMarker(e.latlng.lat, e.latlng.lng));
+      this.map.setView([user.latitude, user.longitude], 15);
 
-        // @ts-ignore
-        L.Control.geocoder({ defaultMarkGeocode: false })
-          .on('markgeocode', (e: any) => {
-            const latlng = e.geocode.center;
-            this.setMarker(latlng.lat, latlng.lng);
-            this.form.patchValue({ address: e.geocode.name });
-          })
-          .addTo(this.map);
-      },
-      error: (err) => {
-        console.error('Error loading profile:', err);
-      }
-    });
-  }
+      this.marker.on('dragend', (e: any) => {
+        const { lat, lng } = e.target.getLatLng();
+        this.setMarker(lat, lng);
+      });
+
+      this.map.on('click', (e: any) => this.setMarker(e.latlng.lat, e.latlng.lng));
+    },
+    error: (err) => {
+      console.error('Error loading profile:', err);
+    }
+  });
+}
 
   private setMarker(lat: number, lon: number) {
     if (this.marker) this.marker.setLatLng([lat, lon]);
@@ -136,22 +134,31 @@ useMyLocation() {
 
 submit() {
   const user = this._profileUser; 
-
   if (!user) return;
 
-  const payload: UpdateProfile = {
-    id: user.id,
+  // بنفترض إنك خزّنت الـ profile الكامل في متغير عند تحميل البيانات
+  const profile = this._profileData; // نحفظه في loadProfile (هتشوفها تحت 👇)
+
+  // نبني الـ payload على أساس البيانات القديمة مع تحديث العنوان فقط
+  const payload: UpdateProfileEngineer = {
     name: user.name,
-    photoUrl: user.photoUrl ,
     address: this.form.value.address,
+    photoUrl: user.photoUrl,
     latitude: this.form.value.latitude,
-    longitude: this.form.value.longitude
+    longitude: this.form.value.longitude,
+    summary: profile.summary,
+    startYear: profile.startYear,
+    identityPhotoUrl: profile.identityPhotoUrl,
+    services: profile.services,
+    countryId: profile.countryId,
+    planId: profile.planId,
   };
 
+  console.log('📦 Payload sent:', payload);
 
   this.ProfileCompletion.ProfileCompletion(payload).subscribe({
     next: res => {
-      this._alert.toast(res.message || 'تم الحفظ بنجاح', 'success');
+      this._alert.toast(res.message || 'تم تحديث العنوان بنجاح', 'success');
     },
     error: err => {
       this._alert.toast(err.error?.message || 'حدث خطأ أثناء حفظ البيانات', 'error');
