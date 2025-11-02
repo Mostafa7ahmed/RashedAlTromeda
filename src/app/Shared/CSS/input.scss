@@ -181,7 +181,9 @@ ngx-intl-tel-input {
   // display:  none !important;
 
 }
-
+::ng-deep .dropdown-menu.show {
+  inset: 0 !important;
+}
 ::ng-deep .search-container {
   outline-color: var(--button-text);
   outline: unset;

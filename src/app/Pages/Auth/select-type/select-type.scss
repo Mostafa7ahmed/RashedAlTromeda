@@ -73,9 +73,10 @@
 
 @media (max-width: 576px) {
     .cardSelects{
-        height: 500px;
+        height: 450px;
         overflow-y: scroll;
         scrollbar-width: none;
+        padding-bottom: 50px;
     }
  img{
         height: 60px;
