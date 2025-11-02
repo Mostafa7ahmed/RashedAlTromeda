@@ -3,10 +3,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 40px;
+  padding: 10px 30px;
   background: var(--color-white);
   height: 90px;
-  
+  position: relative;
+  z-index: 100;
+
+  .showLg {
+    display: none !important;
+  }
+
   .navbar-logo img {
     height: 60px;
   }
@@ -15,71 +21,104 @@
     list-style: none;
     display: flex;
     gap: 40px;
+    transition: all 0.3s ease;
 
     li a {
       text-decoration: none;
       font-size: 18px;
       color: var(--color-black-1);
       transition: 0.3s;
-       font-weight: regular;
-      &.active {
-        color: var(--color-orange);
-        font-weight: bolder;
-      }
+      font-weight: 400;
 
+      &.active,
       &:hover {
         color: var(--color-orange);
+        font-weight: 600;
       }
     }
   }
 
-  .navbar-actions {
+  .profileMore {
     display: flex;
+    align-items: center;
     gap: 15px;
-
-    .btn-outline {
-      background: transparent;
-      border: 1px solid var(--color-orange);
-      color: var(--color-orange);
-      padding: 8px 18px;
-      border-radius: 25px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: 0.3s;
-        font-weight: 600;
-
-      i {
-        margin-left: 5px;
-      }
-
-      &:hover {
-        background: var(--color-orange);
-        color: var(--color-white);
-      }
-    }
-
-    .btn-fill {
-      background: var(--color-orange);
-      border: none;
-      color: var(--color-white);
-      padding: 8px 20px;
-      border-radius: 25px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: 0.3s;
-        font-weight: 600;
-
-      i {
-        margin-left: 5px;
-      }
-
-      &:hover {
-        opacity: 0.9;
-      }
-    }
   }
-  .porfile{
+
+  /* زر القائمة في الموبايل */
+  .menu-toggle {
+    display: none;
+    font-size: 26px;
+    color: var(--color-orange);
+    border: 1px solid var(--color-orange);
+    border-radius: 8px ;
+    padding:  5px;
     cursor: pointer;
+  }
+
+  /* ========== Responsive ========== */
+  @media (max-width: 992px) {
+    padding: 10px 20px;
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .showLg {
+      display: flex !important;
+    }
+
+    .showS {
+      display: none !important;
+    }
+
+    .navbar-links {
+      position: absolute;
+      top: 90px;
+      left: 0;
+      width: 100%;
+      background: var(--color-white);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+
+      &.open {
+        max-height: 400px;
+        opacity: 1;
+        visibility: visible;
+      }
+
+      li a {
+        width: 100%;
+        font-size: 17px;
+        padding: 8px 0;
+      }
+    }
+
+    .profileMore {
+      gap: 10px;
+
+
+    }
+
+  }
+
+  @media (max-width: 576px) {
+    .navbar-logo img {
+      height: 50px;
+    }
+
+    .profileMore {
+      .profileImage img {
+        width: 35px;
+        height: 35px;
+      }
+    }
   }
 }
 
@@ -92,8 +131,7 @@
   border: 1px solid #ddd;
   border-radius: 25px;
   cursor: pointer;
-    background: var(--color-white);
-  width: fit-content;
+  background: var(--color-white);
   user-select: none;
 
   .flag {
@@ -116,6 +154,7 @@
     transform: rotate(45deg);
     margin-left: 5px;
     transition: transform 0.3s ease;
+
     &.open {
       transform: rotate(-135deg);
     }
@@ -142,6 +181,9 @@
       cursor: pointer;
       transition: background 0.2s;
 
+      &:hover {
+        background: #f6f6f6;
+      }
     }
   }
 }

@@ -106,6 +106,105 @@
         }
     }
 }
-::ng-deep .owl-theme{
-    width:550px !important;
+
+::ng-deep .owl-theme {
+    width: 550px !important;
+    transition: width 0.3s ease;
+}
+
+
+/* ✅ من أول 992 لحد 768 */
+@media (max-width: 992px) {
+    .testimonials-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .title-side p {
+        width: 100%;
+    }
+
+   :host ::ng-deep .owl-theme {
+        width: 450px !important;
+    }
+       .testimonial-card {
+        width: 450px !important;
+    }
+}
+
+/* ✅ من أول 768 لحد 576 */
+@media (max-width: 768px) {
+    .testimonials-section {
+        padding: 50px 0;
+        gap: 30px;
+    }
+
+    .title-side h2 {
+        font-size: 32px;
+        line-height: 45px;
+    }
+
+    .custom-arrows {
+        justify-content: center;
+    }
+
+  
+
+}
+
+/* ✅ شاشات الموبايل الصغيرة */
+@media (max-width: 576px) {
+    .testimonials-section {
+        padding: 40px 10px;
+    }
+
+    .title-side h2 {
+        font-size: 26px;
+        line-height: 36px;
+    }
+
+    .title-side p {
+        font-size: 14px;
+    }
+
+
+   :host ::ng-deep .owl-theme {
+        width:350px !important;
+    }
+       .testimonial-card {
+        width: 350px !important;
+        
+        .testimonial-image {
+         display: none !important;
+        }
+    }
+ 
+}
+@media (max-width: 420px) {
+    .testimonials-section {
+        padding: 40px 10px;
+    }
+
+    .title-side h2 {
+        font-size: 26px;
+        line-height: 36px;
+    }
+
+    .title-side p {
+        font-size: 14px;
+    }
+
+
+   :host ::ng-deep .owl-theme {
+        width:320px !important;
+    }
+       .testimonial-card {
+        width: 320px !important;
+        
+        .icon {
+         display: none !important;
+        }
+
+    }
+ 
 }

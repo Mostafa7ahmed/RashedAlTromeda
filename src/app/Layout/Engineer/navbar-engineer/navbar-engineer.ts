@@ -16,6 +16,7 @@ import { environment } from '../../../../environments/environment';
 export class NavbarEngineer {
     private _user = inject(LoginService);
   baseUrl: string = environment.baseUrl;
+  menuOpen = false; // ✅ لإدارة فتح/إغلاق القائمة
 
   userImage = 'Icons/logoNavbar.svg';
  languages = [
