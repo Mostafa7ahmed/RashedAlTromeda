@@ -23,7 +23,6 @@ width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-  height: 100%;
 }
 .leftSide{
     height: 90%;
@@ -66,3 +65,61 @@ width: 100%;
 
 }
 
+@media (max-width: 1200px) {
+  .leftSide {
+    padding: 40px;
+  }
+  .leftSide p {
+    width: 80%;
+  }
+  .textAuth{
+    display: none;
+  }
+
+  .leftSide h3 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 992px) {
+  .authRoute {
+    flex-direction: column;
+    align-items: self-start;
+    justify-content: end;
+    padding: 20px;
+    padding-bottom: 0;
+            height: 100%;
+
+  }
+  .logo{
+    img{
+      width: 100px;
+    }
+  }
+  .leftSide {
+    text-align: center;
+    align-items: center;
+
+   
+  }
+
+  .rightSide {
+    width: 90%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .bgauth {
+    background-position: top;
+  }
+  .leftSide {
+display: none;}
+
+   
+
+  .rightSide {
+    width: 100%;
+    padding: 16px;
+  }
+}

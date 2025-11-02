@@ -68,8 +68,15 @@
         margin: 0;
 
     }
-    img{
-        height: 120px;
+   
+}
+
+@media (max-width: 576px) {
+ img{
+        height: 70px;
         
+    }
+    .selectCard{
+        width: 90%;
     }
 }
