@@ -17,3 +17,13 @@ export interface IProfileCompletion {
     longitude: number;
     photoUrl: string;
 }
+
+export interface IEngineer {
+  name: string
+  phoneNumber: string
+  countryId: number
+  planId: number
+  identityPhotoUrl: string
+  password: string
+  confirmPassword: string
+}

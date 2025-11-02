@@ -1,57 +1,79 @@
 <div class="loginCard relative">
     <div class="d-flex justify-content-between ">
         <span> دعنا نبدأ معك</span>
-        <span class="fw-bold cr link-underline-danger" routerLink="auth/selectType">عوده اللي الخلف</span>
+        <span class="fw-bold cr link-underline-danger" routerLink="auth/selectType">عودة للخلف</span>
     </div>
-    <h4 class="mt-4">  إنشاء حساب لمهندس جديد</h4>
 
-    <form action="" [formGroup]="form" class="mt-5" (ngSubmit)="submit()">
+    <h4 class="mt-4"> إنشاء حساب لمهندس جديد</h4>
+
+    <form [formGroup]="form" class="mt-5" >
+        <div class="avatar-upload">
+            <label class="avatar-wrapper" for="avatarInput">
+                <img [src]="avatarUrl()" alt="avatar" class="avatar-img" />
+                <div class="upload-overlay">
+                    <i class="fa fa-camera"></i>
+                </div>
+            </label>
+            <input type="file" id="avatarInput" accept="image/*" (change)="onFileSelected($event)" hidden />
+        </div>
 
         <div class="position-relative mt-4 mb-4">
             <input class="input-cal input-base inputFloating" formControlName="name" placeholder="" />
             <label id="label-input"> الاسم بالكامل </label>
-
         </div>
 
         <div class="cardsForm d-flex gap-3 mb-4">
-            <div class="position-relative w-100  p-0 border-0">
+            <div class="position-relative w-100 p-0 border-0">
                 <ngx-intl-tel-input [cssClass]="'custom'" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
                     [customPlaceholder]="'اكتب رقم الهاتف هنا'" [searchCountryFlag]="true"
-                    [searchCountryField]="[SearchCountryField.All]" [selectFirstCountry]="false"
-                    [selectedCountryISO]="CountryISO.Egypt" [separateDialCode]="true" [phoneValidation]="true"
-                    formControlName="phone" name="phone" class="input-cal p-0 input-base inputFloating">
+                    [searchCountryField]="[SearchCountryField.All]" [selectedCountryISO]="CountryISO.Egypt"
+                    [separateDialCode]="true" [phoneValidation]="true" formControlName="phoneNumber" name="phone"
+                    class="input-cal p-0 input-base inputFloating">
                 </ngx-intl-tel-input>
                 <label id="label-input"> رقم الهاتف</label>
             </div>
- 
+        </div>
+        <div class="position-relative mt-4 mb-4">
+            <ng-select [items]="countries()" bindLabel="name" bindValue="id" [searchable]="true"
+                placeholder="اختر الدولة" formControlName="countryId" (change)="onSelect($event)"
+                class="custom-select input-cal input-base inputFloating">
+                <ng-template ng-label-tmp let-item="item">
+                    <div class="option">
+                        <img [src]="item.flag" alt="flag" />
+                        <span>{{ item.name }}</span>
+                    </div>
+                </ng-template>
+
+                <ng-template ng-option-tmp let-item="item">
+                    <div class="option">
+                        <img [src]="item.flag" alt="flag" />
+                        <span>{{ item.name }}</span>
+                    </div>
+                </ng-template>
+            </ng-select>
+
+            <label id="label-input">الدولة</label>
         </div>
         <div class="position-relative mb-4">
             <input class="input-cal input-base inputFloating" formControlName="password" placeholder=""
                 [type]="passwordFieldType ? 'password' : 'text'" />
             <label id="label-input">كلمه المرور</label>
             <i (click)="togglePasswordVisibility()" role="button" class="fa-solid position-absolute passicon"
-                [class.fa-eye]="passwordFieldType" [class.fa-eye-slash]="!passwordFieldType">
-            </i>
+                [class.fa-eye]="passwordFieldType" [class.fa-eye-slash]="!passwordFieldType"></i>
         </div>
+
         <div class="position-relative mb-4">
-            <input class="input-cal input-base inputFloating" formControlName="confirmedPassword" placeholder=""
+            <input class="input-cal input-base inputFloating" formControlName="confirmPassword" placeholder=""
                 [type]="passwordFieldType ? 'password' : 'text'" />
             <label id="label-input"> تأكيد كلمه المرور </label>
             <i (click)="togglePasswordVisibility()" role="button" class="fa-solid position-absolute passicon"
-                [class.fa-eye]="passwordFieldType" [class.fa-eye-slash]="!passwordFieldType">
-            </i>
+                [class.fa-eye]="passwordFieldType" [class.fa-eye-slash]="!passwordFieldType"></i>
         </div>
+        <button type="submit"  [disabled]="isUploading()" class="login-btn" (click)="submit()">إنشاء حساب</button>
 
-
-
-        <button type="submit" class="login-btn"> انشاء حساب</button>
     </form>
-
-
-
 </div>
 
-
-<div class="resiterRoute ">
-    <h5>لديك  حساب بالفعل ؟ <a routerLink="/auth/selectType" href="" class="reg">  تسجيل الدخول</a></h5>
+<div class="resiterRoute mt-3 ">
+    <h5>لديك حساب بالفعل ؟ <a routerLink="/auth/selectType" href="" class="reg"> تسجيل الدخول</a></h5>
 </div>

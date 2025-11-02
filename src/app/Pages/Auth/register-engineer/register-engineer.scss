@@ -1,0 +1,121 @@
+
+ ::ng-deep .ng-select .ng-select-container {
+    border-radius: 8px !important;
+}
+ ::ng-deep  .ng-select.ng-select-single .ng-select-container{
+    height: 48px !important;
+}
+::ng-deep  .option img{
+        border: 50px;
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+    margin-inline-end:15px ;
+
+ }
+ ::ng-deep .ng-select.ng-select-focused:not(.ng-select-opened) > .ng-select-container {
+  border-color: var(--color-orange) !important;
+  box-shadow: none !important;
+}
+.avatar-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .avatar-wrapper {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover .upload-overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-color: #f1f1f1;
+    }
+
+    .upload-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s ease;
+      font-size: 22px;
+    }
+  }
+}
+.gray {
+      background-color: transparent;
+      border: 1px solid var(--color-orange);
+      color: var(--color-orange);
+    }
+.custom-select {
+  width: 100%;
+  border: 1px solid #ddd !important;
+  border-radius: 10px !important;
+  padding: 10px 12px;
+  background: #fff;
+  font-family: 'Cairo', sans-serif;
+  font-size: 14px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+
+  ::ng-deep .ng-select-container {
+    border: none !important;
+    box-shadow: none !important;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    background: transparent !important;
+  }
+
+  ::ng-deep .ng-value {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  ::ng-deep .option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    img {
+      width: 22px;
+      height: 15px;
+      border-radius: 3px;
+      object-fit: cover;
+    }
+
+    span {
+      font-size: 14px;
+      color: #333;
+    }
+  }
+
+  ::ng-deep .ng-placeholder {
+    color: #999 !important;
+    font-size: 14px;
+  }
+
+  &:focus-within {
+  border-color: var(--color-orange) !important;
+  box-shadow: none !important;
+  }
+}
