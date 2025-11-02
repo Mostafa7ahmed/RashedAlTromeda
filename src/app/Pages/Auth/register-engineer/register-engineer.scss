@@ -129,8 +129,8 @@
 @media (max-width: 600px) {
 
   .avatar-wrapper {
-    width: 80px;
-    height: 80px;
+    width: 80px !important;
+    height: 80px !important;;
   }
   .mt-4{
     margin-top: 8px !important;
