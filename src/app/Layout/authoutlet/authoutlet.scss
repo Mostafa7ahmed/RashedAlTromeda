@@ -1,41 +1,43 @@
-
-.bgauth{
+.bgauth {
   background-image: url("../../../../public/Image/bgAuth.jpg");
   height: 100vh;
   background-position: center;
-background-size: cover;
-background-repeat: no-repeat;
-position: fixed;
-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: fixed;
+  width: 100%;
 }
-.overlay{
- position:absolute ;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- background: linear-gradient(46.33deg, rgba(33, 33, 33, 0.839216) 0%, rgba(66, 66, 66, 0.239216) 178.98%);
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(46.33deg, rgba(33, 33, 33, 0.839216) 0%, rgba(66, 66, 66, 0.239216) 178.98%);
 
 }
-.authRoute{
+
+.authRoute {
   position: relative;
   z-index: 5465454545 !important;
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-   height: 100%;
+  height: 100%;
 
 }
-.leftSide{
-    height: 90%;
-    align-content: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 50px;
 
-    h3{
-      font-family: Cairo;
+.leftSide {
+  height: 90%;
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 50px;
+
+  h3 {
+    font-family: Cairo;
     font-weight: 600;
     font-style: SemiBold;
     font-size: 40px;
@@ -45,9 +47,10 @@ width: 100%;
     color: var(--color-white);
     margin-bottom: 20px;
 
-    }
-    p{
-      font-family: Cairo;
+  }
+
+  p {
+    font-family: Cairo;
     font-weight: 400;
     font-style: Regular;
     font-size: 20px;
@@ -55,15 +58,16 @@ width: 100%;
     letter-spacing: 0%;
     color: var(--color-white);
     width: 60%;
-    }
+  }
 }
-.rightSide{
+
+.rightSide {
   width: 428px;
   height: 761px;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
   padding: 24px;
-  background:var(--card-bg);
+  background: var(--card-bg);
 
 }
 
@@ -71,10 +75,12 @@ width: 100%;
   .leftSide {
     padding: 40px;
   }
+
   .leftSide p {
     width: 80%;
   }
-  .textAuth{
+
+  .textAuth {
     display: none;
   }
 
@@ -85,24 +91,24 @@ width: 100%;
 
 @media (max-width: 992px) {
   .authRoute {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        padding-bottom: 0;
-            height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    padding-bottom: 0;
+    height: 100%;
 
   }
-  .logo{
-    img{
+
+  .logo {
+    img {
       width: 100px;
     }
   }
-  .leftSide {
-    text-align: center;
-    align-items: center;
 
-   
+  .leftSide {
+text-align: center;
+align-items: center;
   }
 
   .rightSide {
@@ -111,14 +117,43 @@ width: 100%;
   }
 }
 
+@media (max-width: 800px) {
+  .authRoute {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    padding-bottom: 0;
+    height: 100%;
+
+  }
+
+  .logo {
+    img {
+      width: 100px;
+    }
+  }
+
+  .leftSide {
+    display: none; 
+
+  }
+
+  .rightSide {
+    width: 90%;
+    height: 100%;
+  }
+}
 @media (max-width: 576px) {
   .bgauth {
     background-position: top;
   }
-  .leftSide {
-display: none;}
 
-   
+  .leftSide {
+    display: none;
+  }
+
+
 
   .rightSide {
     width: 100%;
