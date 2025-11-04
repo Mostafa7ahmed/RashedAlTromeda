@@ -11,3 +11,8 @@ export interface IDecode {
   iss: string
   aud: string
 }
+export interface IChangePassword {
+  oldPassword: string;
+  newPassword: string;
+  confirmedNewPassword: string;
+}
