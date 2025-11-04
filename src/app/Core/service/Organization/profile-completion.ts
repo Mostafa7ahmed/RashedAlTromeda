@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IResponseOf } from '../../../Shared/Interface/iresonse';
 import { IProfileCompletion } from '../../Interface/customer';
+import { UpdataOrganization } from '../../Interface/iprofile-organization';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,14 @@ export class ProfileCompletion {
 
   constructor(private http: HttpClient) {}
 
-ProfileCompletion(ProfileCompletion: IProfileCompletion): Observable<any> {
+ProfileCompletion(ProfileCompletion: UpdataOrganization): Observable<any> {
   const token = localStorage.getItem('auth_token_map'); // أو من أي مكان بتحفظ فيه التوكن
   const headers = new HttpHeaders({
     'Authorization': `Bearer ${token}`
   });
 
   return this.http.put(
-    `${this.API_URL}engineer/profile/completion`,
+    `${this.API_URL}organization/profile/completion`,
     ProfileCompletion,
     { headers }
   );

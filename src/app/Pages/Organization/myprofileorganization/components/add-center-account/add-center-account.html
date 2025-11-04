@@ -1,1 +1,63 @@
-<p>add-center-account works!</p>
+<div class="headerTitle">
+    <h3>اضافة مراكز</h3>
+</div>
+
+<form class="form flex-column gap-2 mt-4" [formGroup]="form">
+    <div class="position-relative mb-4">
+        <input class="input-cal input-base inputFloating" formControlName="name" placeholder="" name="fullName" />
+        <label id="label-input">الاسم المركز</label>
+    </div>
+
+    <div class="cardsForm d-flex gap-3 mb-4">
+        <div class="position-relative w-100 p-0 border-0">
+            <ngx-intl-tel-input [cssClass]="'custom'" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
+                [customPlaceholder]="'اكتب رقم الهاتف هنا'" [searchCountryFlag]="true"
+                [searchCountryField]="[SearchCountryField.All]" [selectFirstCountry]="false"
+                [selectedCountryISO]="CountryISO.Egypt" [separateDialCode]="true" formControlName="phone"
+                [phoneValidation]="true" name="phone" class="input-cal p-0 input-base inputFloating" name="phone">
+            </ngx-intl-tel-input>
+            <label id="label-input">رقم الهاتف</label>
+        </div>
+    </div>
+   <div class="d-flex gap-4 mb-4">
+     <div class="d-flex justify-content-between flex-column w-25">
+        <div class="d-flex align-items-center gap-4 mb-3 flex-column ">
+            <input formControlName="address" placeholder="ابحث عن العنوان" />
+            <button type="button" class="btnLocation" (click)="searchAddress()">بحث</button>
+            <button type="button" class="btnLocation" (click)="useMyLocation()">استخدم موقعي</button>
+        </div>
+  
+
+    </div>
+    <div class="flex-grow-1 d-flex flex-column">
+
+        <div class="map-wrapper">
+            <div id="map" style=" width:100%; border-radius:12px; overflow:hidden;"></div>
+        </div>
+
+    </div>
+   </div>
+
+    <div class="position-relative mb-4">
+        <input [type]="hideOld() ? 'password' : 'text'" formControlName="password" placeholder=""
+            class="input-cal input-base inputFloating" />
+        <label id="label-input">كلمة السر</label>
+        <div class="input-wrapper">
+            <button type="button" class="toggle" (click)="toggle('old')">
+                <i class="fa" [ngClass]="hideOld() ? 'fa-eye' : 'fa-eye-slash'"></i>
+            </button>
+        </div>
+    </div>
+    <div class="position-relative mb-4">
+        <input [type]="hideConfirm() ? 'password' : 'text'" formControlName="confirmedPassword" placeholder=""
+            class="input-cal input-base inputFloating" />
+        <label id="label-input">تأكيد كلمة السر</label>
+        <div class="input-wrapper">
+            <button type="button" class="toggle" (click)="toggle('confirm')">
+                <i class="fa" [ngClass]="hideConfirm() ? 'fa-eye' : 'fa-eye-slash'"></i>
+            </button>
+        </div>
+    </div>
+
+    <button class="btn-fill mt-3 btnLocation  btnSubmit" (click)="submit()">حفظ</button>
+</form>

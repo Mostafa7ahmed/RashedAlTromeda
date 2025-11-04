@@ -5,9 +5,11 @@ import { ReactiveModeuls } from '../../../../../Shared/Modules/ReactiveForms.mod
 import { Profile } from '../../../../../Core/service/Customer/profile';
 import { UpdateProfile, UserDto } from '../../../../../Core/Interface/iprofile-customer';
 import { SweetAlert } from '../../../../../Core/service/sweet-alert';
-import { ProfileCompletion } from '../../../../../Core/service/engineer/profile-completion';
-import { ProfileEngineerService } from '../../../../../Core/service/engineer/profile';
 import { UpdateProfileEngineer } from '../../../../../Core/Interface/iprofile-engineer';
+import { ProfileCompletion } from '../../../../../Core/service/Organization/profile-completion';
+import { ProfileEngineerService } from '../../../../../Core/service/engineer/profile';
+import { ProfileOrganizationService } from '../../../../../Core/service/Organization/profileOrganization';
+import { IUser, UpdataOrganization } from '../../../../../Core/Interface/iprofile-organization';
 
 @Component({
   selector: 'app-location',
@@ -19,13 +21,13 @@ export class Location {
   form: FormGroup;
   private map!: L.Map;
   private marker!: L.Marker;
-  private _profile = inject(ProfileEngineerService);
-private _profileUser!: UserDto;
-private _profileData: any;
+  private _profile = inject(ProfileOrganizationService);
+private _profileUser!: IUser;
+private _profileData!: UpdataOrganization;
 
   private _alert = inject(SweetAlert);
 
-  constructor(private fb: FormBuilder, private ProfileCompletion: ProfileCompletion) {
+  constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       address: [''],
       latitude: [null],
@@ -59,9 +61,9 @@ private loadProfile() {
   this._profile.getProfile().subscribe({
     next: (res) => {
       const profile = res.result;
-      this._profileData = profile; 
+      this._profileData = profile.user; 
 
-      const user = profile.userDto;
+      const user = profile.user;
       this._profileUser = user;
 
       this.form.patchValue({
@@ -140,23 +142,18 @@ submit() {
   const profile = this._profileData; // نحفظه في loadProfile (هتشوفها تحت 👇)
 
   // نبني الـ payload على أساس البيانات القديمة مع تحديث العنوان فقط
-  const payload: UpdateProfileEngineer = {
+  const payload: UpdataOrganization = {
     name: user.name,
     address: this.form.value.address,
     photoUrl: user.photoUrl,
     latitude: this.form.value.latitude,
     longitude: this.form.value.longitude,
-    summary: profile.summary,
-    startYear: profile.startYear,
-    identityPhotoUrl: profile.identityPhotoUrl,
-    services: profile.services,
-    countryId: profile.countryId,
-    planId: profile.planId,
+   
   };
 
   console.log('📦 Payload sent:', payload);
 
-  this.ProfileCompletion.ProfileCompletion(payload).subscribe({
+  this._profile.updateProfile(payload).subscribe({
     next: res => {
       this._alert.toast(res.message || 'تم تحديث العنوان بنجاح', 'success');
     },

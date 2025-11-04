@@ -28,8 +28,8 @@ export const roleGuard = (allowedRoles: string[]): CanActivateFn => {
         case 'organization':
           _router.navigate(['/organization']);
           break;
-        case 'center':
-          _router.navigate(['/center']);
+        case 'SubOrganization':
+          _router.navigate(['/SubOrganization']);
           break;
         default:
           _router.navigate(['/auth/selectType']);

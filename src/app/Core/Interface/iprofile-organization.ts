@@ -14,7 +14,15 @@ export interface UpdataOrganization {
   latitude: number;
   longitude: number;
 }
-
+export interface IAddCenter {
+  name: string;
+  phone: string;
+  password: string;
+  confirmedPassword: string;
+  address: string;
+  latitude: number;
+  longitude: number;
+}
 export interface IMainOrganization {
   id: number;
   description: string | null;
