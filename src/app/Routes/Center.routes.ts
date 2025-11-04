@@ -2,12 +2,13 @@ import { Routes } from '@angular/router';
 import { MainLayoutEngineer } from '../Layout/Engineer/main-layout-engineer/main-layout-engineer';
 import { roleGuard } from '../Core/guards/role.guard';
 import { Home } from '../Pages/home/home';
+import { MainlayoutCenter } from '../Layout/Center/mainlayout-center/mainlayout-center';
 
 export const engineerRoutes: Routes = [
   {
-    path: 'engineer',
-    component: MainLayoutEngineer,
-    canActivate: [roleGuard(['engineer'])],
+    path: 'center',
+    component: MainlayoutCenter,
+    canActivate: [roleGuard(['center'])],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', component: Home },

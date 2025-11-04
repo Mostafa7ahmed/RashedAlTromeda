@@ -1,1 +1,50 @@
-<p>myprofileorganization works!</p>
+<app-header-pages [title]="'الملف الشخصي'" />
+<div class="proflie container-fluid">
+  <div class="sidebar-card">
+    <ul class="sidebar-links">
+      <li>
+        <a routerLink="personal-info" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <img src="Icons/proicons_person.svg" alt="" />
+          <span>المعلومات الشخصية</span>
+        </a>
+      </li>
+     
+      <li>
+        <a routerLink="addCenterAccount" routerLinkActive="active">
+          <img src="Icons/famicons_bag-add-outline.svg" alt="" />
+          <span>إضافة مراكز</span>
+        </a>
+      </li>
+
+
+      <li>
+        <a routerLink="location" routerLinkActive="active">
+          <img src="Icons/mingcute_location-3-line.svg" alt="" />
+          <span>تعيين موقع</span>
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="change-password" routerLinkActive="active">
+          <img src="Icons/password.svg" alt="" />
+          <span>تغيير كلمة المرور</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="logout cr">
+      <a (click)="logout()">
+        <img src="Icons/logout.svg" alt="" />
+        <span>تسجيل الخروج</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="routes">
+    <router-outlet />
+
+  </div>
+
+
+
+</div>

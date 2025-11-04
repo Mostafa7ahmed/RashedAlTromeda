@@ -5,9 +5,9 @@ import { ReactiveModeuls } from '../../../../../Shared/Modules/ReactiveForms.mod
 import { Profile } from '../../../../../Core/service/Customer/profile';
 import { UpdateProfile, UserDto } from '../../../../../Core/Interface/iprofile-customer';
 import { SweetAlert } from '../../../../../Core/service/sweet-alert';
-import { UpdateProfileEngineer } from '../../../../../Core/Interface/iprofile-engineer';
 import { ProfileCompletion } from '../../../../../Core/service/engineer/profile-completion';
 import { ProfileEngineerService } from '../../../../../Core/service/engineer/profile';
+import { UpdateProfileEngineer } from '../../../../../Core/Interface/iprofile-engineer';
 
 @Component({
   selector: 'app-location',

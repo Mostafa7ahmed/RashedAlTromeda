@@ -1,3 +1,4 @@
+import { AddCenterAccount } from './../Pages/Organization/myprofileorganization/components/add-center-account/add-center-account';
 import { Routes } from '@angular/router';
 import { roleGuard } from '../Core/guards/role.guard';
 import { Home } from '../Pages/home/home';
@@ -29,36 +30,21 @@ export const organizationRoutes: Routes = [
       },
       {
         path: 'myporfile',
-        loadComponent: () => import('../Pages/Engineer/myporfileenginerer/myporfileenginerer').then(m => m.MyporfileEngineer),
+        loadComponent: () => import('../Pages/Organization/myprofileorganization/myprofileorganization').then(m => m.Myprofileorganization),
         children: [
           { path: '', redirectTo: 'personal-info', pathMatch: 'full' },
           {
             path: 'personal-info',
-            loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/personal-info/personal-info').then(m => m.PersonalInfo),
+            loadComponent: () => import('../Pages/Organization/myprofileorganization/components/personal-info/personal-info').then(m => m.PersonalInfo),
           },
           {
-            path: 'suggestions',
-            loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/suggestion/suggestion').then(m => m.Suggestion),
+            path: 'addCenterAccount',
+            loadComponent: () => import('../Pages/Organization/myprofileorganization/components/add-center-account/add-center-account').then(m => m.AddCenterAccount),
           },
-          {
-            path: 'complaints',
-            loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/complaints/complaints').then(m => m.Complaints),
-          },
-          {
-            path: 'bookings',
-            loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/bookings/bookings').then(m => m.Bookings),
-          },
-             {
-            path: 'Schedule',
-            loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/schedule/schedule').then(m => m.Schedule),
-          },
-             {
-            path: 'rates',
-            loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/rates/rates').then(m => m.Rates),
-          },
+      
           {
             path: 'location',
-            loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/location/location').then(m => m.Location),
+            loadComponent: () => import('../Pages/Organization/myprofileorganization/components/location/location').then(m => m.Location),
           },
           {
             path: 'change-password',

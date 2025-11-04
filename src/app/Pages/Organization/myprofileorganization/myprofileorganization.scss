@@ -1,0 +1,127 @@
+.proflie{
+    display: flex;
+    gap: 40px;
+    margin-bottom: 100px;
+}
+
+
+.sidebar-card {
+    padding: 20px;
+    background-color: var(--color-white);
+    width: 316px;
+    border-radius: 16px;
+    padding: 24px;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 10px;
+  }
+
+ 
+  scrollbar-width: thin;
+  scrollbar-color: #f36b14 #fff; 
+   &::-webkit-scrollbar-button {
+    display: none;
+    height: 0;
+    width: 0;
+  
+  }
+    .sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 2px solid #f36b14;
+    color: #f36b14;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+
+    i {
+      font-size: 1.2rem;
+    }
+  }
+
+  .sidebar-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    li {
+      a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 20px;
+        line-height: 120%;
+        text-align: center;
+        color: var(--color-black-1);
+        padding: 12px 20px;
+                  border-right: 2px solid rgba(243, 105, 20, 0);
+
+        &.active{
+          border-right: 2px solid #F36B14;
+        background: #f3691418;
+        font-weight: 700;
+                  color: #f36b14;
+
+        }
+        i {
+          font-size: 1.1rem;
+          color: #f36b14;
+        }
+
+        .badge {
+          background: #f36b14;
+          color: #fff;
+          font-size: 0.75rem;
+          padding: 2px 6px;
+          border-radius: 8px;
+          margin-right: auto;
+        }
+
+        &:hover {
+          color: #f36b14;
+        }
+      }
+    }
+  }
+
+  .logout {
+    border-top: 1px solid #f3f3f3;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    padding: 10px 24px 0  0;
+
+    a {
+      color: #FF0000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-weight: 600;
+
+      i {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.routes{
+    padding: 24px;
+    background-color: var(--color-white);
+    flex: 5;
+        border-radius: 16px;
+
+}

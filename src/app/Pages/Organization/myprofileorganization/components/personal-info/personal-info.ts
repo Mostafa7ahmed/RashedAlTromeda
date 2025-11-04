@@ -7,7 +7,8 @@ import { environment } from '../../../../../../environments/environment';
 import { UpdateProfile } from '../../../../../Core/Interface/iprofile-customer';
 import { SweetAlert } from '../../../../../Core/service/sweet-alert';
 import { IProfileEngineer, UpdateProfileEngineer } from '../../../../../Core/Interface/iprofile-engineer';
-import { ProfileEngineerService } from '../../../../../Core/service/engineer/profile';
+import { ProfileOrganizationService } from '../../../../../Core/service/Organization/profileOrganization';
+import { IMainOrganization, IProfileOrganization, UpdataOrganization } from '../../../../../Core/Interface/iprofile-organization';
 
 @Component({
   selector: 'app-personal-info',
@@ -27,10 +28,10 @@ export class PersonalInfo implements OnInit {
   points = signal(0);
   image = signal<string>(this.defaultImage);
   isUploading = signal(false);
-  summary = signal('');
+  description = signal('');
 
-  private originalProfile?: IProfileEngineer;
-  private _profile = inject(ProfileEngineerService);
+  private originalProfile?: UpdataOrganization;
+  private _profile = inject(ProfileOrganizationService);
   private _upload = inject(Streem);
   private _alert = inject(SweetAlert);
 
@@ -40,13 +41,16 @@ export class PersonalInfo implements OnInit {
 
   private loadProfile() {
     this._profile.getProfile().subscribe({
-      next: ({ result }) => {
-        this.originalProfile = result;
-        const user = result.userDto;
+      next: (res) => {
+      const { result } = res;
+        this.originalProfile = result.user;
+        console.log(this.originalProfile)
+      const user = result.user;
+        this.fullName.set(user.name)
         this.fullName.set(user.name);
         this.phone.set(user.phone);
-        this.summary.set(result.summary);
         this.setImage(user.photoUrl);
+       
       },
       error: console.error
     });
@@ -82,25 +86,17 @@ export class PersonalInfo implements OnInit {
   }
 
   onSave() {
-    if (!this.originalProfile) return;
-
-    // نحافظ على باقي البيانات كما هي ونغيّر فقط الاسم والصورة
-    const { summary, startYear, identityPhotoUrl, services, countryId, planId } = this.originalProfile;
-    const { latitude, longitude, address } = this.originalProfile.userDto;
-
-    const profileData: UpdateProfileEngineer = {
+       if (!this.originalProfile) return;
+          const { latitude, longitude, address } = this.originalProfile;
+          console.log( this.originalProfile)
+   const profileData: UpdataOrganization = {
       name: this.fullName(),
       photoUrl: this.image().replace(this.baseUrl, ''),
       address: address ?? '',
       latitude: latitude ?? 0,
       longitude: longitude ?? 0,
-      summary: this.summary(),
-      startYear: startYear ?? 0,
-      identityPhotoUrl: identityPhotoUrl ?? '',
-      services: services ?? [],
-      countryId: countryId ?? 0,
-      planId: planId ?? 0,
     };
+    console.log(profileData)
 
     this._profile.updateProfile(profileData).subscribe({
       next: res => {
@@ -110,6 +106,7 @@ export class PersonalInfo implements OnInit {
         this._alert.toast(err.error?.message || 'حدث خطأ أثناء التحديث', 'error');
       }
     });
+       
   }
     get phoneModel() {
     return this.phone();

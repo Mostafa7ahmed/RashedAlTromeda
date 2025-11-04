@@ -12,7 +12,6 @@ export interface IResponseOf<TResult>  extends IResponse{
    result:TResult;
 }
 
-
 export interface IPaginationResponse<TResponse> extends IResponse{
     result: TResponse[]
     pageSize: number
