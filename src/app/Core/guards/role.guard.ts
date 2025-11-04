@@ -25,8 +25,8 @@ export const roleGuard = (allowedRoles: string[]): CanActivateFn => {
         case 'engineer':
           _router.navigate(['/engineer']);
           break;
-        case 'admin':
-          _router.navigate(['/admin']);
+        case 'organization':
+          _router.navigate(['/organization']);
           break;
         case 'center':
           _router.navigate(['/center']);
@@ -37,7 +37,6 @@ export const roleGuard = (allowedRoles: string[]): CanActivateFn => {
       return false;
     }
 
-    // ✅ الدور مسموح له
     return true;
   };
 };

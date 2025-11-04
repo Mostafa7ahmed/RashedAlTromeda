@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavbarEngineer } from "../navbar-engineer/navbar-engineer";
 import { Footer } from "../../footer/footer";
 import { RouterModule } from '@angular/router';
+import { NavbarEngineer } from '../navbar-engineer/navbar-engineer';
 
 @Component({
   selector: 'app-main-layout-engineer',

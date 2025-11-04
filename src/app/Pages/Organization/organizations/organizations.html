@@ -1,0 +1,71 @@
+<div class="service mt-5 pt-5 container-fluid">
+
+    <div class="contentService">
+        <h1>المنظمات</h1>
+
+
+        <div class="searchInput">
+            <div class="inputSerch d-flex align-items-center">
+                <i class="fa fa-search"></i>
+
+                <input type="text" placeholder="ابحث عن فئة...">
+            </div>
+         
+        </div>
+    </div>
+
+    <div class="cards-wrapper">
+        @for (card of organizations; track card.id) {
+        <div class="card cr"  [routerLink]="['/engineer/center', card.id]">
+            <img [src]="card.image" alt="service" class="order" />
+
+            <div class="flex-grow-1  p-3 pb-3">
+                <div class="card-top px-0">
+
+                    <div class="text px-0">
+                        <h3 class="mb-0">{{ card.name }}</h3>
+                    </div>
+                </div>
+                <div class="info px-0">
+                    <span class="distance px-0 d-flex align-items-center gap-2">
+                        <img src="Icons/mi_location.svg" alt="">
+                        <p class="m-0">{{ card.location }}</p>
+                    </span>
+
+                </div>
+                <div class="rates d-flex justify-content-between align-items-center px-0">
+                    <div class="rate">
+                        <i class="fa fa-star ms-2"></i>
+                        <span>{{$index }}</span>
+                    </div>
+                    <div class="centers">
+                        <span>{{$index }} مركز</span>
+                        <i class="fa-solid fa-bag-shopping me-2"></i>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+        }
+    </div>
+    <div class="pagination">
+        <button class="nav-btn">
+            ‹ السابق
+        </button>
+        <div class="pages">
+            @for (page of [4,5,4,5,5]; track page) {
+            <button class="page">
+                {{ $index + 1 }}
+            </button>
+            }
+        </div>
+        <button class="nav-btn">
+            التالي ›
+        </button>
+    </div>
+
+
+</div>

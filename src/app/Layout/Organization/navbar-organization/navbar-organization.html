@@ -1,0 +1,68 @@
+<nav class="navbar container-fluid">
+  <div class="navbar-logo" routerLink="/home">
+    <img src="Icons/logoNavbar.svg" alt="Logo">
+  </div>
+
+  <!-- زر القائمة في الموبايل -->
+
+  <ul class="navbar-links m-0" [class.open]="menuOpen">
+    <li class="d-flex justify-content-between w-100 showLg" >
+       <app-darkmood-btn />
+    <div class="lang-select" (click)="dropdownOpen = !dropdownOpen">
+      <img [src]="selectedLang.flag" alt="flag" class="flag" />
+      <span class="code">{{ selectedLang.code | uppercase }}</span>
+      <i class="arrow" [class.open]="dropdownOpen"></i>
+
+      <ul class="dropdown" *ngIf="dropdownOpen">
+        <li *ngFor="let lang of languages" (click)="selectLanguage(lang)">
+          <img [src]="lang.flag" alt="{{ lang.name }}" class="flag" />
+          <span>{{ lang.name }}</span>
+        </li>
+      </ul>
+    </div>
+    </li>
+    <li>
+      <a routerLink="/organization/home" routerLinkActive="active">الرئيسية</a>
+    </li>
+    <li>
+      <a routerLink="/organization/ordersNew" routerLinkActive="active">الطلبات الجديدة</a>
+    </li>
+    <li>
+      <a routerLink="/organization/organizations" routerLinkActive="active">المنظمات</a>
+    </li>
+    <li>
+      <a routerLink="/organization/about" routerLinkActive="active">من نحن</a>
+    </li>
+    <li>
+      <a routerLink="/organization/contact" routerLinkActive="active">تواصل معنا</a>
+    </li>
+    
+  </ul>
+
+  <div class="profileMore d-flex gap-3 align-items-center">
+ 
+       <div class="showS d-flex gap-3">
+          <app-darkmood-btn />
+    <div class="lang-select" (click)="dropdownOpen = !dropdownOpen">
+      <img [src]="selectedLang.flag" alt="flag" class="flag" />
+      <span class="code">{{ selectedLang.code | uppercase }}</span>
+      <i class="arrow" [class.open]="dropdownOpen"></i>
+
+      <ul class="dropdown" *ngIf="dropdownOpen">
+        <li *ngFor="let lang of languages" (click)="selectLanguage(lang)">
+          <img [src]="lang.flag" alt="{{ lang.name }}" class="flag" />
+          <span>{{ lang.name }}</span>
+        </li>
+      </ul>
+    </div>
+   
+       </div>
+
+    <div class="profileImage cr" routerLink="/organization/myporfile">
+      <img [src]="userImage" alt="" width="40" height="40" class="rounded-circle">
+    </div>
+         <div class="menu-toggle" (click)="menuOpen = !menuOpen">
+    <i class="fa-solid " [ngClass]="menuOpen ? 'fa-times' : 'fa-bars-staggered'"></i>
+  </div>
+  </div>
+</nav>

@@ -1,0 +1,44 @@
+<div class="service mt-5 pt-5 container-fluid">
+
+    <div class="contentService">
+        <h1>المراكز</h1>
+
+
+        <div class="searchInput">
+            <div class="inputSerch d-flex align-items-center">
+                <i class="fa fa-search"></i>
+
+                <input type="text" placeholder="ابحث عن مركز...">
+            </div>
+            
+        </div>
+    </div>
+    <section class="services">
+        @for (s of [5,8,9,9,9,9,9]; track $index) {
+        <div class="card" [routerLink]="['/engineer/centerDetails' , $index]">
+            <div class="overlay"></div>
+            <div class="content justify-content-end flex-column">
+                <div class="text d-flex align-items-center gap-2">
+                    <h3 class="m-0"> هاندي فيكس  {{$index + 1}}</h3>
+                    <i class="fa-solid fa-arrow-up"></i>
+                </div>
+            </div>
+        </div>
+        }
+    </section>
+      <div class="pagination">
+        <button class="nav-btn">
+            ‹ السابق
+        </button>
+        <div class="pages">
+            @for (page of [4,5,4,5,5]; track page) {
+            <button class="page">
+                {{ $index + 1 }}
+            </button>
+            }
+        </div>
+        <button class="nav-btn">
+            التالي ›
+        </button>
+    </div>
+</div>
