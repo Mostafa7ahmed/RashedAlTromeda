@@ -5,7 +5,7 @@
         font-size: 20px;
         line-height: 100%;
         letter-spacing: 0%;
-        color: var(--color-orange);
+        color: var(--color-orange-dark);
 
     }
 
@@ -35,7 +35,8 @@
             right: -10px;
             background: #fff;
             border: 2px solid #FEA420;
-            color: #FEA420;
+            color: var(--color-orange-dark);
+            ;
             border-radius: 50%;
             width: 32px;
             height: 32px;
@@ -60,7 +61,8 @@
         font-size: 16px;
         line-height: 120%;
         letter-spacing: -3%;
-        color: #FEA420;
+        color: var(--color-orange-dark);
+        ;
 
     }
 
@@ -70,18 +72,19 @@
         font-size: 20px;
         font-weight: 500;
         cursor: pointer;
-        background: #ff7a00 !important;
+        background: var(--color-orange-dark) !important;
         color: #fff !important;
         border: none;
         outline: none;
         transition: background 0.3s ease, color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
-          &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    border-color: #ccc;
-    color: #aaa;
-    background: #f8f8f8;
-  }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-color: #ccc;
+            color: #aaa;
+            background: #f8f8f8;
+        }
     }
 
 

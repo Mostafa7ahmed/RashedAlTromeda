@@ -58,7 +58,7 @@
       }
 
       &.active {
-        background: #ff6600;
+        background:var(--color-orange-dark);;
         color: #fff;
         border: none;
       }

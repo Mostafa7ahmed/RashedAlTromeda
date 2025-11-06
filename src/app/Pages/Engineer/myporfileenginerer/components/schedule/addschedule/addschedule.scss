@@ -28,9 +28,9 @@ form {
 
 
             &.selected {
-               background-color: #f37b1f;
+               background-color: var(--color-orange-dark);
       color: white;
-      border-color: #f37b1f;
+      border-color: var(--color-orange-dark);
             }
 
         

@@ -40,7 +40,7 @@
     width: 100%;
     .inputSerch {
         width: 100%;
-        border: 1px solid #FBD1B6;
+        border: 1px solid var(--color-orange-dark);
         background: var(--color-white);
         height: 60px;
         border-radius: 50px;
@@ -65,7 +65,7 @@
     }
     .filtter{
         padding: 10px 8px;
-        border: 1px solid #FBD1B6;
+        border: 1px solid var(--color-orange-dark);
         background: var(--color-white);
         height: 60px;
         border-radius: 22px;

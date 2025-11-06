@@ -69,7 +69,7 @@
     }
 
     .likes {
-      color: #f97316;
+      color: var(--color-orange-dark);
       /* لون برتقالي */
       font-weight: 500;
       display: flex;
@@ -119,7 +119,7 @@
     }
 
     .send-btn {
-      background: #f97316;
+      background: var(--color-orange-dark);
       border: none;
       border-radius: 25px;
       width: 50px;

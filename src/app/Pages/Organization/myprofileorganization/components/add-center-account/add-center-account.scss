@@ -31,7 +31,7 @@ form {
     width: 100%;
 
     &:focus {
-      border-color: #f97316; 
+      border-color: var(--color-orange-dark); 
     }
   }
 
@@ -77,7 +77,7 @@ form {
     transition: all 0.2s ease;
 
     &:hover {
-      background: #f97316;
+      background: var(--color-orange-dark);
       color: #fff;
       transform: scale(1.01);
       -webkit-transform: scale(1.01);
@@ -110,7 +110,7 @@ form {
 
   }
   .btnSubmit {
-          background: #f97316;
+          background: var(--color-orange-dark);
           color: var(--color-white);
 
   }

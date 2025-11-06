@@ -170,7 +170,7 @@
       }
 
       .selected.active {
-        background-color: #f36b14;
+        background-color: var(--color-orange-dark);
       }
     }
   }
@@ -204,7 +204,7 @@
       line-height: 150%;
       letter-spacing: -0.3px;
       text-align: right;
-      color: #f36b14;
+      color: var(--color-orange-dark);
     }
 
     .readMore {
@@ -266,7 +266,7 @@
       }
 
       &.active {
-        background: #ff6600;
+        background:var(--color-orange-dark);;
         color: #fff;
       }
 

@@ -15,8 +15,8 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    border-bottom: 2px solid #f36b14;
-    color: #f36b14;
+    border-bottom: 2px solid var(--color-orange-dark);;
+    color: var(--color-orange-dark);;
     font-weight: 600;
     font-size: 1.1rem;
     padding-bottom: 0.5rem;
@@ -53,18 +53,18 @@
 
         &.active{
           border-right: 2px solid #F36B14;
-        background: #f3691418;
+        background:var(--bg-transablet);
         font-weight: 700;
-                  color: #f36b14;
+                  color: var(--color-orange-dark);;
 
         }
         i {
           font-size: 1.1rem;
-          color: #f36b14;
+          color: var(--color-orange-dark);;
         }
 
         .badge {
-          background: #f36b14;
+          background: var(--color-orange-dark);;
           color: #fff;
           font-size: 0.75rem;
           padding: 2px 6px;
@@ -73,7 +73,7 @@
         }
 
         &:hover {
-          color: #f36b14;
+          color: var(--color-orange-dark);;
         }
       }
     }

@@ -14,8 +14,8 @@
     }
 
     .btn {
-        border: 1px solid #F9B386;
-        background: #FFF5E6;
+        border: 1px solid var(--color-orange-dark);
+        background: var(--bg-transablet);
         width: 156px;
         padding-top: 10px;
         padding-right: 16px;
@@ -27,6 +27,7 @@
         justify-content: center;
         align-items: center;
         gap: 10px;
+        white-space: nowrap;
     }
 }
 
@@ -115,7 +116,7 @@
       border: 1px solid #eee;
 
       .play-btn {
-        background: #f36b14;
+        background: var(--color-orange-dark);
         color: white;
         border: none;
         width: 36px;

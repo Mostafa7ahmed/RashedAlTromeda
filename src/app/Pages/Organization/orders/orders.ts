@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-orders',
@@ -8,6 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './orders.scss'
 })
 export class Orders {
+    baseUrl =environment.baseUrl
    services = Array(9).fill({
     title: 'سباكة',
     location: 'القاهرة، مدينة نصر',

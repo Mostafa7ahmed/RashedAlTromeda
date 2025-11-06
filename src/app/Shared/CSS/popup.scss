@@ -73,7 +73,7 @@
 
 .upload-images {
     .upload-box {
-        border: 2px dashed #f97316;
+        border: 2px dashed var(--color-orange-dark);
         background-color: #fff8f5;
         border-radius: 12px;
         text-align: center;
@@ -88,7 +88,7 @@
 
         i {
             font-size: 1.8rem;
-            color: #f97316;
+            color: var(--color-orange-dark);
             display: block;
             margin-bottom: 0.5rem;
         }
@@ -100,7 +100,7 @@
         }
 
         .browse {
-            color: #f97316;
+            color: var(--color-orange-dark);
             font-weight: 600;
             text-decoration: underline;
             cursor: pointer;
@@ -131,7 +131,7 @@
             }
 
             &::-webkit-scrollbar-thumb {
-                background-color: #f97316;
+                background-color: var(--color-orange-dark);
                 border-radius: 4px;
             }
 
@@ -152,7 +152,7 @@
                     position: absolute;
                     top: 4px;
                     right: 4px;
-                    background-color: #f97316;
+                    background-color: var(--color-orange-dark);
                     color: white;
                     border: none;
                     border-radius: 50%;
@@ -198,7 +198,7 @@
 
         i {
             font-size: 1.8rem;
-            color: #f97316;
+            color: var(--color-orange-dark);
 
         }
 
@@ -219,7 +219,7 @@
             }
 
             .delete-btn {
-                background-color: #f97316;
+                background-color: var(--color-orange-dark);
                 border: none;
                 color: white;
                 border-radius: 50%;
@@ -244,7 +244,7 @@
     padding: 1rem;
 
     h4 {
-        color: #f97316;
+        color: var(--color-orange-dark);
         margin-bottom: 0.5rem;
         font-size: 1rem;
     }
@@ -261,7 +261,7 @@
             color: #333;
 
             i {
-                color: #f97316;
+                color: var(--color-orange-dark);
             }
         }
     }
@@ -271,7 +271,7 @@
     display: block;
 
     .close-btn {
-        background-color: #f97316;
+        background-color: var(--color-orange-dark);
         color: #fff;
         border: none;
         padding: 0.6rem 1.5rem;
@@ -306,15 +306,15 @@
 
         i {
             font-size: 1.8rem;
-            color: #f97316;
-            border: 2px solid #f97316;
+            color: var(--color-orange-dark);
+            border: 2px solid var(--color-orange-dark);
             border-radius: 50%;
             padding: 0.8rem;
             transition: 0.3s ease;
         }
 
         i.recording-active {
-            background-color: #f97316;
+            background-color: var(--color-orange-dark);
             color: #fff;
             box-shadow: 0 0 15px 3px rgba(249, 115, 22, 0.6);
             animation: pulse 1s infinite;
@@ -403,7 +403,7 @@
   /* Scroll ناعم */
   scroll-behavior: smooth;
   scrollbar-width: none;
-  scrollbar-color: #ff6600 #f1f1f1;
+  scrollbar-color: var(--color-orange-dark) #f1f1f1;
 
 
 }

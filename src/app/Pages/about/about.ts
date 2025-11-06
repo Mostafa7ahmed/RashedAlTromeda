@@ -9,7 +9,7 @@ import { BookBtn } from "../../components/book-btn/book-btn";
 })
 export class About {
   buttonLabel = signal('احجز خدمتك الآن');
-  buttonColor = signal('#ff7a00');
+color = 'var(--color-orange-dark)';
   buttonColorText = signal('#FFF');
 
  explorLabel = signal('استكشف المزيد');

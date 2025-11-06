@@ -13,11 +13,11 @@ export class ProfileEngineerService {
       private _http = inject(HttpClient);
 
       getProfile() :Observable<IResponseOf<IProfileEngineer>> {
-        return this._http.get<IResponseOf<IProfileEngineer>>(`${this.API_URL}organization/profile`);
+        return this._http.get<IResponseOf<IProfileEngineer>>(`${this.API_URL}engineer/profile`);
       }
       updateProfile(profileData: UpdateProfileEngineer): Observable<IResponseOf<UpdateProfileEngineer>> {
         return this._http.put<IResponseOf<UpdateProfileEngineer>>(
-          `${this.API_URL}organization/profile`,
+          `${this.API_URL}engineer/profile`,
           profileData
         );
       }

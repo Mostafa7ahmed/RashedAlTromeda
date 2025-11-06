@@ -13,6 +13,6 @@ import { Testimonials } from '../../components/testimonials/testimonials';
 })
 export class Home {
   buttonLabel = signal('احجز موعدك');
-  buttonColor = signal('#ff7a00');
+color = 'var(--color-orange-dark)';
   buttonColorText = signal('#FFF');
 }
