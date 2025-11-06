@@ -5,6 +5,7 @@ import { SerciceCategory } from '../../../Core/service/sercice-category';
 import { IService } from '../../../Core/Interface/icategory';
 import { ActivatedRoute } from '@angular/router';
 import { ShortenPipe } from '../../../Shared/pipes/shorten-pipe';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-service',
@@ -20,7 +21,7 @@ export class Service {
   services = signal<IService[]>([]);
   isLoading = signal<boolean>(false);
   categoryId = signal<number>(0);
-
+ baseurl =environment.baseUrl
   constructor() {
     effect(() => {
       const id = Number(this._route.snapshot.paramMap.get('categoryId')) || 0;

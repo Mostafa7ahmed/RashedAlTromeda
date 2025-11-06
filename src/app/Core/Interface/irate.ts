@@ -1,5 +1,5 @@
 export interface IRate {
-  craator: Craator
+  creator: Craator
   id: number
   engineerId: number
   value: number

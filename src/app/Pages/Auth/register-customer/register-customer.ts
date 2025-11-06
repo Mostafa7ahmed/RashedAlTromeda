@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxIntlTelInputModule, SearchCountryField, CountryISO } from 'ngx-intl-tel-input';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
@@ -7,6 +7,7 @@ import { Register } from '../../../Core/service/register';
 import { Otpservice } from '../../../Core/service/otp';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../Core/service/login';
+import { SweetAlert } from '../../../Core/service/sweet-alert';
 
 @Component({
   selector: 'app-register-customer',
@@ -23,14 +24,15 @@ export class RegisterCustomer {
   passwordFieldType: boolean = true;
   submitted = false;
   result: any = null;
+  isLoading = signal(false);
 
   constructor(
     private fb: FormBuilder,
     private customerService: Register,
     private otpService: Otpservice,
     private router: Router,
-    private loginService: LoginService
-  ) {
+    private loginService: LoginService,
+    private aleart: SweetAlert) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       phone: ['', Validators.required],
@@ -60,11 +62,13 @@ export class RegisterCustomer {
     };
 
     console.log('Register payload:', body);
+    this.isLoading.set(true);
 
     this.customerService.createCustomer(body).subscribe({
       next: (res) => {
         if (res.success) {
-          console.log('Customer created:', res);
+          this.aleart.toast(res.message, 'success');
+          this.isLoading.set(false);
 
           const otpBody = {
             phone: body.phoneNumber,
@@ -76,19 +80,30 @@ export class RegisterCustomer {
           this.loginService.saveTokensMap(accessToken); this.otpService.OTPFun(otpBody).subscribe({
             next: (otpRes) => {
               console.log('OTP sent:', otpRes);
+              this.aleart.toast(otpRes.message, 'success');
+            this.isLoading.set(false);
+
               this.router.navigate(['/auth/otp'], {
                 queryParams: { phone: body.phoneNumber }
               });
               localStorage.setItem('token', otpRes.result.token);
             },
             error: (err) => {
+                  this.isLoading.set(false);
+
               console.error('OTP error:', err);
+              this.aleart.toast(err.error.message, 'error');
+
             }
           });
         }
       },
       error: (err) => {
+            this.isLoading.set(false);
+
         console.error('Register error:', err);
+        this.aleart.toast(err.error.message, 'error');
+
       }
     });
   }

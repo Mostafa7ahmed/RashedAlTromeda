@@ -4,6 +4,7 @@ import * as L from 'leaflet';
 import 'leaflet-control-geocoder';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 import { ProfileCompletion } from '../../../Core/service/Customer/profile-completion';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-select-map',
@@ -16,7 +17,7 @@ export class SelectMap implements OnDestroy {
   private map!: L.Map;
   private marker!: L.Marker;
 
-  constructor(private fb: FormBuilder , private  ProfileCompletion:ProfileCompletion) {
+  constructor(private fb: FormBuilder , private  ProfileCompletion:ProfileCompletion ,     private router: Router) {
     this.form = this.fb.group({
       address: [''],
       latitude: [null],
@@ -112,6 +113,7 @@ export class SelectMap implements OnDestroy {
       
       next: (res) => {
         console.log('Profile updated:', res);
+           this.router.navigate(['/auth/login'])
       }
     })
 

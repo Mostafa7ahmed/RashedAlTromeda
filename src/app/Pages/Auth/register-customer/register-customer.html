@@ -45,14 +45,19 @@
 
 
 
-        <button type="submit" class="login-btn"> انشاء حساب</button>
+
+        <button type="submit" class="login-btn" [disabled]="isLoading()">
+            @if (!isLoading()) {
+            انشاء حساب } @else {
+            <span class="spinner mx-2"></span> جاري التحميل...
+            }
+        </button>
     </form>
 
 
 
 
-<div class="resiterRoute mt-3 ">
-    <h5>لديك حساب بالفعل ؟ <a routerLink="/auth/selectType" href="" class="reg"> تسجيل الدخول</a></h5>
+    <div class="resiterRoute mt-3 ">
+        <h5>لديك حساب بالفعل ؟ <a routerLink="/auth/selectType" href="" class="reg"> تسجيل الدخول</a></h5>
+    </div>
 </div>
-</div>
-

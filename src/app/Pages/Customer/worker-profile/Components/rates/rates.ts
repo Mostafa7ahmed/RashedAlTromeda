@@ -80,7 +80,7 @@ addReview() {
           value: res.result.value,
           comment: res.result.comment,
           createdOn: res.result.createdOn,
-          craator: {
+          creator: {
             id: 0,
             name: this.userName,
             phone: '',

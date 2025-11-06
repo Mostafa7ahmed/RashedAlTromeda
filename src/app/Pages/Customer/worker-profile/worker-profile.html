@@ -2,15 +2,15 @@
   <div class="ImagePorfile">
     <img src="Image/workerProfile.png" alt="" width="587" />
   </div>
-  <div class="contentBooking container-fluid">
+  <div class="contentBooking container-fluid" >
     <div class="experiance container-fluid">
       <div class="cardsEx">
         <div class="Icons purple">
-          <img src="Icons/worker.svg" alt="">
+          <img src="Icons/worker.svg" alt="" />
         </div>
         <div class="info">
           <span>جميع الخدمات</span>
-          <p>{{engineerProfile()?.totalServices}}</p>
+          <p>{{ engineerProfile()?.totalServices }}</p>
         </div>
       </div>
       <div class="cardsEx">
@@ -28,14 +28,14 @@
         </div>
         <div class="info">
           <span> تقييم</span>
-          <p>{{engineerProfile()?.rate}}</p>
+          <p>{{ engineerProfile()?.rate }}</p>
         </div>
       </div>
     </div>
 
     <div class="serviceSelect">
       <div class="headerText d-flex justify-content-between align-items-center">
-        <h4> {{engineerProfile()?.userDto?.name}}</h4>
+        <h4>{{ engineerProfile()?.userDto?.name }}</h4>
         <div class="IconImage">
           <img src="Icons/message.svg" alt="" />
         </div>
@@ -52,13 +52,12 @@
         }
       </div>
 
-      <div class="d-flex  mt-3 justify-content-between align-items-center">
-        <span class="location">{{totalPrice()}}$ </span>
+      <div class="d-flex mt-3 justify-content-between align-items-center">
+        <span class="location">{{ totalPrice() }}$ </span>
         <div class="location mt-2 d-flex align-items-center gap-2">
           <img src="Icons/cil_send.svg" alt="" />
           <span>5</span>
         </div>
-
       </div>
     </div>
 
@@ -71,40 +70,58 @@
 
     <div class="selectDate">
       <h4>اختيار التاريخ</h4>
-<div class="days-container">
-  @for (day of engineerSchedule(); track day.id) {
-    <div class="bodyCard d-flex justify-content-between align-items-center gap-2 flex-column">
-      <span class="day-name">
-        {{ getDayName(day.dayOfWeek) }}
-      </span>
+      <div class="days-container">
+        @for (day of engineerSchedule(); track day.id) {
+        <div class="bodyCard d-flex justify-content-between align-items-center gap-2 flex-column">
+          <span class="day-name">
+            {{ getDayName(day.dayOfWeek) }}
+          </span>
 
-      <div
-        class="day-card"
-        [class.active]="selectedDay() === day.id"
-        [class.holiday]="day.isHoliday"
-        (click)="!day.isHoliday && selectDay(day.id)"
-      >
-        <span class="day-number">
-    {{ day.startTime.slice(0, 5) }} - {{ day.endTime.slice(0, 5) }}
-        </span>
+          <div class="day-card" [class.active]="selectedDay() === day.id" [class.holiday]="day.isHoliday"
+            (click)="!day.isHoliday && selectDay(day.id)">
+            <span class="day-number">
+              {{ day.startTime.slice(0, 5) }} - {{ day.endTime.slice(0, 5) }}
+            </span>
+          </div>
+        </div>
+        }
       </div>
-    </div>
-  }
-</div>
- <app-rates [engineerId]="engineerId()" [userId]="userId()"></app-rates>
 
-    <div class="booking d-flex gap-3 align-items-center">
-      <div class="priceBooking">
-        <span>{{totalPrice()}}$ </span>
+
+
+      <div class="my-4">
+        <form class="d-flex gap-4 mb-4" [formGroup]="form">
+          <div class="d-flex justify-content-between flex-column w-25" >
+            <div class="d-flex align-items-center gap-4 mb-3 flex-column ">
+              <input formControlName="address" placeholder="ابحث عن العنوان" />
+              <button type="button" class="btnLocation" (click)="searchAddress()">بحث</button>
+              <button type="button" class="btnLocation" (click)="useMyLocation()">استخدم موقعي</button>
+            </div>
+
+
+          </div>
+          <div class="flex-grow-1 d-flex flex-column">
+
+            <div class="map-wrapper">
+              <div id="map" style=" width:100%; border-radius:12px; overflow:hidden;"></div>
+            </div>
+
+          </div>
+        </form>
+
       </div>
-      <div class="btnBooking">
-        <button (click)="print()">الدفع</button>
+
+
+            <div class="booking d-flex gap-3 align-items-center">
+        <div class="priceBooking">
+          <span>{{ totalPrice() }}$ </span>
+        </div>
+        <div class="btnBooking">
+          <button (click)="createBookingRequest()">الدفع</button>
+        </div>
       </div>
+
+      <app-rates [engineerId]="engineerId()" [userId]="userId()"></app-rates>
     </div>
   </div>
 </div>
-</div>
-<!-- <div class="overlaypopup"></div>
-<div class="addsuggest">
-  asdasasd
-</div> -->
