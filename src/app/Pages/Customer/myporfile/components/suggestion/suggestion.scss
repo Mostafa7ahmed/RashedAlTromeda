@@ -74,7 +74,7 @@
             border: none;
             outline: none;
             cursor: pointer;
-            color: #555;
+            color: var(--muted);
             font-size: 1rem;
             transition: 0.3s;
 
@@ -100,7 +100,7 @@
         p {
             line-height: 1.8;
             font-size: 15px;
-            color: #333;
+            color: var(  --color-black-1);
             margin-bottom: 1rem;
         }
     /* 🎧 Custom Voice Player */

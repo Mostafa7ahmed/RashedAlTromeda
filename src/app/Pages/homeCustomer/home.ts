@@ -10,7 +10,7 @@ import { Testimonials } from '../../components/testimonials/testimonials';
   selector: 'app-home-customer',
   imports: [BookBtn, Features, CardsServies, Testimonials],
   templateUrl: './home.html',
-  styleUrl: './home.scss'
+  styleUrl: '../home/home.scss'
 })
 export class HomeCustomer {
   buttonLabel = signal('احجز موعدك');

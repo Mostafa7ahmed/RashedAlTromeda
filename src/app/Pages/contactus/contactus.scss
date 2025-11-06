@@ -30,7 +30,7 @@
     .contact-overlay {
         position: absolute;
         bottom: 0;
-        color: var(--color-white);
+        color: var(--still-white);
         text-align: center;
         z-index: 558888;
         padding: 25px;
@@ -56,7 +56,7 @@
     }
 
     .section-subtitle {
-        color: #555;
+        color: var(--muted);
         font-size: 15px;
         margin-bottom: 25px;
         line-height: 1.8;
@@ -80,7 +80,7 @@
 
                 label {
                     font-size: 14px;
-                    color: #333;
+                    color: var(  --color-black-1);
                     margin-bottom: 15px;
                 }
 
@@ -111,7 +111,7 @@
         .btn-submit {
             align-self: flex-end;
             background-color: var(--color-orange);
-            color: var(--color-white);
+            color: var(--still-white);
             border: none;
             border-radius: 6px;
             padding: 10px 25px;
@@ -123,7 +123,7 @@
             gap: 10px;
 
             &:hover {
-                background-color: #e55b00;
+            background-color: var(--color-orange);
             }
         }
     }

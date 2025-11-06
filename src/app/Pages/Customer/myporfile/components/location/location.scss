@@ -47,7 +47,7 @@ form {
 
   a {
     background: #ffffff;
-    color: #333;
+    color: var(  --color-black-1);
     border: none !important;
     border-radius: 50% !important;
     width: 40px;
@@ -78,7 +78,7 @@ form {
 
   .btnLocation {
     background: #f3f4f6; 
-    color: #333;
+    color: var(  --color-black-1);
     display: block;
     width: 100%;
     color: var(--color-text-p);

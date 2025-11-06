@@ -4,6 +4,7 @@
 
 :root {
   --color-white: #FFFFFF;
+  --still-white:#FFFFFF;
   --color-orange: #F36B14 !important;
   --color-dark: #231F20;
   --color-black-1: #141414;
@@ -39,7 +40,12 @@
  --bg-transablet:#640d6036;
  
   --color-orange-2: #640D5F;
+    --color-white: #212121;
+    --color-black-1:#fff;
+  --card-bg: #00000042;
+  --page-bg: #212121;
 
+   --muted:#fff;
 }
 
 body::-webkit-scrollbar {
@@ -61,7 +67,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #555;
+  background-color: var(--muted);
   border-radius: 5px;
 }
 

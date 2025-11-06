@@ -31,7 +31,7 @@
         font-size: 40px;
         line-height: 150%;
         letter-spacing: 0%;
-        color: var(--color-white);
+        color: var(--still-white);
     }
 
     p {
@@ -41,7 +41,7 @@
         font-size: 20px;
         line-height: 100%;
         letter-spacing: 0%;
-        color: var(--color-white);
+        color: var(--still-white);
 
     }
 }
@@ -82,13 +82,13 @@
         font-size: 16px;
         line-height: 160%;
         letter-spacing: 0%;
-        color: var( --color-text-p);
+        color: var( var(--muted));
 
     }
 
     .iconEmai{
         box-shadow: 0px 0px 4px 0px #3498db23;
-         background-color: var(--color-white);
+         background-color: var(--card-bg);
          padding: 10px;
          border-radius: 50%;
     }
@@ -130,7 +130,7 @@
   }
 }
 .card-box {
-  background: #fff;
+         background-color: var(--card-bg);
   border-radius: 12px;
   box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.08);
   min-height: 160px;
@@ -159,7 +159,7 @@
 
   .card-text {
     font-size: 14px;
-    color: #333;
+    color: var(  --color-black-1);
     line-height: 1.9;
   }
 }
@@ -203,7 +203,7 @@
 
   .feature-text {
     font-size: 16px;
-    color:var(--color-black-2);
+    color:var(--color-black-1);
     line-height: 1.9;
     margin: 0;
     font-weight: 600;

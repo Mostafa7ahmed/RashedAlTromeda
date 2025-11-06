@@ -97,7 +97,7 @@
     align-items: center;
     gap: 6px;
     font-size: 14px;
-    color: #333;
+    color: var(  --color-black-1);
     cursor: pointer;
 
     input[type="checkbox"] {
@@ -111,7 +111,7 @@
 
   .forgot-password {
     font-size: 14px;
-    color: #333;
+    color: var(  --color-black-1);
     text-decoration: none;
 
     &:hover {

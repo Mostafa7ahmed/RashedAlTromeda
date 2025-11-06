@@ -1,5 +1,5 @@
 export interface IRate {
-  creator: Craator
+  creator: creator
   id: number
   engineerId: number
   value: number
@@ -7,7 +7,7 @@ export interface IRate {
   createdOn: string
 }
 
-export interface Craator {
+export interface creator {
   id?: number
   name: string
   phone: string
