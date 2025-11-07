@@ -13,10 +13,10 @@ export class TranslationService {
   ];
 
   // ✅ حفظ اللغة الحالية في إشارة (Signal)
-  currentLang = signal<string>('en');
+  currentLang = signal<string>('ar');
 
   constructor(private translate: TranslateService) {
-    const storedLang = localStorage.getItem('lang') || 'en';
+    const storedLang = localStorage.getItem('lang') || 'ar';
     this.setLanguage(storedLang);
   }
 
