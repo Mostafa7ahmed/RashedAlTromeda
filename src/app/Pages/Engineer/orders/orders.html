@@ -1,53 +1,48 @@
 <div class="service mt-5 pt-5 container-fluid">
 
     <div class="contentService">
-        <h1>الفئات</h1>
-        <p>اعتمد علينا كشريك موثوق به لحلول صيانة استثنائية تُحوّل مساحاتك إلى ملاذٍ جميل. يقدم فريقنا المتخصص مجموعة
-            واسعة من الخدمات المصممة خصيصًا لتلبية احتياجاتك الفريدة.</p>
+        <h1>الطلبات الجديدة</h1>
 
-        <div class="searchInput">
-            
-            <div class="inputSerch d-flex align-items-center ">
-                <i class="fa fa-search"></i>
 
-                <input type="text" placeholder="ابحث عن فئة...">
-            </div>
-     
-        </div>
     </div>
 
+        @if (bookingCard().length === 0) {
+      <div class="no-data">
+        لا توجد حجوزات لعرضها
+      </div>
+    }
+
     <div class="cards-wrapper">
-        @for (card of services; track card._id) {
+        @for (card of bookingCard(); track card.id) {
         <div class="card p-3 ">
 
             <div class="d-flex cardRow gap-2 ">
-                <img [src]="card.image" alt="service" class="order" />
+                <img [src]="baseUrl + card.photoUrl" alt="service" class="order" />
 
                 <div class="flex-grow-1">
                     <div class="card-top">
 
                         <div class="text">
-                            <h3>{{ card.title }}</h3>
-                            <p>{{ card.location }}</p>
+                            <h3 class="m-0">{{ card.userName }}</h3>
                         </div>
                     </div>
                     <div class="info">
-                        <span class="distance">
-                            <img src="Icons/mi_location.svg" alt="">
-                            {{ card.distance }} كم
-                        </span>
-                        <span>|</span>
+
                         <span class="date">
                             <img src="Icons/stash_data-date-light.svg" alt="">
-                            {{ card.date }}
+                            <span>{{ card.createOn | date:'dd MMMM y'}}</span>
                         </span>
                     </div>
                     <div class="card-bottom">
 
 
                         <div class="actions">
-                            <button class="accept">قبول</button>
-                            <button class="reject">رفض</button>
+                            <button class="accept" [disabled]="card.status !== 0" (click)="acceptBooking(card)">
+                                قبول
+                            </button>
+                            <button class="reject" [disabled]="card.status !== 0" (click)="rejectBooking(card)">
+                                رفض
+                            </button>
                         </div>
                     </div>
 

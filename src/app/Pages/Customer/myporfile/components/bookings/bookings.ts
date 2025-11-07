@@ -30,7 +30,6 @@ export class Bookings  {
   ];
 
   constructor() {
-    // تحميل البيانات عند فتح الصفحة
     this.loadBookings();
   }
 

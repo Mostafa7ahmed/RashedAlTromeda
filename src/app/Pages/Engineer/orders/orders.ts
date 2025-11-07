@@ -1,18 +1,55 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { BookApproved, IBooking } from './../../../Core/Interface/ibooking';
+import { CommonModule, DatePipe } from '@angular/common';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { BookingEngineer } from '../../../Core/service/engineer/bookingengineer';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-orders',
-  imports: [CommonModule],
+  imports: [CommonModule , DatePipe],
   templateUrl: './orders.html',
   styleUrl: './orders.scss'
 })
-export class Orders {
-   services = Array(9).fill({
-    title: 'سباكة',
-    location: 'القاهرة، مدينة نصر',
-    distance: 10,
-    date: '14 أكتوبر 2025',
-    image: 'Image/bgAuth.jpg',
-  });
+export class Orders  implements OnInit{
+  private _booking = inject(BookingEngineer);
+  bookingCard = signal<IBooking[]>([]);
+  isLoading = signal(false);
+
+  baseUrl = environment.baseUrl;
+
+  ngOnInit(): void {
+    this.loadBookings();
+  }
+
+  loadBookings() {
+    this.isLoading.set(true);
+    this._booking.getBooking(1, 1000, 0).subscribe({
+      next: (res) => this.bookingCard.set(res.result),
+      error: (err) => console.error(err),
+      complete: () => this.isLoading.set(false)
+    });
+  }
+
+  acceptBooking(booking: IBooking) {
+    this._booking.updateBookingStatus(booking.id, booking.userId, 1).subscribe({
+      next: (res) => {
+        console.log('Accepted', res);
+        this.bookingCard.update((cards) => cards.filter(b => b.id !== booking.id));
+
+      },
+      error: (err) => console.error(err)
+    });
+  }
+
+  rejectBooking(booking: IBooking) {
+    this._booking.updateBookingStatus(booking.id, booking.userId, 3).subscribe({
+      next: (res) => {
+        console.log('Rejected', res);
+            this.bookingCard.update((cards) => cards.filter(b => b.id !== booking.id));
+
+      },
+      error: (err) => console.error(err)
+    });
+  }
+
 }

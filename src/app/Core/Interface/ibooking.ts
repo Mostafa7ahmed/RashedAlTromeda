@@ -10,3 +10,20 @@ export interface IBooking {
   completeOn: any
   totalAmount: number
 }
+export interface BookApproved {
+  userId: number
+  userName: string
+  photo: string
+  bookings: Booking[]
+}
+
+export interface Booking {
+  id: number
+  createOn: string
+  services: Service[]
+}
+
+export interface Service {
+  id: number
+  name: string
+}

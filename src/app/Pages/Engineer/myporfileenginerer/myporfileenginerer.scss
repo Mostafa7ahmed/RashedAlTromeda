@@ -2,39 +2,19 @@
   display: flex;
   gap: 40px;
   margin-bottom: 100px;
-}
 
+}
+.routes{
+      background-color: var(--card-bg);
+
+}
 
 .sidebar-card {
   padding: 20px;
-  background-color: var(--color-white);
+  background-color: var(--card-bg);
   width: 316px;
   border-radius: 16px;
   padding: 24px;
-  height: 610px;
-  overflow: scroll;
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #fff;
-    border-radius: 10px;
-  }
-
-
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-orange-dark) #fff;
-
-  &::-webkit-scrollbar-button {
-    display: none;
-    height: 0;
-    width: 0;
-
-  }
 
   .sidebar-header {
     display: flex;
@@ -80,20 +60,24 @@
 
         &.active {
           border-right: 2px solid var(--color-orange-dark);
+          ;
           background: var(--bg-transablet);
           font-weight: 700;
           color: var(--color-orange-dark);
+          ;
 
         }
 
         i {
           font-size: 1.1rem;
           color: var(--color-orange-dark);
+          ;
         }
 
         .badge {
           background: var(--color-orange-dark);
-          color: #fff;
+          ;
+          color: var(--color-orange-dark);
           font-size: 0.75rem;
           padding: 2px 6px;
           border-radius: 8px;
@@ -102,6 +86,7 @@
 
         &:hover {
           color: var(--color-orange-dark);
+          ;
         }
       }
     }
@@ -130,8 +115,25 @@
 
 .routes {
   padding: 24px;
-  background-color: var(--color-white);
   flex: 5;
   border-radius: 16px;
 
+}
+
+@media (max-width: 1000px) {
+.proflie {
+  flex-direction: column !important;
+}
+
+.sidebar-card {
+
+  width: 100%;
+
+  .sidebar-links{
+    flex-direction: row !important;
+        overflow: scroll;
+    scrollbar-width: none;
+    white-space: nowrap;
+  }
+}
 }

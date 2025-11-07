@@ -184,14 +184,13 @@ gap: 20px;
   }
   img.order {
       width: 149px;
-        height: 149px;
+        height: auto;
       border-radius: 8px;
       object-fit: cover;
       flex-shrink: 0;
     }
 }
 
-/* 🔻 Responsive Design 🔻 */
 @media (max-width: 1200px) {
   .cards-wrapper {
     grid-template-columns: repeat(2, 1fr);

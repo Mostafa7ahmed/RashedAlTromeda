@@ -15,21 +15,21 @@
     </div>
 
     <div class="cards-wrapper">
-        @for (card of organizations; track card.id) {
+        @for (card of organizations(); track card.id) {
         <div class="card cr"  [routerLink]="['/engineer/center', card.id]">
-            <img [src]="card.image" alt="service" class="order" />
+            <img [src]=" baseUrl+ card.user.photoUrl" alt="service" class="order" />
 
             <div class="flex-grow-1  p-3 pb-3">
                 <div class="card-top px-0">
 
                     <div class="text px-0">
-                        <h3 class="mb-0">{{ card.name }}</h3>
+                        <h3 class="mb-0">{{ card.user.name }}</h3>
                     </div>
                 </div>
                 <div class="info px-0">
                     <span class="distance px-0 d-flex align-items-center gap-2">
                         <img src="Icons/mi_location.svg" alt="">
-                        <p class="m-0">{{ card.location }}</p>
+                        <p class="m-0">{{ card.user.address }}</p>
                     </span>
 
                 </div>
@@ -39,7 +39,7 @@
                         <span>{{$index }}</span>
                     </div>
                     <div class="centers">
-                        <span>{{$index }} مركز</span>
+                        <span>{{card.centerCount }} مركز</span>
                         <i class="fa-solid fa-bag-shopping me-2"></i>
                     </div>
 
