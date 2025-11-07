@@ -4,11 +4,10 @@ import { effect, Injectable, signal } from '@angular/core';
   providedIn: 'root'
 })
 export class Theme {
- // Get saved theme or default to light
   private storedTheme = localStorage.getItem('theme') || 'light';
   currentTheme = this.storedTheme;
   themeSignal = signal(this.storedTheme);
-
+  isDarkMode = signal(this.storedTheme === 'dark');
   constructor() {
     document.body.classList.toggle('dark-theme', this.currentTheme === 'dark');
   }
@@ -16,8 +15,10 @@ export class Theme {
   toggleTheme() {
     this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
     localStorage.setItem('theme', this.currentTheme);
+    this.isDarkMode.set(this.currentTheme === 'dark');
 
     document.body.classList.toggle('dark-theme', this.currentTheme === 'dark');
+
 
     this.themeSignal.set(this.currentTheme);
   }

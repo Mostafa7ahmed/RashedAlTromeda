@@ -1,54 +1,55 @@
-import { Component, inject } from '@angular/core';
+import { Theme } from './../../../Core/service/theme';
+import { Component, inject, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DarkmoodBtn } from '../../../components/darkmood-btn/darkmood-btn';
-import { Theme } from '../../../Core/service/theme';
 import { IDecode } from '../../../Core/Interface/idecode';
 import { LoginService } from '../../../Core/service/login';
 import { environment } from '../../../../environments/environment';
 @Component({
   selector: 'app-navbar-customer',
   standalone: true,
-  imports: [RouterModule, DarkmoodBtn , CommonModule],
+  imports: [RouterModule, DarkmoodBtn, CommonModule],
   templateUrl: './navbar-customer.html',
   styleUrl: '../../../Shared/CSS/nav.scss'
 })
 export class NavbarCustomer {
-        private _user = inject(LoginService);
-  baseUrl: string = environment.baseUrl;
-  menuOpen = false; // ✅ لإدارة فتح/إغلاق القائمة
- userImage = 'https://randomuser.me/api/portraits/men/32.jpg';
+ private _user = inject(LoginService);
+  private _theme = inject(Theme);
 
- languages = [
+  baseUrl: string = environment.baseUrl;
+  menuOpen = false;
+  userImage = 'https://randomuser.me/api/portraits/men/32.jpg';
+
+  languages = [
     { code: 'ar', name: 'Arabic', flag: 'https://flagcdn.com/eg.svg' },
     { code: 'en', name: 'English', flag: 'https://flagcdn.com/gb.svg' },
     { code: 'pk', name: 'Pakistan', flag: 'https://flagcdn.com/pk.svg' }
   ];
-  
+
   selectedLang = this.languages[0];
   dropdownOpen = false;
+
+  isDark = this._theme.isDarkMode;
 
   selectLanguage(lang: any) {
     this.selectedLang = lang;
     this.dropdownOpen = false;
   }
 
-    themeService = inject(Theme);
 
-  toggleTheme() {
-    this.themeService.toggleTheme();
+  get isDarkMode(): boolean {
+    return this._theme.isDarkMode();
   }
-
-    ngOnInit() {
-      const user = this._user.getUser() as IDecode | null;
-      if (user) {
-        this.userImage =  user.PhotoUrl
-          ? `${this.baseUrl}${user.PhotoUrl}`
-          :this.userImage;
-      }
-   
-
-      console.log(user)
-     
+  ngOnInit() {
+    const user = this._user.getUser() as IDecode | null;
+    if (user) {
+      this.userImage = user.PhotoUrl
+        ? `${this.baseUrl}${user.PhotoUrl}`
+        : this.userImage;
     }
+
+    console.log(this._theme.isDarkMode());
+    console.log(user);
+  }
 }

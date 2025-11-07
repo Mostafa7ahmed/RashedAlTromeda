@@ -1,8 +1,9 @@
 <nav class="navbar container-fluid">
   <div class="navbar-logo" routerLink="/">
-    <img src="Icons/logoNavbar.svg" alt="Logo">
-  </div>
-
+  <img
+    [src]="!isDarkMode ? 'Icons/logoNavbar.svg' : 'Icons/logoFooter.svg'"
+    alt="Logo"
+  />  </div>
   <!-- زر القائمة في الموبايل -->
 
   <ul class="navbar-links m-0" [class.open]="menuOpen">
