@@ -1,1 +1,61 @@
-<p>bookings works!</p>
+<div class="suggestion">
+  <div class="headerTitle">
+    <h3>الحجوزات</h3>
+
+    <!-- Dropdown -->
+    <div class="lang-select" (click)="dropdownOpen = !dropdownOpen">
+      <div class="d-flex align-items-center gap-2">
+        <div class="lineColor" [style.background-color]="selectedStatus().color"></div>
+        <span class="code">{{ selectedStatus().name }}</span>
+      </div>
+      <i class="arrow" [class.open]="dropdownOpen"></i>
+
+      @if (dropdownOpen) {
+        <ul class="dropdown">
+          @for (lang of status; track lang.code) {
+            <li (click)="selectStatus(lang, $event)">
+              <div class="d-flex align-items-center gap-2">
+                <div class="lineColor" [style.background-color]="lang.color"></div>
+                <span class="code">{{ lang.name }}</span>
+              </div>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+  </div>
+    @if (bookingCard().length === 0) {
+      <div class="no-data">
+        لا توجد حجوزات لعرضها
+      </div>
+    }
+  <div class=" posts mt-4">
+
+
+    @for (card of bookingCard(); track card.id) {
+      <div class="post-card">
+         <div class="details d-flex headerTitle  mt-2 justify-content-between align-items-start">
+            <div class="d-flex align-items-center gap-2 mb-2">
+          <img [src]="baseUrl + card.photoUrl" alt="{{ card.userName }}" width="40" height="40" class="avatar rounded-circle"/>
+          <span>{{ card.userName }}</span>
+        </div>
+        <div class="btn rounded-3" >
+          معرفته التفاصيل
+        </div>
+         </div>
+        <div>
+          الحالة: <span [style.color]="status[card.status + 1].color">{{ status[card.status + 1].name }}</span>
+        </div>
+        <div class="d-flex header mt-2 justify-content-between align-items-start">
+          <p class="m-0">          المبلغ: {{ card.totalAmount }}$</p>
+            <div class="date">
+          <img src="Icons/stash_data-date-light.svg" alt="" />
+          <span>{{ card.createOn| date }}</span>
+
+        </div>
+        </div>
+      
+      </div>
+    }
+  </div>
+</div>

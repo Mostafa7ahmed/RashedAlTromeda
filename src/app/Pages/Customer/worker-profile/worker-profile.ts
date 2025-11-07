@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as L from 'leaflet';
 
@@ -18,6 +18,8 @@ import { ScheduleService } from '../../../Core/service/schedule';
 import { Booking } from '../../../Core/service/booking';
 import { SweetAlert } from '../../../Core/service/sweet-alert';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
+import { ChangeDetectorRef } from '@angular/core';
+
 @Component({
   selector: 'app-worker-profile',
   imports: [ReactiveModeuls, ExperiencePipe, Rates ],
@@ -31,6 +33,8 @@ export class WorkerProfile {
   private scheduleService = inject(ScheduleService);
   private bookingService = inject(Booking);
   private alert = inject(SweetAlert);
+    private cdr = inject(ChangeDetectorRef);
+  private router = inject(Router);
 
   // ✅ Signals
   engineerProfile = signal<IEngineerProfile | null>(null);
@@ -147,6 +151,8 @@ export class WorkerProfile {
 
   selectDay(id: number) {
     this.selectedDay.set(id);
+      this.cdr.detectChanges(); // ✅ يخبر Angular بتحديث العرض فورًا
+
   }
 
 
@@ -219,7 +225,7 @@ export class WorkerProfile {
     const body: IBookingRequest = {
       engineerId: this.engineerId()!,
       engineerUserId: this.userId()!,
-      scheduleId:1,
+      scheduleId:this.selectedDay()!,
       services: this.selectedServices().map((s) => ({
         serviceId: s.id,
         quote: s.price,
@@ -233,9 +239,10 @@ export class WorkerProfile {
       next: (res) => {
         this.alert.toast('تم إرسال الطلب بنجاح ✅', 'success');
         console.log('📦 Response:', res);
+    this.router.navigate(['/myporfile/bookings']);
       },
       error: (err) => {
-        this.alert.toast('تم إرسال الطلب بنجاح ✅', 'error');
+        this.alert.toast(err.error.message, 'error');
       },
     });
   }

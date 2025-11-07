@@ -1,19 +1,19 @@
-.proflie{
-    display: flex;
-    gap: 40px;
-    margin-bottom: 100px;
+.proflie {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 100px;
 }
 
 
 .sidebar-card {
-    padding: 20px;
-    background-color: var(--color-white);
-    width: 316px;
-    border-radius: 16px;
-    padding: 24px;
-        height: 610px;
-    overflow: scroll;
-      overflow-y: auto;
+  padding: 20px;
+  background-color: var(--color-white);
+  width: 316px;
+  border-radius: 16px;
+  padding: 24px;
+  height: 610px;
+  overflow: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 
   &::-webkit-scrollbar {
@@ -25,21 +25,25 @@
     border-radius: 10px;
   }
 
- 
+
   scrollbar-width: thin;
-  scrollbar-color: var(--color-orange-dark) #fff; 
-   &::-webkit-scrollbar-button {
+  scrollbar-color: var(--color-orange-dark) #fff;
+
+  &::-webkit-scrollbar-button {
     display: none;
     height: 0;
     width: 0;
-  
+
   }
-    .sidebar-header {
+
+  .sidebar-header {
     display: flex;
     align-items: center;
     gap: 8px;
-    border-bottom: 2px solid var(--color-orange-dark);;
-    color: var(--color-orange-dark);;
+    border-bottom: 2px solid var(--color-orange-dark);
+    ;
+    color: var(--color-orange-dark);
+    ;
     font-weight: 600;
     font-size: 1.1rem;
     padding-bottom: 0.5rem;
@@ -72,15 +76,16 @@
         text-align: center;
         color: var(--color-black-1);
         padding: 12px 20px;
-                  border-right: 2px solid rgba(243, 105, 20, 0);
+        border-right: 2px solid rgba(243, 105, 20, 0);
 
-        &.active{
+        &.active {
           border-right: 2px solid var(--color-orange-dark);
-        background: var(--bg-transablet);
-        font-weight: 700;
-                  color: var(--color-orange-dark);
+          background: var(--bg-transablet);
+          font-weight: 700;
+          color: var(--color-orange-dark);
 
         }
+
         i {
           font-size: 1.1rem;
           color: var(--color-orange-dark);
@@ -106,7 +111,7 @@
     border-top: 1px solid #f3f3f3;
     margin-top: 1rem;
     padding-top: 0.75rem;
-    padding: 10px 24px 0  0;
+    padding: 10px 24px 0 0;
 
     a {
       color: #FF0000;
@@ -123,10 +128,10 @@
   }
 }
 
-.routes{
-    padding: 24px;
-    background-color: var(--color-white);
-    flex: 5;
-        border-radius: 16px;
+.routes {
+  padding: 24px;
+  background-color: var(--color-white);
+  flex: 5;
+  border-radius: 16px;
 
 }

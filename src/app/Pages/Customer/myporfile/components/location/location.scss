@@ -99,3 +99,13 @@ form {
           color: var(--still-white);
 
   }
+
+
+@media (max-width: 1000px) {
+ form{
+  flex-direction: column-reverse !important;
+  > div{
+    width:  100% !important;
+  }
+ }
+}

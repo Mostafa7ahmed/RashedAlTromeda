@@ -178,7 +178,6 @@
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 1.5rem;
-        background-color: var(--card-bg);
     border-radius: 12px;
 
     .card {
@@ -444,4 +443,21 @@
     color:var(   --color-orange);
     }
   }
+}
+
+
+@media (max-width: 1000px) {
+.addsuggest{
+    width: 85%;
+}
+}
+
+
+@media (max-width: 700px) {
+.upload-record-container{
+    flex-direction:  column;
+    .card{
+        width: 100% !important;
+    }
+}
 }
