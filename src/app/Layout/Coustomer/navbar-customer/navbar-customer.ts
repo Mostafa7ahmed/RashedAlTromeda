@@ -14,10 +14,11 @@ import { environment } from '../../../../environments/environment';
   styleUrl: '../../../Shared/CSS/nav.scss'
 })
 export class NavbarCustomer {
-    private _user = inject(LoginService);
+        private _user = inject(LoginService);
   baseUrl: string = environment.baseUrl;
+  menuOpen = false; // ✅ لإدارة فتح/إغلاق القائمة
+ userImage = 'https://randomuser.me/api/portraits/men/32.jpg';
 
-  userImage = 'Icons/logoNavbar.svg';
  languages = [
     { code: 'ar', name: 'Arabic', flag: 'https://flagcdn.com/eg.svg' },
     { code: 'en', name: 'English', flag: 'https://flagcdn.com/gb.svg' },
@@ -43,10 +44,11 @@ export class NavbarCustomer {
       if (user) {
         this.userImage =  user.PhotoUrl
           ? `${this.baseUrl}${user.PhotoUrl}`
-          : 'Icons/logoNavbar.svg';
+          :this.userImage;
       }
-  
+   
+
+      console.log(user)
      
     }
-  
 }

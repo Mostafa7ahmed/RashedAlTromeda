@@ -125,7 +125,7 @@
   height: 56px;
   background-color: var(--color-orange-dark);
   /* اللون البرتقالي */
-  color: #fff;
+  color: var(--color-white);
   font-size: 16px;
   font-weight: 600;
   border: none;
@@ -175,7 +175,7 @@ ngx-intl-tel-input {
   font-size: 14px;
   padding-left: 20px !important;
   padding-right: 100px !important;
-
+ color: var(--muted);
   background: transparent;
   outline: none;
   // display:  none !important;
@@ -268,8 +268,8 @@ ngx-intl-tel-input {
   top: -23% !important;
   inset-inline-start: 4px !important;
   transform: scale(0.8);
-  background: white;
-  color: var(--gray2);
+  background:   var(--inputFloat);
+  color: var(--muted);
   font-size: 15px;
   padding: 0px 8px;
   opacity: 1;
@@ -283,10 +283,10 @@ ngx-intl-tel-input {
   border: 1px solid #ddd;
   border-radius: 8px;
   height: 48px;
-
+ background: transparent;
   padding: 10px 10px;
   width: 100%;
-
+ color: var(--color-black-1);
   border-radius: 8px;
 
 

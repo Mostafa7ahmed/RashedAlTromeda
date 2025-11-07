@@ -18,7 +18,7 @@ export class NavbarEngineer {
   baseUrl: string = environment.baseUrl;
   menuOpen = false; // ✅ لإدارة فتح/إغلاق القائمة
 
-  userImage = 'Icons/logoNavbar.svg';
+ userImage = 'https://randomuser.me/api/portraits/men/32.jpg';
  languages = [
     { code: 'ar', name: 'Arabic', flag: 'https://flagcdn.com/eg.svg' },
     { code: 'en', name: 'English', flag: 'https://flagcdn.com/gb.svg' },
@@ -44,7 +44,7 @@ export class NavbarEngineer {
       if (user) {
         this.userImage =  user.PhotoUrl
           ? `${this.baseUrl}${user.PhotoUrl}`
-          : 'Icons/logoNavbar.svg';
+          : this.userImage;
       }
   
      
