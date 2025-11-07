@@ -34,55 +34,49 @@
 }
 
 .cardSelects {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // 👈 صف فيه عمودين دائمًا
+  gap: 20px; // مسافة بين العناصر
+  justify-items: center; // لتوسيط العناصر داخل الأعمدة
+}
+
+.selectCardContainer {
+
 }
 
 .selectCard {
-    box-shadow: 0px 0px 4px 0px #00000011;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 48%;
-    border-radius: 16px;
-    padding: 10px;
-    border: 1px solid #e5e5e581;
-            transition: transform 0.3s ease-in-out;
+  box-shadow: 0px 0px 4px 0px #00000011;
+  border-radius: 16px;
+  padding: 10px;
+  border: 1px solid #e5e5e581;
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  width: 100%; // ✅ تاخد مساحة العمود بالكامل
 
-        &:hover {
-            transform: translateY(-5px);
-        }
+  &:hover {
+    transform: translateY(-5px);
+  }
 
-    h5 {
-        font-weight: 700;
-        font-style: Italic;
-        font-size: 20px;
-        line-height: 40px;
-        letter-spacing: -4%;
-        white-space: nowrap;
-        margin: 0;
+  h5 {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 40px;
+    letter-spacing: -4%;
+    white-space: nowrap;
+    margin: 0;
+  }
 
-    }
-   
+  img {
+    height: 120px;
+  }
 }
 
 @media (max-width: 576px) {
-    .cardSelects{
-        height: 450px;
-        overflow-y: scroll;
-        scrollbar-width: none;
-        padding-bottom: 50px;
-    }
- img{
-        height: 60px;
-        
-    }
-    .selectCard{
-        width: 90%;
-    }
+ 
+
+  .selectCard img {
+    height: 80px !important;
+    width: 60px;
+  }
 }
