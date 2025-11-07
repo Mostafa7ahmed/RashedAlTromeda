@@ -57,7 +57,13 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
+@media (max-width: 992px) {
+  .cardServices {
+    grid-template-columns: repeat(1, 1fr);
+  }
 
+
+}
 .cardService {
     border: 2px solid #fac19e81;
     border-radius: 16px;
@@ -96,6 +102,8 @@
     }
    }
 }
+
+
 
 .dropdown-container {
   display: flex;
@@ -136,4 +144,16 @@
 
 .dropdown-item:hover {
   background: #f3f3f3;
+}
+@media (max-width: 550px) {
+ .cardService{
+  flex-direction: column;
+      img {
+        border-radius: 12px;
+        height: 150px !important;
+        object-fit: cover;
+        width: 100% !important;
+    }
+ }
+
 }

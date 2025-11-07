@@ -6,14 +6,12 @@
             واسعة من الخدمات المصممة خصيصًا لتلبية احتياجاتك الفريدة.</p>
 
         <div class="searchInput">
-            <div class="inputSerch">
+            <div class="inputSerch d-flex align-items-center ">
                 <i class="fa fa-search"></i>
 
                 <input type="text" placeholder="ابحث عن فئة..." (input)="onSearch($event)">
             </div>
-            <div class="filtter">
-                <img src="Icons/mynaui_filter.svg" alt="">
-            </div>
+           
         </div>
     </div>
     @if (isLoading()) {

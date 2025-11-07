@@ -9,3 +9,13 @@ vertical-align: middle;
 color: var(--color-black-2);
 padding: 50px;
 }
+@media (max-width: 992px) {
+
+
+  h1{
+    font-size: 25px !important;
+    text-align: center;
+    padding: 40px 10px;
+  }
+
+}
