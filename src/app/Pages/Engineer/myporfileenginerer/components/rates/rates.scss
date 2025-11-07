@@ -9,7 +9,7 @@
     .review-card {
       width: 100%;
       margin: 20px 0;
-      background: #fff;
+      background: var(--card-bg);
       border: 1px solid #6c757d1c;
       border-radius: 12px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -51,7 +51,7 @@
 
     .date {
       font-size: 13px;
-      color: #777;
+      color: var(--muted);
       display: flex;
       align-items: center;
       gap: 5px;
@@ -61,7 +61,7 @@
       margin: 12px 0;
       font-size: 15px;
       line-height: 1.6;
-      color: #444;
+      color: var(--muted);
     }
 
     .review-footer {

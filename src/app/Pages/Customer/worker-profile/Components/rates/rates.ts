@@ -35,8 +35,8 @@ export class Rates {
     if (user) {
       this.userName = user.Name;
       this.userImage =  user.PhotoUrl
-        ? `${user.PhotoUrl}`
-        : 'Icons/logoNavbar.svg';
+        ? `${this.baseUrl}${user.PhotoUrl}`
+        : 'https://randomuser.me/api/portraits/men/32.jpg';
     }
 
     if (this.engineerId) {

@@ -4,7 +4,7 @@
 
 :root {
   --color-white: #FFFFFF;
-  --still-white:#FFFFFF;
+  --still-white: #FFFFFF;
   --color-orange: #F36B14 !important;
   --color-dark: #231F20;
   --color-black-1: #141414;
@@ -20,14 +20,18 @@
   --card-bg: #ffffff;
   --page-bg: #FAF8F6;
   --radius: 16px;
- --bg-popup:#F4F4F4;
-  --color-orange-dark:#F36B14;
- --bg-transablet:#f3691418;
- --inputFloat:#fff;
- --bg-voice:#fafafa;
-
-  --gradient-1: linear-gradient(98.88deg, rgba(0, 0, 0, 0) 0.6%, rgba(0, 0, 0, 0.9) 96.39%);
-  --gradient-2: linear-gradient(98.12deg, rgba(0, 0, 0, 0) 1.81%, rgba(0, 0, 0, 0.9) 97.19%);
+  --bg-popup: #F4F4F4;
+  --color-orange-dark: #F36B14;
+  --bg-transablet: #f3691418;
+  --inputFloat: #fff;
+  --bg-voice: #fafafa;
+  --bg-worker: #faf8f6;
+  --bgCardInfo: #ffffff80;
+  --gradient-1: linear-gradient(to bottom,
+      rgba(44, 44, 44, 0.04),
+      #fff,
+      #ffffff);
+  --gradient-2:linear-gradient(180.19deg, #faf8f6 0.17%, #fea420 99.08%);
   --gradient-3: linear-gradient(97.86deg, rgba(0, 0, 0, 0) 1.76%, rgba(0, 0, 0, 0.9) 96.81%);
   --gradient-4: linear-gradient(97.12deg, rgba(0, 0, 0, 0) 1.8%, rgba(0, 0, 0, 0.9) 96.83%);
   --gradient-5: linear-gradient(96.74deg, rgba(0, 0, 0, 0) 2.07%, rgba(0, 0, 0, 0.9) 97.04%);
@@ -39,34 +43,46 @@
 
   --color-orange-dark: #640D5F;
   --color-orange: #640D5F !important;
- --bg-transablet:#640d6036;
-   --color-black-2: #fff;
- --inputFloat:#181818;
+  --bg-transablet: #640d6036;
+  --color-black-2: #fff;
+  --inputFloat: #181818;
   --color-orange-2: #640D5F;
-    --color-white: #212121;
-    --color-black-1:#fff;
+  --color-white: #212121;
+  --color-black-1: #fff;
   --card-bg: #00000042;
   --page-bg: #212121;
- --bg-voice:#212121;
- --bg-popup:#212121;
+  --bg-voice: #212121;
+  --bg-popup: #212121;
+  --bg-worker: #212121;
+  --bgCardInfo: #00000094;
+  --gradient-2:linear-gradient(180.19deg, #faf8f6 -12.83%, #750d6f 99.08%);
 
-   --muted:#fff;
+  --muted: #fff;
+  --gradient-1: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.04),
+      #1e1e1e,
+      #121212);
 }
 
 body::-webkit-scrollbar {
   width: 10px;
 }
-.swal2-toast{
-        background:var(--card-bg) !important ;
-    color: var(  --color-orange) !important;
-    top: 20px !important;
-    border-radius: 15px !important;
+
+.swal2-toast {
+  background: var(--still-white) !important;
+  color: var(--color-orange) !important;
+  top: 20px !important;
+  border-radius: 15px !important;
+}
+.swal2-success-circular-line-left{
+  background: var(--still-white) !important;
 }
 
-.swal2-modal{
-        background:linear-gradient(to right, rgb(243 107 20 / 31%), rgb(243 107 20)) !important ;
-    color: white !important;
+.swal2-modal {
+  background: var(--color-white) !important;
+  color: white !important;
 }
+
 body::-webkit-scrollbar-track {
   background: #2c2c2c;
 }
@@ -123,10 +139,11 @@ input[type="tel"] {
   background: #0000004D;
   z-index: 800 - 1;
   opacity: 1;
-  overflow-y: auto !important; 
+  overflow-y: auto !important;
 
   transition: opacity 0.5s ease-in-out;
 }
+
 .spinner {
   border: 3px solid #f3f3f3;
   border-top: 3px solid #fff;
@@ -139,17 +156,22 @@ input[type="tel"] {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
-.no-data{
-      display: flex
-;
-    justify-content: center;
-    align-items: center;
-    padding: 56px;
-    font-size: 18px;
-    color: var(--color-text-p);
+
+.no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 56px;
+  font-size: 18px;
+  color: var(--color-text-p);
 
 }
 
@@ -159,12 +181,13 @@ input[type="tel"] {
   align-items: center;
   justify-content: center;
   gap: 12px;
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 
   .nav-btn {
     border: 1px solid var(--color-orange-dark);
     background: transparent;
-    color:var(--color-orange-dark);;
+    color: var(--color-orange-dark);
+    ;
     padding: 6px 14px;
     border-radius: 8px;
     font-size: 14px;
@@ -172,16 +195,18 @@ input[type="tel"] {
     transition: all 0.3s ease;
 
     &:hover {
-      background:var(--color-orange-dark);;
+      background: var(--color-orange-dark);
+      ;
       color: #fff;
     }
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    border-color: #ccc;
-    color: #aaa;
-    background: #f8f8f8;
-  }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      border-color: #ccc;
+      color: #aaa;
+      background: #f8f8f8;
+    }
   }
 
   .pages {
@@ -203,46 +228,59 @@ input[type="tel"] {
       transition: all 0.3s ease;
 
       &:hover {
-        border-color:var(--color-orange-dark);;
-        color:var(--color-orange-dark);;
+        border-color: var(--color-orange-dark);
+        ;
+        color: var(--color-orange-dark);
+        ;
       }
 
       &.active {
-        color:var(--color-orange-dark);;
-        border: 1px solidvar(--color-orange-dark);;
+        color: var(--color-orange-dark);
+        ;
+        border: 1px solidvar(--color-orange-dark);
+        ;
       }
-      
+
     }
   }
 }
+
 .headerTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: var(--color-orange);
+
+  }
+
+  .btn {
+    border: 1px solid var(--color-orange-dark);
+    background: var(--bg-transablet);
+    width: 156px;
+    padding-top: 10px;
+    padding-right: 16px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+    border-radius: 24px;
+    color: var(--color-orange);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 10px;
+  }
+}
 
-    h3 {
-        font-weight: 700;
-        font-style: Bold;
-        font-size: 20px;
-        line-height: 100%;
-        letter-spacing: 0%;
-        color: var(--color-orange);
+svg.SVG path {
+  stroke: var(--color-orange) !important;
+}
 
-    }
-
-    .btn {
-        border: 1px solid var(--color-orange-dark);
-        background: var(--bg-transablet);
-        width: 156px;
-        padding-top: 10px;
-        padding-right: 16px;
-        padding-bottom: 10px;
-        padding-left: 16px;
-        border-radius: 24px;
-        color: var(--color-orange);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-    }
+svg.SVG_fill path {
+  fill: var(--color-orange) !important;
 }

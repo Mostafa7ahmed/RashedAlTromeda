@@ -1,5 +1,5 @@
 .heroPorfile {
-  background: linear-gradient(180.19deg, #faf8f6 0.17%, #fea420 99.08%);
+  background: var(--gradient-2);
   height: 100%;
 
   .ImagePorfile {
@@ -13,7 +13,7 @@
   }
 
   .contentBooking {
-    background-color: #faf8f6;
+    background-color:var(--bg-worker);
     border-radius: 50px 50px 0 0;
     -webkit-border-radius: 50px 50px 0 0;
     -moz-border-radius: 50px 50px 0 0;
@@ -42,7 +42,7 @@
     -moz-border-radius: 7px;
     -ms-border-radius: 7px;
     -o-border-radius: 7px;
-    background: rgba(255, 255, 255, 0.5);
+    background:var(--bgCardInfo);
     display: flex;
     align-items: center;
     gap: 20px;
@@ -73,8 +73,8 @@
     }
 
     .Icons.Orange {
-      color: #fea420ff;
-      border: 1px solid #fea420ff;
+      color: var(--color-orange);
+      border: 1px solid  var(--color-orange);
     }
 
     span {
@@ -108,7 +108,7 @@
 
   .serviceSelect {
     padding: 20px;
-    background: linear-gradient(to bottom, rgba(44, 44, 44, 0.04), #fff, #ffffff);
+  background: var(--gradient-1);
     width: 100%;
     margin-top: 80px;
     border-radius: 7px;
@@ -291,8 +291,8 @@
 
     .priceBooking {
       padding: 10px 16px;
-      border: 1px solid #fea420;
-      color: #fea420;
+      border: 1px solid  var(--color-orange);
+      color:  var(--color-orange);
       border-radius: 25px;
       -webkit-border-radius: 25px;
       -moz-border-radius: 25px;
@@ -306,7 +306,7 @@
 
       button {
         display: block;
-        background: #fea420;
+        background:  var(--color-orange);
         width: 100%;
         border-radius: 25px;
         padding: 10px 16px;
