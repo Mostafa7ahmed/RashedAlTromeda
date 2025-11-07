@@ -236,7 +236,6 @@ export class WorkerProfile {
       },
       error: (err) => {
         this.alert.toast('تم إرسال الطلب بنجاح ✅', 'error');
-        this.alert.error('حدث خطأ أثناء إرسال الطلب');
       },
     });
   }

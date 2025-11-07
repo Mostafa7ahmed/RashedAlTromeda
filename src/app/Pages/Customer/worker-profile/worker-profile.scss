@@ -418,3 +418,167 @@
           color: var(--color-white);
 
   }
+
+
+  /* 🌍 Responsive Design */
+@media (max-width: 1200px) {
+  .heroPorfile {
+    .experiance {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .contentBooking {
+      border-radius: 30px 30px 0 0;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .heroPorfile {
+    .ImagePorfile img {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .experiance {
+      grid-template-columns: repeat(2, 1fr);
+      position: static;
+      margin-top: 20px;
+    }
+
+    .cardsEx {
+      gap: 12px;
+      padding: 8px 16px;
+      span {
+        font-size: 20px;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .serviceSelect {
+      margin-top: 30px;
+      padding: 16px;
+    }
+
+    .selectDate {
+      padding: 16px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .heroPorfile {
+    flex-direction: column;
+
+    .ImagePorfile {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .experiance {
+      grid-template-columns: 1fr;
+      margin-top: 10px;
+      position: static;
+    }
+
+    .cardsEx {
+      justify-content: flex-start;
+      text-align: right;
+      gap: 10px;
+      span {
+        font-size: 18px;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .serviceSelect {
+      .cardSelects {
+        flex-direction: column;
+        align-items: stretch;
+        overflow: visible;
+        gap: 10px;
+
+        .selected {
+          width: 100%;
+          justify-content: space-between;
+          padding: 10px 14px;
+        }
+      }
+    }
+
+    .selectDate {
+      .days-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .day-card {
+        width: 100%;
+        max-width: 200px;
+      }
+    }
+
+    .booking {
+      flex-direction: column;
+      align-items: stretch;
+      .btnBooking button {
+        width: 100%;
+      }
+    }
+
+    form {
+      flex-direction: column !important;
+      gap: 20px !important;
+
+      .w-25 {
+        width: 100% !important;
+      }
+
+      .flex-grow-1 {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .heroPorfile {
+    .cardsEx {
+      padding: 8px;
+      .Icons {
+        width: 40px;
+        height: 40px;
+      }
+      span {
+        font-size: 16px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+
+    .serviceSelect h4,
+    .description h4,
+    .selectDate h4 {
+      font-size: 18px;
+    }
+
+    .booking {
+      .priceBooking {
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+      .btnBooking button {
+        padding: 10px;
+        font-size: 16px;
+      }
+    }
+  }
+}
