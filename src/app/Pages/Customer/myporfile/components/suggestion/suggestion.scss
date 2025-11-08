@@ -164,18 +164,15 @@
             .resource {
                 display: flex;
                 align-items: center;
-                background: #f7f7f7;
+                background: var(--card-bg);
                 border-radius: 8px;
                 padding: 0.75rem 1rem;
                 min-width: 150px;
                 transition: 0.3s ease;
                 text-decoration: none;
-                color: var(--color-black-2);
+                color: var(--color-black-1);
                 cursor: pointer;
 
-                &:hover {
-                    background: #eee;
-                }
 
                 i {
                     color: #d32f2f;
