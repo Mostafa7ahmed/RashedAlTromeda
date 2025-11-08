@@ -34,11 +34,15 @@ export const ceneterRoutes: Routes = [
             loadComponent: () => import('../Pages/Centers/myprofilecenter/components/personal-info/personal-info').then(m => m.PersonalInfo),
           },
           {
-            path: 'addCenterAccount',
-            loadComponent: () => import('../Pages/Organization/myprofileorganization/components/add-center-account/add-center-account').then(m => m.AddCenterAccount),
+            path: 'addProduct',
+            loadComponent: () => import('../Pages/Centers/myprofilecenter/components/add-product/add-product').then(m => m.AddProduct),
           },
       
-         
+            {
+            path: 'addService',
+            loadComponent: () => import('../Pages/Centers/myprofilecenter/components/add-service/add-service').then(m => m.AddService),
+          },
+      
           {
             path: 'change-password',
             loadComponent: () => import('../Pages/Customer/changepassword/changepassword').then(m => m.Changepassword),

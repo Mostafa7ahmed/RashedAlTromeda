@@ -96,7 +96,7 @@
   h4 {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #222;
+    color: var(--color-black-1);
   }
 
   .type-option {
@@ -118,8 +118,8 @@
       transition: all 0.3s ease;
 
       &:checked {
-        background-color: #f97316; // اللون البرتقالي
-        border-color: #f97316;
+        background-color: var(--color-orange-dark); // اللون البرتقالي
+        border-color: var(--color-orange-dark);
       }
 
       &:checked::after {
@@ -133,7 +133,7 @@
     }
 
     &.active {
-      color: #000; // النص الأسود للخيار النشط
+      color: var(--color-black-1); // النص الأسود للخيار النشط
       font-weight: 600;
     }
   }
