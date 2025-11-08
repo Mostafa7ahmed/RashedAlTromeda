@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { CarouselComponent, CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-testimonials',
-  imports: [CommonModule, CarouselModule],
+  imports: [CommonModule, CarouselModule , TranslatePipe],
   templateUrl: './testimonials.html',
   styleUrl: './testimonials.scss'
 })
