@@ -3,10 +3,11 @@ import { Component, inject, signal } from '@angular/core';
 import { Booking } from '../../../../../Core/service/Customer/booking';
 import { CommonModule, DatePipe } from '@angular/common';
 import { environment } from '../../../../../../environments/environment';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-bookings',
-  imports: [DatePipe , CommonModule],
+  imports: [DatePipe, CommonModule, RouterLink],
   templateUrl: './bookings.html',
   styleUrls: ['./bookings.scss' , '../suggestion/suggestion.scss']
 })

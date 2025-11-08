@@ -67,6 +67,11 @@ export const customerRoutes: Routes = [
         ],
       },
       {
+        path:'orderDetials/:id',
+                loadComponent: () => import('../Pages/Customer/order-detials/order-detials').then(m => m.OrderDetials),
+
+      },
+      {
         path: 'addsuggest',
         loadComponent: () => import('../Pages/Customer/myporfile/components/suggestion/components/addsuggest/addsuggest').then(m => m.Addsuggest),
         outlet: 'popup',

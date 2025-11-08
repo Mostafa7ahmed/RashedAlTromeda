@@ -39,7 +39,7 @@
           <img [src]="baseUrl + card.photoUrl" alt="{{ card.userName }}" width="40" height="40" class="avatar rounded-circle"/>
           <span>{{ card.userName }}</span>
         </div>
-        <div class="btn rounded-3" >
+        <div class="btn rounded-3" [routerLink]="['/orderDetials' , card.id]" >
           معرفته التفاصيل
         </div>
          </div>

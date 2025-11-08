@@ -1,0 +1,60 @@
+
+.cardService {
+    border-radius: 16px;
+    padding: 10px;
+    background-color: var(--card-bg);
+    max-height: 420px;
+    height: auto;
+
+    img.ImgeEngieer {
+        border-radius: 12px;
+        height: 100px;
+        object-fit: cover;
+        width: 100px;
+    }
+
+    cursor: pointer;
+   position: relative;
+   .poinst {
+    position: absolute;
+    top: 20px;
+    margin-inline-end: 10px;
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    inset-inline-end: 10px;
+   }
+   .infoService{
+    p{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
+        color: #949292;
+        width: 75%;
+        white-space: wrap;
+        text-wrap: wrap;
+    }
+   }
+   .rate{
+    color: #FEA420;
+   }
+   .location{
+    color: var(--color-orange);
+ 
+   }
+}
+
+
+   .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 0.95rem;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }

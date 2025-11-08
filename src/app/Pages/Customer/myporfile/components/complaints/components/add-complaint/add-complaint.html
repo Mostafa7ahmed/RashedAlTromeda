@@ -37,7 +37,7 @@
         </div>
 
         <ul *ngIf="isOpen()" class="dropdown px-0">
-          <li *ngFor="let eng of engineers() ?? []" (click)="selectEngineer(eng)">
+          <li *ngFor="let eng of engineers() " (click)="selectEngineer(eng)">
             <img [src]="baseUrl+ eng.photo" alt="" class="avatar">
             <div class="info">{{ eng.userName }}</div>
           </li>
@@ -48,7 +48,7 @@
       <div *ngIf="selectedEngineer()" class="booking-select mt-3">
         <label>اختر الحجز</label>
         <ul class="booking-dropdown">
-          <li *ngFor="let booking of selectedEngineer()?.bookings ?? []"
+          <li *ngFor="let booking of selectedEngineer()?.bookings "
               (click)="selectBooking(booking)"
               [class.active]="selectedBooking === booking">
             <span>رقم الحجز: {{ booking.id }}</span> |

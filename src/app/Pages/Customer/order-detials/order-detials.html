@@ -1,0 +1,61 @@
+<app-header-pages [title]="'مراجعة تفاصيل الطلب '" />
+<div class="container-fluid mb-5">
+    <div class="cardService d-flex gap-3">
+        <img [src]="baseUrl +  bookingData()?.user?.photoUrl || 'Image/bgAuth.jpg'" class="ImgeEngieer" alt="service"
+            width="100px" />
+
+        <div class="infoService flex-grow-1 px-2">
+            <h5>{{ bookingData()?.user?.name }}</h5>
+
+            <div class="description d-flex justify-content-between align-items-center w-100 flex-wrap">
+                <p class="mb-2">{{ bookingData()?.user?.phone }}</p>
+                @if ( bookingData()?.user?.address ) {
+                <p class="m-0">{{bookingData()?.user?.address}}</p>
+
+
+                }
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="Details mt-4">
+        <h4>تفاصيل الحجز</h4>
+
+        <div class="cardService mt-3 p-3">
+            @for (service of bookingData()?.services; track service.id) {
+            <div class="detail-row">
+                <span>سبيكة</span>
+                <span>$30.00</span>
+            </div>
+            }
+        </div>
+    </div>
+
+
+
+        <div class="Details mt-4">
+        <h4>تفاصيل الدفع </h4>
+
+        <div class="cardService mt-3 p-3">
+               <div class="detail-row">
+                <span>السعر</span>
+                <span>${{bookingData()?.totalAmount}}</span>
+            </div>
+            <div class="detail-row">
+                <span> العنوان</span>
+                <span>{{bookingData()?.address}}</span>
+            </div>
+                 <div class="detail-row">
+                <span> مجموع النقاط</span>
+                <span>{{bookingData()?.totalPoint}}</span>
+            </div>
+                 <div class="detail-row">
+                <span>التاريخ</span>
+                <span>{{bookingData()?.date | date}}</span>
+            </div>
+        </div>
+    </div>
+</div>
