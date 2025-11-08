@@ -1,0 +1,47 @@
+.upload-images .preview-section .preview-list{
+    height: 110px !important;
+}
+.show-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  user-select: none;
+
+  input[type="checkbox"] {
+    appearance: none; /* remove default checkbox */
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:checked {
+      background-color: var(--color-orange); /* green when checked */
+      border-color:  var(--color-orange);
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        width: 4px;
+        height: 8px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+    }
+
+    &:hover {
+      border-color: var(--color-orange-3); /* blue on hover */
+    }
+  }
+
+  span {
+    color: var(--muted);
+  }
+}

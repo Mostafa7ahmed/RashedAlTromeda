@@ -1,1 +1,86 @@
-<p>add-service works!</p>
+<div class="headerTitle px-3 ">
+    <h3> اضافه خدمات</h3>
+
+</div>
+<div class="bodyAdd h-100">
+    <form [formGroup]="form" class="contentPopup d-flex flex-column ">
+
+        <div class="fromGroup">
+            <label for="title">اسم خدمه </label>
+            <input id="title" type="text" placeholder="ادخل اسم خدمه" formControlName="name" />
+            <small class="error-msg" *ngIf="form.get('name')?.touched && form.get('name')?.hasError('required')">
+                هذا الحقل مطلوب
+            </small>
+        </div>
+
+
+        <div class="fromGroup">
+            <label for="hour">عدد الساعات</label>
+            <input id="hour" type="number" placeholder="ادخل عدد الساعات" formControlName="hours" />
+            <small class="error-msg" *ngIf="form.get('hours')?.touched && form.get('hours')?.hasError('required')">
+                هذا الحقل مطلوب
+            </small>
+        </div>
+
+        <div class="fromGroup">
+            <label for="hour">عدد الايام</label>
+            <input id="hour" type="number" placeholder="ادخل عدد الايام" formControlName="days" />
+            <small class="error-msg" *ngIf="form.get('days')?.touched && form.get('days')?.hasError('required')">
+                هذا الحقل مطلوب
+            </small>
+        </div>
+        <div class="fromGroup">
+            <label for="description">وصف خدمه</label>
+            <textarea id="description" placeholder="اكتب الموضوع هنا" formControlName="description"></textarea>
+            <small class="error-msg"
+                *ngIf="form.get('description')?.touched && form.get('description')?.hasError('required')">
+                هذا الحقل مطلوب
+            </small>
+        </div>
+
+        <div class="upload-images px-2 mt-3">
+            <div class="upload-box" (click)="fileInputImages.click()">
+                <img src="Icons/addimage.svg" alt="add-image" />
+                <p class="title">تحميل صور متعددة</p>
+                <label class="browse">تصفح</label>
+                <input type="file" #fileInputImages multiple accept="image/*" (change)="onFilesSelected($event)"
+                    hidden />
+            </div>
+
+            <div class="preview-section" *ngIf="images().length > 0">
+                <div class="preview-header">
+                    <span>تحميل {{ images().length }} صور</span>
+                </div>
+
+                <div class="preview-list">
+                    <div class="preview-item" *ngFor="let img of images(); let i = index">
+                        <ng-container *ngIf="img.isUploading; else uploadedImage">
+                            <div class="loading-placeholder">
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+                            </div>
+                        </ng-container>
+
+                        <ng-template #uploadedImage>
+                            <img [src]="baseUrl + img.url" alt="preview" />
+                            <button class="remove-btn" (click)="removeImage(i)">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                            <label class="show-checkbox">
+                                <input type="checkbox" [checked]="img.show" (change)="selectOnlyThis(i)" />
+                                <span>عرض</span>
+                            </label>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+    <div class="actions mt-5">
+        <button (click)="add()" class="close-btn" [disabled]="form.invalid || isUploading()">
+            اضافة خدمات
+        </button>
+    </div>
+</div>

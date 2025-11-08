@@ -1,1 +1,79 @@
-<p>add-product works!</p>
+  <div class="headerTitle px-3 ">
+    <h3> اضافه منتجات</h3>
+
+  </div>
+    <div class="bodyAdd h-100">
+    <form [formGroup]="form" class="contentPopup d-flex flex-column ">
+
+      <div class="fromGroup">
+        <label for="title">اسم المنتج </label>
+        <input id="title" type="text" placeholder="ادخل اسم المنتج" formControlName="name" />
+        <small class="error-msg" *ngIf="form.get('name')?.touched && form.get('name')?.hasError('required')">
+          هذا الحقل مطلوب
+        </small>
+      </div>
+
+      <div class="fromGroup">
+        <label for="title">سعر المنتج </label>
+        <input id="title" type="number" placeholder="ادخل سعر المنتج" formControlName="price" />
+        <small class="error-msg" *ngIf="form.get('price')?.touched && form.get('price')?.hasError('required')">
+          هذا الحقل مطلوب
+        </small>
+      </div>
+      <div class="fromGroup">
+        <label for="description">وصف  المنتج</label>
+        <textarea id="description" placeholder="اكتب الموضوع هنا" formControlName="description"></textarea>
+        <small class="error-msg" *ngIf="form.get('description')?.touched && form.get('description')?.hasError('required')">
+          هذا الحقل مطلوب
+        </small>
+      </div>
+
+      <div class="upload-images px-2 mt-3">
+        <div class="upload-box" (click)="fileInputImages.click()">
+          <img src="Icons/addimage.svg" alt="add-image" />
+          <p class="title">تحميل صور متعددة</p>
+          <label class="browse">تصفح</label>
+          <input type="file" #fileInputImages multiple accept="image/*" (change)="onFilesSelected($event)" hidden />
+        </div>
+
+        <div class="preview-section" *ngIf="images().length > 0">
+          <div class="preview-header">
+            <span>تحميل {{ images().length }} صور</span>
+          </div>
+
+          <div class="preview-list">
+            <div class="preview-item" *ngFor="let img of images(); let i = index">
+              <ng-container *ngIf="img.isUploading; else uploadedImage">
+                <div class="loading-placeholder">
+                  <i class="fa-solid fa-spinner fa-spin"></i>
+                </div>
+              </ng-container>
+
+              <ng-template #uploadedImage>
+                <img [src]="baseUrl + img.url" alt="preview" />
+                <button class="remove-btn" (click)="removeImage(i)">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+             <label class="show-checkbox">
+            <input 
+              type="checkbox" 
+              [checked]="img.show" 
+              (change)="selectOnlyThis(i)" 
+            />
+            <span>عرض</span>
+          </label>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+
+ 
+    </form>
+    
+  <div class="actions mt-5">
+    <button (click)="add()" class="close-btn" [disabled]="form.invalid || isUploading()">
+      اضافة منتجات
+    </button>
+  </div>
+  </div>

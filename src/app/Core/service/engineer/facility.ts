@@ -1,8 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { IPaginationResponse } from '../../../Shared/Interface/iresonse';
+import { IPaginationResponse, IResponse, IResponseOf } from '../../../Shared/Interface/iresonse';
 import { Observable } from 'rxjs';
-import { IFacility } from '../../Interface/ifacility';
+import { AddProdcutFacility, IFacility } from '../../Interface/ifacility';
 import { environment } from '../../../../environments/environment';
 
 @Injectable({
@@ -23,5 +23,11 @@ export class Facility {
       .set('pageSize', pageSize);
 
     return this._http.get<IPaginationResponse<IFacility>>(`${this.baseUrl}/paginate`, { params });
+
+
+
+  }
+   addFacility(facility: AddProdcutFacility): Observable<IResponseOf<AddProdcutFacility>> {
+    return this._http.post<IResponseOf<AddProdcutFacility>>(this.baseUrl, facility);
   }
 }
