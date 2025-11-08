@@ -1,16 +1,12 @@
 <div class="service mt-5 pt-5 container-fluid">
 
     <div class="contentService">
-        <h1>الطلبات الجديدة</h1>
-
-
+        <h1>{{ 'NEW_ORDERS_PAGE.TITLE' | translate }}</h1>
     </div>
 
-        @if (bookingCard().length === 0) {
-      <div class="no-data">
-        لا توجد حجوزات لعرضها
-      </div>
-    }
+    <div *ngIf="bookingCard().length === 0" class="no-data">
+        {{ 'NEW_ORDERS_PAGE.NO_DATA' | translate }}
+    </div>
 
     <div class="cards-wrapper">
         @for (card of bookingCard(); track card.id) {
@@ -21,37 +17,29 @@
 
                 <div class="flex-grow-1">
                     <div class="card-top">
-
                         <div class="text">
                             <h3 class="m-0">{{ card.userName }}</h3>
                         </div>
                     </div>
                     <div class="info">
-
                         <span class="date">
                             <img src="Icons/stash_data-date-light.svg" alt="">
                             <span>{{ card.createOn | date:'dd MMMM y'}}</span>
                         </span>
                     </div>
                     <div class="card-bottom">
-
-
                         <div class="actions">
                             <button class="accept" [disabled]="card.status !== 0" (click)="acceptBooking(card)">
-                                قبول
+                                {{ 'NEW_ORDERS_PAGE.ACCEPT' | translate }}
                             </button>
                             <button class="reject" [disabled]="card.status !== 0" (click)="rejectBooking(card)">
-                                رفض
+                                {{ 'NEW_ORDERS_PAGE.REJECT' | translate }}
                             </button>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
         }
     </div>
-
-
 </div>

@@ -3,10 +3,11 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { BookingEngineer } from '../../../Core/service/engineer/bookingengineer';
 import { environment } from '../../../../environments/environment';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-orders',
-  imports: [CommonModule , DatePipe],
+  imports: [CommonModule , DatePipe , TranslatePipe],
   templateUrl: './orders.html',
   styleUrl: './orders.scss'
 })

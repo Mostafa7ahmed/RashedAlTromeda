@@ -1,7 +1,9 @@
 {
-  "NAV": {
+"NAV": {
     "HOME": "Home",
     "CATEGORY": "Categories",
+    "NEW_ORDERS": "New Orders",
+    "ORGANIZATIONS": "Organizations",
     "ABOUT": "About Us",
     "CONTACT": "Contact Us",
     "LOGIN": "Login"
@@ -165,6 +167,21 @@
     "AUTH": {
     "SLOGAN_TITLE": "Your Home, Your Safety.. Our Services, Your Comfort",
     "SLOGAN_DESC": "Login now and enjoy reliable and fast home services, from cleaning and maintenance to all your home's needs.. in one place"
+  },
+    "ORGANIZATIONS_PAGE": {
+    "TITLE": "Organizations",
+    "SEARCH_PLACEHOLDER": "Search for an organization...",
+    "NO_DATA": "No organizations to show",
+    "CENTER": "Center",
+    "CENTERS": "Centers",
+    "PREVIOUS": "‹ Previous",
+    "NEXT": "Next ›"
+  },
+  "NEW_ORDERS_PAGE": {
+    "TITLE": "New Orders",
+    "NO_DATA": "No bookings to show",
+    "ACCEPT": "Accept",
+    "REJECT": "Reject"
   },
    "LOGIN": {
     "WELCOME": "Welcome",
