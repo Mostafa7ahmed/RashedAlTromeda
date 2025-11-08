@@ -1,0 +1,111 @@
+form {
+  display: flex;
+  gap: 25px;
+  border-radius: 16px;
+  font-family: "Cairo", sans-serif;
+
+  input {
+    padding: 12px 14px;
+    border: 1px solid      var(--color-orange); 
+    border-radius: 12px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s;
+    width: 100%;
+    background:transparent;
+   color: var(--color-black-1);
+
+    &:focus {
+      border-color: var(--color-orange-dark); 
+    }
+  }
+
+
+
+
+
+  .map-wrapper {
+    width: 100%;
+    height: 400px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+    .leaflet-container {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+::ng-deep  .leaflet-control-geocoder.leaflet-bar.leaflet-control {
+        display: none !important;
+
+}
+
+::ng-deep .leaflet-control-zoom {
+  border: none !important;
+  box-shadow: none !important;
+
+  a {
+    background: #ffffff;
+    color: var(  --color-black-1);
+    border: none !important;
+    border-radius: 50% !important;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    margin: 6px auto;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: var(--color-orange-dark);
+      color: #fff;
+      transform: scale(1.01);
+      -webkit-transform: scale(1.01);
+      -moz-transform: scale(1.01);
+      -ms-transform: scale(1.01);
+      -o-transform: scale(1.01);
+}
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+
+  .btnLocation {
+    background: var(--page-bg); 
+    color: var(  --color-black-1);
+    display: block;
+    width: 100%;
+    color: var(--color-text-p);
+    display: block;
+    width: 100%;
+    outline: none;
+    padding: 12px   ;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+
+  }
+  .btnSubmit {
+          background: var(--color-orange-dark);
+          color: var(--still-white);
+
+  }
+
+
+@media (max-width: 1000px) {
+ form{
+  flex-direction: column-reverse !important;
+  > div{
+    width:  100% !important;
+  }
+ }
+}

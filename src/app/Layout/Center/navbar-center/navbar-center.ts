@@ -14,17 +14,17 @@ import { environment } from '../../../../environments/environment';
   styleUrl: '../../../Shared/CSS/nav.scss'
 })
 export class NavbarCenter {
-    private _user = inject(LoginService);
+     private _user = inject(LoginService);
   baseUrl: string = environment.baseUrl;
-  menuOpen = false; 
+  menuOpen = false; // ✅ لإدارة فتح/إغلاق القائمة
 
-  userImage = 'Icons/logoNavbar.svg';
- languages = [
+  userImage = 'https://randomuser.me/api/portraits/men/32.jpg';
+  languages = [
     { code: 'ar', name: 'Arabic', flag: 'https://flagcdn.com/eg.svg' },
     { code: 'en', name: 'English', flag: 'https://flagcdn.com/gb.svg' },
-    { code: 'pk', name: 'Pakistan', flag: 'https://flagcdn.com/pk.svg' }
+    { code: 'pk', name: 'Pakistan', flag: 'https://flagcdn.com/pk.svg' },
   ];
-  
+
   selectedLang = this.languages[0];
   dropdownOpen = false;
 
@@ -33,20 +33,17 @@ export class NavbarCenter {
     this.dropdownOpen = false;
   }
 
-    themeService = inject(Theme);
+  themeService = inject(Theme);
 
-  toggleTheme() {
-    this.themeService.toggleTheme();
+  private _theme = inject(Theme);
+
+  get isDarkMode(): boolean {
+    return this._theme.isDarkMode();
   }
-
-    ngOnInit() {
-      const user = this._user.getUser() as IDecode | null;
-      if (user) {
-        this.userImage =  user.PhotoUrl
-          ? `${this.baseUrl}${user.PhotoUrl}`
-          : 'Icons/logoNavbar.svg';
-      }
-  
-     
+  ngOnInit() {
+    const user = this._user.getUser() as IDecode | null;
+    if (user) {
+      this.userImage = user.PhotoUrl ? `${this.baseUrl}${user.PhotoUrl}` : this.userImage;
     }
+  }
 }

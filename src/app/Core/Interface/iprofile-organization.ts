@@ -14,6 +14,14 @@ export interface UpdataOrganization {
   latitude: number;
   longitude: number;
 }
+export interface UpdataCenter {
+  name: string;
+  address: string | null;
+  photoUrl: string;
+  latitude: number;
+  longitude: number;
+  type:number
+}
 export interface IAddCenter {
   name: string;
   phone: string;

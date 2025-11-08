@@ -22,19 +22,17 @@
     </div>
     </li>
     <li>
-      <a routerLink="/center/home" routerLinkActive="active">الرئيسية</a>
+      <a routerLink="/suborganization/home" routerLinkActive="active">الرئيسية</a>
+    </li>
+
+    <li>
+      <a routerLink="/suborganization/organizations" routerLinkActive="active">المنظمات</a>
     </li>
     <li>
-      <a routerLink="/center/ordersNew" routerLinkActive="active">الطلبات الجديدة</a>
+      <a routerLink="/suborganization/about" routerLinkActive="active">من نحن</a>
     </li>
     <li>
-      <a routerLink="/center/organizations" routerLinkActive="active">المنظمات</a>
-    </li>
-    <li>
-      <a routerLink="/center/about" routerLinkActive="active">من نحن</a>
-    </li>
-    <li>
-      <a routerLink="/center/contact" routerLinkActive="active">تواصل معنا</a>
+      <a routerLink="/suborganization/contact" routerLinkActive="active">تواصل معنا</a>
     </li>
     
   </ul>
@@ -58,7 +56,7 @@
    
        </div>
 
-    <div class="profileImage cr" routerLink="/center/myporfile">
+    <div class="profileImage cr" routerLink="/suborganization/myporfile">
       <img [src]="userImage" alt="" width="40" height="40" class="rounded-circle">
     </div>
          <div class="menu-toggle" (click)="menuOpen = !menuOpen">

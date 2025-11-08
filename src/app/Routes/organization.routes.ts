@@ -49,21 +49,7 @@ export const organizationRoutes: Routes = [
           },
         ],
       },
-      {
-        path: 'addsuggest',
-        loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/suggestion/components/addsuggest/addsuggest').then(m => m.Addsuggest),
-        outlet: 'popup',
-      },
-       {
-        path: 'addschedule',
-        loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/schedule/addschedule/addschedule').then(m => m.Addschedule),
-        outlet: 'popup',
-      },
-      {
-        path: 'addcomplaint',
-        loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/complaints/components/add-complaint/add-complaint').then(m => m.AddComplaint),
-        outlet: 'popup',
-      },
+    
       {
         path: 'about',
         loadComponent: () => import('../Pages/about/about').then(m => m.About),
