@@ -1,29 +1,30 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-
+import { Component, signal } from '@angular/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+interface Feature {
+  icon: string; // مسار الصورة أو الأيقونة
+  text: string; // نص الميزة حسب اللغة
+}
 @Component({
   selector: 'app-features',
-  imports: [CommonModule],
+  imports: [CommonModule , TranslatePipe],
   templateUrl: './features.html',
   styleUrl: './features.scss'
 })
 export class Features {
-  features = [
-    {
-      icon: 'Icons/Icon1.svg',
-      text: 'خدمة عملاء متاحة دائماً للرد على استفساراتك وتلبية احتياجاتك'
-    },
-    {
-      icon: 'Icons/Icon.svg',
-      text: 'عمالة مدربة ممتازة وخبرة طويلة في إنجاز أعمال مختلفة'
-    },
-    {
-      icon: 'Icons/Icon2.svg',
-      text: 'نصل إليك في الوقت الذي تختاره دون تأخير، لأن وقتك غالي'
-    },
-    {
-      icon: 'Icons/Icon3.svg',
-      text: 'نقدم خدمات عالية المستوى باستخدام أدوات وطرق حديثة تضمن أفضل النتائج'
-    }
-  ];
+  // signal لتخزين المميزات بعد الترجمة
+  features = signal<Feature[]>([]);
+
+  constructor(private translate: TranslateService) {
+    this.loadFeatures();
+    
+    // إذا تغيرت اللغة، يتم إعادة تحميل النصوص
+    this.translate.onLangChange.subscribe(() => this.loadFeatures());
+  }
+
+  loadFeatures() {
+    this.translate.get('features').subscribe((res: Feature[]) => {
+      this.features.set(res);
+    });
+  }
 }

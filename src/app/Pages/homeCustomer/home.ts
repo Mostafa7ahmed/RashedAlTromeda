@@ -9,7 +9,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home-customer',
-  imports: [BookBtn, Features, TranslatePipe, Testimonials],
+  imports: [BookBtn, TranslatePipe, Features , Testimonials],
   templateUrl: './home.html',
   styleUrl: '../home/home.scss'
 })

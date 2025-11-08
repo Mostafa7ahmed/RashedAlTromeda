@@ -1,5 +1,5 @@
 <section class="features container-fluid mt-5">
-  @for (f of features; track f.text) {
+  @for (f of features(); track f.text) {
     <div class="feature">
       <div class="icon">
         <img [src]="f.icon" alt="feature icon" />

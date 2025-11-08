@@ -1,6 +1,6 @@
 <div class="container-fluid my-3">
   <!-- Header Card -->
-  <div class="card mb-5" [style.background-image]="'url(' + (baseUrl + centerDate()?.user?.photoUrl || 'assets/images/placeholder.jpg') + ')'">
+  <div class="card mb-5" [style.background-image]="'url(' + (baseUrl + centerDate()?.user?.photoUrl || 'Image/aboutBG.jpg') + ')'">
     <div class="overlay"></div>
     <div class="content justify-content-end flex-column">
       <div class="text d-flex align-items-start flex-column gap-4">
@@ -30,14 +30,14 @@
 
     <!-- Services Section -->
     @if (activeTab() === 'services') {
-      @if (serviceCards()?.length === 0) {
+      @if (serviceCards().length === 0) {
         <div class="no-data">{{ 'CENTER.NO_SERVICES' | translate }}</div>
       } @else {
         <div class="cards grid-view">
           @for (card of serviceCards(); track card.id) {
             <div class="cardpordcut">
               <div class="image-wrapper">
-                <img [src]="baseUrl + (card.gallaries[0]?.photo || 'assets/images/placeholder.jpg')" alt="{{ card.name }}" />
+                <img [src]="baseUrl + (card.gallaries[0].photo || 'Image/aboutBG.jpg')" alt="{{ card.name }}" />
                 <div class="hours">
                   <span>{{ card.hours }}</span>
                   <i class="fa-regular fa-clock"></i>
@@ -55,14 +55,14 @@
 
     <!-- Products Section -->
     @if (activeTab() === 'products') {
-      @if (productCards()?.length === 0) {
+      @if (productCards().length === 0) {
         <div class="no-data">{{ 'CENTER.NO_PRODUCTS' | translate }}</div>
       } @else {
         <div class="cards full-view">
           @for (card of productCards(); track card.id) {
             <div class="cardpordcut full-card">
               <div class="image">
-                <img [src]="getVisibleImage(card) || 'assets/images/placeholder.jpg'" alt="{{ card.name }}" />
+                <img [src]="getVisibleImage(card) || 'Image/aboutBG.jpg'" alt="{{ card.name }}" />
               </div>
               <div class="info">
                 <h3 class="mb-2">{{ card.name }}</h3>

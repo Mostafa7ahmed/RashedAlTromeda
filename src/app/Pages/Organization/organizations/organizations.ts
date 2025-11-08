@@ -5,10 +5,11 @@ import { IOrganization } from '../../../Core/Interface/iorganization';
 import { OrganizationEngineer } from '../../../Core/service/engineer/organization';
 import { ShortenPipe } from '../../../Shared/pipes/shorten-pipe';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 
 @Component({
   selector: 'app-organizations',
-  imports: [RouterModule , ShortenPipe , TranslatePipe],
+  imports: [ReactiveModeuls , ShortenPipe , TranslatePipe],
   templateUrl: './organizations.html',
   styleUrl: './organizations.scss'
 })

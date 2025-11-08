@@ -7,6 +7,7 @@ import { environment } from '../../../../environments/environment';
 import { Facility } from '../../../Core/service/engineer/facility';
 import { IFacility } from '../../../Core/Interface/ifacility';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 interface Card {
   title: string;
   location: string;
@@ -17,7 +18,7 @@ interface Card {
 }
 @Component({
   selector: 'app-center-details',
-  imports: [CommonModule , TranslatePipe],
+  imports: [ReactiveModeuls , TranslatePipe],
   templateUrl: './center-details.html',
   styleUrl: './center-details.scss'
 })

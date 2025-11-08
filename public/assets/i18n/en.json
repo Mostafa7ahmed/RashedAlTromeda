@@ -355,5 +355,23 @@
 
   "CHOOSE_BOOKING": "Choose Booking",
     "specialty": "Specialty",
-  "addSpecialty": "Add Specialty"
+  "addSpecialty": "Add Specialty",
+   "features": [
+    {
+      "icon": "Icons/Icon1.svg",
+      "text": "Customer service is always available to answer your inquiries and meet your needs"
+    },
+    {
+      "icon": "Icons/Icon.svg",
+      "text": "Well-trained staff with extensive experience in completing various tasks"
+    },
+    {
+      "icon": "Icons/Icon2.svg",
+      "text": "We reach you at the time you choose without delay, because your time is valuable"
+    },
+    {
+      "icon": "Icons/Icon3.svg",
+      "text": "We provide high-level services using modern tools and methods to ensure the best results"
+    }
+  ]
 }
