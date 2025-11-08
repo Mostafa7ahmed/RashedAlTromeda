@@ -96,4 +96,21 @@
     <div class="no-data">لا توجد مقترحات لعرضها.</div>
     }
   </div>
+
+      <div class="pagination mt-4 mb-0">
+        <button class="nav-btn" (click)="prevPage()" [disabled]="!movePrevious()">
+            ‹ السابق
+        </button>
+        <div class="pages">
+            @for (page of visiblePages; track $index) {
+            <button class="page" [class.active]="page === currentPage()" [disabled]="page === currentPage()"
+                (click)="goToPage(page)">
+                {{ currentPage() }}
+            </button>
+            }
+        </div>
+        <button class="nav-btn" (click)="nextPage()" [disabled]="!moveNext()">
+            التالي ›
+        </button>
+    </div>
 </div>

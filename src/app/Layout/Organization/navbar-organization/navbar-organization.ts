@@ -18,7 +18,7 @@ export class NavbarOrganization {
   baseUrl: string = environment.baseUrl;
   menuOpen = false; // ✅ لإدارة فتح/إغلاق القائمة
 
-  userImage = 'Icons/logoNavbar.svg';
+  userImage = 'Icons/logoNavbar.png';
  languages = [
     { code: 'ar', name: 'Arabic', flag: 'https://flagcdn.com/eg.svg' },
     { code: 'en', name: 'English', flag: 'https://flagcdn.com/gb.svg' },
@@ -44,7 +44,7 @@ export class NavbarOrganization {
       if (user) {
         this.userImage =  user.PhotoUrl
           ? `${this.baseUrl}${user.PhotoUrl}`
-          : 'Icons/logoNavbar.svg';
+          : 'Icons/logoNavbar.png';
       }
   
      

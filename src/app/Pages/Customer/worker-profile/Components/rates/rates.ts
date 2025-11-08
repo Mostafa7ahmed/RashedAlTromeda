@@ -23,7 +23,7 @@ export class Rates {
 
 
   userName = '';
-  userImage = 'Icons/logoNavbar.svg';
+  userImage = 'Icons/logoNavbar.png';
 
   baseUrl: string = environment.baseUrl;
   engineerRate = signal<IRate[]>([]);

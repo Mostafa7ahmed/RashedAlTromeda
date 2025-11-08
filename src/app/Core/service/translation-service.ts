@@ -5,11 +5,10 @@ import { TranslateService } from '@ngx-translate/core';
   providedIn: 'root'
 })
 export class TranslationService {
-    // ✅ قائمة اللغات المتاحة
   readonly languages = [
     { code: 'ar', name: 'Arabic', flag: 'https://flagcdn.com/eg.svg' },
     { code: 'en', name: 'English', flag: 'https://flagcdn.com/gb.svg' },
-    { code: 'pk', name: 'Urdu', flag: 'https://flagcdn.com/pk.svg' }
+  { code: 'hi', name: 'Hindi', flag: 'https://flagcdn.com/in.svg' } // الهندية
   ];
 
   // ✅ حفظ اللغة الحالية في إشارة (Signal)

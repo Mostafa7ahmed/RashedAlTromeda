@@ -3,7 +3,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { IPaginationResponse, IResponseOf } from '../../Shared/Interface/iresonse';
 import { Observable } from 'rxjs';
-import { IAddComplaint, IComplaint } from '../Interface/icomplaint';
+import { BookingUser, IAddComplaint, IComplaint } from '../Interface/icomplaint';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +27,16 @@ export class Complaint {
       return this._http.get<IPaginationResponse<IComplaint>>(url);
     }
   
-    Addsuggest(suggestData: IAddComplaint): Observable<IResponseOf<IComplaint>> {
+    AddComplaint(ComplaintData: IAddComplaint): Observable<IResponseOf<IComplaint>> {
       return this._http.post<IResponseOf<IComplaint>>(
         `${environment.apiUrl}complaint`,
-        suggestData
+        ComplaintData
       );
     } 
+
+    getBooing(): Observable<IResponseOf<BookingUser[]>>{
+
+      return this._http.get<IResponseOf<BookingUser[]>>(`${environment.apiUrl}booking/customers`);
+
+    }
 }

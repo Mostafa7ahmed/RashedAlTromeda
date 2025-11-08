@@ -27,8 +27,25 @@ export interface IAddComplaint {
   description: string
   orderId: number
   userId: number
-  cateogryId: number
   voiceNoteUrl: string
   fileUrls: string[]
   photoUrls: string[]
+}
+
+export interface ServiceItem {
+  id: number;
+  name: string;
+}
+
+export interface Booking {
+  id: number;
+  createOn: string;
+  services: { id: number; name: string }[];
+}
+
+export interface BookingUser {
+  userId: number;
+  userName: string;
+  photo: string;
+  bookings: Booking[];
 }

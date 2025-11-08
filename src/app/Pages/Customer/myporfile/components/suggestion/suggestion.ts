@@ -16,7 +16,16 @@ export class Suggestion {
   Math = Math;
   SuggestionList = signal<ISuggestionWithAudio[]>([]);
   baseurl = environment.baseUrl;
-  selectedImage: string | null = null;
+  selectedImage: string | null = null; 
+  
+  currentPage = signal<number>(1);
+  totalPages = signal<number>(1);
+  totalCount = signal<number>(0);
+  moveNext = signal<boolean>(false);
+  movePrevious = signal<boolean>(false);
+  pageSize = 12;
+  isLoading = signal<boolean>(false);
+searchTerm = signal('');
 
   private router = inject(Router);
   private _suggest = inject(SuggestService);
@@ -39,7 +48,7 @@ export class Suggestion {
   }
 
   private loadSuggestions() {
-    this._suggest.getSuggestion(1,100).subscribe({
+    this._suggest.getSuggestion(this.currentPage(), this.pageSize).subscribe({
       next: (res) => {
         const suggestionsWithAudio: ISuggestionWithAudio[] = res.result.map(card => ({
           ...card,
@@ -49,6 +58,11 @@ export class Suggestion {
           currentTime: 0
         }));
         this.SuggestionList.set(suggestionsWithAudio);
+         this.totalPages.set(res.totalPages);
+        this.totalCount.set(res.totalCount);
+        this.moveNext.set(res.moveNext);
+        this.movePrevious.set(res.movePrevious);
+        this.isLoading.set(false);  
       },
       error: console.error
     });
@@ -89,5 +103,41 @@ export class Suggestion {
     const m = Math.floor(seconds / 60);
     const s = Math.floor(seconds % 60);
     return `${m}:${s < 10 ? '0' + s : s}`;
+  }
+
+
+    nextPage() {
+    if (this.moveNext()) {
+      this.currentPage.update(v => v + 1);
+      this.loadSuggestions();
+    }
+  }
+get pagesArray() {
+  return Array.from({ length: this.totalPages() });
+}
+get visiblePages() {
+  const total = this.totalPages();
+  const current = this.currentPage();
+  const windowSize = 4;
+
+  let start = Math.max(1, current - Math.floor(windowSize / 2));
+  let end = start + windowSize - 1;
+
+  if (end > total) {
+    end = total;
+    start = Math.max(1, end - windowSize + 1);
+  }
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+}
+  prevPage() {
+    if (this.movePrevious()) {
+      this.currentPage.update(v => v - 1);
+      this.loadSuggestions();
+    }
+  }
+
+  goToPage(page: number) {
+    this.currentPage.set(page);
+    this.loadSuggestions();
   }
 }
