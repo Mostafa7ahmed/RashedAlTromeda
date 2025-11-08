@@ -1,12 +1,12 @@
 <div class="suggestion">
   <div class="headerTitle">
-    <h3>الحجوزات</h3>
+    <h3>{{ 'BOOKINGS' | translate }}</h3>
 
     <!-- Dropdown -->
     <div class="lang-select" (click)="dropdownOpen = !dropdownOpen">
       <div class="d-flex align-items-center gap-2">
         <div class="lineColor" [style.background-color]="selectedStatus().color"></div>
-        <span class="code">{{ selectedStatus().name }}</span>
+        <span class="code">{{ selectedStatus().name  | translate}}</span>
       </div>
       <i class="arrow" [class.open]="dropdownOpen"></i>
 
@@ -16,7 +16,7 @@
             <li (click)="selectStatus(lang, $event)">
               <div class="d-flex align-items-center gap-2">
                 <div class="lineColor" [style.background-color]="lang.color"></div>
-                <span class="code">{{ lang.name }}</span>
+                <span class="code">{{ lang.name   | translate}}</span>
               </div>
             </li>
           }
@@ -26,7 +26,7 @@
   </div>
     @if (bookingCard().length === 0) {
       <div class="no-data">
-        لا توجد حجوزات لعرضها
+    {{ 'NO_BOOKINGS' | translate }}
       </div>
     }
   <div class=" posts mt-4">
@@ -40,14 +40,15 @@
           <span>{{ card.userName }}</span>
         </div>
         <div class="btn rounded-3" [routerLink]="['/orderDetials' , card.id]" >
-          معرفته التفاصيل
+          {{ 'VIEW_DETAILS' | translate }}
         </div>
          </div>
         <div>
-          الحالة: <span [style.color]="status[card.status + 1].color">{{ status[card.status + 1].name }}</span>
+                 {{ 'STATUS' | translate }} :  
+ <span [style.color]="status[card.status + 1].color">{{ status[card.status + 1].name }}</span>
         </div>
         <div class="d-flex header mt-2 justify-content-between align-items-start">
-          <p class="m-0">          المبلغ: {{ card.totalAmount }}$</p>
+          <p class="m-0">       {{ 'AMOUNT' | translate }}: {{ card.totalAmount }}$</p>
             <div class="date">
           <img src="Icons/stash_data-date-light.svg" alt="" />
           <span>{{ card.createOn| date }}</span>
@@ -62,7 +63,7 @@
 
       <div class="pagination mt-4 mb-0">
         <button class="nav-btn" (click)="prevPage()" [disabled]="!movePrevious()">
-            ‹ السابق
+      {{ 'PREVIOUS' | translate }}
         </button>
         <div class="pages">
             @for (page of visiblePages; track page) {
@@ -73,7 +74,7 @@
             }
         </div>
         <button class="nav-btn" (click)="nextPage()" [disabled]="!moveNext()">
-            التالي ›
+      {{ 'NEXT' | translate }}
         </button>
     </div>
 

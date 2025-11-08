@@ -8,11 +8,12 @@ import { Complaint } from '../../../../../../../Core/service/complaint';
 import { Streem } from '../../../../../../../Core/service/streem';
 import { SweetAlert } from '../../../../../../../Core/service/sweet-alert';
 import { environment } from '../../../../../../../../environments/environment';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-add-complaint',
-  imports: [ReactiveModeuls   ],
+  imports: [ReactiveModeuls  , TranslatePipe ],
   templateUrl: './add-complaint.html',
     styleUrls: [ './add-complaint.scss', '../../../../../../../Shared/CSS/popup.scss'],
 

@@ -1,33 +1,40 @@
 <div class="overlaypopup"></div>
 <div class="addsuggest">
-    <div class="headerpopup d-flex justify-content-between align-items-center">
-        <h5> اضافة شكوى</h5>
-        <div class="icons cr" (click)="closePopup()">
-            <i class="fa-solid fa-circle-xmark"></i>
-        </div>
+  <div class="headerpopup d-flex justify-content-between align-items-center">
+    <h5>{{ 'ADD_COMPLAINT' | translate }}</h5>
+    <div class="icons cr" (click)="closePopup()">
+      <i class="fa-solid fa-circle-xmark"></i>
     </div>
- <div class="bodyAdd">
+  </div>
+
+  <div class="bodyAdd">
     <form [formGroup]="form" class="contentPopup d-flex flex-column gap-3 mt-4">
-      
+
+      <!-- عنوان الشكوى -->
       <div class="fromGroup">
-        <label for="title">عنوان الشكوى</label>
-        <input id="title" type="text" placeholder="ادخل عنوان الشكوى" formControlName="title"/>
+        <label for="title">{{ 'TITLE_COMPLAINTS' | translate }}</label>
+        <input id="title" type="text" placeholder="{{ 'TITLE_PLACEHOLDER' | translate }}" formControlName="title"/>
+        <small class="error-msg" *ngIf="form.get('title')?.touched && form.get('title')?.hasError('required')">
+          {{ 'REQUIRED_FIELD' | translate }}
+        </small>
       </div>
 
+      <!-- موضوع الشكوى -->
       <div class="fromGroup">
-        <label for="description">موضوع الشكوى</label>
-        <textarea id="description" placeholder="اكتب الموضوع هنا" formControlName="description"></textarea>
+        <label for="description">{{ 'DESCRIPTION_COMPLAINTS' | translate }}</label>
+        <textarea id="description" placeholder="{{ 'DESCRIPTION_PLACEHOLDER' | translate }}" formControlName="description"></textarea>
+        <small class="error-msg" *ngIf="form.get('description')?.touched && form.get('description')?.hasError('required')">
+          {{ 'REQUIRED_FIELD' | translate }}
+        </small>
       </div>
 
       <!-- Dropdown اختيار المهندس -->
       <div class="custom-select" (click)="toggleDropdown()">
         <div class="selected">
           <div class="d-flex">
-                        <img   *ngIf="selectedEngineer(); else placeholder" [src]="baseUrl+  selectedEngineer()?.photo" alt="" class="avatar">
-
-         
+            <img *ngIf="selectedEngineer(); else placeholder" [src]="baseUrl+selectedEngineer()?.photo" alt="" class="avatar">
             <ng-template #placeholder>
-              <span class="placeholderElement">اختر المهندس</span>
+              <span class="placeholderElement">{{ 'SELECT_ENGINEER' | translate }}</span>
             </ng-template>
             <div class="info" *ngIf="selectedEngineer()">
               <span>{{ selectedEngineer()?.userName }}</span>
@@ -37,8 +44,8 @@
         </div>
 
         <ul *ngIf="isOpen()" class="dropdown px-0">
-          <li *ngFor="let eng of engineers() " (click)="selectEngineer(eng)">
-            <img [src]="baseUrl+ eng.photo" alt="" class="avatar">
+          <li *ngFor="let eng of engineers()" (click)="selectEngineer(eng)">
+            <img [src]="baseUrl+eng.photo" alt="" class="avatar">
             <div class="info">{{ eng.userName }}</div>
           </li>
         </ul>
@@ -46,9 +53,9 @@
 
       <!-- اختيار الحجز -->
       <div *ngIf="selectedEngineer()" class="booking-select mt-3">
-        <label>اختر الحجز</label>
+        <label>{{ 'CHOOSE_BOOKING' | translate }}</label>
         <ul class="booking-dropdown">
-          <li *ngFor="let booking of selectedEngineer()?.bookings "
+          <li *ngFor="let booking of selectedEngineer()?.bookings"
               (click)="selectBooking(booking)"
               [class.active]="selectedBooking === booking">
             <span>رقم الحجز: {{ booking.id }}</span> |
@@ -61,14 +68,14 @@
       <div class="upload-images">
         <div class="upload-box" (click)="fileInputImages.click()">
           <img src="Icons/addimage.svg" alt="">
-          <p class="title">تحميل صور متعددة</p>
-          <label class="browse">تصفح</label>
+          <p class="title">{{ 'UPLOAD_IMAGES' | translate }}</p>
+          <label class="browse">{{ 'BROWSE' | translate }}</label>
           <input type="file" #fileInputImages multiple accept="image/*" (change)="onFilesSelected($event)" hidden/>
         </div>
 
         <div class="preview-section" *ngIf="images().length > 0">
           <div class="preview-header">
-            <span>تحميل {{ images().length }} صور</span>
+            <span>{{ 'UPLOAD_COUNT' | translate:{count: images().length} }}</span>
           </div>
           <div class="preview-list">
             <div class="preview-item" *ngFor="let img of images(); let i = index">
@@ -86,19 +93,19 @@
         <div class="card" (click)="fileInput.click()">
           <input type="file" #fileInput multiple (change)="onFileSelectedPDF($event)" hidden/>
           <i class="fa-solid fa-cloud-arrow-up"></i>
-          <p class="m-0">تحميل ملفات</p>
+          <p class="m-0">{{ 'UPLOAD_FILES' | translate }}</p>
         </div>
 
         <!-- تسجيل صوت -->
         <div class="record-card card">
           <button class="record-btn btn" *ngIf="!audioUrl()" (click)="toggleRecording()">
             <i class="fa-solid" [ngClass]="isRecording() ? 'fa-stop' : 'fa-microphone'"></i>
-            <p class="m-0" [ngClass]="!isRecording() ? 'd-block' : 'd-none'"> تسجيل صوت</p>
+            <p class="m-0" [ngClass]="!isRecording() ? 'd-block' : 'd-none'">{{ 'RECORD_AUDIO' | translate }}</p>
           </button>
 
           <div class="record-indicator" *ngIf="isRecording()">
             <span class="dot"></span>
-            <span>يتم التسجيل الآن...</span>
+            <span>{{ 'RECORDING_NOW' | translate }}</span>
           </div>
 
           <div *ngIf="audioUrl()" class="audio-player d-flex gap-2">
@@ -121,14 +128,11 @@
         </div>
       </div>
 
-
-
     </form>
   </div>
 
-    <!-- زر إغلاق -->
-    <div class="actions">
-        <button (click)="addComplaint()" class="close-btn">اضافة شكوي</button>
-    </div>
-
+  <!-- زر إضافة الشكوى -->
+  <div class="actions">
+    <button (click)="addComplaint()" class="close-btn">{{ 'ADD_COMPLAINT_BUTTON' | translate }}</button>
+  </div>
 </div>

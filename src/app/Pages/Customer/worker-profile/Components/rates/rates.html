@@ -1,59 +1,59 @@
-@if (engineerRate().length ) {
-<div class="reating">
-  <h4>المراجعات</h4>
+@if (engineerRate().length) {
+  <div class="reating">
+    <h4>{{ 'REVIEWS.TITLE' | translate }}</h4>
 
-  <div class="cardsReatiing">
-    @for (r of engineerRate(); track r.id) {
-    <div class="review-card">
-      <div class="review-header">
-        <div class="user-info">
-          <img [src]="baseUrl + r.creator.photoUrl" alt="user" class="avatar" />
-          <div>
-            <h4>{{ r.creator.name }}</h4>
-            <h5>
-              <span class="rate"><i class="fa-solid fa-star"></i> {{ r.value }}</span>
-            </h5>
+    <div class="cardsReatiing">
+      @for (r of engineerRate(); track r.id) {
+      <div class="review-card">
+        <div class="review-header">
+          <div class="user-info">
+            <img [src]="baseUrl + r.creator.photoUrl" alt="user" class="avatar" />
+            <div>
+              <h4>{{ r.creator.name }}</h4>
+              <h5>
+                <span class="rate"><i class="fa-solid fa-star"></i> {{ r.value }}</span>
+              </h5>
+            </div>
+          </div>
+          <span class="date"> <i class="fa-regular fa-calendar"></i> {{ r.createdOn | date}} </span>
+        </div>
+
+        <div class="footerreview d-flex justify-content-between align-items-center">
+          <p class="review-text">{{ r.comment }}</p>
+          <div class="review-footer cr">
+            <span class="likes"> <i class="fa-regular fa-thumbs-up"></i> {{ getRandomLikes()}} </span>
           </div>
         </div>
-        <span class="date"> <i class="fa-regular fa-calendar"></i> {{ r.createdOn | date}} </span>
       </div>
-
-      <div class="footerreview d-flex justify-content-between align-items-center">
-        <p class="review-text">{{ r.comment }}</p>
-        <div class="review-footer cr">
-          <span class="likes"> <i class="fa-regular fa-thumbs-up"></i> {{ getRandomLikes()}} </span>
-        </div>
-
-      </div>
+      }
     </div>
-    }
   </div>
-</div>
-
 }
+
 <!-- إضافة تعليق جديد -->
 <div class="add-review">
-  <h4>التقييم</h4>
+  <h4>{{ 'REVIEWS.NEW.TITLE' | translate }}</h4>
   <div class="stars">
     @for (s of [1,2,3,4,5]; track s) {
-    <i class="fa-star" [class.fa-regular]="newRate() < s" [class.fa-solid]="newRate() >= s" (click)="newRate.set(s)">
-    </i>
+      <i class="fa-star" 
+         [class.fa-regular]="newRate() < s" 
+         [class.fa-solid]="newRate() >= s" 
+         (click)="newRate.set(s)">
+      </i>
     }
   </div>
-  <h4>اترك تعليق</h4>
+  <h4>{{ 'REVIEWS.NEW.LEAVE_COMMENT' | translate }}</h4>
 
   <div class="addComments d-flex gap-3 w-100 align-items-center">
-
     <div class="input-box">
       <img [src]=" userImage" class="avatar" />
-
-      <input type="text" placeholder="اكتب تعليقك" [value]="newText()"
-        (input)="newText.set($any($event.target).value)" />
+      <input type="text" 
+             placeholder="{{ 'REVIEWS.NEW.COMMENT_PLACEHOLDER' | translate }}" 
+             [value]="newText()"
+             (input)="newText.set($any($event.target).value)" />
     </div>
     <button class="send-btn" (click)="addReview()">
       <i class="fa-solid fa-paper-plane"></i>
     </button>
   </div>
 </div>
-
-

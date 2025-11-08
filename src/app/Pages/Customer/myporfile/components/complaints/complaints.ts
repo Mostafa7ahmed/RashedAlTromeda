@@ -4,10 +4,11 @@ import { Router, RouterModule } from '@angular/router';
 import { IComplaintWithAudio } from '../../../../../Core/Interface/icomplaint';
 import { environment } from '../../../../../../environments/environment';
 import { Complaint } from '../../../../../Core/service/complaint';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-complaints',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule , TranslatePipe],
   templateUrl: './complaints.html',
   styleUrls: ['./complaints.scss', '../suggestion/suggestion.scss']
 })
@@ -24,13 +25,13 @@ export class Complaints {
   baseurl = environment.baseUrl;
   timeoutId: any;
 
-  status = [
-    { code: -1, name: 'جميع الحالات', color: '#b6d83bff' },
-    { code: 0, name: 'قيد الانتظار', color: '#F36B14' },
-    { code: 1, name: 'يتم العمل عليه', color: '#949292' },
-    { code: 2, name: 'مكتمل', color: '#6EC733' },
-    { code: 3, name: 'تم الإلغاء', color: '#FF4F4F' }
-  ];
+status = [
+  { code: -1, name: 'ALL_STATUSES', color: '#b6d83bff' },
+  { code: 0, name: 'PENDING', color: '#F36B14' },
+  { code: 1, name: 'IN_PROGRESS', color: '#949292' },
+  { code: 2, name: 'COMPLETED', color: '#6EC733' },
+  { code: 3, name: 'CANCELLED', color: '#FF4F4F' }
+];
   selectedstatu = this.status[0];
 
   constructor() {

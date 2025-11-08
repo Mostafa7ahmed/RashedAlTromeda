@@ -4,10 +4,11 @@ import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 import { SweetAlert } from '../../../Core/service/sweet-alert';
 import { UpdatePassword } from '../../../Core/service/update-password';
 import { IChangePassword } from '../../../Core/Interface/idecode';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-changepassword',
-  imports: [ ReactiveModeuls],
+  imports: [ ReactiveModeuls , TranslatePipe],
   templateUrl: './changepassword.html',
   styleUrl: './changepassword.scss'
 })

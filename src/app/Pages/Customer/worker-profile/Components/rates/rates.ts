@@ -6,10 +6,11 @@ import { environment } from '../../../../../../environments/environment';
 import { LoginService } from '../../../../../Core/service/login';
 import { IDecode } from '../../../../../Core/Interface/idecode';
 import { SweetAlert } from '../../../../../Core/service/sweet-alert';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-rates',
-  imports: [ReactiveModeuls],
+  imports: [ReactiveModeuls , TranslatePipe],
   templateUrl: './rates.html',
   styleUrl: './rates.scss'
 })

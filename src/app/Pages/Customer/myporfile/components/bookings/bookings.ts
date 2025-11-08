@@ -4,10 +4,11 @@ import { Booking } from '../../../../../Core/service/Customer/booking';
 import { CommonModule, DatePipe } from '@angular/common';
 import { environment } from '../../../../../../environments/environment';
 import { RouterLink } from "@angular/router";
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-bookings',
-  imports: [DatePipe, CommonModule, RouterLink],
+  imports: [DatePipe, CommonModule, RouterLink  , TranslatePipe] ,
   templateUrl: './bookings.html',
   styleUrls: ['./bookings.scss' , '../suggestion/suggestion.scss']
 })
@@ -25,18 +26,17 @@ export class Bookings  {
   bookingCard = signal<IBooking[]>([]);
   selectedStatus = signal<{ code: number; name: string; color: string }>({
     code: -1,
-    name: 'جميع الحالات',
-    color: '#b6d83bff'
+name: 'ALL_STATUSES',    color: '#b6d83bff'
   });
 
-  status = [
-    { code: -1, name: 'جميع الحالات', color: '#b6d83bff' },
-    { code: 0, name: 'قيد الانتظار', color: '#F36B14' },
-    { code: 1, name: 'يتم العمل عليه', color: '#949292' },
-    { code: 2, name: 'مكتمل', color: '#6EC733' },
-    { code: 3, name: 'تم الإلغاء', color: '#FF4F4F' }
-  ];
 
+status = [
+  { code: -1, name: 'ALL_STATUSES', color: '#b6d83bff' },
+  { code: 0, name: 'PENDING', color: '#F36B14' },
+  { code: 1, name: 'IN_PROGRESS', color: '#949292' },
+  { code: 2, name: 'COMPLETED', color: '#6EC733' },
+  { code: 3, name: 'CANCELLED', color: '#FF4F4F' }
+];
   constructor() {
     this.loadBookings();
   }

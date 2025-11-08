@@ -19,10 +19,11 @@ import { Booking } from '../../../Core/service/booking';
 import { SweetAlert } from '../../../Core/service/sweet-alert';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 import { ChangeDetectorRef } from '@angular/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-worker-profile',
-  imports: [ReactiveModeuls, ExperiencePipe, Rates ],
+  imports: [ReactiveModeuls,TranslatePipe, ExperiencePipe, Rates ],
   templateUrl: './worker-profile.html',
   styleUrls: ['./worker-profile.scss' , '../../../Shared/CSS/popup.scss'],
 })
@@ -55,7 +56,7 @@ export class WorkerProfile {
   private map!: L.Map;
   private marker!: L.Marker;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder , private translate: TranslateService) {
     this.form = this.fb.group({
       address: ['', Validators.required],
       latitude: [null, Validators.required],
@@ -144,10 +145,11 @@ export class WorkerProfile {
     this.selectedServices.set(selected);
   }
 
-  getDayName(dayOfWeek: number): string {
-    const days = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
-    return days[dayOfWeek] || '';
-  }
+getDayName(dayOfWeek: number): string {
+  const dayKeys = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+  const key = dayKeys[dayOfWeek] || '';
+  return key ? this.translate.instant(key) : '';
+}
 
   selectDay(id: number) {
     this.selectedDay.set(id);

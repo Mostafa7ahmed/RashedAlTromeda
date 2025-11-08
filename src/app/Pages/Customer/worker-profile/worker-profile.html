@@ -3,13 +3,14 @@
     <img src="Image/workerProfile.png" alt="" width="587" />
   </div>
   <div class="contentBooking container-fluid" >
+
     <div class="experiance container-fluid">
       <div class="cardsEx">
         <div class="Icons purple">
           <img src="Icons/worker.svg" alt="" />
         </div>
         <div class="info">
-          <span>جميع الخدمات</span>
+          <span>{{ 'ALL_SERVICES' | translate }}</span>
           <p>{{ engineerProfile()?.totalServices }}</p>
         </div>
       </div>
@@ -18,8 +19,8 @@
           <i class="fa-regular fa-star"></i>
         </div>
         <div class="info">
-          <span>{{ engineerProfile()?.startYear | experience }} عام</span>
-          <p>خبرة</p>
+          <span>{{ engineerProfile()?.startYear | experience }} {{ 'YEARS' | translate }}</span>
+          <p>{{ 'EXPERIENCE' | translate }}</p>
         </div>
       </div>
       <div class="cardsEx">
@@ -27,7 +28,7 @@
           <i class="fa-regular fa-star"></i>
         </div>
         <div class="info">
-          <span> تقييم</span>
+          <span>{{ 'RATING' | translate }}</span>
           <p>{{ engineerProfile()?.rate }}</p>
         </div>
       </div>
@@ -40,6 +41,7 @@
           <img src="Icons/message.svg" alt="" />
         </div>
       </div>
+
       <div class="cardSelects">
         @for (s of engineerProfile()?.services; track s.id) {
         <div class="selected" (click)="toggleService(s)" [class.active]="isSelected(s)">
@@ -62,14 +64,14 @@
     </div>
 
     <div class="description">
-      <h4>الوصف</h4>
+      <h4>{{ 'DESCRIPTION' | translate }}</h4>
       <p>
         {{ engineerProfile()?.summary }}
       </p>
     </div>
 
     <div class="selectDate">
-      <h4>اختيار التاريخ</h4>
+      <h4>{{ 'CHOOSE_DATE' | translate }}</h4>
       <div class="days-container">
         @for (day of engineerSchedule(); track day.id) {
         <div class="bodyCard d-flex justify-content-between align-items-center gap-2 flex-column">
@@ -87,37 +89,30 @@
         }
       </div>
 
-
-
       <div class="my-4">
         <form class="d-flex gap-4 mb-4" [formGroup]="form">
           <div class="d-flex justify-content-between flex-column w-25" >
             <div class="d-flex align-items-center gap-4 mb-3 flex-column ">
-              <input formControlName="address" placeholder="ابحث عن العنوان" />
-              <button type="button" class="btnLocation" (click)="searchAddress()">بحث</button>
-              <button type="button" class="btnLocation" (click)="useMyLocation()">استخدم موقعي</button>
+              <input formControlName="address" [placeholder]="'SEARCH_ADDRESS' | translate" />
+              <button type="button" class="btnLocation" (click)="searchAddress()">{{ 'SEARCH' | translate }}</button>
+              <button type="button" class="btnLocation" (click)="useMyLocation()">{{ 'USE_MY_LOCATION' | translate }}</button>
             </div>
-
-
           </div>
-          <div class="flex-grow-1 d-flex flex-column">
 
+          <div class="flex-grow-1 d-flex flex-column">
             <div class="map-wrapper">
               <div id="map" style=" width:100%; border-radius:12px; overflow:hidden;"></div>
             </div>
-
           </div>
         </form>
-
       </div>
 
-
-            <div class="booking d-flex gap-3 align-items-center">
+      <div class="booking d-flex gap-3 align-items-center">
         <div class="priceBooking">
           <span>{{ totalPrice() }}$ </span>
         </div>
         <div class="btnBooking">
-          <button (click)="createBookingRequest()">الدفع</button>
+          <button (click)="createBookingRequest()">{{ 'PAY' | translate }}</button>
         </div>
       </div>
 

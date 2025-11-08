@@ -5,10 +5,11 @@ import { Booking } from '../../../Core/service/booking';
 import { environment } from '../../../../environments/environment';
 import { ShortenPipe } from '../../../Shared/pipes/shorten-pipe';
 import { DatePipe } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order-detials',
-  imports: [HeaderPages , ShortenPipe , DatePipe],
+  imports: [HeaderPages , TranslatePipe , DatePipe],
   templateUrl: './order-detials.html',
   styleUrl: './order-detials.scss'
 })
