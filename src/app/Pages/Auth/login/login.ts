@@ -6,10 +6,11 @@ import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SweetAlert } from '../../../Core/service/sweet-alert';
 import { IDecode } from '../../../Core/Interface/idecode';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveModeuls, NgxIntlTelInputModule],
+  imports: [ReactiveModeuls, TranslatePipe, NgxIntlTelInputModule],
   templateUrl: './login.html',
   styleUrls: ['./login.scss', '../../../Shared/CSS/input.scss']
 })
@@ -25,7 +26,7 @@ export class Login {
   registerLink: string | null = null;
   isLoading = signal(false);
 
-  constructor(private fb: FormBuilder, private aleart: SweetAlert, private loginService: LoginService, private route: ActivatedRoute
+  constructor(private fb: FormBuilder, private aleart: SweetAlert, private translate: TranslateService ,private loginService: LoginService, private route: ActivatedRoute
     , private router: Router) {
     this.form = this.fb.group({
       phone: ['', Validators.required],
@@ -39,24 +40,24 @@ export class Login {
   togglePasswordVisibility() {
     this.passwordFieldType = !this.passwordFieldType;
   }
-  setWelcomeText(type: number) {
-    switch (type) {
-      case 1:
-        this.welcomeText = ' بالمهندس';
-        break;
-      case 2:
-        this.welcomeText = ' بالعميل';
-        break;
-      case 3:
-        this.welcomeText = ' بالمؤسسة';
-        break;
-      case 4:
-        this.welcomeText = ' بالمركز';
-        break;
-      default:
-        this.welcomeText = ' بعودتك';
-    }
+setWelcomeText(type: number) {
+  switch (type) {
+    case 1:
+      this.welcomeText = this.translate.instant('LOGIN.WELCOME_ENGINEER');
+      break;
+    case 2:
+      this.welcomeText = this.translate.instant('LOGIN.WELCOME_CLIENT');
+      break;
+    case 3:
+      this.welcomeText = this.translate.instant('LOGIN.WELCOME_COMPANY');
+      break;
+    case 4:
+      this.welcomeText = this.translate.instant('LOGIN.WELCOME_CENTER');
+      break;
+    default:
+      this.welcomeText = this.translate.instant('LOGIN.WELCOME_BACK');
   }
+}
   setRegisterLink(type: number) {
     switch (type) {
       case 1:

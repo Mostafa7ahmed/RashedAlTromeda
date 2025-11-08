@@ -1,61 +1,77 @@
 <div class="loginCard relative">
-    <div class="d-flex justify-content-between">
-        <span> مرحباً <span class="fw-bold "> {{welcomeText }}</span> </span>
+  <div class="d-flex justify-content-between">
+    <span>
+      {{ 'LOGIN.WELCOME' | translate }} <span class="fw-bold"> {{ welcomeText  |translate }} </span>
+    </span>
 
-        <span class="fw-bold cr link-underline-danger" routerLink="auth/selectType">عوده اللي الخلف</span>
+    <span class="fw-bold cr link-underline-danger" routerLink="auth/selectType">
+      {{ 'LOGIN.BACK' | translate }}
+    </span>
+  </div>
 
+  <h4 class="mt-4">{{ 'LOGIN.TITLE' | translate }}</h4>
+
+  <form [formGroup]="form" class="mt-5" (ngSubmit)="submit()">
+    <div class="cardsForm d-flex gap-3">
+      <div class="position-relative w-100 p-0 border-0">
+        <ngx-intl-tel-input
+          [cssClass]="'custom'"
+          [enableAutoCountrySelect]="true"
+          [enablePlaceholder]="true"
+          [customPlaceholder]="'LOGIN.PHONE_PLACEHOLDER' | translate"
+          [searchCountryFlag]="true"
+          [searchCountryField]="[SearchCountryField.All]"
+          [selectFirstCountry]="false"
+          [selectedCountryISO]="CountryISO.Egypt"
+          [separateDialCode]="true"
+          [phoneValidation]="true"
+          formControlName="phone"
+          name="phone"
+          class="input-cal p-0 input-base inputFloating">
+        </ngx-intl-tel-input>
+        <label id="label-input">{{ 'LOGIN.PHONE_LABEL' | translate }}</label>
+      </div>
     </div>
-    <h4 class="mt-4">سجل الدخول لحسابك</h4>
 
-    <form action="" [formGroup]="form" class="mt-5" (ngSubmit)="submit()">
-        <div class="cardsForm d-flex gap-3">
-            <div class="position-relative w-100  p-0 border-0">
-                <ngx-intl-tel-input [cssClass]="'custom'" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
-                    [customPlaceholder]="'اكتب رقم الهاتف هنا'" [searchCountryFlag]="true"
-                    [searchCountryField]="[SearchCountryField.All]" [selectFirstCountry]="false"
-                    [selectedCountryISO]="CountryISO.Egypt" [separateDialCode]="true" [phoneValidation]="true"
-                    formControlName="phone" name="phone" class="input-cal p-0 input-base inputFloating">
-                </ngx-intl-tel-input>
-                <label id="label-input"> رقم الهاتف</label>
-            </div>
-            <!-- <div class="position-relative flex-grow-1 border-0 w-75">
-                <input class="input-cal input-base inputFloating" placeholder="" />
-                <label id="label-input"> رقم الهاتف</label>
-            </div> -->
-        </div>
-        <div class="position-relative mt-4">
-            <input class="input-cal input-base inputFloating" formControlName="password" placeholder=""
-                [type]="passwordFieldType ? 'password' : 'text'" />
-            <label id="label-input">كلمه المرور</label>
-            <i (click)="togglePasswordVisibility()" role="button" class="fa-solid position-absolute passicon"
-                [class.fa-eye]="passwordFieldType" [class.fa-eye-slash]="!passwordFieldType">
-            </i>
-        </div>
-        <div class="login-options">
-            <label class="remember-me">
-                <input type="checkbox" />
-                <span>تذكرني</span>
-            </label>
-            <a class="forgot-password" routerLink="/auth/forgetpassword">نسيت كلمة المرور؟</a>
-        </div>
+    <div class="position-relative mt-4">
+      <input
+        class="input-cal input-base inputFloating"
+        formControlName="password"
+        placeholder=""
+        [type]="passwordFieldType ? 'password' : 'text'" />
+      <label id="label-input">{{ 'LOGIN.PASSWORD' | translate }}</label>
+      <i
+        (click)="togglePasswordVisibility()"
+        role="button"
+        class="fa-solid position-absolute passicon"
+        [class.fa-eye]="passwordFieldType"
+        [class.fa-eye-slash]="!passwordFieldType">
+      </i>
+    </div>
 
-        <button type="submit" class="login-btn" [disabled]="isLoading()">
-            @if (!isLoading()) {
-            تسجيل الدخول
-            } @else {
-            <span class="spinner mx-2"></span> جاري التحميل...
-            }
-        </button>
-    </form>
-<div class="resiterRoute mt-5 ">
-    @if (registerLink) {
-    <h5>ليس لديك حساب؟
-        <a [routerLink]="registerLink" class="reg">إنشاء حساب جديد</a>
+    <div class="login-options">
+      <label class="remember-me">
+        <input type="checkbox" />
+        <span>{{ 'LOGIN.REMEMBER_ME' | translate }}</span>
+      </label>
+      <a class="forgot-password" routerLink="/auth/forgetpassword">
+        {{ 'LOGIN.FORGOT_PASSWORD' | translate }}
+      </a>
+    </div>
+
+    <button type="submit" class="login-btn" [disabled]="isLoading()">
+      @if (!isLoading()) {
+        {{ 'LOGIN.BUTTON' | translate }}
+      } @else {
+        <span class="spinner mx-2"></span> {{ 'LOGIN.LOADING' | translate }}
+      }
+    </button>
+  </form>
+
+  <div class="resiterRoute mt-5" *ngIf="registerLink">
+    <h5>
+      {{ 'LOGIN.NO_ACCOUNT' | translate }}
+      <a [routerLink]="registerLink" class="reg">{{ 'LOGIN.CREATE_ACCOUNT' | translate }}</a>
     </h5>
-    }
+  </div>
 </div>
-
-
-</div>
-
-

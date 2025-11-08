@@ -155,6 +155,35 @@
       "LEAVE_COMMENT": "Leave a comment",
       "COMMENT_PLACEHOLDER": "Write your comment"
     }
+  },  "SELECT_TYPE": {
+    "TITLE": "Select Type",
+    "ENGINEER": "Engineer",
+    "CLIENT": "Client",
+    "COMPANY": "Company",
+    "CENTER": "Center"
+  },
+    "AUTH": {
+    "SLOGAN_TITLE": "Your Home, Your Safety.. Our Services, Your Comfort",
+    "SLOGAN_DESC": "Login now and enjoy reliable and fast home services, from cleaning and maintenance to all your home's needs.. in one place"
+  },
+   "LOGIN": {
+    "WELCOME": "Welcome",
+    "BACK": "Go Back",
+    "TITLE": "Log in to your account",
+    "PHONE_LABEL": "Phone Number",
+    "PHONE_PLACEHOLDER": "Enter your phone number",
+    "PASSWORD": "Password",
+    "REMEMBER_ME": "Remember me",
+    "FORGOT_PASSWORD": "Forgot password?",
+    "BUTTON": "Log In",
+    "LOADING": "Loading...",
+       "WELCOME_ENGINEER": "as Engineer",
+    "WELCOME_CLIENT": "as Client",
+    "WELCOME_COMPANY": "as Company",
+    "WELCOME_CENTER": "at Center",
+    "WELCOME_BACK": "Welcome back",
+    "NO_ACCOUNT": "Don't have an account?",
+    "CREATE_ACCOUNT": "Create a new account"
   },
     "ORDER_DETAILS": {
     "TITLE": "Order Details Review",

@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { roleGuard } from '../Core/guards/role.guard';
 import { Home } from '../Pages/home/home';
 import { MainLayoutOrganization } from '../Layout/Organization/main-layout-organization/main-layout-organization';
+import { HomeCustomer } from '../Pages/homeCustomer/home';
 
 export const organizationRoutes: Routes = [
   {
@@ -11,7 +12,7 @@ export const organizationRoutes: Routes = [
     canActivate: [roleGuard(['organization'])],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
-      { path: 'home', component: Home },
+      { path: 'home', component: HomeCustomer },
    
       {
         path: 'organizations',

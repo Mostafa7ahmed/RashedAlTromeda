@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { MainLayoutEngineer } from '../Layout/Engineer/main-layout-engineer/main-layout-engineer';
 import { roleGuard } from '../Core/guards/role.guard';
 import { Home } from '../Pages/home/home';
+import { HomeCustomer } from '../Pages/homeCustomer/home';
 
 export const engineerRoutes: Routes = [
   {
@@ -10,7 +11,7 @@ export const engineerRoutes: Routes = [
     canActivate: [roleGuard(['engineer'])],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
-      { path: 'home', component: Home },
+      { path: 'home', component: HomeCustomer },
       {
         path: 'ordersNew',
         loadComponent: () => import('../Pages/Engineer/orders/orders').then(m => m.Orders),

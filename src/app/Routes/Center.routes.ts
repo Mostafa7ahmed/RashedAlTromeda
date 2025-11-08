@@ -3,6 +3,7 @@ import { MainLayoutEngineer } from '../Layout/Engineer/main-layout-engineer/main
 import { roleGuard } from '../Core/guards/role.guard';
 import { Home } from '../Pages/home/home';
 import { MainlayoutCenter } from '../Layout/Center/mainlayout-center/mainlayout-center';
+import { HomeCustomer } from '../Pages/homeCustomer/home';
 
 export const ceneterRoutes: Routes = [
   {
@@ -11,7 +12,7 @@ export const ceneterRoutes: Routes = [
     canActivate: [roleGuard(['suborganization'])],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
-      { path: 'home', component: Home },
+      { path: 'home', component: HomeCustomer },
       {
         path: 'organizations',
         loadComponent: () => import('../Pages/Centers/organizations/organizations').then(m => m.Organizations),
