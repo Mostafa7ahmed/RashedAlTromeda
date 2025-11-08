@@ -14,7 +14,7 @@
       <i class="arrow" [class.open]="dropdownOpen"></i>
 
       <ul class="dropdown" *ngIf="dropdownOpen">
-        <li *ngFor="let lang of languages" (click)="selectLanguage(lang)">
+<li *ngFor="let lang of languages" (click)="selectLanguage(lang, $event)">
           <img [src]="lang.flag" alt="{{ lang.name }}" class="flag" />
           <span>{{ lang.name }}</span>
         </li>
@@ -22,17 +22,17 @@
     </div>
     </li>
      <li>
-  <a routerLink="/engineer/home" routerLinkActive="active">{{ 'NAV.HOME' | translate }}</a>
+  <a routerLink="/organization/home" routerLinkActive="active">{{ 'NAV.HOME' | translate }}</a>
 </li>
 
 <li>
-  <a routerLink="/engineer/organizations" routerLinkActive="active">{{ 'NAV.ORGANIZATIONS' | translate }}</a>
+  <a routerLink="/organization/organizations" routerLinkActive="active">{{ 'NAV.ORGANIZATIONS' | translate }}</a>
 </li>
 <li>
-  <a routerLink="/engineer/about" routerLinkActive="active">{{ 'NAV.ABOUT' | translate }}</a>
+  <a routerLink="/organization/about" routerLinkActive="active">{{ 'NAV.ABOUT' | translate }}</a>
 </li>
 <li>
-  <a routerLink="/engineer/contact" routerLinkActive="active">{{ 'NAV.CONTACT' | translate }}</a>
+  <a routerLink="/organization/contact" routerLinkActive="active">{{ 'NAV.CONTACT' | translate }}</a>
 </li>
   </ul>
 
@@ -46,7 +46,7 @@
       <i class="arrow" [class.open]="dropdownOpen"></i>
 
       <ul class="dropdown" *ngIf="dropdownOpen">
-        <li *ngFor="let lang of languages" (click)="selectLanguage(lang)">
+<li *ngFor="let lang of languages" (click)="selectLanguage(lang, $event)">
           <img [src]="lang.flag" alt="{{ lang.name }}" class="flag" />
           <span>{{ lang.name }}</span>
         </li>

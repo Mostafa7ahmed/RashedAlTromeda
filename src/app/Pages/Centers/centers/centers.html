@@ -1,38 +1,28 @@
 <div class="service mt-5 pt-5 container-fluid">
 
     <div class="contentService">
-        <h1>المراكز</h1>
+        <h1>{{ 'CENTERS_PAGE.TITLE' | translate }}</h1>
 
-
-        <div class="searchInput">
-            <div class="inputSerch d-flex align-items-center">
-                <i class="fa fa-search"></i>
-
-                <input type="text" placeholder="ابحث عن مركز...">
-            </div>
-            
-        </div>
+      
     </div>
-    @if (organization()?.centers?.length === 0) {
- <div class="no-data">
-        لا توجد مراكز لعرضها
-      </div>
-    }
+
+    <div *ngIf="organization()?.centers?.length === 0" class="no-data">
+        {{ 'CENTERS_PAGE.NO_DATA' | translate }}
+    </div>
+
     <section class="services">
         @for (s of organization()?.centers; track s.id) {
-        <div class="card" [routerLink]="['/suborganization/centerDetails' ,s.id]" [style.background-image]="'url(' + baseUrl + s.user.photoUrl">
+        <div class="card" 
+             [routerLink]="['/suborganization/centerDetails', s.id]" 
+             [style.background-image]="'url(' + baseUrl + s.user.photoUrl + ')'">
             <div class="overlay"></div>
             <div class="content justify-content-end flex-column">
                 <div class="text d-flex align-items-center gap-2">
-                    <h3 class="m-0"> {{s.user.name}}</h3>
+                    <h3 class="m-0">{{ s.user.name }}</h3>
                     <i class="fa-solid fa-arrow-up"></i>
                 </div>
             </div>
         </div>
         }
-      
     </section>
-
-
-     
 </div>

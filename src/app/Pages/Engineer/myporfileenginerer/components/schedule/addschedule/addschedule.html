@@ -2,7 +2,7 @@
 
 <div class="addsuggest">
     <div class="headerpopup d-flex justify-content-between align-items-center">
-        <h5>إضافة جدول جديد</h5>
+<h5>{{ 'workSchedule.addSchedule' | translate }}</h5>
         <div class="icons cr" (click)="closePopup()">
             <i class="fa-solid fa-circle-xmark"></i>
         </div>
@@ -11,31 +11,34 @@
     <div class="bodyAdd  mt-4">
         <form >
             <div class="fromGroup">
-                <label>اختيار اليوم</label>
+<label>{{ 'workSchedule.selectDay' | translate }}</label>
 
-                <div class="days-select ">
-                    <button type="button" *ngFor="let day of days()" class="day-option"
-                        [class.selected]="newSchedule.dayOfWeek === day.id" (click)="selectDay(day.id)">
-                        {{ day.name }}
-                    </button>
-                </div>
-
+ <div class="days-select">
+  <button
+    type="button"
+    *ngFor="let day of days()"
+    class="day-option"
+    [class.selected]="newSchedule.dayOfWeek === day.id"
+    (click)="selectDay(day.id)"
+  >
+    {{ day.key | translate }}
+  </button>
+</div>
 
             </div>
             <div class="d-flex gap-3">
                 <div class="fromGroup">
-                    <label>وقت البداية</label>
+<label>{{ 'startTime' | translate }}</label>
                     <input type="time" [(ngModel)]="newSchedule.startTime" name="startTime" required />
                 </div>
                 <div class="fromGroup">
-                    <label>وقت النهاية</label>
-                    <input type="time" [(ngModel)]="newSchedule.endTime" name="endTime" required />
+<label>{{ 'endTime' | translate }}</label>                    <input type="time" [(ngModel)]="newSchedule.endTime" name="endTime" required />
                 </div>
 
             </div>
 
             <div class="actions">
-                <button (click)="addSchedule()" class="close-btn">اضافة يوم</button>
+                <button (click)="addSchedule()" class="close-btn">{{ 'workSchedule.addDay' | translate }} </button>
             </div>
 
         </form>

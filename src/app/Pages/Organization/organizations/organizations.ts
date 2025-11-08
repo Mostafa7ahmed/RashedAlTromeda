@@ -4,10 +4,11 @@ import { environment } from '../../../../environments/environment';
 import { IOrganization } from '../../../Core/Interface/iorganization';
 import { OrganizationEngineer } from '../../../Core/service/engineer/organization';
 import { ShortenPipe } from '../../../Shared/pipes/shorten-pipe';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-organizations',
-  imports: [RouterModule , ShortenPipe],
+  imports: [RouterModule , ShortenPipe , TranslatePipe],
   templateUrl: './organizations.html',
   styleUrl: './organizations.scss'
 })

@@ -3,10 +3,11 @@ import { environment } from '../../../../../../environments/environment';
 import { Rate } from '../../../../../Core/service/rate';
 import { IRate } from '../../../../../Core/Interface/irate';
 import { DatePipe } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-rates',
-  imports: [DatePipe],
+  imports: [DatePipe , TranslatePipe],
   templateUrl: './rates.html',
   styleUrl: './rates.scss'
 })

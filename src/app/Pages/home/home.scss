@@ -9,14 +9,11 @@
 .contentHero {
   position: absolute;
   top: 20%;
-  right: 50%;
   height: max-content;
   display: flex;
   gap: 10px;
   flex-direction: column;
-  align-items: start;
- text-align: start;
-     align-self: start;
+
 
   h5 {
     font-family: 'Cairo', sans-serif;
@@ -56,6 +53,7 @@
     width: 70%;
   }
 }
+
 
 .contantWive {
   width: fit-content;

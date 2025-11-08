@@ -4,10 +4,12 @@ import { ProfileOrganizationService } from '../../../Core/service/Organization/p
 import { IOrganizationResponse } from '../../../Core/Interface/iorganization';
 import { OrganizationEngineer } from '../../../Core/service/engineer/organization';
 import { environment } from '../../../../environments/environment';
+import { TranslatePipe } from '@ngx-translate/core';
+import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 
 @Component({
   selector: 'app-centers',
-  imports: [RouterModule],
+  imports: [ReactiveModeuls , TranslatePipe],
   templateUrl: './centers.html',
   styleUrl: './centers.scss'
 })

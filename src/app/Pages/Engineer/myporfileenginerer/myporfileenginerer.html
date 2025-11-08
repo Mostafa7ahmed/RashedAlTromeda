@@ -1,69 +1,69 @@
-<app-header-pages [title]="'الملف الشخصي'" />
+<app-header-pages [title]="'personalInfo' | translate" />
 <div class="proflie container-fluid">
   <div class="sidebar-card">
     <ul class="sidebar-links">
       <li>
         <a routerLink="personal-info" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <img src="Icons/proicons_person.svg" alt="" />
-          <span>المعلومات الشخصية</span>
+          <span>{{ 'personalInfo' | translate }}</span>
         </a>
       </li>
       <li>
         <a routerLink="Schedule" routerLinkActive="active">
           <img src="Icons/solar_calendar-linear.svg" alt="" />
-          <span>جدول العمل</span>
+          <span>{{ 'schedule' | translate }}</span>
         </a>
       </li>
       <li>
         <a routerLink="rates" routerLinkActive="active">
           <img src="Icons/symbols_reviews.svg" alt="" />
-          <span>المراجعات</span>
+          <span>{{ 'rates' | translate }}</span>
         </a>
       </li>
       <li>
         <a routerLink="suggestions" routerLinkActive="active">
           <img src="Icons/suggect.svg" alt="" />
-          <span>الاقتراحات</span>
+          <span>{{ 'suggestions' | translate }}</span>
         </a>
       </li>
       <li>
         <a routerLink="Advertisement" routerLinkActive="active">
           <img src="Icons/megaphone.svg" alt="" />
-          <span> الاعلانات</span>
+          <span>{{ 'advertisement' | translate }}</span>
         </a>
       </li>
 
       <li>
         <a routerLink="location" routerLinkActive="active">
           <img src="Icons/mingcute_location-3-line.svg" alt="" />
-          <span>تعيين موقع</span>
+          <span>{{ 'location' | translate }}</span>
         </a>
       </li>
 
       <li>
         <a routerLink="new-job" routerLinkActive="active">
           <img src="Icons/hugeicons_new-job.svg" alt="" />
-          <span> التخصص</span>
+          <span>{{ 'newJob' | translate }}</span>
         </a>
       </li>
       <li>
         <a routerLink="complaints" routerLinkActive="active">
           <img src="Icons/problem.svg" alt="" />
-          <span>الشكاوي</span>
+          <span>{{ 'complaints' | translate }}</span>
         </a>
       </li>
 
       <li>
         <a routerLink="bookings" routerLinkActive="active">
           <img src="Icons/calendar.svg" alt="" />
-          <span>الحجوزات</span>
+          <span>{{ 'bookings' | translate }}</span>
         </a>
       </li>
 
       <li>
         <a routerLink="change-password" routerLinkActive="active">
           <img src="Icons/password.svg" alt="" />
-          <span>تغيير كلمة المرور</span>
+          <span>{{ 'changePassword' | translate }}</span>
         </a>
       </li>
     </ul>
@@ -71,7 +71,7 @@
     <div class="logout cr">
       <a (click)="logout()">
         <img src="Icons/logout.svg" alt="" />
-        <span>تسجيل الخروج</span>
+        <span>{{ 'logout' | translate }}</span>
       </a>
     </div>
   </div>

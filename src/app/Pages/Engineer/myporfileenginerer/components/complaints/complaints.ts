@@ -4,10 +4,11 @@ import { Router, RouterModule } from '@angular/router';
 import { IComplaintWithAudio } from '../../../../../Core/Interface/icomplaint';
 import { environment } from '../../../../../../environments/environment';
 import { Complaint } from '../../../../../Core/service/complaint';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-complaints',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule , TranslatePipe],
   templateUrl: './complaints.html',
   styleUrls: ['./complaints.scss', '../suggestion/suggestion.scss']
 })

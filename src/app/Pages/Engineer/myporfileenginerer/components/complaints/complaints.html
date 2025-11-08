@@ -1,20 +1,22 @@
 <div class="suggestion">
   <div class="headerTitle">
-    <h3>الشكاوي</h3>
-    <button class="btn" (click)="openPopup()">اضافة شكوى <i class="fa-solid fa-plus"></i></button>
+    <h3>{{ 'COMPLAINTS' | translate }}</h3>
+    <button class="btn" (click)="openPopup()">
+      {{ 'ADD_COMPLAINT' | translate }} <i class="fa-solid fa-plus"></i>
+    </button>
   </div>
 
   <div class="searchBox mt-3 d-flex justify-content-between align-items-center">
     <div class="fromSearch">
       <i class="fa fa-search" aria-hidden="true"></i>
-      <input type="text" placeholder="ابحث عن شكوى..."  (input)="onSearch($event)"/>
+      <input type="text" placeholder="{{ 'SEARCH_COMPLAINT' | translate }}" (input)="onSearch($event)" />
     </div>
 
     <!-- Dropdown -->
     <div class="lang-select" (click)="dropdownOpen = !dropdownOpen">
       <div class="d-flex align-items-center gap-2">
         <div class="lineColor" [style.background-color]="selectedstatu.color"></div>
-        <span class="code">{{ selectedstatu.name }}</span>
+<span class="code">{{ selectedstatu.name | translate }}</span>
       </div>
       <i class="arrow" [class.open]="dropdownOpen"></i>
 
@@ -24,7 +26,7 @@
         <li (click)="selectstatus(lang, $event)">
           <div class="d-flex align-items-center gap-2">
             <div class="lineColor" [style.background-color]="lang.color"></div>
-            <span class="code">{{ lang.name }}</span>
+<span class="code">{{ lang.name | translate }}</span>
           </div>
         </li>
         }
@@ -39,7 +41,7 @@
       <div class="header" (click)="toggleCard(card.id)">
         <div class="title d-flex flex-column">
           <div class="d-flex gap-2 align-items-center">
-    <div class="lineColor" [style.background-color]="getStatusByCode(card.status).color"></div>
+            <div class="lineColor" [style.background-color]="getStatusByCode(card.status).color"></div>
             <h5 class="m-0">{{ card.title }}</h5>
           </div>
           <p class="author">{{ card.description }}</p>
@@ -50,11 +52,7 @@
           <span>{{ card.createdOn | date }}</span>
 
           <button class="toggle-btn">
-            <i
-              [class]="
-                expandedCard === card.id ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'
-              "
-            ></i>
+            <i [class]="expandedCard === card.id ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
           </button>
         </div>
       </div>
@@ -64,19 +62,23 @@
           @if (card.photoUrls.length) {
           <div class="images">
             @for (img of card.photoUrls; track img) {
-            <img [src]="baseurl + img" alt="preview" (click)="openImage(baseurl + img)" />
+            <img [src]="baseurl + img" alt="{{ 'PREVIEW_IMAGE' | translate }}" (click)="openImage(baseurl + img)" />
             }
           </div>
-          } @if (selectedImage) {
+          }
+
+          @if (selectedImage) {
           <div class="overlay" (click)="closeImage()">
             <div class="popup" (click)="$event.stopPropagation()">
-              <img [src]="selectedImage" alt="full view" />
+              <img [src]="selectedImage" alt="{{ 'FULL_VIEW' | translate }}" />
               <div class="icons cr" (click)="closeImage()">
                 <i class="fa-solid fa-circle-xmark"></i>
               </div>
             </div>
           </div>
-          } @if (card.voiceNoteUrl) {
+          }
+
+          @if (card.voiceNoteUrl) {
           <div class="voice-player">
             <button class="play-btn" (click)="togglePlay(card)">
               <i [class]="card.isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play'"></i>
@@ -108,7 +110,7 @@
           >
             <img src="Icons/pdf.svg" alt="" />
             <div>
-              <h6>resource {{ i + 1 }} <span>(pdf)</span></h6>
+              <h6>{{ 'RESOURCE' | translate }} {{ i + 1 }} <span>(pdf)</span></h6>
               <p>1 MB</p>
             </div>
           </a>
@@ -119,7 +121,7 @@
     </div>
     }
     @if (ComplaintList().length === 0) {
-    <div class="no-data">لا توجد شكاوي لعرضها.</div>
+    <div class="no-data">{{ 'NO_COMPLAINTS' | translate }}</div>
     }
   </div>
 </div>

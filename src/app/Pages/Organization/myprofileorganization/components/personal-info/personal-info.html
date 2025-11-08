@@ -1,5 +1,5 @@
 <div class="info">
-    <h3>المعلومات الشخصية</h3>
+    <h3>{{ 'personalInfo' | translate }}</h3>
 
     <div class="aboutme">
         <div class="avatar" (click)="fileInput.click()">
@@ -15,23 +15,31 @@
     <form (ngSubmit)="onSave()">
         <div class="position-relative mt-4 mb-5">
             <input class="input-cal input-base inputFloating" placeholder="" name="fullName" [(ngModel)]="fullName" />
-            <label id="label-input">الاسم بالكامل</label>
+            <label id="label-input">{{ 'fullName' | translate }}</label>
         </div>
 
         <div class="cardsForm d-flex gap-3 mb-5">
             <div class="position-relative w-100 p-0 border-0">
-                <ngx-intl-tel-input [cssClass]="'custom'" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
-                    [customPlaceholder]="'اكتب رقم الهاتف هنا'" [searchCountryFlag]="true"
-                    [searchCountryField]="[SearchCountryField.All]" [selectFirstCountry]="false"
-                    [selectedCountryISO]="CountryISO.Egypt" [separateDialCode]="true" [phoneValidation]="true"
-                    name="phone" class="input-cal p-0 input-base inputFloating" [(ngModel)]="phoneModel" name="phone"
+                <ngx-intl-tel-input
+                    [cssClass]="'custom'"
+                    [enableAutoCountrySelect]="true"
+                    [enablePlaceholder]="true"
+                    [customPlaceholder]="'phonePlaceholder' | translate"
+                    [searchCountryFlag]="true"
+                    [searchCountryField]="[SearchCountryField.All]"
+                    [selectFirstCountry]="false"
+                    [selectedCountryISO]="CountryISO.Egypt"
+                    [separateDialCode]="true"
+                    [phoneValidation]="true"
+                    name="phone"
+                    class="input-cal p-0 input-base inputFloating"
+                    [(ngModel)]="phoneModel"
                     [disabled]="true">
                 </ngx-intl-tel-input>
-                <label id="label-input">رقم الهاتف</label>
+                <label id="label-input">{{ 'phoneNumber' | translate }}</label>
             </div>
         </div>
 
-        <button class="btnsave" [disabled]="isUploading()"> حفظ
-        </button>
+        <button class="btnsave" [disabled]="isUploading()">{{ 'save' | translate }}</button>
     </form>
 </div>

@@ -14,7 +14,7 @@
       <i class="arrow" [class.open]="dropdownOpen"></i>
 
       <ul class="dropdown" *ngIf="dropdownOpen">
-        <li *ngFor="let lang of languages" (click)="selectLanguage(lang)">
+<li *ngFor="let lang of languages" (click)="selectLanguage(lang, $event)">
           <img [src]="lang.flag" alt="{{ lang.name }}" class="flag" />
           <span>{{ lang.name }}</span>
         </li>
@@ -49,7 +49,7 @@
       <i class="arrow" [class.open]="dropdownOpen"></i>
 
       <ul class="dropdown" *ngIf="dropdownOpen">
-        <li *ngFor="let lang of languages" (click)="selectLanguage(lang)">
+<li *ngFor="let lang of languages" (click)="selectLanguage(lang, $event)">
           <img [src]="lang.flag" alt="{{ lang.name }}" class="flag" />
           <span>{{ lang.name }}</span>
         </li>

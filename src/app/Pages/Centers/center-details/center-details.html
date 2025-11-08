@@ -1,100 +1,81 @@
 <div class="container-fluid my-3">
-  <div class="card mb-5" [style.background-image]="'url(' + baseUrl + centerDate()?.user?.photoUrl">
+  <!-- Header Card -->
+  <div class="card mb-5" [style.background-image]="'url(' + (baseUrl + centerDate()?.user?.photoUrl || 'assets/images/placeholder.jpg') + ')'">
     <div class="overlay"></div>
     <div class="content justify-content-end flex-column">
       <div class="text d-flex align-items-start flex-column gap-4">
-        <h3 class="m-0">{{ centerDate()?.user?.name}}</h3>
-
+        <h3 class="m-0">{{ centerDate()?.user?.name || ('CENTER.NO_NAME' | translate) }}</h3>
       </div>
     </div>
   </div>
+
+  <!-- Details -->
   <div class="detalis d-flex flex-column gap-3 mb-5">
     <div class="location d-flex align-items-center gap-2">
-      <img src="Icons/mi_location.svg " height="25px" alt="">
-      <span>{{ centerDate()?.user?.address}}</span>
+      <img src="Icons/mi_location.svg" height="25px" alt="">
+      <span>{{ centerDate()?.user?.address || ('CENTER.NO_ADDRESS' | translate) }}</span>
     </div>
     <div class="phone d-flex align-items-center gap-2">
-      <img src="Icons/lucide_phone.svg " height="25px" alt="">
-      <span>{{ centerDate()?.user?.phone}}</span>
+      <img src="Icons/lucide_phone.svg" height="25px" alt="">
+      <span>{{ centerDate()?.user?.phone || ('CENTER.NO_PHONE' | translate) }}</span>
     </div>
-
   </div>
 
+  <!-- Tabs -->
   <div class="tabs-container">
-    <!-- Tabs -->
     <div class="tabs">
-      <button [class.active]="activeTab() === 'services'" (click)="switchTab('services')">
-        خدمات
-      </button>
-      <button [class.active]="activeTab() === 'products'" (click)="switchTab('products')">
-        منتجات
-      </button>
-
+      <button [class.active]="activeTab() === 'services'" (click)="switchTab('services')">{{ 'CENTER.SERVICES' | translate }}</button>
+      <button [class.active]="activeTab() === 'products'" (click)="switchTab('products')">{{ 'CENTER.PRODUCTS' | translate }}</button>
     </div>
 
     <!-- Services Section -->
     @if (activeTab() === 'services') {
-    <div class="cards grid-view">
-      @for (card of serviceCards(); track card.id) {
-      <div class="cardpordcut">
-        <div class="image-wrapper">
-          <img [src]="baseUrl + card.gallaries[0].photo" alt="service" />
-          <div class="hours">
-            <span>{{ card.hours }}</span>
-            <i class="fa-regular fa-clock"></i>
-          </div>
+      @if (serviceCards()?.length === 0) {
+        <div class="no-data">{{ 'CENTER.NO_SERVICES' | translate }}</div>
+      } @else {
+        <div class="cards grid-view">
+          @for (card of serviceCards(); track card.id) {
+            <div class="cardpordcut">
+              <div class="image-wrapper">
+                <img [src]="baseUrl + (card.gallaries[0]?.photo || 'assets/images/placeholder.jpg')" alt="{{ card.name }}" />
+                <div class="hours">
+                  <span>{{ card.hours }}</span>
+                  <i class="fa-regular fa-clock"></i>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3>{{ card.name }}</h3>
+                <p>{{ card.description }}</p>
+              </div>
+            </div>
+          }
         </div>
-
-        <div class="card-body">
-          <h3>{{ card.name }}</h3>
-          <p>{{card.description}}</p>
-
-        </div>
-      </div>
       }
-    </div>
-
-
-    @if (serviceCards().length === 0) {
-    <div class="no-data">
-      لا توجد خدمات لعرضها
-    </div>
-    }
     }
 
     <!-- Products Section -->
     @if (activeTab() === 'products') {
-    <div class="cards full-view">
-      @for (card of productCards(); track card.id) {
-      <div class="cardpordcut full-card">
-        <div class="image">
-          @if (getVisibleImage(card)) {
-          <img [src]="getVisibleImage(card)" alt="{{ card.name }}" />
-          } @else {
-          <img src="assets/images/placeholder.jpg" alt="no image available" />
+      @if (productCards()?.length === 0) {
+        <div class="no-data">{{ 'CENTER.NO_PRODUCTS' | translate }}</div>
+      } @else {
+        <div class="cards full-view">
+          @for (card of productCards(); track card.id) {
+            <div class="cardpordcut full-card">
+              <div class="image">
+                <img [src]="getVisibleImage(card) || 'assets/images/placeholder.jpg'" alt="{{ card.name }}" />
+              </div>
+              <div class="info">
+                <h3 class="mb-2">{{ card.name }}</h3>
+                <p>{{ card.description }}</p>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                  <span>{{ 'CENTER.PRICE' | translate }}: {{ card.price }} ج.م</span>
+                </div>
+              </div>
+            </div>
           }
         </div>
-
-        <div class="info">
-          <h3 class="mb-2">{{ card.name }}</h3>
-          <p>{{ card.description }}</p>
-          <div class="d-flex justify-content-between align-items-center mt-2">
-            <span>السعر: {{ card.price }} ج.م</span>
-          </div>
-        </div>
-      </div>
       }
-    </div>
-        @if (productCards().length === 0) {
-    <div class="no-data">
-      لا توجد منتاجات لعرضها
-    </div>
     }
-    }
-
 
   </div>
-
-
-
 </div>

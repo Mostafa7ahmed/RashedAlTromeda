@@ -6,17 +6,11 @@ import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { Facility } from '../../../Core/service/engineer/facility';
 import { IFacility } from '../../../Core/Interface/ifacility';
-interface Card {
-  title: string;
-  location: string;
-  hours: string;
-  rate: number;
-  reviews: number;
-  image: string;
-}
+import { TranslatePipe } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-center-details',
-  imports: [CommonModule],
+  imports: [CommonModule ,TranslatePipe],
   templateUrl: './center-details.html',
   styleUrl: './center-details.scss'
 })

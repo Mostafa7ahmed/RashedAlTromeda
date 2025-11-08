@@ -3,10 +3,11 @@ import { HeaderPages } from "../../../components/header-pages/header-pages";
 import { Theme } from '../../../Core/service/theme';
 import { LoginService } from '../../../Core/service/login';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-myporfile',
-  imports: [HeaderPages , RouterModule , RouterOutlet],
+  imports: [HeaderPages , RouterModule ,TranslatePipe, RouterOutlet],
   templateUrl: './myporfileenginerer.html',
   styleUrls:[ './myporfileenginerer.scss', '../../../Shared/CSS/input.scss']
 })

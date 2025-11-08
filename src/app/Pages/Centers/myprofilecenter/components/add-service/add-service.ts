@@ -7,10 +7,11 @@ import { environment } from '../../../../../../environments/environment';
 import { ReactiveModeuls } from '../../../../../Shared/Modules/ReactiveForms.module';
 import { Facility } from '../../../../../Core/service/engineer/facility';
 import { AddProdcutFacility } from '../../../../../Core/Interface/ifacility';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-service',
-  imports: [ReactiveModeuls],
+  imports: [ReactiveModeuls , TranslatePipe],
   templateUrl: './add-service.html',
   styleUrls: ['./add-service.scss'  , '.././../../../../Shared/CSS/popup.scss']
 })

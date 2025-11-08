@@ -3,9 +3,10 @@ import { HeaderPages } from "../../../components/header-pages/header-pages";
 import { Theme } from '../../../Core/service/theme';
 import { LoginService } from '../../../Core/service/login';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-myprofileCenter',
-  imports: [RouterModule, HeaderPages],
+  imports: [RouterModule, HeaderPages , TranslatePipe],
   templateUrl: './myprofileCenter.html',
   styleUrls:[ './myprofileCenter.scss' ,  '../../../Shared/CSS/input.scss']
 })

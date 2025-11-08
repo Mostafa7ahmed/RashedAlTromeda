@@ -3,9 +3,10 @@ import { HeaderPages } from "../../../components/header-pages/header-pages";
 import { Theme } from '../../../Core/service/theme';
 import { LoginService } from '../../../Core/service/login';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-myprofileorganization',
-  imports: [RouterModule, HeaderPages],
+  imports: [RouterModule,TranslatePipe, HeaderPages],
   templateUrl: './myprofileorganization.html',
   styleUrls:[ './myprofileorganization.scss' ,  '../../../Shared/CSS/input.scss']
 })

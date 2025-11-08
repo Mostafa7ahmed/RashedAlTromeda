@@ -1,5 +1,5 @@
 {
-   "NAV": {
+  "NAV": {
     "HOME": "मुखपृष्ठ",
     "CATEGORY": "श्रेणियाँ",
     "NEW_ORDERS": "नए आदेश",
@@ -94,7 +94,7 @@
   "CONTACT": {
     "EMAIL_TITLE": "ईमेल"
   },
-    "CATEGORY_PAGE": {
+  "CATEGORY_PAGE": {
     "TITLE": "श्रेणियाँ",
     "DESC": "असाधारण रखरखाव समाधानों के लिए हम पर भरोसा करें जो आपके स्थानों को एक सुंदर आश्रय में बदल दें। हमारी विशेषज्ञ टीम आपकी अनूठी आवश्यकताओं को पूरा करने के लिए व्यापक सेवाओं की पेशकश करती है।",
     "SEARCH_PLACEHOLDER": "श्रेणी खोजें...",
@@ -104,7 +104,7 @@
       "NEXT": "अगला ›"
     }
   },
-  
+
   "SERVICES_PAGE": {
     "TITLE": "हमारी सेवाएँ",
     "DESC": "असाधारण रखरखाव समाधानों के लिए हम पर भरोसा करें जो आपके स्थानों को एक सुंदर आश्रय में बदल दें। हमारी विशेषज्ञ टीम आपकी अनूठी आवश्यकताओं को पूरा करने के लिए व्यापक सेवाओं की पेशकश करती है।",
@@ -121,7 +121,7 @@
     "SEARCH_PLACEHOLDER": "इंजीनियर खोजें...",
     "NO_DATA": "दिखाने के लिए कोई सेवाएँ उपलब्ध नहीं हैं।"
   },
-  
+
   "FOOTER": {
     "NAV": {
       "HOME": "मुख्य पृष्ठ",
@@ -131,7 +131,7 @@
     },
     "COPYRIGHT": "© 2025 राशेद – सर्वाधिकार सुरक्षित"
   },
-   "CONTACT_PAGE": {
+  "CONTACT_PAGE": {
     "TITLE": "हमारी टीम से संपर्क करें",
     "SUBTITLE": "हम आपकी मदद के लिए यहाँ हैं! किसी भी प्रश्न, प्रतिक्रिया या सेवा अनुरोध के लिए हमसे संपर्क करें, और हम आपकी सुविधा और गुणवत्ता अनुभव सुनिश्चित करने के लिए यथासंभव जल्दी उत्तर देंगे।",
     "FORM": {
@@ -150,7 +150,8 @@
       "SUBMIT": "भेजें"
     },
     "LEFT_TEXT": "हम आपकी राय की कद्र करते हैं और हमसे संपर्क करने में हमेशा खुशी होती है, चाहे आपके पास प्रश्न हों, मदद की आवश्यकता हो, या आप हमारी सेवाओं पर अपनी प्रतिक्रिया साझा करना चाहते हों। संपर्क करने में संकोच न करें—हमारी विशेषज्ञ टीम हमेशा सहायता प्रदान करने और एक सहज और सुविधाजनक रखरखाव अनुभव सुनिश्चित करने के लिए तैयार है जो आपकी अपेक्षाओं को पूरा करता है।"
-  },  "SELECT_TYPE": {
+  },
+  "SELECT_TYPE": {
     "TITLE": "प्रकार चुनें",
     "ENGINEER": "इंजीनियर",
     "CLIENT": "ग्राहक",
@@ -166,7 +167,7 @@
     "PREVIOUS": "‹ पिछला",
     "NEXT": "अगला ›"
   },
-   "CENTER": {
+  "CENTER": {
     "SERVICES": "सेवाएँ",
     "PRODUCTS": "उत्पाद",
     "PRICE": "कीमत",
@@ -176,21 +177,22 @@
     "NO_ADDRESS": "कोई पता उपलब्ध नहीं है",
     "NO_PHONE": "कोई फोन नंबर उपलब्ध नहीं है"
   },
-    "CENTERS_PAGE": {
+  "CENTERS_PAGE": {
     "TITLE": "केंद्र",
     "SEARCH_PLACEHOLDER": "केंद्र खोजें...",
     "NO_DATA": "दिखाने के लिए कोई केंद्र नहीं है"
   },
-    "AUTH": {
+  "AUTH": {
     "SLOGAN_TITLE": "आपका घर, आपकी सुरक्षा.. हमारी सेवाएँ, आपकी सुविधा",
     "SLOGAN_DESC": "अब लॉगिन करें और भरोसेमंद और तेज़ घरेलू सेवाओं का आनंद लें, सफाई और रखरखाव से लेकर आपके घर की सभी जरूरतों तक.. एक ही जगह"
-  }, "NEW_ORDERS_PAGE": {
+  },
+  "NEW_ORDERS_PAGE": {
     "TITLE": "नए आदेश",
     "NO_DATA": "दिखाने के लिए कोई बुकिंग नहीं है",
     "ACCEPT": "स्वीकार करें",
     "REJECT": "अस्वीकार करें"
   },
-    "LOGIN": {
+  "LOGIN": {
     "WELCOME": "स्वागत है",
     "BACK": "पीछे जाएं",
     "TITLE": "अपने खाते में लॉगिन करें",
@@ -202,14 +204,14 @@
     "BUTTON": "लॉग इन करें",
     "LOADING": "लोड हो रहा है...",
     "NO_ACCOUNT": "खाता नहीं है?",
-        "WELCOME_ENGINEER": "इंजीनियर के रूप में",
+    "WELCOME_ENGINEER": "इंजीनियर के रूप में",
     "WELCOME_CLIENT": "ग्राहक के रूप में",
     "WELCOME_COMPANY": "कंपनी के रूप में",
     "WELCOME_CENTER": "केंद्र में",
     "WELCOME_BACK": "वापसी पर स्वागत है",
     "CREATE_ACCOUNT": "नया खाता बनाएँ"
   },
-   "REVIEWS": {
+  "REVIEWS": {
     "TITLE": "समीक्षाएँ",
     "NEW": {
       "TITLE": "रेटिंग",
@@ -217,7 +219,7 @@
       "COMMENT_PLACEHOLDER": "अपनी टिप्पणी लिखें"
     }
   },
-    "ORDER_DETAILS": {
+  "ORDER_DETAILS": {
     "TITLE": "ऑर्डर विवरण समीक्षा",
     "SERVICES": "बुकिंग विवरण",
     "PAYMENT": "भुगतान विवरण",
@@ -226,23 +228,70 @@
     "TOTAL_POINTS": "कुल अंक",
     "DATE": "तारीख"
   },
-    "profile": "प्रोफ़ाइल",
+  "workSchedule": {
+    "yourWorkDays": "आपके कार्य दिवस",
+    "offDay": "छुट्टी",
+    "addSchedule": "नया शेड्यूल जोड़ें",
+    "selectDay": "दिन चुनें",
+    "startTime": "प्रारंभ समय",
+    "endTime": "समाप्ति समय",
+    "addDay": "दिन जोड़ें",
+    "workDays": "आपके कार्य दिवस",
+    "workSchedule": "कार्य अनुसूची",
+    "holiday": "अवकाश"
+  },
+    "addCenter": "केंद्र जोड़ें",
+
+  "profile": "प्रोफ़ाइल",
+  "Norates": "कोई समीक्षा उपलब्ध नहीं है",
+  "addService": "सेवा जोड़ें",
+  "addProduct": "उत्पाद जोड़ें",
+  "organizationName": "संगठन का नाम",
+  "centerType": "केंद्र का प्रकार",
+  "sales": "बिक्री",
+  "services": "सेवाएं",
+  "serviceName": "सेवा का नाम",
+  "enterServiceName": "सेवा का नाम दर्ज करें",
+  "hours": "घंटे",
+  "enterHours": "घंटे दर्ज करें",
+  "days": "दिन",
+  "enterDays": "दिन दर्ज करें",
+  "serviceDescription": "सेवा विवरण",
+  "addServiceBtn": "सेवा जोड़ें",
+  "productName": "उत्पाद का नाम",
+  "enterProductName": "उत्पाद का नाम दर्ज करें",
+  "productPrice": "उत्पाद की कीमत",
+  "enterProductPrice": "उत्पाद की कीमत दर्ज करें",
+  "productDescription": "उत्पाद विवरण",
+  "writeDescription": "यहां विवरण लिखें",
+  "uploadImages": "छवियाँ अपलोड करें",
+  "browse": "ब्राउज़ करें",
+  "uploadedImagesCount": "{{count}} छवियाँ अपलोड की गईं",
+  "show": "दिखाएँ",
+  "addProductsBtn": "उत्पाद जोड़ें",
+  "requiredField": "यह फ़ील्ड आवश्यक है",
+  "salesAndServices": "सेवाएं और बिक्री",
+  "enterPhone": "यहां फोन नंबर दर्ज करें",
   "personalInfo": "व्यक्तिगत जानकारी",
   "suggestions": "सुझाव",
   "location": "स्थान सेट करें",
   "complaints": "शिकायतें",
+  "schedule": "कार्य अनुसूची",
+  "rates": "समीक्षाएँ",
+  "advertisement": "विज्ञापन",
+  "newJob": "विशेषज्ञता",
   "bookings": "बुकिंग्स",
   "changePassword": "पासवर्ड बदलें",
   "logout": "लॉग आउट",
-    "fullName": "पूरा नाम",
+  "fullName": "पूरा नाम",
   "phoneNumber": "फोन नंबर",
   "phonePlaceholder": "अपना फोन नंबर दर्ज करें",
   "points": "अंक",
-    "searchAddress": "पते की खोज करें",
+  "searchAddress": "पते की खोज करें",
   "search": "खोजें",
   "useMyLocation": "मेरा स्थान उपयोग करें",
   "saveLocation": "स्थान सहेजें",
-    "ADD_SUGGESTION": "सुझाव जोड़ें",
+  "ADD_SUGGESTION": "सुझाव जोड़ें",
   "TITLE": "शीर्षक",
   "DESCRIPTION": "विवरण",
   "UPLOAD_IMAGES": "एकाधिक छवियां अपलोड करें",
@@ -252,12 +301,12 @@
   "SEARCH": "खोज",
   "USE_MY_LOCATION": "मेरा स्थान उपयोग करें",
   "save": "सहेजें",
-    "REQUIRED_FIELD": "यह फ़ील्ड आवश्यक है",
+  "REQUIRED_FIELD": "यह फ़ील्ड आवश्यक है",
   "UPLOAD_COUNT": "{{count}} चित्र अपलोड हो रहे हैं",
   "RECORDING_NOW": "अब रिकॉर्डिंग हो रही है...",
   "UPLOADING_AUDIO": "ऑडियो अपलोड हो रहा है...",
   "UPLOADING_FILE": "अपलोड हो रहा है",
-    "COMPLAINTS": "शिकायतें",
+  "COMPLAINTS": "शिकायतें",
   "ADD_COMPLAINT": "शिकायत जोड़ें",
   "SEARCH_COMPLAINT": "शिकायत खोजें...",
   "PREVIEW_IMAGE": "पूर्वावलोकन छवि",
@@ -276,7 +325,7 @@
   "SELECT_ENGINEER": "इंजीनियर चुनें",
   "BROWSE": "ब्राउज़ करें",
   "ADD_COMPLAINT_BUTTON": "शिकायत जोड़ें",
-    "BOOKINGS": "बुकिंग",
+  "BOOKINGS": "बुकिंग",
   "NO_BOOKINGS": "प्रदर्शित करने के लिए कोई बुकिंग नहीं है",
   "VIEW_DETAILS": "विवरण देखें",
   "STATUS": "स्थिति",
@@ -292,20 +341,18 @@
   "CONFIRM_PASSWORD": "पासवर्ड की पुष्टि करें",
   "CONFIRM_PASSWORD_PLACEHOLDER": "पासवर्ड की पुष्टि करें",
   "SAVEBTN": "सहेजें",
-    "ALL_SERVICES": "सभी सेवाएं",
+  "ALL_SERVICES": "सभी सेवाएं",
   "YEARS": "साल",
   "EXPERIENCE": "अनुभव",
   "RATING": "रेटिंग",
   "CHOOSE_DATE": "तारीख चुनें",
   "SEARCH_ADDRESS": "पता खोजें",
   "PAY": "भुगतान करें",
-    "SUNDAY": "रविवार",
+  "SUNDAY": "रविवार",
   "MONDAY": "सोमवार",
   "TUESDAY": "मंगलवार",
   "WEDNESDAY": "बुधवार",
   "THURSDAY": "गुरुवार",
   "FRIDAY": "शुक्रवार",
   "SATURDAY": "शनिवार"
-
-
 }

@@ -7,11 +7,12 @@ import 'leaflet-control-geocoder';
 import { ProfileCompletion } from '../../../../../Core/service/Customer/profile-completion';
 import { AddCenter } from '../../../../../Core/service/Organization/add-center';
 import { SweetAlert } from '../../../../../Core/service/sweet-alert';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-center-account',
   standalone: true,
-  imports: [ReactiveModeuls, NgxIntlTelInputModule],
+  imports: [ReactiveModeuls, TranslatePipe,NgxIntlTelInputModule],
   templateUrl: './add-center-account.html',
   styleUrls: ['./add-center-account.scss', '../../../../../Shared/CSS/input.scss']
 })

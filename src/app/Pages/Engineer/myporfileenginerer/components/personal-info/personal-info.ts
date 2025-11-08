@@ -8,10 +8,11 @@ import { UpdateProfile } from '../../../../../Core/Interface/iprofile-customer';
 import { SweetAlert } from '../../../../../Core/service/sweet-alert';
 import { IProfileEngineer, UpdateProfileEngineer } from '../../../../../Core/Interface/iprofile-engineer';
 import { ProfileEngineerService } from '../../../../../Core/service/engineer/profile';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-personal-info',
-  imports: [NgxIntlTelInputModule, ReactiveModeuls],
+  imports: [NgxIntlTelInputModule, ReactiveModeuls , TranslatePipe],
   templateUrl: './personal-info.html',
   styleUrls: ['./personal-info.scss', '../../../../../Shared/CSS/input.scss'],
   standalone: true

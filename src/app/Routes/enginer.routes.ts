@@ -67,6 +67,10 @@ export const engineerRoutes: Routes = [
           },
         ],
       },
+            {
+        path: 'orderDetials/:id',
+        loadComponent: () => import('../Pages/Customer/order-detials/order-detials').then(m => m.OrderDetials),
+      },
       {
         path: 'addsuggest',
         loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/suggestion/components/addsuggest/addsuggest').then(m => m.Addsuggest),

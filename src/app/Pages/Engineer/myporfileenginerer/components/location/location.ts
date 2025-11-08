@@ -8,10 +8,11 @@ import { SweetAlert } from '../../../../../Core/service/sweet-alert';
 import { UpdateProfileEngineer } from '../../../../../Core/Interface/iprofile-engineer';
 import { ProfileCompletion } from '../../../../../Core/service/engineer/profile-completion';
 import { ProfileEngineerService } from '../../../../../Core/service/engineer/profile';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-location',
-  imports: [ReactiveModeuls],
+  imports: [ReactiveModeuls , TranslatePipe],
   templateUrl: './location.html',
   styleUrls: ['./location.scss'] // صححت styleUrls
 })

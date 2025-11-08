@@ -4,28 +4,34 @@ import { ISchedule } from '../../../../../../Core/Interface/iengineer-schedule';
 import { ScheduleService } from '../../../../../../Core/service/schedule';
 import { Router } from '@angular/router';
 import { SweetAlert } from '../../../../../../Core/service/sweet-alert';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-addschedule',
-  imports: [ReactiveModeuls],
+  imports: [ReactiveModeuls , TranslatePipe] ,
   templateUrl: './addschedule.html',
   styleUrls: ['./addschedule.scss', '../../../../../../Shared/CSS/popup.scss']
 })
 export class Addschedule {
    private scheduleService = inject(ScheduleService);
   private router = inject(Router);
-  private _alert = inject(SweetAlert); 
-
-  days = signal([
-    { id: 0, name: 'الأحد' },
-    { id: 1, name: 'الإثنين' },
-    { id: 2, name: 'الثلاثاء' },
-    { id: 3, name: 'الأربعاء' },
-    { id: 4, name: 'الخميس' },
-    { id: 5, name: 'الجمعة' },
-    { id: 6, name: 'السبت' },
-  ]);
-
+  private _alert = inject(SweetAlert);
+    private translate = inject(TranslateService);
+ 
+days = signal([
+  { id: 0, key: 'SUNDAY' },
+  { id: 1, key: 'MONDAY' },
+  { id: 2, key: 'TUESDAY' },
+  { id: 3, key: 'WEDNESDAY' },
+  { id: 4, key: 'THURSDAY' },
+  { id: 5, key: 'FRIDAY' },
+  { id: 6, key: 'SATURDAY' },
+]);
+getDayName(dayOfWeek: number): string {
+  const dayKeys = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+  const key = dayKeys[dayOfWeek] || '';
+  return key ? this.translate.instant(key) : '';
+}
   isPopupOpen = false;
 
   newSchedule: Partial<ISchedule> = {

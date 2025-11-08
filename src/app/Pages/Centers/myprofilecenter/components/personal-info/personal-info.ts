@@ -10,6 +10,7 @@ import { IProfileEngineer, UpdateProfileEngineer } from '../../../../../Core/Int
 import { ProfileOrganizationService } from '../../../../../Core/service/Organization/profileOrganization';
 import { IMainOrganization, IProfileOrganization, UpdataCenter, UpdataOrganization } from '../../../../../Core/Interface/iprofile-organization';
 import { ProfileCenterService } from '../../../../../Core/service/Center/profileCenter';
+import { TranslatePipe } from '@ngx-translate/core';
 export enum CenterType {
   Sales = 0,
   Services = 1,
@@ -18,7 +19,7 @@ export enum CenterType {
 
 @Component({
   selector: 'app-personal-info',
-  imports: [NgxIntlTelInputModule, ReactiveModeuls],
+  imports: [NgxIntlTelInputModule, ReactiveModeuls , TranslatePipe],
   templateUrl: './personal-info.html',
   styleUrls: ['./personal-info.scss', '../../../../../Shared/CSS/input.scss'],
   standalone: true

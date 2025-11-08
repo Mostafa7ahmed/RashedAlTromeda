@@ -1,13 +1,14 @@
 import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { ProfileOrganizationService } from '../../../Core/service/Organization/profileOrganization';
 import { IOrganizationResponse } from '../../../Core/Interface/iorganization';
 import { OrganizationEngineer } from '../../../Core/service/engineer/organization';
 import { environment } from '../../../../environments/environment';
+import { TranslatePipe } from '@ngx-translate/core';
+import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 
 @Component({
   selector: 'app-centers',
-  imports: [RouterModule],
+  imports: [ReactiveModeuls ,RouterModule, TranslatePipe],
   templateUrl: './centers.html',
   styleUrl: './centers.scss'
 })

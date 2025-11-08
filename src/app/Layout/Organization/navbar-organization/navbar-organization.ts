@@ -44,9 +44,11 @@ export class NavbarOrganization {
       }
     }
   
-    selectLanguage(lang: any) {
-      this.selectedLang = lang;
-      this._translate.setLanguage(lang.code);
-      this.dropdownOpen = false;
-    }
+selectLanguage(lang: any, event: MouseEvent) {
+  event.stopPropagation();
+  this.selectedLang = lang;
+  this._translate.setLanguage(lang.code);
+  this.dropdownOpen = false;
+}
+  
   }

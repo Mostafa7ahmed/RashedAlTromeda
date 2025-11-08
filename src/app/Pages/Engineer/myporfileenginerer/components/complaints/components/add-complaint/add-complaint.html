@@ -1,138 +1,138 @@
 <div class="overlaypopup"></div>
 <div class="addsuggest">
-    <div class="headerpopup d-flex justify-content-between align-items-center">
-        <h5> اضافة شكوى</h5>
-        <div class="icons cr" (click)="closePopup()">
-            <i class="fa-solid fa-circle-xmark"></i>
+  <div class="headerpopup d-flex justify-content-between align-items-center">
+    <h5>{{ 'ADD_COMPLAINT' | translate }}</h5>
+    <div class="icons cr" (click)="closePopup()">
+      <i class="fa-solid fa-circle-xmark"></i>
+    </div>
+  </div>
+
+  <div class="bodyAdd">
+    <form [formGroup]="form" class="contentPopup d-flex flex-column gap-3 mt-4">
+
+      <!-- عنوان الشكوى -->
+      <div class="fromGroup">
+        <label for="title">{{ 'TITLE_COMPLAINTS' | translate }}</label>
+        <input id="title" type="text" placeholder="{{ 'TITLE_PLACEHOLDER' | translate }}" formControlName="title"/>
+        <small class="error-msg" *ngIf="form.get('title')?.touched && form.get('title')?.hasError('required')">
+          {{ 'REQUIRED_FIELD' | translate }}
+        </small>
+      </div>
+
+      <!-- موضوع الشكوى -->
+      <div class="fromGroup">
+        <label for="description">{{ 'DESCRIPTION_COMPLAINTS' | translate }}</label>
+        <textarea id="description" placeholder="{{ 'DESCRIPTION_PLACEHOLDER' | translate }}" formControlName="description"></textarea>
+        <small class="error-msg" *ngIf="form.get('description')?.touched && form.get('description')?.hasError('required')">
+          {{ 'REQUIRED_FIELD' | translate }}
+        </small>
+      </div>
+
+      <!-- Dropdown اختيار المهندس -->
+      <div class="custom-select" (click)="toggleDropdown()">
+        <div class="selected">
+          <div class="d-flex">
+            <img *ngIf="selectedEngineer(); else placeholder" [src]="baseUrl+selectedEngineer()?.photo" alt="" class="avatar">
+            <ng-template #placeholder>
+              <span class="placeholderElement">{{ 'SELECT_ENGINEER' | translate }}</span>
+            </ng-template>
+            <div class="info" *ngIf="selectedEngineer()">
+              <span>{{ selectedEngineer()?.userName }}</span>
+            </div>
+          </div>
+          <span class="arrow" [class.rotate]="isOpen()"></span>
         </div>
-    </div>
-    <div class="bodyAdd">
 
-        <div class="contentPopup d-flex flex-column gap-3 mt-4">
-            <div class="fromGroup">
-                <label for="">عنوان الشكوي</label>
-                <input type="text" placeholder="ادخل عنوان الشكوى" />
-            </div>
-            <div class="fromGroup">
-                <label for="">عنوان الشكوي</label>
-                <textarea placeholder="اكتب الموضوع هنا"></textarea>
-            </div>
-            <div class="engineer-select-container fromGroup">
-                <label class="title">المهندس</label>
-                <div class="custom-select" (click)="toggleDropdown()">
-                    <div class="selected">
-                          <div class="d-flex">
-                                  @if (selectedEngineer()) {
-                        <div class="avatar" [style.background-color]="selectedEngineer()?.color">
-                            {{ selectedEngineer()?.name?.charAt(0) }}
-                        </div>
-                        <div class="info">
-                            <span>{{ selectedEngineer()?.name }}</span>
-                        </div>
-                        } @else {
-                        <span class="placeholderElement">اختر المهندس</span>
-                        }
-                          </div>
+        <ul *ngIf="isOpen()" class="dropdown px-0">
+          <li *ngFor="let eng of engineers()" (click)="selectEngineer(eng)">
+            <img [src]="baseUrl+eng.photo" alt="" class="avatar">
+            <div class="info">{{ eng.userName }}</div>
+          </li>
+        </ul>
+      </div>
 
-                        <span class="arrow" [class.rotate]="isOpen()"></span>
-                    </div>
+      <!-- اختيار الحجز -->
+      <div *ngIf="selectedEngineer()" class="booking-select mt-3">
+        <label>{{ 'CHOOSE_BOOKING' | translate }}</label>
+        <ul class="booking-dropdown">
+          <li *ngFor="let booking of selectedEngineer()?.bookings"
+              (click)="selectBooking(booking)"
+              [class.active]="selectedBooking === booking">
+            <span>رقم الحجز: {{ booking.id }}</span> |
+            <span>{{ booking.createOn | date:'dd MMM yyyy'}}</span>
+          </li>
+        </ul>
+      </div>
 
-                    @if (isOpen()) {
-                    <ul class="dropdown">
-                        @for (eng of engineers(); track eng.id) {
-                        <li (click)="selectEngineer(eng)">
-                            <div class="avatar" [style.background-color]="eng.color">
-                                {{ eng.name.charAt(0) }}
-                            </div>
-                            <div class="info">
-                                <span>{{ eng.name }}</span>
-                            </div>
-                            <button class="deal-btn">With Deals</button>
-                        </li>
-                        }
-                    </ul>
-                    }
-                </div>
-
-            </div>
-
-            <div class="upload-images">
-                <div class="upload-box" (click)="fileInputImages.click()">
-                    <img src="Icons/addimage.svg" alt="">
-                    <p class="title">تحميل صور متعددة</p>
-                    <label class="browse">تصفح</label>
-                    <input type="file" #fileInputImages multiple accept="image/*" (change)="onFilesSelected($event)"
-                        hidden />
-                </div>
-
-                <div class="preview-section" *ngIf="images().length > 0">
-                    <div class="preview-header">
-                        <span>تحميل {{ images().length }} صور</span>
-                    </div>
-
-                    <div class="preview-list">
-                        <div class="preview-item" *ngFor="let img of images(); let i = index">
-                            <img [src]="img" alt="preview" />
-                            <button class="remove-btn" (click)="removeImage(i)">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 🔹 تحميل ملفات / تسجيل صوت -->
-            <div class="upload-record-container">
-                <!-- تحميل ملفات -->
-                <div class="card" (click)="fileInput.click()">
-                    <input type="file" #fileInput multiple (change)="onFileSelectedPDF($event)" hidden />
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                    <p class="m-0">تحميل ملفات</p>
-                </div>
-
-                <div class="record-card card">
-                    <!-- زر التسجيل -->
-                    <button class="record-btn btn" *ngIf="!audioUrl()" (click)="toggleRecording()">
-                        <i class="fa-solid" [ngClass]="isRecording() ? 'fa-stop' : 'fa-microphone'"></i>
-                        <p class="m-0" [ngClass]="!isRecording() ? 'd-block' : 'd-none'"> تسجيل صوت</p>
-
-                    </button>
-
-                    <!-- حالة التسجيل -->
-                    <div class="record-indicator" *ngIf="isRecording()">
-                        <span class="dot"></span>
-                        <span>يتم التسجيل الآن...</span>
-                    </div>
-
-
-                    <!-- عرض الصوت بعد التسجيل -->
-                    <div *ngIf="audioUrl()" class="audio-player d-flex gap-2">
-                        <audio controls [src]="audioUrl()"></audio>
-                        <button class="btndelete" (click)="deleteAudio()">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="files-preview" *ngIf="uploadedFiles().length > 0">
-                <div class="file-item" *ngFor="let file of uploadedFiles(); let i = index">
-                    <i class="fa-solid fa-file"></i>
-                    <span>{{ file }}</span>
-                    <button (click)="removeFile(i)">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-            </div>
-
+      <!-- رفع الصور -->
+      <div class="upload-images">
+        <div class="upload-box" (click)="fileInputImages.click()">
+          <img src="Icons/addimage.svg" alt="">
+          <p class="title">{{ 'UPLOAD_IMAGES' | translate }}</p>
+          <label class="browse">{{ 'BROWSE' | translate }}</label>
+          <input type="file" #fileInputImages multiple accept="image/*" (change)="onFilesSelected($event)" hidden/>
         </div>
-    </div>
 
+        <div class="preview-section" *ngIf="images().length > 0">
+          <div class="preview-header">
+            <span>{{ 'UPLOAD_COUNT' | translate:{count: images().length} }}</span>
+          </div>
+          <div class="preview-list">
+            <div class="preview-item" *ngFor="let img of images(); let i = index">
+              <img [src]="baseUrl + img.url" alt="preview" />
+              <button class="remove-btn" (click)="removeImage(i)">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <!-- رفع ملفات -->
+      <div class="upload-record-container">
+        <div class="card" (click)="fileInput.click()">
+          <input type="file" #fileInput multiple (change)="onFileSelectedPDF($event)" hidden/>
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+          <p class="m-0">{{ 'UPLOAD_FILES' | translate }}</p>
+        </div>
 
-    <!-- زر إغلاق -->
-    <div class="actions">
-        <button (click)="closePopup()" class="close-btn">اضافة اقتراح</button>
-    </div>
+        <!-- تسجيل صوت -->
+        <div class="record-card card">
+          <button class="record-btn btn" *ngIf="!audioUrl()" (click)="toggleRecording()">
+            <i class="fa-solid" [ngClass]="isRecording() ? 'fa-stop' : 'fa-microphone'"></i>
+            <p class="m-0" [ngClass]="!isRecording() ? 'd-block' : 'd-none'">{{ 'RECORD_AUDIO' | translate }}</p>
+          </button>
 
+          <div class="record-indicator" *ngIf="isRecording()">
+            <span class="dot"></span>
+            <span>{{ 'RECORDING_NOW' | translate }}</span>
+          </div>
+
+          <div *ngIf="audioUrl()" class="audio-player d-flex gap-2">
+            <audio controls [src]="audioUrl()"></audio>
+            <button class="btndelete" (click)="deleteAudio()">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- معاينة الملفات -->
+      <div class="files-preview" *ngIf="uploadedFiles().length > 0">
+        <div class="file-item" *ngFor="let file of uploadedFiles(); let i = index">
+          <i class="fa-solid fa-file"></i>
+          <span>{{ file.name }}</span>
+          <button (click)="removeFile(i)">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- زر إضافة الشكوى -->
+  <div class="actions">
+    <button (click)="addComplaint()" class="close-btn">{{ 'ADD_COMPLAINT_BUTTON' | translate }}</button>
+  </div>
 </div>

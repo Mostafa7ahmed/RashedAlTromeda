@@ -1,5 +1,5 @@
 {
-"NAV": {
+  "NAV": {
     "HOME": "Home",
     "CATEGORY": "Categories",
     "NEW_ORDERS": "New Orders",
@@ -15,7 +15,7 @@
     "PREV": "‹ Prev",
     "NEXT": "Next ›"
   },
-   "HOME_PAGE": {
+  "HOME_PAGE": {
     "HERO": {
       "SMALL_TITLE": "Everything your home needs",
       "TITLE": "We deliver it with <br><span>fast & reliable service</span>",
@@ -116,12 +116,12 @@
     },
     "POINT": "Point"
   },
-   "ENGINEERS_PAGE": {
+  "ENGINEERS_PAGE": {
     "TITLE": "Engineers Specialized in This Service",
     "SEARCH_PLACEHOLDER": "Search for an engineer...",
     "NO_DATA": "No services available to display."
   },
-"FOOTER": {
+  "FOOTER": {
     "NAV": {
       "HOME": "Home",
       "SERVICES": "Our Services",
@@ -130,7 +130,7 @@
     },
     "COPYRIGHT": "© 2025 Rashed – All rights reserved"
   },
-   "CONTACT_PAGE": {
+  "CONTACT_PAGE": {
     "TITLE": "Contact Our Team",
     "SUBTITLE": "We are here to help! Reach out to us for any inquiry, feedback, or service request, and we will respond as quickly as possible to ensure your comfort and quality experience with us.",
     "FORM": {
@@ -150,21 +150,22 @@
     },
     "LEFT_TEXT": "We value your opinion and are always happy to hear from you, whether you have questions, need assistance, or want to share feedback about our services. Don’t hesitate to contact us—our specialized team is always ready to provide support and ensure a smooth and convenient maintenance experience that meets your expectations."
   },
-   "REVIEWS": {
+  "REVIEWS": {
     "TITLE": "Reviews",
     "NEW": {
       "TITLE": "Rating",
       "LEAVE_COMMENT": "Leave a comment",
       "COMMENT_PLACEHOLDER": "Write your comment"
     }
-  },  "SELECT_TYPE": {
+  },
+  "SELECT_TYPE": {
     "TITLE": "Select Type",
     "ENGINEER": "Engineer",
     "CLIENT": "Client",
-    "COMPANY": "Company",
+    "COMPANY": "Organization",
     "CENTER": "Center"
   },
-   "CENTERS_PAGE": {
+  "CENTERS_PAGE": {
     "TITLE": "Centers",
     "SEARCH_PLACEHOLDER": "Search for a center...",
     "NO_DATA": "No centers to show"
@@ -179,11 +180,11 @@
     "NO_ADDRESS": "No address available",
     "NO_PHONE": "No phone number available"
   },
-    "AUTH": {
+  "AUTH": {
     "SLOGAN_TITLE": "Your Home, Your Safety.. Our Services, Your Comfort",
     "SLOGAN_DESC": "Login now and enjoy reliable and fast home services, from cleaning and maintenance to all your home's needs.. in one place"
   },
-    "ORGANIZATIONS_PAGE": {
+  "ORGANIZATIONS_PAGE": {
     "TITLE": "Organizations",
     "SEARCH_PLACEHOLDER": "Search for an organization...",
     "NO_DATA": "No organizations to show",
@@ -198,7 +199,7 @@
     "ACCEPT": "Accept",
     "REJECT": "Reject"
   },
-   "LOGIN": {
+  "LOGIN": {
     "WELCOME": "Welcome",
     "BACK": "Go Back",
     "TITLE": "Log in to your account",
@@ -209,15 +210,15 @@
     "FORGOT_PASSWORD": "Forgot password?",
     "BUTTON": "Log In",
     "LOADING": "Loading...",
-       "WELCOME_ENGINEER": "as Engineer",
+    "WELCOME_ENGINEER": "as Engineer",
     "WELCOME_CLIENT": "as Client",
-    "WELCOME_COMPANY": "as Company",
+    "WELCOME_COMPANY": "as Organization",
     "WELCOME_CENTER": "at Center",
     "WELCOME_BACK": "Welcome back",
     "NO_ACCOUNT": "Don't have an account?",
     "CREATE_ACCOUNT": "Create a new account"
   },
-    "ORDER_DETAILS": {
+  "ORDER_DETAILS": {
     "TITLE": "Order Details Review",
     "SERVICES": "Booking Details",
     "PAYMENT": "Payment Details",
@@ -226,23 +227,68 @@
     "TOTAL_POINTS": "Total Points",
     "DATE": "Date"
   },
+  "workSchedule": {
+    "yourWorkDays": "Your Work Days",
+    "offDay": "Off Day",
+    "addSchedule": "Add New Schedule",
+    "selectDay": "Select Day",
+    "startTime": "Start Time",
+    "endTime": "End Time",
+    "addDay": "Add Day",
+    "workDays": "Your Working Days",
+    "workSchedule": "Work Schedule",
+    "holiday": "Holiday"
+  },
+    "addCenter": "Add Centers",
+  "productName": "Product Name",
+  "enterProductName": "Enter product name",
+  "productPrice": "Product Price",
+  "serviceName": "Service Name",
+  "enterServiceName": "Enter service name",
+  "hours": "Hours",
+  "enterHours": "Enter hours",
+  "days": "Days",
+  "enterDays": "Enter days",
+  "serviceDescription": "Service Description",
+  "addServiceBtn": "Add Service",
+  "enterProductPrice": "Enter product price",
+  "productDescription": "Product Description",
+  "writeDescription": "Write description here",
+  "uploadImages": "Upload Images",
+  "browse": "Browse",
+  "uploadedImagesCount": "Uploaded {{count}} images",
+  "show": "Show",
+  "addProductsBtn": "Add Products",
+  "requiredField": "This field is required",
   "profile": "Profile",
-  "personalInfo": "Personal Information",
+    "personalInfo": "Personal Information",
+  "organizationName": "Organization Name",
+  "centerType": "Center Type",
+  "sales": "Sales",
+  "services": "Services",
+  "salesAndServices": "Sales & Services",
+  "enterPhone": "Enter phone number here",
   "suggestions": "Suggestions",
+  "addService": "Add Service",
+  "addProduct": "Add Product",
   "location": "Set Location",
   "complaints": "Complaints",
+  "schedule": "Work Schedule",
+  "rates": "Reviews",
+  "advertisement": "Advertisement",
+  "newJob": "Specialization",
   "bookings": "Bookings",
   "changePassword": "Change Password",
   "logout": "Logout",
-    "fullName": "Full Name",
+  "fullName": "Full Name",
   "phoneNumber": "Phone Number",
   "phonePlaceholder": "Enter your phone number",
   "points": "points",
-    "searchAddress": "Search for address",
+  "searchAddress": "Search for address",
   "search": "Search",
   "useMyLocation": "Use my location",
   "saveLocation": "Save Location",
-    "ADD_SUGGESTION": "Add Suggestion",
+  "ADD_SUGGESTION": "Add Suggestion",
   "TITLE": "Title",
   "DESCRIPTION": "Description",
   "UPLOAD_IMAGES": "Upload multiple images",
@@ -252,18 +298,18 @@
   "SEARCH": "Search",
   "USE_MY_LOCATION": "Use My Location",
   "save": "Save",
-    "REQUIRED_FIELD": "This field is required",
+  "REQUIRED_FIELD": "This field is required",
   "UPLOAD_COUNT": "Uploading {{count}} images",
   "RECORDING_NOW": "Recording now...",
   "UPLOADING_AUDIO": "Uploading audio...",
   "UPLOADING_FILE": "Uploading",
-    "COMPLAINTS": "Complaints",
+  "COMPLAINTS": "Complaints",
   "ADD_COMPLAINT": "Add Complaint",
   "SEARCH_COMPLAINT": "Search complaint...",
   "PREVIEW_IMAGE": "Preview Image",
   "FULL_VIEW": "Full View",
   "RESOURCE": "Resource",
-    "ALL_STATUSES": "All statuses",
+  "ALL_STATUSES": "All statuses",
   "PENDING": "Pending",
   "IN_PROGRESS": "In progress",
   "COMPLETED": "Completed",
@@ -276,14 +322,15 @@
   "SELECT_ENGINEER": "Select Engineer",
   "BROWSE": "Browse",
   "ADD_COMPLAINT_BUTTON": "Add Complaint",
-    "BOOKINGS": "Bookings",
+  "BOOKINGS": "Bookings",
   "NO_BOOKINGS": "No bookings to display",
   "VIEW_DETAILS": "View Details",
   "STATUS": "Status",
   "AMOUNT": "Amount",
+  "Norates": "No reviews available",
   "PREVIOUS": "‹ Previous",
   "NEXT": "Next ›",
-   "CHANGE_PASSWORD": "Change Password",
+  "CHANGE_PASSWORD": "Change Password",
   "OLD_PASSWORD": "Old Password",
   "OLD_PASSWORD_PLACEHOLDER": "Enter old password",
   "NEW_PASSWORD": "New Password",
@@ -291,14 +338,14 @@
   "CONFIRM_PASSWORD": "Confirm Password",
   "CONFIRM_PASSWORD_PLACEHOLDER": "Confirm password",
   "SAVEBTN": "Save",
-    "ALL_SERVICES": "All Services",
+  "ALL_SERVICES": "All Services",
   "YEARS": "years",
   "EXPERIENCE": "Experience",
   "RATING": "Rating",
   "CHOOSE_DATE": "Choose Date",
   "SEARCH_ADDRESS": "Search Address",
   "PAY": "Pay",
-   "SUNDAY": "Sunday",
+  "SUNDAY": "Sunday",
   "MONDAY": "Monday",
   "TUESDAY": "Tuesday",
   "WEDNESDAY": "Wednesday",

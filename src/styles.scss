@@ -37,7 +37,19 @@
   --gradient-5: linear-gradient(96.74deg, rgba(0, 0, 0, 0) 2.07%, rgba(0, 0, 0, 0.9) 97.04%);
   --gradient-6: linear-gradient(96.2deg, rgba(0, 0, 0, 0) 2.28%, rgba(0, 0, 0, 0.9) 97.21%);
 }
+html[dir="ltr"] .contentHero {
+ direction: ltr  !important;
+ p{
+  width: 50% !important;
+ }
+}
 
+/* للعربي */
+html[dir="rtl"] .contentHero {
+ direction: rtl !important;
+  right: 50%  !important;;
+
+}
 /* Dark Mode */
 .dark-theme {
 

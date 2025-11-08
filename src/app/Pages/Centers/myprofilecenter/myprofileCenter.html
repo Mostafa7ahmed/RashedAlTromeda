@@ -1,18 +1,18 @@
-<app-header-pages [title]="'الملف الشخصي'" />
+<app-header-pages [title]="'personalInfo' | translate" />
 <div class="proflie container-fluid">
   <div class="sidebar-card">
     <ul class="sidebar-links">
       <li>
         <a routerLink="personal-info" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <img src="Icons/proicons_person.svg" alt="" />
-          <span>المعلومات الشخصية</span>
+          <span>{{ 'personalInfo' | translate }}</span>
         </a>
       </li>
      
       <li>
         <a routerLink="addService" routerLinkActive="active">
           <img src="Icons/famicons_bag-add-outline.svg" alt="" />
-          <span>إضافة خدمه</span>
+          <span>{{ 'addService' | translate }}</span>
         </a>
       </li>
 
@@ -20,7 +20,7 @@
       <li>
         <a routerLink="addProduct" routerLinkActive="active">
           <img src="Icons/famicons_bag-add-outline.svg" alt="" />
-          <span>إضافة منتج</span>
+          <span>{{ 'addProduct' | translate }}</span>
         </a>
       </li>
 
@@ -28,7 +28,7 @@
       <li>
         <a routerLink="change-password" routerLinkActive="active">
           <img src="Icons/password.svg" alt="" />
-          <span>تغيير كلمة المرور</span>
+          <span>{{ 'changePassword' | translate }}</span>
         </a>
       </li>
     </ul>
@@ -36,7 +36,7 @@
     <div class="logout cr">
       <a (click)="logout()">
         <img src="Icons/logout.svg" alt="" />
-        <span>تسجيل الخروج</span>
+        <span>{{ 'logout' | translate }}</span>
       </a>
     </div>
   </div>

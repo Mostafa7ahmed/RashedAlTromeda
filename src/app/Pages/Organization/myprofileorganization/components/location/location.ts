@@ -10,10 +10,11 @@ import { ProfileCompletion } from '../../../../../Core/service/Organization/prof
 import { ProfileEngineerService } from '../../../../../Core/service/engineer/profile';
 import { ProfileOrganizationService } from '../../../../../Core/service/Organization/profileOrganization';
 import { IUser, UpdataOrganization } from '../../../../../Core/Interface/iprofile-organization';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-location',
-  imports: [ReactiveModeuls],
+  imports: [ReactiveModeuls , TranslatePipe],
   templateUrl: './location.html',
   styleUrls: ['./location.scss'] // صححت styleUrls
 })

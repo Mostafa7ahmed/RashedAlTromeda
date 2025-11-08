@@ -1,58 +1,90 @@
 <div class="info">
-    <h3>المعلومات الشخصية</h3>
+  <h3>{{ 'personalInfo' | translate }}</h3>
 
-    <div class="aboutme">
-        <div class="avatar" (click)="fileInput.click()">
-            <img [src]="image()" alt="Profile" />
-            <span class="camera"><i class="fa-regular fa-camera"></i></span>
-            <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" hidden />
-        </div>
-        <div class="title">
-            <h3 class="name mb-2">{{ fullName() }}</h3>
-        </div>
+  <div class="aboutme">
+    <div class="avatar" (click)="fileInput.click()">
+      <img [src]="image()" alt="Profile" />
+      <span class="camera"><i class="fa-regular fa-camera"></i></span>
+      <input
+        #fileInput
+        type="file"
+        accept="image/*"
+        (change)="onFileSelected($event)"
+        hidden
+      />
+    </div>
+    <div class="title">
+      <h3 class="name mb-2">{{ fullName() }}</h3>
+    </div>
+  </div>
+
+  <form (ngSubmit)="onSave()">
+    <div class="position-relative mt-4 mb-5">
+      <input
+        class="input-cal input-base inputFloating"
+        placeholder=""
+        name="fullName"
+        [(ngModel)]="fullName"
+      />
+      <label id="label-input">{{ 'organizationName' | translate }}</label>
     </div>
 
-    <form (ngSubmit)="onSave()">
-        <div class="position-relative mt-4 mb-5">
-            <input class="input-cal input-base inputFloating" placeholder="" name="fullName" [(ngModel)]="fullName" />
-            <label id="label-input">اسم المنظمة </label>
-        </div>
-<div class="center-type mb-5">
-  <h4>نوع المركز</h4>
+    <div class="center-type mb-5">
+      <h4>{{ 'centerType' | translate }}</h4>
 
-  <label class="type-option" [class.active]="selectedType === CenterType.Sales">
-    <input type="checkbox" [checked]="selectedType === CenterType.Sales"
-           (change)="onSelect(CenterType.Sales)" />
-    <span>مبيعات</span>
-  </label>
+      <label class="type-option" [class.active]="selectedType === CenterType.Sales">
+        <input
+          type="checkbox"
+          [checked]="selectedType === CenterType.Sales"
+          (change)="onSelect(CenterType.Sales)"
+        />
+        <span>{{ 'sales' | translate }}</span>
+      </label>
 
-  <label class="type-option" [class.active]="selectedType === CenterType.Services">
-    <input type="checkbox" [checked]="selectedType === CenterType.Services"
-           (change)="onSelect(CenterType.Services)" />
-    <span>خدمات</span>
-  </label>
+      <label class="type-option" [class.active]="selectedType === CenterType.Services">
+        <input
+          type="checkbox"
+          [checked]="selectedType === CenterType.Services"
+          (change)="onSelect(CenterType.Services)"
+        />
+        <span>{{ 'services' | translate }}</span>
+      </label>
 
-  <label class="type-option" [class.active]="selectedType === CenterType.Both">
-    <input type="checkbox" [checked]="selectedType === CenterType.Both"
-           (change)="onSelect(CenterType.Both)" />
-    <span>خدمات و مبيعات</span>
-  </label>
-</div>
+      <label class="type-option" [class.active]="selectedType === CenterType.Both">
+        <input
+          type="checkbox"
+          [checked]="selectedType === CenterType.Both"
+          (change)="onSelect(CenterType.Both)"
+        />
+        <span>{{ 'salesAndServices' | translate }}</span>
+      </label>
+    </div>
 
-        <div class="cardsForm d-flex gap-3 mb-5">
-            <div class="position-relative w-100 p-0 border-0">
-                <ngx-intl-tel-input [cssClass]="'custom'" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
-                    [customPlaceholder]="'اكتب رقم الهاتف هنا'" [searchCountryFlag]="true"
-                    [searchCountryField]="[SearchCountryField.All]" [selectFirstCountry]="false"
-                    [selectedCountryISO]="CountryISO.Egypt" [separateDialCode]="true" [phoneValidation]="true"
-                    name="phone" class="input-cal p-0 input-base inputFloating" [(ngModel)]="phoneModel" name="phone"
-                    [disabled]="true">
-                </ngx-intl-tel-input>
-                <label id="label-input">رقم الهاتف</label>
-            </div>
-        </div>
+    <div class="cardsForm d-flex gap-3 mb-5">
+      <div class="position-relative w-100 p-0 border-0">
+        <ngx-intl-tel-input
+          [cssClass]="'custom'"
+          [enableAutoCountrySelect]="true"
+          [enablePlaceholder]="true"
+          [customPlaceholder]="'enterPhone' | translate"
+          [searchCountryFlag]="true"
+          [searchCountryField]="[SearchCountryField.All]"
+          [selectFirstCountry]="false"
+          [selectedCountryISO]="CountryISO.Egypt"
+          [separateDialCode]="true"
+          [phoneValidation]="true"
+          name="phone"
+          class="input-cal p-0 input-base inputFloating"
+          [(ngModel)]="phoneModel"
+          [disabled]="true"
+        >
+        </ngx-intl-tel-input>
+        <label id="label-input">{{ 'phoneNumber' | translate }}</label>
+      </div>
+    </div>
 
-        <button class="btnsave" [disabled]="isUploading()"> حفظ
-        </button>
-    </form>
+    <button class="btnsave" [disabled]="isUploading()">
+      {{ 'save' | translate }}
+    </button>
+  </form>
 </div>
