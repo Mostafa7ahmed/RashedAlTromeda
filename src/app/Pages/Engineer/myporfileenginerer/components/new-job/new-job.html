@@ -1,0 +1,25 @@
+<div class="suggestion">
+  <div class="headerTitle">
+    <h3>{{ 'specialty' | translate }}</h3>
+    <button class="btn" (click)="openPopup()">
+      {{ 'addSpecialty' | translate }} <i class="fa-solid fa-plus"></i>
+    </button>
+  </div> 
+
+  <div class="cards grid-view mt-4">
+          @for (card of profile()?.services; track card.id) {
+            <div class="cardpordcut">
+              <div class="image-wrapper">
+                <img [src]="baseUrl + card.photoUrl " alt="{{ card.name }}" />
+                <div class="hours">
+                  <span>{{ card.price }}</span>
+<i class="fa-solid fa-pound-sign"></i>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3>{{ card.name }}</h3>
+              </div>
+            </div>
+          }
+        </div>
+</div>

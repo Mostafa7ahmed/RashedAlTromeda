@@ -357,5 +357,7 @@
   "THURSDAY": "الخميس",
   "FRIDAY": "الجمعة",
   "SATURDAY": "السبت",
-  "CHOOSE_BOOKING": "اختر الحجز"
+  "CHOOSE_BOOKING": "اختر الحجز",
+    "specialty": "التخصص",
+  "addSpecialty": "اضافة التخصص"
 }

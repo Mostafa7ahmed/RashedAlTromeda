@@ -353,5 +353,7 @@
   "FRIDAY": "Friday",
   "SATURDAY": "Saturday",
 
-  "CHOOSE_BOOKING": "Choose Booking"
+  "CHOOSE_BOOKING": "Choose Booking",
+    "specialty": "Specialty",
+  "addSpecialty": "Add Specialty"
 }

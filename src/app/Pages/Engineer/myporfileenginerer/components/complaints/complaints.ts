@@ -41,9 +41,6 @@ export class Complaints {
     });
   }
 
-  ngOnInit() {
-    this.loadComplaints();
-  }
 
   getStatusByCode(code: number) {
     return this.status.find(s => s.code === code) ?? { name: 'غير معروف', color: '#ccc' };

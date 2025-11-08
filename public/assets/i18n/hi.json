@@ -354,5 +354,7 @@
   "WEDNESDAY": "बुधवार",
   "THURSDAY": "गुरुवार",
   "FRIDAY": "शुक्रवार",
-  "SATURDAY": "शनिवार"
+  "SATURDAY": "शनिवार",
+   "specialty": "विशेषता",
+  "addSpecialty": "विशेषता जोड़ें"
 }

@@ -1,0 +1,52 @@
+<div class="overlaypopup"></div>
+<div class="addsuggest">
+  <div class="headerpopup d-flex justify-content-between align-items-center">
+    <h5>{{ 'addSpecialty' | translate }}</h5>
+    <div class="icons cr"  (click)="closePopup()">
+      <i class="fa-solid fa-circle-xmark"></i>
+    </div>
+  </div>
+
+  <div class="bodyAdd"> 
+   
+
+      @for (item of servicesList(); track item.id) {
+        
+        
+  <div class="serviceList" >
+    <label class="serviceRow flex-column">
+
+      <div class="serviceInfo d-flex flex-row align-items-center">
+    <img
+        class="image"
+        [src]="baseurl + item.photourl"
+        alt="service"
+      />
+              <div class="name">{{ item.name }}</div>
+
+      </div>
+       
+      <div class="serviceInfo d-flex flex-row align-items-center">
+ <label class="show-checkbox">
+    <input type="checkbox"
+           [checked]="getServiceState(item.id)()?.checked"
+           (change)="toggleService(item.id, $any($event.target).checked)" />              </label>
+  <input class="priceInput" type="number" placeholder="ادخل السعر"
+         [value]="getServiceState(item.id)()?.price"
+         (input)="setPrice(item.id, $any($event.target).value)" />      </div>
+  
+    </label>
+  </div>
+
+      }
+
+
+  @if (servicesList().length === 0) {
+    <div class="no-data">{{ 'SERVICES_PAGE.NO_DATA' | translate }}</div>
+  }
+</div>
+
+  <div class="actions" (click)="submit()">
+    <button  class="close-btn">{{ 'addSpecialty' | translate }}</button>
+  </div>
+  </div>

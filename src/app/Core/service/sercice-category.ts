@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable, Observer } from 'rxjs';
 import { IPaginationResponse } from '../../Shared/Interface/iresonse';
@@ -20,6 +20,15 @@ export class SerciceCategory {
 
   ): Observable<IPaginationResponse<IService>> {
     const url = `${this.baseUrl}?pageIndex=${pageIndex}&pageSize=${pageSize}&categoryId=${categoryId}&sortDirection=${sortDirection}`;
+    return this._http.get<IPaginationResponse<IService>>(url);
+  }
+    getAllService(
+    pageIndex = 1,
+    pageSize = 100,
+    sortDirection = 0
+
+  ): Observable<IPaginationResponse<IService>> {
+    const url = `${this.baseUrl}?pageIndex=${pageIndex}&pageSize=${pageSize}&sortDirection=${sortDirection}`;
     return this._http.get<IPaginationResponse<IService>>(url);
   }
 }

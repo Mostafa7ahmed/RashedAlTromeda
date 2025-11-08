@@ -3,7 +3,7 @@ export interface IProfileEngineer {
   summary: any
   startYear: number
   identityPhotoUrl: string
-  services: any[]
+  services: IService[]
   countryId: number
   planId: number
   userDto: UserDto
@@ -40,5 +40,14 @@ export interface UpdateProfileEngineer {
 
 export interface Service {
   id: number
-  price: number
+  price: number,
+  
+}
+export interface IService {
+  id: number
+  price: number,
+    name: string
+  address: any
+  photoUrl: string
+  
 }

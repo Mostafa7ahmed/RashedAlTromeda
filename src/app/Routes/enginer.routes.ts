@@ -1,3 +1,4 @@
+import { NewJob } from '../Pages/Engineer/myporfileenginerer/components/new-job/new-job';
 import { Routes } from '@angular/router';
 import { MainLayoutEngineer } from '../Layout/Engineer/main-layout-engineer/main-layout-engineer';
 import { roleGuard } from '../Core/guards/role.guard';
@@ -41,6 +42,14 @@ export const engineerRoutes: Routes = [
             path: 'suggestions',
             loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/suggestion/suggestion').then(m => m.Suggestion),
           },
+                {
+            path: 'newJob',
+            loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/new-job/new-job').then(m => m.NewJob),
+          },
+                {
+            path: 'Advertisement',
+            loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/advertisement/advertisement').then(m => m.Advertisement),
+          },
           {
             path: 'complaints',
             loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/complaints/complaints').then(m => m.Complaints),
@@ -79,6 +88,11 @@ export const engineerRoutes: Routes = [
        {
         path: 'addschedule',
         loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/schedule/addschedule/addschedule').then(m => m.Addschedule),
+        outlet: 'popup',
+      },
+       {
+        path: 'addService',
+        loadComponent: () => import('../Pages/Engineer/myporfileenginerer/components/new-job/add-service/add-service').then(m => m.AddService),
         outlet: 'popup',
       },
       {
