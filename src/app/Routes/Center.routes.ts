@@ -6,9 +6,9 @@ import { MainlayoutCenter } from '../Layout/Center/mainlayout-center/mainlayout-
 
 export const engineerRoutes: Routes = [
   {
-    path: 'SubOrganization',
+    path: 'suborganization',
     component: MainlayoutCenter,
-    canActivate: [roleGuard(['SubOrganization'])],
+    canActivate: [roleGuard(['suborganization'])],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', component: Home },

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxIntlTelInputModule, SearchCountryField, CountryISO } from 'ngx-intl-tel-input';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
@@ -6,6 +6,7 @@ import { Customer, Organization } from '../../../Core/Interface/customer';
 import { Register } from '../../../Core/service/register';
 import { Otpservice } from '../../../Core/service/otp';
 import { Router } from '@angular/router';
+import { SweetAlert } from '../../../Core/service/sweet-alert';
 @Component({
   selector: 'app-register-organization',
   imports: [ReactiveModeuls, NgxIntlTelInputModule],
@@ -20,6 +21,7 @@ export class RegisterOrganization {
   passwordFieldType: boolean = true;
   submitted = false;
   result: any = null;
+  private _alert = inject(SweetAlert); 
 
   constructor(
     private fb: FormBuilder,
@@ -61,6 +63,7 @@ export class RegisterOrganization {
       next: (res) => {
         if (res.success) {
           console.log('Customer created:', res);
+      this._alert.toast(res.message || 'تم إنشاء الحساب بنجاح ✅', 'success');
 
           const otpBody = {
             phone: body.phoneNumber,
@@ -75,8 +78,11 @@ export class RegisterOrganization {
                 queryParams: { phone: body.phoneNumber }
               });
               localStorage.setItem('token', otpRes.result.token);
+
             },
             error: (err) => {
+                        this._alert.toast(err.error?.message || 'فشل إرسال رمز التحقق ❌', 'error');
+
               console.error('OTP error:', err);
             }
           });

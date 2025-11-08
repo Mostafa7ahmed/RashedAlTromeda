@@ -15,7 +15,7 @@
         تنتهي صلاحية الكود في <span class="time">{{ timerDisplay }}</span>
       </p>
       <!-- ربط الزرار مع resendOtp() -->
-      <button class="resend-btn" type="button" (click)="resendOtp()" [disabled]="timer > 0">
+      <button class="resend-btn" type="button" (click)="resendOtp()">
         إعادة إرسال رمز التحقق
       </button>
     </div>

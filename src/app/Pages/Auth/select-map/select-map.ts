@@ -1,10 +1,11 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import * as L from 'leaflet';
 import 'leaflet-control-geocoder';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 import { ProfileCompletion } from '../../../Core/service/Customer/profile-completion';
 import { Router } from '@angular/router';
+import { SweetAlert } from '../../../Core/service/sweet-alert';
 
 @Component({
   selector: 'app-select-map',
@@ -16,6 +17,7 @@ export class SelectMap implements OnDestroy {
   form: FormGroup;
   private map!: L.Map;
   private marker!: L.Marker;
+  private _alert = inject(SweetAlert); 
 
   constructor(private fb: FormBuilder , private  ProfileCompletion:ProfileCompletion ,     private router: Router) {
     this.form = this.fb.group({
@@ -113,8 +115,15 @@ export class SelectMap implements OnDestroy {
       
       next: (res) => {
         console.log('Profile updated:', res);
+                            this._alert.toast(res.message || 'تم إنشاء الحساب بنجاح ✅', 'success');
+
            this.router.navigate(['/auth/login'])
-      }
+      },
+       error: (err) => {
+                        this._alert.toast(err.error?.message || 'فشل إرسال رمز التحقق ❌', 'error');
+
+              console.error('OTP error:', err);
+            }
     })
 
   }

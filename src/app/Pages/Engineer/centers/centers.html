@@ -13,32 +13,26 @@
             
         </div>
     </div>
+    @if (organization()?.centers?.length === 0) {
+ <div class="no-data">
+        لا توجد مراكز لعرضها
+      </div>
+    }
     <section class="services">
-        @for (s of [5,8,9,9,9,9,9]; track $index) {
-        <div class="card" [routerLink]="['/engineer/centerDetails' , $index]">
+        @for (s of organization()?.centers; track s.id) {
+        <div class="card" [routerLink]="['/engineer/centerDetails' ,s.id]" [style.background-image]="'url(' + baseUrl + s.user.photoUrl">
             <div class="overlay"></div>
             <div class="content justify-content-end flex-column">
                 <div class="text d-flex align-items-center gap-2">
-                    <h3 class="m-0"> هاندي فيكس  {{$index + 1}}</h3>
+                    <h3 class="m-0"> {{s.user.name}}</h3>
                     <i class="fa-solid fa-arrow-up"></i>
                 </div>
             </div>
         </div>
         }
+      
     </section>
-      <div class="pagination">
-        <button class="nav-btn">
-            ‹ السابق
-        </button>
-        <div class="pages">
-            @for (page of [4,5,4,5,5]; track page) {
-            <button class="page">
-                {{ $index + 1 }}
-            </button>
-            }
-        </div>
-        <button class="nav-btn">
-            التالي ›
-        </button>
-    </div>
+
+
+     
 </div>

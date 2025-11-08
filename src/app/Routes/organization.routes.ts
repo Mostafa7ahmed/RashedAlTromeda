@@ -12,10 +12,7 @@ export const organizationRoutes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', component: Home },
-      {
-        path: 'ordersNew',
-        loadComponent: () => import('../Pages/Organization/orders/orders').then(m => m.Orders),
-      },
+   
       {
         path: 'organizations',
         loadComponent: () => import('../Pages/Organization/organizations/organizations').then(m => m.Organizations),

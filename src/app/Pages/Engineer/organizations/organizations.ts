@@ -3,10 +3,11 @@ import { RouterModule } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { IOrganization } from '../../../Core/Interface/iorganization';
 import { OrganizationEngineer } from '../../../Core/service/engineer/organization';
+import { ShortenPipe } from '../../../Shared/pipes/shorten-pipe';
 
 @Component({
   selector: 'app-organizations',
-  imports: [RouterModule],
+  imports: [RouterModule , ShortenPipe],
   templateUrl: './organizations.html',
   styleUrl: './organizations.scss'
 })

@@ -1,30 +1,32 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import { Otpservice } from '../../../Core/service/otp';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
+import { SweetAlert } from '../../../Core/service/sweet-alert';
 
 @Component({
   selector: 'app-otp',
   imports: [ReactiveModeuls],
   templateUrl: './otp.html',
-  styleUrls: ['./otp.scss' , '../forgetpassword/forgetpassword.scss' ,  '../../../Shared/CSS/input.scss']
+  styleUrls: ['./otp.scss', '../forgetpassword/forgetpassword.scss', '../../../Shared/CSS/input.scss']
 })
 export class Otp {
-formOtp!: FormGroup;
+  formOtp!: FormGroup;
   phoneNumber: string = '';
   timer: number = 30; // 3 دقائق = 180 ثانية
   timerDisplay: string = '03:00';
   timerSub!: Subscription;
+  private _alert = inject(SweetAlert);
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-      private cdr: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
     private otpService: Otpservice
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // جلب رقم الهاتف من queryParams
@@ -40,31 +42,31 @@ formOtp!: FormGroup;
     });
 
     // بدء العداد
-  this.startTimer();
+    this.startTimer();
   }
 
   // تحويل الثواني إلى 00:00
-startTimer() {
-  this.timer = 180;
-  this.updateTimerDisplay();
-  this.timerSub = interval(1000).subscribe(() => {
-    if (this.timer > 0) {
-      this.timer--;
-      this.updateTimerDisplay();
-      this.cdr.detectChanges(); // ✅ تحديث يدوي
-    } else {
-      this.timerSub.unsubscribe();
-    }
-  });
-}
+  startTimer() {
+    this.timer = 180;
+    this.updateTimerDisplay();
+    this.timerSub = interval(1000).subscribe(() => {
+      if (this.timer > 0) {
+        this.timer--;
+        this.updateTimerDisplay();
+        this.cdr.detectChanges(); // ✅ تحديث يدوي
+      } else {
+        this.timerSub.unsubscribe();
+      }
+    });
+  }
 
-private updateTimerDisplay() {
-  const minutes = Math.floor(this.timer / 60);
-  const seconds = this.timer % 60;
-  this.timerDisplay = `${minutes.toString().padStart(2, '0')}:${seconds
-    .toString()
-    .padStart(2, '0')}`;
-}
+  private updateTimerDisplay() {
+    const minutes = Math.floor(this.timer / 60);
+    const seconds = this.timer % 60;
+    this.timerDisplay = `${minutes.toString().padStart(2, '0')}:${seconds
+      .toString()
+      .padStart(2, '0')}`;
+  }
   resendOtp() {
     if (!this.phoneNumber) return;
 
@@ -77,9 +79,13 @@ private updateTimerDisplay() {
       next: (res) => {
         console.log('OTP resent:', res);
         this.startTimer(); // إعادة ضبط العداد
+        this._alert.toast(res.message || 'تم إنشاء الحساب بنجاح ✅', 'success');
+
       },
       error: (err) => {
         console.error('Error resending OTP:', err);
+        this._alert.toast(err.error?.message || 'فشل إرسال رمز التحقق ❌', 'error');
+
       }
     });
   }
@@ -93,7 +99,7 @@ private updateTimerDisplay() {
     const otpCode =
       this.formOtp.value.d1 +
       this.formOtp.value.d2 +
-      this.formOtp.value.d3 ;
+      this.formOtp.value.d3;
 
     const body = {
       token: localStorage.getItem('token') || '',
@@ -106,9 +112,13 @@ private updateTimerDisplay() {
       next: (res) => {
         console.log('OTP verified:', res);
         this.router.navigate(['/auth/selectMap']);
+        this._alert.toast(res.message || 'تم إنشاء الحساب بنجاح ✅', 'success');
+
       },
       error: (err) => {
         console.error('OTP verify error:', err);
+        this._alert.toast(err.error?.message || 'فشل إرسال رمز التحقق ❌', 'error');
+
       }
     });
   }

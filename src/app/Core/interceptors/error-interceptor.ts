@@ -1,5 +1,5 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { catchError, throwError } from 'rxjs';
+import { catchError, map, throwError } from 'rxjs';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,6 +7,15 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
 
   return next(req).pipe(
+        map((event: any) => {
+      if (event?.body?.statusCode === 333 || event?.body?.message === 'Unauthorized') {
+        console.error('Session expired - redirecting to login.');
+        localStorage.clear()
+        router.navigate(['/Auth/select']);
+        throw event.body; // simulate an error
+      }
+      return event;
+    }),
     catchError((error) => {
       if (error.status === 333) {
         console.error('Session expired - redirecting to login.');
