@@ -8,11 +8,12 @@ import { SweetAlert } from '../../../../../../../Core/service/sweet-alert';
 import { ReactiveModeuls } from '../../../../../../../Shared/Modules/ReactiveForms.module';
 import { IAddsuggest } from '../../../../../../../Core/Interface/isuggestion';
 import { environment } from '../../../../../../../../environments/environment';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-addsuggest',
   standalone: true,
-  imports: [CommonModule, ReactiveModeuls],
+  imports: [CommonModule, ReactiveModeuls , TranslatePipe ],
   templateUrl: './addsuggest.html',
   styleUrls: ['./addsuggest.scss', '../../../../../../../Shared/CSS/popup.scss'],
 })

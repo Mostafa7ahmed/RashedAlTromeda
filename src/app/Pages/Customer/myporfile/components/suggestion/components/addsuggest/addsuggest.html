@@ -2,7 +2,7 @@
 
 <div class="addsuggest" [formGroup]="form">
   <div class="headerpopup d-flex justify-content-between align-items-center">
-    <h5>اضافة اقتراح</h5>
+<h5>{{ 'ADD_SUGGESTION' | translate }}</h5>
     <div class="icons cr" (click)="closePopup()">
       <i class="fa-solid fa-circle-xmark"></i>
     </div>
@@ -13,34 +13,35 @@
 
       <!-- 🟢 عنوان الاقتراح -->
       <div class="fromGroup">
-        <label for="title">عنوان الاقتراح</label>
-        <input id="title" type="text" placeholder="ادخل عنوان الاقتراح" formControlName="title" />
+<label for="title">{{ 'TITLE' | translate }}</label>
+<input id="title" type="text" placeholder="{{ 'TITLE' | translate }}" formControlName="title" />
         <small class="error" *ngIf="form.get('title')?.touched && form.get('title')?.hasError('required')">
-          هذا الحقل مطلوب
+          {{ 'REQUIRED_FIELD' | translate }}
         </small>
       </div>
 
       <!-- 🟢 وصف الاقتراح -->
       <div class="fromGroup">
-        <label for="description">وصف الاقتراح</label>
-        <textarea id="description" placeholder="اكتب الموضوع هنا" formControlName="description"></textarea>
+<label for="description">{{ 'DESCRIPTION' | translate }}</label>
+<textarea id="description" placeholder="{{ 'DESCRIPTION' | translate }}" formControlName="description"></textarea>
         <small class="error" *ngIf="form.get('description')?.touched && form.get('description')?.hasError('required')">
-          هذا الحقل مطلوب
+
+          {{ 'REQUIRED_FIELD' | translate }}
         </small>
       </div>
 
       <!-- 🟢 تحميل الصور -->
       <div class="upload-images">
         <div class="upload-box" (click)="fileInputImages.click()">
-          <img src="Icons/addimage.svg" alt="add-image" />
-          <p class="title">تحميل صور متعددة</p>
-          <label class="browse">تصفح</label>
+       <img src="Icons/addimage.svg" alt="add-image" />
+    <p class="title">{{ 'UPLOAD_IMAGES' | translate }}</p>
+    <label class="browse">{{ 'UPLOAD_IMAGES' | translate }}</label>
           <input type="file" #fileInputImages multiple accept="image/*" (change)="onFilesSelected($event)" hidden />
         </div>
 
         <div class="preview-section" *ngIf="images().length > 0">
           <div class="preview-header">
-            <span>تحميل {{ images().length }} صور</span>
+            <span>{{ 'UPLOAD_COUNT' | translate:{count: images().length} }}</span>
           </div>
 
           <div class="preview-list">
@@ -66,13 +67,13 @@
         <div class="card" (click)="fileInput.click()">
           <input type="file" #fileInput multiple (change)="onFileSelectedPDF($event)" hidden />
           <i class="fa-solid fa-cloud-arrow-up"></i>
-          <p class="m-0">تحميل ملفات</p>
+          <p class="m-0">{{ 'UPLOAD_FILES' | translate }}</p>
         </div>
         <div class="record-card card">
           <!-- زر التسجيل -->
 <button class="record-btn btn" *ngIf="!audioUrl()" (click)="toggleRecording()">
   <i class="fa-solid" [ngClass]="isRecording() ? 'fa-stop' : 'fa-microphone'"></i>
-  <p class="m-0" [ngClass]="!isRecording() ? 'd-block' : 'd-none'">تسجيل صوت</p>
+            <p class="m-0" [ngClass]="!isRecording() ? 'd-block' : 'd-none'">{{ 'RECORD_AUDIO' | translate }}</p>
 </button>
 
 <!-- حالة التسجيل -->
@@ -84,7 +85,7 @@
 <!-- حالة الرفع -->
 <div class="audio-uploading" *ngIf="isUploadingAudio()">
   <i class="fa-solid fa-spinner fa-spin"></i>
-  <span>جاري رفع الصوت...</span>
+            <span>{{ 'RECORDING_NOW' | translate }}</span>
 </div>
 
 <!-- عرض الصوت بعد الرفع -->
@@ -104,7 +105,7 @@
 
           <!-- أثناء التحميل -->
           <span *ngIf="file.isUploading" class="uploading">
-            جاري رفع
+            <span>{{ 'UPLOADING_AUDIO' | translate }}</span>
             <i class="fa-solid fa-spinner fa-spin"></i>
           </span>
 
@@ -120,7 +121,6 @@
 
   <div class="actions">
     <button (click)="addSuggest()" class="close-btn" [disabled]="form.invalid || isUploading() || isUploadingImage()">
-      اضافة اقتراح
-    </button>
+{{ 'SAVE' | translate }}    </button>
   </div>
 </div>

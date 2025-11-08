@@ -1,7 +1,9 @@
 <div class="suggestion">
   <div class="headerTitle">
-    <h3>الاقتراحات</h3>
-    <button class="btn" (click)="openPopup()">اضافة اقتراح <i class="fa-solid fa-plus"></i></button>
+    <h3>{{ 'suggestions' | translate }}</h3>
+    <button class="btn" (click)="openPopup()">
+      {{ 'addSuggestion' | translate }} <i class="fa-solid fa-plus"></i>
+    </button>
   </div>
 
   <div class="post-container mt-4">
@@ -93,24 +95,26 @@
     </div>
     }
         @if (SuggestionList().length === 0) {
-    <div class="no-data">لا توجد مقترحات لعرضها.</div>
+      <div class="no-data">{{ 'noSuggestions' | translate }}</div>
     }
   </div>
 
-      <div class="pagination mt-4 mb-0">
-        <button class="nav-btn" (click)="prevPage()" [disabled]="!movePrevious()">
-            ‹ السابق
+     
+  <div class="pagination mt-4 mb-0">
+    <button class="nav-btn" (click)="prevPage()" [disabled]="!movePrevious()">
+      ‹ {{ 'previous' | translate }}
+    </button>
+    <div class="pages">
+      @for (page of visiblePages; track $index) {
+        <button class="page" [class.active]="page === currentPage()" [disabled]="page === currentPage()"
+          (click)="goToPage(page)">
+          {{ currentPage() }}
         </button>
-        <div class="pages">
-            @for (page of visiblePages; track $index) {
-            <button class="page" [class.active]="page === currentPage()" [disabled]="page === currentPage()"
-                (click)="goToPage(page)">
-                {{ currentPage() }}
-            </button>
-            }
-        </div>
-        <button class="nav-btn" (click)="nextPage()" [disabled]="!moveNext()">
-            التالي ›
-        </button>
+      }
     </div>
+    <button class="nav-btn" (click)="nextPage()" [disabled]="!moveNext()">
+      {{ 'next' | translate }} ›
+    </button>
+  </div>
+
 </div>

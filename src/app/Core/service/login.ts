@@ -73,7 +73,7 @@ refreshAccessToken(): Observable<any> {
     this.http.delete(`${this.API_URL}user/session`).subscribe({
       next: () => {
         localStorage.clear();
-        this.router.navigate(['/auth/selectType']);
+        this.router.navigate(['/']);
       },
       error: (err) => {
         console.error('Logout failed:', err);

@@ -6,10 +6,11 @@ import { ReactiveModeuls } from '../../../../../Shared/Modules/ReactiveForms.mod
 import { Profile } from '../../../../../Core/service/Customer/profile';
 import { UpdateProfile, UserDto } from '../../../../../Core/Interface/iprofile-customer';
 import { SweetAlert } from '../../../../../Core/service/sweet-alert';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-location',
-  imports: [ReactiveModeuls],
+  imports: [ReactiveModeuls , TranslatePipe],
   templateUrl: './location.html',
   styleUrls: ['./location.scss'] // صححت styleUrls
 })

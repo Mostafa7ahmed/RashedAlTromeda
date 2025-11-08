@@ -4,10 +4,11 @@ import { Router, RouterModule } from '@angular/router';
 import { SuggestService } from '../../../../../Core/service/suggest-service';
 import { ISuggestion, ISuggestionWithAudio } from '../../../../../Core/Interface/isuggestion';
 import { environment } from '../../../../../../environments/environment';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-suggestion',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule ,TranslatePipe],
   templateUrl: './suggestion.html',
   styleUrl: './suggestion.scss'
 })
