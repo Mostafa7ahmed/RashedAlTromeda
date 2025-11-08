@@ -1,45 +1,40 @@
 <nav class="navbar container-fluid">
   <div class="navbar-logo" routerLink="/">
-  <img
-    [src]="!isDarkMode ? 'Icons/logoNavbar.png' : 'Icons/logoFooter.png'"
-    alt="Logo"
-  />  </div>
-  <!-- زر القائمة في الموبايل -->
+    <img
+      [src]="!isDarkMode ? 'Icons/logoNavbar.png' : 'Icons/logoFooter.png'"
+      alt="Logo"
+    />
+  </div>
 
   <ul class="navbar-links m-0" [class.open]="menuOpen">
-    <li class="d-flex justify-content-between w-100 showLg" >
-       <app-darkmood-btn />
-    <div class="lang-select" (click)="dropdownOpen = !dropdownOpen">
-      <img [src]="selectedLang.flag" alt="flag" class="flag" />
-      <span class="code">{{ selectedLang.code | uppercase }}</span>
-      <i class="arrow" [class.open]="dropdownOpen"></i>
+    <li class="d-flex justify-content-between w-100 showLg">
+      <app-darkmood-btn />
+      <div class="lang-select" (click)="dropdownOpen = !dropdownOpen">
+        <img [src]="selectedLang.flag" alt="flag" class="flag" />
+        <span class="code">{{ selectedLang.code | uppercase }}</span>
+        <i class="arrow" [class.open]="dropdownOpen"></i>
 
-      <ul class="dropdown" *ngIf="dropdownOpen">
-        <li *ngFor="let lang of languages" (click)="selectLanguage(lang)">
-          <img [src]="lang.flag" alt="{{ lang.name }}" class="flag" />
-          <span>{{ lang.name }}</span>
-        </li>
-      </ul>
-    </div>
+        <ul class="dropdown" *ngIf="dropdownOpen">
+          <li *ngFor="let lang of languages" (click)="selectLanguage(lang)">
+            <img [src]="lang.flag" alt="{{ lang.name }}" class="flag" />
+            <span>{{ lang.name }}</span>
+          </li>
+        </ul>
+      </div>
     </li>
- <li>
-      <a routerLink="/home" routerLinkActive="active">الرئيسية</a>
-    </li>
-    <li>
-      <a routerLink="/category" routerLinkActive="active">الفئات</a>
-    </li>
-    <li>
-      <a routerLink="/about" routerLinkActive="active">من نحن</a>
-    </li>
-    <li>
-      <a routerLink="/contact" routerLinkActive="active">تواصل معنا</a>
-    </li>
+
+    <li><a routerLink="/home" routerLinkActive="active">الرئيسية</a></li>
+    <li  *ngIf="isLogin"><a routerLink="/category" routerLinkActive="active">الفئات</a></li>
+    <li><a routerLink="/about" routerLinkActive="active">من نحن</a></li>
+    <li><a routerLink="/contact" routerLinkActive="active">تواصل معنا</a></li>
   </ul>
 
   <div class="profileMore d-flex gap-3 align-items-center">
- 
+    <!-- ✅ يظهر فقط لو مش داخل -->
+
+     
        <div class="showS d-flex gap-3">
-          <app-darkmood-btn />
+          <app-darkmood-btn *ngIf="isLogin" />
     <div class="lang-select" (click)="dropdownOpen = !dropdownOpen">
       <img [src]="selectedLang.flag" alt="flag" class="flag" />
       <span class="code">{{ selectedLang.code | uppercase }}</span>
@@ -54,12 +49,28 @@
     </div>
    
        </div>
+           <button *ngIf="!isLogin" class="login-btn" routerLink="/auth/selectType">
+      تسجيل الدخول
+    </button>
 
-    <div class="profileImage cr" routerLink="/myporfile">
-      <img [src]="userImage" alt="" width="40" height="40" class="rounded-circle">
+    <!-- ✅ يظهر فقط لو داخل -->
+    <div *ngIf="isLogin" class="d-flex align-items-center gap-2">
+      <div class="profileImage cr" routerLink="/myporfile">
+        <img
+          [src]="userImage"
+          alt=""
+          width="40"
+          height="40"
+          class="rounded-circle"
+        />
+      </div>
     </div>
-         <div class="menu-toggle" (click)="menuOpen = !menuOpen">
-    <i class="fa-solid " [ngClass]="menuOpen ? 'fa-times' : 'fa-bars-staggered'"></i>
-  </div>
+
+    <div class="menu-toggle" (click)="menuOpen = !menuOpen">
+      <i
+        class="fa-solid"
+        [ngClass]="menuOpen ? 'fa-times' : 'fa-bars-staggered'"
+      ></i>
+    </div>
   </div>
 </nav>

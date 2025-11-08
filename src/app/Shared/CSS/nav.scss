@@ -187,3 +187,22 @@
     }
   }
 }
+.login-btn,
+.logout-btn {
+  background-color: var(--color-orange-dark);
+  color: var(--still-white);
+  border: 1px solid  var(--color-orange-dark);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover,
+.logout-btn:hover {
+  background-color:transparent;
+  color:  var(--color-orange-dark);
+    border: 1px solid  var(--color-orange-dark);
+
+}

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DarkmoodBtn } from '../../../components/darkmood-btn/darkmood-btn';
 import { IDecode } from '../../../Core/Interface/idecode';
@@ -17,30 +17,21 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: '../../../Shared/CSS/nav.scss'
 })
 export class NavbarCustomer {
-  private _user = inject(LoginService);
+   private _user = inject(LoginService);
   private _theme = inject(Theme);
-  private _translate = inject(TranslationService); // ✅ خدمة الترجمة
+  private _translate = inject(TranslationService);
+  private _router = inject(Router);
 
   baseUrl: string = environment.baseUrl;
   menuOpen = false;
   userImage = 'https://randomuser.me/api/portraits/men/32.jpg';
   dropdownOpen = false;
+  isLogin = false;
 
-  // ✅ اللغات من الخدمة نفسها
   languages = this._translate.languages;
-
-  // ✅ اللغة الحالية من الإشارة
-  selectedLang = this.languages.find(
-    (l) => l.code === this._translate.currentLanguage
-  ) || this.languages[1]; // en افتراضيًا
-
-  isDark = this._theme.isDarkMode;
-
-  selectLanguage(lang: any) {
-    this.selectedLang = lang;
-    this._translate.setLanguage(lang.code); // ✅ تغيير اللغة فعليًا
-    this.dropdownOpen = false;
-  }
+  selectedLang =
+    this.languages.find((l) => l.code === this._translate.currentLanguage) ||
+    this.languages[1];
 
   get isDarkMode(): boolean {
     return this._theme.isDarkMode();
@@ -48,13 +39,22 @@ export class NavbarCustomer {
 
   ngOnInit() {
     const user = this._user.getUser() as IDecode | null;
-    if (user) {
-      this.userImage = user.PhotoUrl
-        ? `${this.baseUrl}${user.PhotoUrl}`
-        : this.userImage;
-    }
+    this.isLogin = !!user;
 
-    console.log('Dark mode:', this._theme.isDarkMode());
-    console.log('User:', user);
+    if (user?.PhotoUrl) {
+      this.userImage = `${this.baseUrl}${user.PhotoUrl}`;
+    }
+  }
+
+  selectLanguage(lang: any) {
+    this.selectedLang = lang;
+    this._translate.setLanguage(lang.code);
+    this.dropdownOpen = false;
+  }
+
+  logout() {
+    this._user.logout(); // لو عندك method بتعمل clear
+    this.isLogin = false;
+    this._router.navigate(['/home']);
   }
 }

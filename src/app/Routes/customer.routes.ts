@@ -7,16 +7,19 @@ export const customerRoutes: Routes = [
   {
     path: '',
     component: MainLayoutCoustomer,
-    canActivate: [roleGuard(['customer'])],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', component: HomeCustomer },
       {
         path: 'category',
+                canActivate: [roleGuard(['customer'])],
+
         loadComponent: () => import('../Pages/Customer/categories/categories').then(m => m.Categories),
       },
       {
         path: 'service/:categoryId',
+                canActivate: [roleGuard(['customer'])],
+
         loadComponent: () => import('../Pages/Customer/service/service').then(m => m.Service),
       },
       {
@@ -35,8 +38,11 @@ export const customerRoutes: Routes = [
         path: 'profile/:profileId',
         loadComponent: () => import('../Pages/Customer/worker-profile/worker-profile').then(m => m.WorkerProfile),
       },
+
+      // 👇 الصفحات اللي تتطلب تسجيل دخول فقط
       {
         path: 'myporfile',
+        canActivate: [roleGuard(['customer'])],
         loadComponent: () => import('../Pages/Customer/myporfile/myporfile').then(m => m.Myporfile),
         children: [
           { path: '', redirectTo: 'personal-info', pathMatch: 'full' },
@@ -67,21 +73,23 @@ export const customerRoutes: Routes = [
         ],
       },
       {
-        path:'orderDetials/:id',
-                loadComponent: () => import('../Pages/Customer/order-detials/order-detials').then(m => m.OrderDetials),
-
+        path: 'orderDetials/:id',
+        canActivate: [roleGuard(['customer'])],
+        loadComponent: () => import('../Pages/Customer/order-detials/order-detials').then(m => m.OrderDetials),
       },
       {
         path: 'addsuggest',
+        canActivate: [roleGuard(['customer'])],
         loadComponent: () => import('../Pages/Customer/myporfile/components/suggestion/components/addsuggest/addsuggest').then(m => m.Addsuggest),
         outlet: 'popup',
       },
       {
         path: 'addcomplaint',
+        canActivate: [roleGuard(['customer'])],
         loadComponent: () => import('../Pages/Customer/myporfile/components/complaints/components/add-complaint/add-complaint').then(m => m.AddComplaint),
         outlet: 'popup',
       },
-      { path: 'myporfile/infomation', loadComponent: () => import('../Pages/Customer/infomation/infomation').then(m => m.Infomation) },
+      { path: 'myporfile/infomation', canActivate: [roleGuard(['customer'])], loadComponent: () => import('../Pages/Customer/infomation/infomation').then(m => m.Infomation) },
     ],
   },
 ];

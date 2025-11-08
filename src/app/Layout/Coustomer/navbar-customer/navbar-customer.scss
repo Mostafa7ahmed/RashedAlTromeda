@@ -2,3 +2,19 @@
   content: url("Icons/logoFooter-dark.svg");
 }
 
+.login-btn,
+.logout-btn {
+  background-color: var(--color-orange-dark);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover,
+.logout-btn:hover {
+  background-color: var(--color-orange-light);
+}
