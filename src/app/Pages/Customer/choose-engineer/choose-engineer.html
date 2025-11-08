@@ -1,46 +1,40 @@
 <div class="mb-5 container-fluid">
-  <app-header-pages [title]="'المهندسون المختصون بهذه الخدمة'" />
+  <app-header-pages [title]="'ENGINEERS_PAGE.TITLE' | translate" />
 
-  <div class="searchInput">
-            <div class="inputSerch d-flex align-items-center ">
-      <i class="fa fa-search"></i>
-      <input type="text" placeholder="ابحث عن مهندس..." />
-    </div>
-  </div>
 
   <div class="cardServices mt-5">
     @for (engineer of engineers(); track engineer.profileId) {
-    <div class="cardService d-flex gap-3" [routerLink]="['/profile', engineer.profileId]">
-      <img
-        [src]="baseUrl + engineer.userDto.photoUrl || 'Image/bgAuth.jpg'"
-        class="ImgeEngieer"
-        alt="service"
-        width="100px"
-      />
+      <div class="cardService d-flex gap-3" [routerLink]="['/profile', engineer.profileId]">
+        <img
+          [src]="baseUrl + engineer.userDto.photoUrl || 'Image/bgAuth.jpg'"
+          class="ImgeEngieer"
+          alt="service"
+          width="100px"
+        />
 
-      <div class="infoService flex-grow-1 px-2">
-        <h5>{{ engineer.userDto.name }}</h5>
+        <div class="infoService flex-grow-1 px-2">
+          <h5>{{ engineer.userDto.name }}</h5>
 
-        <div class="description d-flex justify-content-between align-items-center w-100 flex-wrap">
-          <p class="m-0">{{ engineer.summary | shorten : 200 }}</p>
-          <div class="rate">
-            <i class="fa fa-star"></i>
-            <span>{{ engineer.rate }}</span>
+          <div class="description d-flex justify-content-between align-items-center w-100 flex-wrap">
+            <p class="m-0">{{ engineer.summary | shorten : 200 }}</p>
+            <div class="rate">
+              <i class="fa fa-star"></i>
+              <span>{{ engineer.rate }}</span>
+            </div>
+          </div>
+
+          <div class="location mt-2 d-flex align-items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.8263 0.62041C14.7336 0.543482 14.621 0.494471 14.5015 0.479085C14.3821 0.463699 14.2607 0.482571 14.1515 0.533504L1.0542 6.68113V7.87069L6.55536 10.0711L10.084 15.4999H11.2738L15.0332 1.26863C15.0637 1.15208 15.0604 1.02927 15.0238 0.914507C14.9871 0.799742 14.9187 0.697748 14.8263 0.62041ZM10.5392 14.3653L7.50617 9.69894L12.1734 4.587L11.435 3.91275L6.73117 9.06454L2.19545 7.25025L13.8655 1.77238L10.5392 14.3653Z" fill="#F36B14"/>
+            </svg>
+            <span>{{ engineer.distance | distanceFormat }}</span>
           </div>
         </div>
-
-        <div class="location mt-2 d-flex align-items-center gap-2">
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M14.8263 0.62041C14.7336 0.543482 14.621 0.494471 14.5015 0.479085C14.3821 0.463699 14.2607 0.482571 14.1515 0.533504L1.0542 6.68113V7.87069L6.55536 10.0711L10.084 15.4999H11.2738L15.0332 1.26863C15.0637 1.15208 15.0604 1.02927 15.0238 0.914507C14.9871 0.799742 14.9187 0.697748 14.8263 0.62041ZM10.5392 14.3653L7.50617 9.69894L12.1734 4.587L11.435 3.91275L6.73117 9.06454L2.19545 7.25025L13.8655 1.77238L10.5392 14.3653Z" fill="#F36B14"/>
-</svg>
-          <span>{{ engineer.distance | distanceFormat }}</span>
-        </div>
       </div>
-    </div>
     }
   </div>
-  @if (engineers().length == 0) {
-  <div class="no-data">لا توجد خدمات لعرضها.</div>
 
+  @if (engineers().length == 0) {
+    <div class="no-data">{{ 'ENGINEERS_PAGE.NO_DATA' | translate }}</div>
   }
 </div>

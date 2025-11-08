@@ -8,10 +8,11 @@ import { IPaginationResponse } from '../../../Shared/Interface/iresonse';
 import { DistanceFormatPipe } from '../../../Shared/pipes/distance-format-pipe';
 import { ShortenPipe } from '../../../Shared/pipes/shorten-pipe';
 import { environment } from '../../../../environments/environment';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-choose-engineer',
-  imports: [HeaderPages , RouterModule , DistanceFormatPipe , ShortenPipe],
+  imports: [HeaderPages , RouterModule , DistanceFormatPipe , ShortenPipe , TranslatePipe],
   templateUrl: './choose-engineer.html',
   styleUrl: './choose-engineer.scss'
 })

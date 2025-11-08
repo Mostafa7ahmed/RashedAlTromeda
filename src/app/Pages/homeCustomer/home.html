@@ -1,169 +1,136 @@
-<div class="heroSection position-relative ">
+<div class="heroSection position-relative">
+  <div class="contentHero">
+    <h5>{{ 'HOME_PAGE.HERO.SMALL_TITLE' | translate }}</h5>
+    <h1 [innerHTML]="'HOME_PAGE.HERO.TITLE' | translate"></h1>
+    <p>{{ 'HOME_PAGE.HERO.DESC' | translate }}</p>
+  </div>
 
-    <div class="contentHero">
-        <h5>كل ما يحتاجه منزلك</h5>
-        <h1>نقدّمه بخدمة سريعة <br><span>وموثوقة</span></h1>
-        <p>فريقنا من المحترفين مدرَّب بعناية وجاهز لخدمتك في أي وقت وأي مكان، لنمنحك راحة البال وجودة الخدمة التي
-            يستحقها منزلك.</p>
+  <div class="contantWive d-flex justify-content-center flex-column align-items-center gap-5">
+    <div class="centerIcon">
+      <img src="Icons/Tools.svg" alt="" width="64" height="64">
     </div>
+    <section class="features">
+      <div class="feature">
+        <img src="Icons/Engineer.svg" alt="{{ 'HOME_PAGE.FEATURES.PROFESSIONAL_WORK' | translate }}">
+        <span>{{ 'HOME_PAGE.FEATURES.PROFESSIONAL_WORK' | translate }}</span>
+      </div>
+      <div class="feature">
+        <img src="Icons/Time.svg" alt="{{ 'HOME_PAGE.FEATURES.FAST_SERVICE' | translate }}">
+        <span>{{ 'HOME_PAGE.FEATURES.FAST_SERVICE' | translate }}</span>
+      </div>
+      <div class="feature">
+        <img src="Icons/home.svg" alt="{{ 'HOME_PAGE.FEATURES.CONTINUOUS_SUPPORT' | translate }}">
+        <span>{{ 'HOME_PAGE.FEATURES.CONTINUOUS_SUPPORT' | translate }}</span>
+      </div>
+      <div class="feature">
+        <img src="Icons/Money.svg" alt="{{ 'HOME_PAGE.FEATURES.FAIR_PRICES' | translate }}">
+        <span>{{ 'HOME_PAGE.FEATURES.FAIR_PRICES' | translate }}</span>
+      </div>
+    </section>
+  </div>
 
-    <div class="contantWive d-flex justify-content-center flex-column align-items-center gap-5">
-        <div class="centerIcon">
-            <img src="Icons/Tools.svg" alt="" width="64" height="64">
-        </div>
-        <section class="features">
-            <div class="feature">
-                <img src="Icons/Engineer.svg" alt="عمالة محترفة">
-                <span>عمالة محترفة</span>
-            </div>
-            <div class="feature">
-                <img src="Icons/Time.svg" alt="خدمة سريعة">
-                <span>خدمة سريعة</span>
-            </div>
-            <div class="feature">
-                <img src="Icons/home.svg" alt="دعم متواصل">
-                <span>دعم متواصل</span>
-            </div>
-            <div class="feature">
-                <img src="Icons/Money.svg" alt="أسعار مناسبة">
-                <span>أسعار مناسبة</span>
-            </div>
-        </section>
-    </div>
-
-    <div class="leftImagePersonal">
-        <img src="Image/personal.png" alt="" height="697">
-    </div>
+  <div class="leftImagePersonal">
+    <img src="Image/personal.png" alt="" height="697">
+  </div>
 </div>
 
+<div class="quickServices px-5">
+  <h2 class="text-center" [innerHTML]="'HOME_PAGE.QUICK_SERVICES.TITLE' | translate"></h2>
 
-<div class="quickServices  px-5">
+  <div class="wrapper mb-5" role="list">
+    <article class="card" role="listitem" [attr.aria-label]="'HOME_PAGE.QUICK_SERVICES.STEPS.ENJOY_TIME.TITLE' | translate">
+      <div class="icon" aria-hidden="true">
+        <img src="Icons/Group1.svg" alt="">
+      </div>
+      <div class="content">
+        <h3 class="title">{{ 'HOME_PAGE.QUICK_SERVICES.STEPS.ENJOY_TIME.TITLE' | translate }}</h3>
+        <p class="desc">{{ 'HOME_PAGE.QUICK_SERVICES.STEPS.ENJOY_TIME.DESC' | translate }}</p>
+      </div>
+    </article>
 
-    <h2 class="text-center">حجز سريع وسهل في <br> 3 خطوات بسيطة!</h2>
-
-    <div class="wrapper mb-5" role="list">
-        <article class="card" role="listitem" aria-label="استمتع بوقتك">
-            <div class="icon" aria-hidden="true">
-                <img src="Icons/Group1.svg" alt="">
-
-            </div>
-            <div class="content">
-                <h3 class="title">استمتع بوقتك</h3>
-                <p class="desc">استرح وامنح نفسك راحة البال، بينما يتولى فريقنا المحترف إنجاز المهمة بكفاءة وجودة عالية.
-                </p>
-            </div>
-        </article>
-
-        <div class="arroLeft">
-            <img src="Icons/ArrowOrange.svg" alt="">
-        </div>
-
-        <article class="card middle" role="listitem" aria-label="اختر موعدك">
-            <div class="icon" aria-hidden="true">
-                <img src="Icons/Group2.svg" alt="">
-
-            </div>
-            <div class="content">
-                <h3 class="title">اختر موعدك</h3>
-                <p class="desc">حدّد اليوم والوقت المناسبين لك، وسنقوم بترتيب كل شيء ليصل فريقنا في الموعد المحدّد دون
-                    تأخير.</p>
-            </div>
-        </article>
-
-
-        <div class="arroLeft">
-            <img src="Icons/ArrowBlue.svg" alt="">
-        </div>
-
-        <article class="card" role="listitem" aria-label="اختر الخدمة">
-            <div class="icon" aria-hidden="true">
-                <img src="Icons/Group3.svg" alt="">
-
-            </div>
-            <div class="content">
-                <h3 class="title">اختر الخدمة</h3>
-                <p class="desc">تصفّح قائمة خدماتنا المتكاملة، من التنظيف والصيانة إلى السباكة والكهرباء، وحدّد ما
-                    يحتاجه منزلك بسهولة.</p>
-            </div>
-        </article>
+    <div class="arroLeft">
+      <img src="Icons/ArrowOrange.svg" alt="">
     </div>
 
-    <div class="d-flex align-items-center justify-content-center">
-        <app-book-btn [label]="buttonLabel()" [color]="color">
-        </app-book-btn>
+    <article class="card middle" role="listitem" [attr.aria-label]="'HOME_PAGE.QUICK_SERVICES.STEPS.CHOOSE_DATE.TITLE' | translate">
+      <div class="icon" aria-hidden="true">
+        <img src="Icons/Group2.svg" alt="">
+      </div>
+      <div class="content">
+        <h3 class="title">{{ 'HOME_PAGE.QUICK_SERVICES.STEPS.CHOOSE_DATE.TITLE' | translate }}</h3>
+        <p class="desc">{{ 'HOME_PAGE.QUICK_SERVICES.STEPS.CHOOSE_DATE.DESC' | translate }}</p>
+      </div>
+    </article>
+
+    <div class="arroLeft">
+      <img src="Icons/ArrowBlue.svg" alt="">
     </div>
+
+    <article class="card" role="listitem" [attr.aria-label]="'HOME_PAGE.QUICK_SERVICES.STEPS.CHOOSE_SERVICE.TITLE' | translate">
+      <div class="icon" aria-hidden="true">
+        <img src="Icons/Group3.svg" alt="">
+      </div>
+      <div class="content">
+        <h3 class="title">{{ 'HOME_PAGE.QUICK_SERVICES.STEPS.CHOOSE_SERVICE.TITLE' | translate }}</h3>
+        <p class="desc">{{ 'HOME_PAGE.QUICK_SERVICES.STEPS.CHOOSE_SERVICE.DESC' | translate }}</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="d-flex align-items-center justify-content-center">
+    <app-book-btn [label]="'HOME_PAGE.QUICK_SERVICES.STEPS.BOOK_BTN' | translate" [color]="color"></app-book-btn>
+  </div>
 </div>
 
+<div class="whyChosseme container-fluid d-flex justify-content-between">
+  <div class="image">
+    <img src="Image/whyChoose.png" alt="">
+  </div>
 
-
-<div class="whyChosseme  container-fluid d-flex justify-content-between ">
-    <div class="image">
-        <img src="Image/whyChoose.png" alt="">
-    </div>
-
-    <div class="content">
-        <h2>لماذا تختار شركة راشد؟</h2>
-        <p>
-            نحن نوفر لك الراحة بثلاثة في واحد! خدماتنا المنزلية يقدمها فريق محترف ومدرب بعناية مع دعم في التنظيف
-            والأساليب الصحية.
-            معنا تحصل على جودة مضمونة، دعم متواصل، وتجربة خالية من المتاعب. ببساطة نحن الخيار الذي يمنحك راحة البال.
-        </p>
-        <app-book-btn [label]="buttonLabel()" [background]="color" [color]="buttonColorText()">
-            ></app-book-btn>
-    </div>
-
+  <div class="content">
+    <h2>{{ 'HOME_PAGE.WHY_CHOOSE.TITLE' | translate }}</h2>
+    <p>{{ 'HOME_PAGE.WHY_CHOOSE.DESC' | translate }}</p>
+    <app-book-btn [label]="'HOME_PAGE.QUICK_SERVICES.STEPS.BOOK_BTN' | translate" [background]="color" [color]="buttonColorText()"></app-book-btn>
+  </div>
 </div>
-
-
-<app-features />
-
-
-
-
 
 <div class="experience py-5">
+  <div class="container-fluid d-flex justify-content-between">
+    <div class="leftExperience d-flex flex-column gap-4">
+      <h2>{{ 'HOME_PAGE.EXPERIENCE.TITLE' | translate }}</h2>
+      <p>{{ 'HOME_PAGE.EXPERIENCE.DESC' | translate }}</p>
 
-    <div class="container-fluid d-flex justify-content-between">
-
-
-        <div class="leftExperience d-flex flex-column gap-4">
-            <h2>أكثر من 25 عامًا من الخبرة في خدمة الصيانة</h2>
-            <p>بخبرة تزيد عن 25 عامًا، نُعدُّ الخبراءَ المُعتمدين لتلبية جميع احتياجاتكم من خدمات الصيانة اليدوية. ثقوا
-                بمهاراتنا واحترافيتنا لتحقيق نتائج ممتازة.</p>
-
-            <div class="infoExperience d-flex gap-5 ">
-                <div class="leftInfo">
-                    <div class="heaerInfo d-flex gap-2 align-items-center mb-3">
-                        <img src="Icons/true.svg" alt="">
-                        <h3 class="m-0">الفريق المؤهل</h3>
-                    </div>
-                    <p>فريق مدرَّب بخبرة وكفاءة لتقديم أفضل خدمة لمنزلك</p>
-                </div>
-                <div class="RightInfo">
-                    <div class="heaerInfo d-flex gap-2 align-items-center mb-3">
-                        <img src="Icons/true.svg" alt="">
-                        <h3 class="m-0">عمل عالي الجودة</h3>
-                    </div>
-                    <p>نقدّم لك عملًا عالي الجودة يضمن راحة بالك ورضاك التام</p>
-                </div>
-            </div>
-            <app-book-btn [label]="'المزيد عنا'" [background]="color" [color]="buttonColorText()" />
+      <div class="infoExperience d-flex gap-5">
+        <div class="leftInfo">
+          <div class="heaerInfo d-flex gap-2 align-items-center mb-3">
+            <img src="Icons/true.svg" alt="">
+            <h3 class="m-0">{{ 'HOME_PAGE.EXPERIENCE.QUALIFIED_TEAM.TITLE' | translate }}</h3>
+          </div>
+          <p>{{ 'HOME_PAGE.EXPERIENCE.QUALIFIED_TEAM.DESC' | translate }}</p>
         </div>
-
-        <div class="circle-container">
-            <div class="circle top">
-                <img src="Image/reduies1.png" alt="network" />
-            </div>
-            <div class="circle left">
-                <img src="Image/reduies2.png" alt="network" />
-            </div>
-            <div class="circle right">
-                <img src="Image/reduies3.png" alt="network" />
-            </div>
+        <div class="RightInfo">
+          <div class="heaerInfo d-flex gap-2 align-items-center mb-3">
+            <img src="Icons/true.svg" alt="">
+            <h3 class="m-0">{{ 'HOME_PAGE.EXPERIENCE.HIGH_QUALITY_WORK.TITLE' | translate }}</h3>
+          </div>
+          <p>{{ 'HOME_PAGE.EXPERIENCE.HIGH_QUALITY_WORK.DESC' | translate }}</p>
         </div>
-
+      </div>
+      <app-book-btn [label]="'HOME_PAGE.EXPERIENCE.MORE_BTN' | translate" [background]="color" [color]="buttonColorText()"></app-book-btn>
     </div>
 
+    <div class="circle-container">
+      <div class="circle top">
+        <img src="Image/reduies1.png" alt="network" />
+      </div>
+      <div class="circle left">
+        <img src="Image/reduies2.png" alt="network" />
+      </div>
+      <div class="circle right">
+        <img src="Image/reduies3.png" alt="network" />
+      </div>
+    </div>
+  </div>
 </div>
 
-<app-testimonials/>
+<app-testimonials></app-testimonials>

@@ -6,5 +6,5 @@ export const ReactiveModeuls = [
   CommonModule,
   RouterModule,
   ReactiveFormsModule,
-  FormsModule
+  FormsModule,
 ];

@@ -3,6 +3,7 @@
   background-size: cover;
   background-position: center;
   height: calc(100vh - 90px);
+  direction: rtl !important;
 }
 
 .contentHero {
@@ -13,6 +14,9 @@
   display: flex;
   gap: 10px;
   flex-direction: column;
+  align-items: start;
+ text-align: start;
+     align-self: start;
 
   h5 {
     font-family: 'Cairo', sans-serif;
@@ -47,7 +51,7 @@
     font-size: 20px;
     line-height: 1.9;
     letter-spacing: 0%;
-    text-align: right;
+   
     color: var(--still-white);
     width: 70%;
   }
@@ -186,7 +190,7 @@
       font-size: 48px;
       line-height: 100%;
       letter-spacing: -1%;
-      text-align: right;
+     
       text-transform: capitalize;
     }
 
@@ -197,7 +201,7 @@
       font-size: 18px;
       line-height: 1.7;
       letter-spacing: 0%;
-      text-align: right;
+     
       vertical-align: middle;
       width: 70%;
     }
@@ -244,7 +248,7 @@
       font-size: 48px;
       line-height: 1.7;
       letter-spacing: 1.7;
-      text-align: right;
+     
       vertical-align: middle;
       text-transform: capitalize;
 
@@ -257,7 +261,7 @@
       font-size: 18px;
       line-height: 150%;
       letter-spacing: 0%;
-      text-align: right;
+     
       vertical-align: middle;
       color: #141414BF;
 

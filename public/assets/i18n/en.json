@@ -6,6 +6,61 @@
     "CONTACT": "Contact Us",
     "LOGIN": "Login"
   },
+  "TESTIMONIALS": {
+    "TITLE": "Customer Testimonials",
+    "DESC": "Read reviews from our satisfied clients. See how our cleaning services made a positive impact on their lives and homes.",
+    "STARS": "Stars",
+    "PREV": "‹ Prev",
+    "NEXT": "Next ›"
+  },
+   "HOME_PAGE": {
+    "HERO": {
+      "SMALL_TITLE": "Everything your home needs",
+      "TITLE": "We deliver it with <br><span>fast & reliable service</span>",
+      "DESC": "Our team of professionals is carefully trained and ready to serve you anytime, anywhere, providing peace of mind and the quality service your home deserves."
+    },
+    "FEATURES": {
+      "PROFESSIONAL_WORK": "Professional Workforce",
+      "FAST_SERVICE": "Fast Service",
+      "CONTINUOUS_SUPPORT": "Continuous Support",
+      "FAIR_PRICES": "Fair Prices"
+    },
+    "QUICK_SERVICES": {
+      "TITLE": "Quick and Easy Booking in <br> 3 Simple Steps!",
+      "STEPS": {
+        "ENJOY_TIME": {
+          "TITLE": "Enjoy Your Time",
+          "DESC": "Relax and enjoy peace of mind while our professional team completes the task efficiently and with high quality."
+        },
+        "CHOOSE_DATE": {
+          "TITLE": "Choose Your Date",
+          "DESC": "Select the day and time that suit you, and we will make sure our team arrives on time without delay."
+        },
+        "CHOOSE_SERVICE": {
+          "TITLE": "Choose Your Service",
+          "DESC": "Browse our comprehensive services, from cleaning and maintenance to plumbing and electricity, and select what your home needs easily."
+        },
+        "BOOK_BTN": "Book Your Service Now"
+      }
+    },
+    "WHY_CHOOSE": {
+      "TITLE": "Why Choose Rashed?",
+      "DESC": "We provide you with triple comfort! Our home services are delivered by a carefully trained professional team with support in cleaning and hygiene practices. You get guaranteed quality, continuous support, and a hassle-free experience. Simply put, we are the choice that gives you peace of mind."
+    },
+    "EXPERIENCE": {
+      "TITLE": "Over 25 Years of Maintenance Experience",
+      "DESC": "With over 25 years of experience, we are certified experts ready to meet all your manual maintenance service needs. Trust our skills and professionalism to achieve excellent results.",
+      "QUALIFIED_TEAM": {
+        "TITLE": "Qualified Team",
+        "DESC": "A well-trained and experienced team providing the best service for your home"
+      },
+      "HIGH_QUALITY_WORK": {
+        "TITLE": "High Quality Work",
+        "DESC": "We deliver high-quality work that ensures your peace of mind and complete satisfaction"
+      },
+      "MORE_BTN": "More About Us"
+    }
+  },
   "ABOUT": {
     "HERO_TITLE": "Reliable and Fast Home Services at Your Fingertips",
     "HERO_DESC": "From cleaning to maintenance, save your time and effort and let our experts take care of every detail of your home",
@@ -63,5 +118,34 @@
     "TITLE": "Engineers Specialized in This Service",
     "SEARCH_PLACEHOLDER": "Search for an engineer...",
     "NO_DATA": "No services available to display."
+  },
+"FOOTER": {
+    "NAV": {
+      "HOME": "Home",
+      "SERVICES": "Our Services",
+      "ABOUT": "About Us",
+      "CONTACT": "Contact Us"
+    },
+    "COPYRIGHT": "© 2025 Rashed – All rights reserved"
+  },
+   "CONTACT_PAGE": {
+    "TITLE": "Contact Our Team",
+    "SUBTITLE": "We are here to help! Reach out to us for any inquiry, feedback, or service request, and we will respond as quickly as possible to ensure your comfort and quality experience with us.",
+    "FORM": {
+      "NAME": "Name",
+      "NAME_PLACEHOLDER": "Enter your full name",
+      "NAME_ERROR": "Name is required and must be at least 3 characters",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Enter your email",
+      "EMAIL_ERROR": "Enter a valid email address",
+      "PHONE": "Phone Number",
+      "PHONE_PLACEHOLDER": "Enter your phone number",
+      "PHONE_ERROR": "Enter a valid phone number (10 to 15 digits)",
+      "SUBJECT": "Subject",
+      "SUBJECT_PLACEHOLDER": "Write the subject here",
+      "SUBJECT_ERROR": "Subject is required and must be more than 5 characters",
+      "SUBMIT": "Send"
+    },
+    "LEFT_TEXT": "We value your opinion and are always happy to hear from you, whether you have questions, need assistance, or want to share feedback about our services. Don’t hesitate to contact us—our specialized team is always ready to provide support and ensure a smooth and convenient maintenance experience that meets your expectations."
   }
 }

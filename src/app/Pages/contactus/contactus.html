@@ -1,64 +1,50 @@
 <div class="contact-section container-fluid">
 
-
   <!-- Right Side (Form) -->
   <div class="contact-right">
-    <h2 class="section-title">تواصل مع فريقنا</h2>
-    <p class="section-subtitle">
-      نحن هنا لمساعدتك! تواصل معنا لأي استفسار أو ملاحظة أو طلب خدمة، وسنقوم بالرد عليك
-      في أسرع وقت ممكن لضمان راحتك وجودة تجربتك معنا.
-    </p>
+    <h2 class="section-title">{{ 'CONTACT_PAGE.TITLE' | translate }}</h2>
+    <p class="section-subtitle">{{ 'CONTACT_PAGE.SUBTITLE' | translate }}</p>
 
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
       <div class="form-row">
         <div class="form-group">
-          <label>الاسم</label>
-          <input type="text" formControlName="name" placeholder="ادخل اسمك بالكامل" />
-          @if( contactForm.get('name')?.invalid && contactForm.get('name')?.touched){
-          <small class="error-msg">
-            الاسم مطلوب ويجب أن يحتوي على 3 أحرف على الأقل
-          </small>
+          <label>{{ 'CONTACT_PAGE.FORM.NAME' | translate }}</label>
+          <input type="text" formControlName="name" [placeholder]="'CONTACT_PAGE.FORM.NAME_PLACEHOLDER' | translate" />
+          @if(contactForm.get('name')?.invalid && contactForm.get('name')?.touched){
+          <small class="error-msg">{{ 'CONTACT_PAGE.FORM.NAME_ERROR' | translate }}</small>
           }
-
         </div>
+
         <div class="form-group">
-          <label>البريد الالكتروني</label>
-          <input type="email" formControlName="email" placeholder="ادخل بريدك الالكتروني" />
+          <label>{{ 'CONTACT_PAGE.FORM.EMAIL' | translate }}</label>
+          <input type="email" formControlName="email" [placeholder]="'CONTACT_PAGE.FORM.EMAIL_PLACEHOLDER' | translate" />
           @if(contactForm.get('email')?.invalid && contactForm.get('email')?.touched){
-          <small class="error-msg">
-            أدخل بريد إلكتروني صالح
-          </small>
+          <small class="error-msg">{{ 'CONTACT_PAGE.FORM.EMAIL_ERROR' | translate }}</small>
           }
-
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
-          <label>رقم الهاتف</label>
-          <input type="tel" formControlName="phone" placeholder="ادخل رقم هاتفك" />
-          @if (contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched) {
-
-          <small class="error-msg">
-            أدخل رقم هاتف صحيح (10 إلى 15 رقم)
-          </small>
+          <label>{{ 'CONTACT_PAGE.FORM.PHONE' | translate }}</label>
+          <input type="tel" formControlName="phone" [placeholder]="'CONTACT_PAGE.FORM.PHONE_PLACEHOLDER' | translate" />
+          @if(contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched){
+          <small class="error-msg">{{ 'CONTACT_PAGE.FORM.PHONE_ERROR' | translate }}</small>
           }
         </div>
-
       </div>
+
       <div class="form-row">
         <div class="form-group">
-          <label>الموضوع</label>
-          <textarea formControlName="subject" placeholder="اكتب الموضوع هنا"></textarea>
-          @if (contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched ) {
-          <small class="error-msg">
-            الموضوع مطلوب ويجب أن يكون أكثر من 5 أحرف
-          </small>
+          <label>{{ 'CONTACT_PAGE.FORM.SUBJECT' | translate }}</label>
+          <textarea formControlName="subject" [placeholder]="'CONTACT_PAGE.FORM.SUBJECT_PLACEHOLDER' | translate"></textarea>
+          @if(contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched){
+          <small class="error-msg">{{ 'CONTACT_PAGE.FORM.SUBJECT_ERROR' | translate }}</small>
           }
-
         </div>
       </div>
-      <button type="submit" class="btn-submit">إرسال <i class="fa-solid fa-arrow-left"></i></button>
+
+      <button type="submit" class="btn-submit">{{ 'CONTACT_PAGE.FORM.SUBMIT' | translate }} <i class="fa-solid fa-arrow-left"></i></button>
     </form>
   </div>
 
@@ -66,12 +52,7 @@
   <div class="contact-left">
     <img src="Image/contactUS.jpg" class="rounded-3" alt="">
     <div class="contact-overlay">
-      <p>
-        نحن نقدر رأيك ونسعد دائماً بالتواصل معك، سواء كانت لديك استفسارات، تحتاج إلى
-        مساعدة، أو ترغب في مشاركتنا ملاحظاتك حول خدماتنا. لا تتردد في الاتصال بنا،
-        ففريقنا المتخصص جاهز دائماً لتقديم الدعم وضمان تجربة صيانة سهلة ومريحة تلبي
-        توقعاتك.
-      </p>
+      <p>{{ 'CONTACT_PAGE.LEFT_TEXT' | translate }}</p>
     </div>
     <div class="oveerlay"></div>
   </div>

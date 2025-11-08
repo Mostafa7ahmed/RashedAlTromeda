@@ -1,10 +1,9 @@
 <div class="heroSection position-relative ">
 
     <div class="contentHero">
-        <h5>كل ما يحتاجه منزلك</h5>
-        <h1>نقدّمه بخدمة سريعة <br><span>وموثوقة</span></h1>
-        <p>فريقنا من المحترفين مدرَّب بعناية وجاهز لخدمتك في أي وقت وأي مكان، لنمنحك راحة البال وجودة الخدمة التي
-            يستحقها منزلك.</p>
+        <h5>{{ 'HOME.HERO.SMALL_TITLE' | translate }}</h5>
+        <h1 [innerHTML]="'HOME.HERO.TITLE' | translate"></h1>
+        <p>{{ 'HOME.HERO.DESC' | translate }}</p>
     </div>
 
     <div class="contantWive d-flex justify-content-center flex-column align-items-center gap-5">
@@ -13,20 +12,20 @@
         </div>
         <section class="features">
             <div class="feature">
-                <img src="Icons/Engineer.svg" alt="عمالة محترفة">
-                <span>عمالة محترفة</span>
+                <img src="Icons/Engineer.svg" alt="{{ 'HOME.FEATURES.PROFESSIONAL_WORK' | translate }}">
+                <span>{{ 'HOME.FEATURES.PROFESSIONAL_WORK' | translate }}</span>
             </div>
             <div class="feature">
-                <img src="Icons/Time.svg" alt="خدمة سريعة">
-                <span>خدمة سريعة</span>
+                <img src="Icons/Time.svg" alt="{{ 'HOME.FEATURES.FAST_SERVICE' | translate }}">
+                <span>{{ 'HOME.FEATURES.FAST_SERVICE' | translate }}</span>
             </div>
             <div class="feature">
-                <img src="Icons/home.svg" alt="دعم متواصل">
-                <span>دعم متواصل</span>
+                <img src="Icons/home.svg" alt="{{ 'HOME.FEATURES.CONTINUOUS_SUPPORT' | translate }}">
+                <span>{{ 'HOME.FEATURES.CONTINUOUS_SUPPORT' | translate }}</span>
             </div>
             <div class="feature">
-                <img src="Icons/Money.svg" alt="أسعار مناسبة">
-                <span>أسعار مناسبة</span>
+                <img src="Icons/Money.svg" alt="{{ 'HOME.FEATURES.FAIR_PRICES' | translate }}">
+                <span>{{ 'HOME.FEATURES.FAIR_PRICES' | translate }}</span>
             </div>
         </section>
     </div>
@@ -36,21 +35,17 @@
     </div>
 </div>
 
-
-<div class="quickServices  px-5">
-
-    <h2 class="text-center">حجز سريع وسهل في <br> 3 خطوات بسيطة!</h2>
+<div class="quickServices px-5">
+    <h2 class="text-center" [innerHTML]="'HOME.QUICK_BOOKING.TITLE' | translate"></h2>
 
     <div class="wrapper mb-5" role="list">
-        <article class="card" role="listitem" aria-label="استمتع بوقتك">
+        <article class="card" role="listitem" [attr.aria-label]="'HOME.QUICK_BOOKING.STEP_1.TITLE' | translate">
             <div class="icon" aria-hidden="true">
                 <img src="Icons/Group1.svg" alt="">
-
             </div>
             <div class="content">
-                <h3 class="title">استمتع بوقتك</h3>
-                <p class="desc">استرح وامنح نفسك راحة البال، بينما يتولى فريقنا المحترف إنجاز المهمة بكفاءة وجودة عالية.
-                </p>
+                <h3 class="title">{{ 'HOME.QUICK_BOOKING.STEP_1.TITLE' | translate }}</h3>
+                <p class="desc">{{ 'HOME.QUICK_BOOKING.STEP_1.DESC' | translate }}</p>
             </div>
         </article>
 
@@ -58,94 +53,71 @@
             <img src="Icons/ArrowOrange.svg" alt="">
         </div>
 
-        <article class="card middle" role="listitem" aria-label="اختر موعدك">
+        <article class="card middle" role="listitem" [attr.aria-label]="'HOME.QUICK_BOOKING.STEP_2.TITLE' | translate">
             <div class="icon" aria-hidden="true">
                 <img src="Icons/Group2.svg" alt="">
-
             </div>
             <div class="content">
-                <h3 class="title">اختر موعدك</h3>
-                <p class="desc">حدّد اليوم والوقت المناسبين لك، وسنقوم بترتيب كل شيء ليصل فريقنا في الموعد المحدّد دون
-                    تأخير.</p>
+                <h3 class="title">{{ 'HOME.QUICK_BOOKING.STEP_2.TITLE' | translate }}</h3>
+                <p class="desc">{{ 'HOME.QUICK_BOOKING.STEP_2.DESC' | translate }}</p>
             </div>
         </article>
-
 
         <div class="arroLeft">
             <img src="Icons/ArrowBlue.svg" alt="">
         </div>
 
-        <article class="card" role="listitem" aria-label="اختر الخدمة">
+        <article class="card" role="listitem" [attr.aria-label]="'HOME.QUICK_BOOKING.STEP_3.TITLE' | translate">
             <div class="icon" aria-hidden="true">
                 <img src="Icons/Group3.svg" alt="">
-
             </div>
             <div class="content">
-                <h3 class="title">اختر الخدمة</h3>
-                <p class="desc">تصفّح قائمة خدماتنا المتكاملة، من التنظيف والصيانة إلى السباكة والكهرباء، وحدّد ما
-                    يحتاجه منزلك بسهولة.</p>
+                <h3 class="title">{{ 'HOME.QUICK_BOOKING.STEP_3.TITLE' | translate }}</h3>
+                <p class="desc">{{ 'HOME.QUICK_BOOKING.STEP_3.DESC' | translate }}</p>
             </div>
         </article>
     </div>
 
     <div class="d-flex align-items-center justify-content-center">
-        <app-book-btn [label]="buttonLabel()" [color]="color">
-        </app-book-btn>
+        <app-book-btn [label]="buttonLabel()" [color]="color"></app-book-btn>
     </div>
 </div>
 
-
-
-<div class="whyChosseme  container-fluid d-flex justify-content-between ">
+<div class="whyChosseme container-fluid d-flex justify-content-between">
     <div class="image">
         <img src="Image/whyChoose.png" alt="">
     </div>
 
     <div class="content">
-        <h2>لماذا تختار شركة راشد؟</h2>
-        <p>
-            نحن نوفر لك الراحة بثلاثة في واحد! خدماتنا المنزلية يقدمها فريق محترف ومدرب بعناية مع دعم في التنظيف
-            والأساليب الصحية.
-            معنا تحصل على جودة مضمونة، دعم متواصل، وتجربة خالية من المتاعب. ببساطة نحن الخيار الذي يمنحك راحة البال.
-        </p>
-        <app-book-btn [label]="buttonLabel()" [background]="color" [color]="buttonColorText()">
-            ></app-book-btn>
+        <h2>{{ 'HOME.WHY_CHOOSE.TITLE' | translate }}</h2>
+        <p>{{ 'HOME.WHY_CHOOSE.DESC' | translate }}</p>
+        <app-book-btn [label]="buttonLabel()" [background]="color" [color]="buttonColorText()"></app-book-btn>
     </div>
-
 </div>
 
-
-<app-features />
-
-
-
 <div class="experience py-5">
-
     <div class="container-fluid d-flex justify-content-between">
-
-
         <div class="leftExperience d-flex flex-column gap-4">
-            <h2>أكثر من 25 عامًا من الخبرة في خدمة الصيانة</h2>
-            <p>بخبرة تزيد عن 25 عامًا، نُعدُّ الخبراءَ المُعتمدين لتلبية جميع احتياجاتكم من خدمات الصيانة اليدوية. ثقوا
-                بمهاراتنا واحترافيتنا لتحقيق نتائج ممتازة.</p>
+            <h2>{{ 'HOME.EXPERIENCE.TITLE' | translate }}</h2>
+            <p>{{ 'HOME.EXPERIENCE.DESC' | translate }}</p>
 
-            <div class="infoExperience d-flex gap-5 ">
+            <div class="infoExperience d-flex gap-5">
                 <div class="leftInfo">
                     <div class="heaerInfo d-flex gap-2 align-items-center mb-3">
                         <img src="Icons/true.svg" alt="">
-                        <h3 class="m-0">الفريق المؤهل</h3>
+                        <h3 class="m-0">{{ 'HOME.EXPERIENCE.TEAM.TITLE' | translate }}</h3>
                     </div>
-                    <p>فريق مدرَّب بخبرة وكفاءة لتقديم أفضل خدمة لمنزلك</p>
+                    <p>{{ 'HOME.EXPERIENCE.TEAM.DESC' | translate }}</p>
                 </div>
                 <div class="RightInfo">
                     <div class="heaerInfo d-flex gap-2 align-items-center mb-3">
                         <img src="Icons/true.svg" alt="">
-                        <h3 class="m-0">عمل عالي الجودة</h3>
+                        <h3 class="m-0">{{ 'HOME.EXPERIENCE.HIGH_QUALITY.TITLE' | translate }}</h3>
                     </div>
-                    <p>نقدّم لك عملًا عالي الجودة يضمن راحة بالك ورضاك التام</p>
+                    <p>{{ 'HOME.EXPERIENCE.HIGH_QUALITY.DESC' | translate }}</p>
                 </div>
             </div>
-            <app-book-btn [label]="'المزيد عنا'" [background]="color" [color]="buttonColorText()" />
+            <app-book-btn [label]="'HOME.EXPERIENCE.BUTTON' | translate" [background]="color" [color]="buttonColorText()"></app-book-btn>
         </div>
 
         <div class="circle-container">
@@ -159,9 +131,7 @@
                 <img src="Image/reduies3.png" alt="network" />
             </div>
         </div>
-
     </div>
-
 </div>
 
 <app-testimonials/>

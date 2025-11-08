@@ -4,27 +4,23 @@
     <div class="logo">
       <img src="Icons/logoFooter.png" alt="Logo" />
     </div>
-        <nav class="footer-nav">
-      <a routerLink="/home"  >الرئيسية</a>
-      <a routerLink="/service" >خدماتنا</a>
-      <a routerLink="/about" >من نحن</a>
-      <a routerLink="/contact" >تواصل معنا</a>
 
+    <nav class="footer-nav">
+      <a routerLink="/home">{{ 'FOOTER.NAV.HOME' | translate }}</a>
+      <a routerLink="/service">{{ 'FOOTER.NAV.SERVICES' | translate }}</a>
+      <a routerLink="/about">{{ 'FOOTER.NAV.ABOUT' | translate }}</a>
+      <a routerLink="/contact">{{ 'FOOTER.NAV.CONTACT' | translate }}</a>
     </nav>
+
     <div class="social">
       <a href="#"><i class="fab fa-twitter"></i></a>
       <a href="#"><i class="fab fa-linkedin-in"></i></a>
       <a href="#"><i class="fab fa-facebook-f"></i></a>
     </div>
 
-
-
-    
   </div>
 
   <hr />
 
-  <p class="copy">
-    © 2025 راشد – جميع الحقوق محفوظة
-  </p>
+  <p class="copy">{{ 'FOOTER.COPYRIGHT' | translate }}</p>
 </footer>

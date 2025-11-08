@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveModeuls } from '../../Shared/Modules/ReactiveForms.module';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contactus',
-  imports: [ReactiveModeuls],
+  imports: [ReactiveModeuls , TranslatePipe],
   templateUrl: './contactus.html',
   styleUrl: './contactus.scss'
 })

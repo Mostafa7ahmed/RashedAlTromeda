@@ -3,12 +3,13 @@ import { BookBtn } from '../../components/book-btn/book-btn';
 import { Features } from '../../components/features/features';
 import { CardsServies } from '../../components/cards-servies/cards-servies';
 import { Testimonials } from '../../components/testimonials/testimonials';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 
 @Component({
   selector: 'app-home-customer',
-  imports: [BookBtn, Features, CardsServies, Testimonials],
+  imports: [BookBtn, Features, TranslatePipe, Testimonials],
   templateUrl: './home.html',
   styleUrl: '../home/home.scss'
 })
