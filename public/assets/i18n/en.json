@@ -1,4 +1,67 @@
 {
-  "HELLO": "Hello Mostafa!",
-  "WELCOME": "Welcome to our website."
+  "NAV": {
+    "HOME": "Home",
+    "CATEGORY": "Categories",
+    "ABOUT": "About Us",
+    "CONTACT": "Contact Us",
+    "LOGIN": "Login"
+  },
+  "ABOUT": {
+    "HERO_TITLE": "Reliable and Fast Home Services at Your Fingertips",
+    "HERO_DESC": "From cleaning to maintenance, save your time and effort and let our experts take care of every detail of your home",
+    "BOOK_BTN": "Book Your Service Now",
+    "EXPLORE_BTN": "Explore More",
+    "GOALS": "Our Goals",
+    "SPAN": "Making Your Daily Life Easier",
+    "TEXTSIMPLE": "We work to provide reliable maintenance services",
+    "CONTACT_BTN": "Contact Us",
+    "TITLE_1": "Our Mission",
+    "TITLE_2": "Our Vision",
+    "TITLE_3": "Our Values",
+    "TITLE_4": "What We Offer",
+    "TEXT5": "We provide you with maintenance services and knowledge of everything your home needs to always stay in its best condition.",
+    "TEXT1": "We aim to make home maintenance easier and faster than ever by offering reliable services delivered by professional technicians.",
+    "TEXT2": "To become the first destination for reliable home maintenance services, providing precise and fast solutions that maintain your home's comfort and quality.",
+    "TEXT3": "We strive to be the first choice for anyone seeking comprehensive maintenance services with the highest quality, fast execution, and affordable prices.",
+    "MISSION_TEXT": "We are a specialized platform offering high-quality and fully reliable home maintenance services. We aim to make your daily life easier through a professional team that takes care of every detail of your home, ensuring comfort and safety in every service we provide. <br>We offer a comprehensive range of services including electrical work, plumbing, air conditioning, painting, carpentry, and cleaning, with easy booking available anytime and anywhere. Our goal is to be your permanent partner in keeping your home in its best condition, through fast response, reasonable prices, and results that exceed your expectations.",
+    "GOALGO": "We aim to provide reliable maintenance services that reflect your home's true needs, through a specialized team offering comprehensive solutions including repair, follow-up, and routine maintenance to ensure your comfort and quality of daily life.",
+    "FEATURES": [
+      "Comprehensive daily home maintenance services.",
+      "Specialized services and professional technical solutions for all your home needs.",
+      "Audio tips and practical guidance to care for your home and keep its equipment in optimal condition.",
+      "Field reports with photos showing maintenance steps and the quality of service execution in your home.",
+      "Publishing semi-annual reports showing service performance and development of maintenance methods to continuously improve the customer experience."
+    ],
+    "More": "Explore More"
+  },
+  "CONTACT": {
+    "EMAIL_TITLE": "Email"
+  },
+
+  "CATEGORY_PAGE": {
+    "TITLE": "Categories",
+    "DESC": "Rely on us as a trusted partner for exceptional maintenance solutions that transform your spaces into a beautiful haven. Our specialized team offers a wide range of services tailored to meet your unique needs.",
+    "SEARCH_PLACEHOLDER": "Search for a category...",
+    "LOADING": "Loading categories...",
+    "PAGINATION": {
+      "PREVIOUS": "‹ Previous",
+      "NEXT": "Next ›"
+    }
+  },
+  "SERVICES_PAGE": {
+    "TITLE": "Our Services",
+    "DESC": "Rely on us as a trusted partner for exceptional maintenance solutions that transform your spaces into a beautiful haven. Our specialized team offers a wide range of services tailored to meet your unique needs.",
+    "NO_DESCRIPTION": "No description available for this service",
+    "NO_DATA": "No services available to display.",
+    "PAGINATION": {
+      "PREVIOUS": "‹ Previous",
+      "NEXT": "Next ›"
+    },
+    "POINT": "Point"
+  },
+   "ENGINEERS_PAGE": {
+    "TITLE": "Engineers Specialized in This Service",
+    "SEARCH_PLACEHOLDER": "Search for an engineer...",
+    "NO_DATA": "No services available to display."
+  }
 }

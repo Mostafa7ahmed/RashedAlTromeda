@@ -6,10 +6,11 @@ import { IService } from '../../../Core/Interface/icategory';
 import { ActivatedRoute } from '@angular/router';
 import { ShortenPipe } from '../../../Shared/pipes/shorten-pipe';
 import { environment } from '../../../../environments/environment';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-service',
-  imports: [ReactiveModeuls , ShortenPipe],
+  imports: [ReactiveModeuls , ShortenPipe , TranslatePipe],
   templateUrl: './service.html',
   styleUrl: './service.scss'
 })

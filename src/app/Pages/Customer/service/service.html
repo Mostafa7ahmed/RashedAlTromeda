@@ -1,56 +1,44 @@
 <div class="service mt-5 mb-5 pt-5 container-fluid">
   <div class="contentService">
-    <h1>خدماتنا</h1>
-    <p>
-      اعتمد علينا كشريك موثوق به لحلول صيانة استثنائية تُحوّل مساحاتك إلى ملاذٍ جميل. يقدم فريقنا
-      المتخصص مجموعة واسعة من الخدمات المصممة خصيصًا لتلبية احتياجاتك الفريدة.
-    </p>
-
-
+    <h1>{{ 'SERVICES_PAGE.TITLE' | translate }}</h1>
+    <p>{{ 'SERVICES_PAGE.DESC' | translate }}</p>
   </div>
- 
+
   <div class="cardServices mt-5">
     @for (card of services(); track $index) {
-    <div class="cardService d-flex  gap-3 " [routerLink]="['/chooseworker', card.id]">
-      <img [src]="baseurl + card.photourl " alt="service" width="100px" />
-      <div class="infoService">
-        <h5> {{card.categoryName}}</h5>
-       
-        @if(card.description){
-             <p>
-          {{card.description | shorten:200}}
-        </p>
-        }
-        @else {
-          <p>          لا يوجد  متاح لهذه الخدمة </p>
-        }
-      </div>
-      <div class="poinst">{{card.point}} نقطة </div>
-    </div>
-    }
-
-
-  </div>
-      @if (services().length === 0) {
-    <div class="no-data">لا توجد خدمات لعرضها.</div>
-    }
-
-
-        <div class="pagination mt-5">
-        <button class="nav-btn" (click)="prevPage()" [disabled]="!movePrevious()">
-            ‹ السابق
-        </button>
-        <div class="pages">
-            @for (page of visiblePages; track page) {
-            <button class="page" [class.active]="page === currentPage()" [disabled]="page === currentPage()"
-                (click)="goToPage(page)">
-                {{ page }}
-            </button>
-            }
+      <div class="cardService d-flex gap-3" [routerLink]="['/chooseworker', card.id]">
+        <img [src]="baseurl + card.photourl" alt="service" width="100px" />
+        <div class="infoService">
+          <h5>{{ card.categoryName }}</h5>
+          @if(card.description) {
+            <p>{{ card.description | shorten:200 }}</p>
+          } @else {
+            <p>{{ 'SERVICES_PAGE.NO_DESCRIPTION' | translate }}</p>
+          }
         </div>
-        <button class="nav-btn" (click)="nextPage()" [disabled]="!moveNext()">
-            التالي ›
-        </button>
-    </div>
+        <div class="poinst">{{ card.point }} {{ 'SERVICES_PAGE.POINT' | translate }}</div>
+      </div>
+    }
+  </div>
 
+  @if (services().length === 0) {
+    <div class="no-data">{{ 'SERVICES_PAGE.NO_DATA' | translate }}</div>
+  }
+
+  <div class="pagination mt-5">
+    <button class="nav-btn" (click)="prevPage()" [disabled]="!movePrevious()">
+      {{ 'SERVICES_PAGE.PAGINATION.PREVIOUS' | translate }}
+    </button>
+    <div class="pages">
+      @for (page of visiblePages; track page) {
+        <button class="page" [class.active]="page === currentPage()" [disabled]="page === currentPage()"
+                (click)="goToPage(page)">
+          {{ page }}
+        </button>
+      }
+    </div>
+    <button class="nav-btn" (click)="nextPage()" [disabled]="!moveNext()">
+      {{ 'SERVICES_PAGE.PAGINATION.NEXT' | translate }}
+    </button>
+  </div>
 </div>

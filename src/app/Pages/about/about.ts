@@ -1,43 +1,67 @@
 import { Component, signal } from '@angular/core';
 import { BookBtn } from "../../components/book-btn/book-btn";
+import { LangChangeEvent, TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-about',
-  imports: [BookBtn],
+  imports: [BookBtn, TranslatePipe],
   templateUrl: './about.html',
   styleUrl: './about.scss'
 })
 export class About {
-  buttonLabel = signal('احجز خدمتك الآن');
-color = 'var(--color-orange-dark)';
+ buttonLabel = signal('احجز خدمتك الآن');
+  color = 'var(--color-orange-dark)';
   buttonColorText = signal('#FFF');
 
- explorLabel = signal('استكشف المزيد');
- contactLabel = signal('تواصل معنا ');
+  explorLabel = signal('استكشف المزيد');
+  contactLabel = signal('تواصل معنا ');
 
-    rates = [
-    {
-      icon: 'Icons/target.svg',
-      title: 'مهمتنا',
-      text: 'نحن نعمل على جعل صيانة منزلك أسهل وأسرع من أي وقت مضى، من خلال تقديم خدمات موثوقة على يد فنيين محترفين.',
-    },
-    {
-      icon: 'Icons/Mission Achieved.svg',
-      title: 'رؤيتنا',
-      text: 'أن نصبح الوجهة الأولى لخدمات الصيانة المنزلية الموثوقة، بتقديم حلول دقيقة وسريعة تحافظ على راحة منزلك وجودته.',
-    },
-    {
-      icon: 'Icons/Mission.svg',
-      title: 'قيمنا',
-      text: 'نسعى أن نكون الخيار الأول لكل من يبحث عن خدمات صيانة شاملة بأعلى جودة وسرعة في التنفيذ وأسعار تناسب الجميع.',
-    },
-  ];
-    features = [
-    'خدمات صيانة منزلية يومية متكاملة.',
-    'خدمات متخصصة وحلول فنية احترافية لكل احتياجات منزلك.',
-    'نصائح صوتية وإرشادات عملية للعناية بمنزلك والحفاظ على تجهيزاته في أفضل حالة.',
-    'تقارير ميدانية مصورة توضح خطوات الصيانة وجودة تنفيذ الخدمات في منزلك.',
-    'نشر تقارير دورية نصف سنوية توضح أداء الخدمات وتطور أساليب الصيانة لتحسين تجربة العملاء باستمرار.',
-  ];
+  rates: any[] = [];
+  features = signal<string[]>([]);
 
+  private langSub: Subscription;
+
+  constructor(private translate: TranslateService) {
+    this.loadRates();
+    this.loadFeatures();
+
+    // متابعة أي تغيير في اللغة
+    this.langSub = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.loadFeatures(); // تحديث features عند تغيير اللغة
+      this.loadRates();    // لو عايز تحديث النصوص في rates كمان
+    });
+  }
+
+  loadRates() {
+    this.rates = [
+      {
+        icon: 'Icons/target.svg',
+        title: this.translate.instant('ABOUT.TITLE_1'),
+        text: this.translate.instant('ABOUT.TEXT1'),
+      },
+      {
+        icon: 'Icons/Mission Achieved.svg',
+        title: this.translate.instant('ABOUT.TITLE_2'),
+        text: this.translate.instant('ABOUT.TEXT2'),
+      },
+      {
+        icon: 'Icons/Mission.svg',
+        title: this.translate.instant('ABOUT.TITLE_3'),
+        text: this.translate.instant('ABOUT.TEXT3'),
+      },
+    ];
+  }
+
+  loadFeatures() {
+    this.translate.get('ABOUT.FEATURES').subscribe((res: string[]) => {
+      this.features.set(res);
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.langSub) {
+      this.langSub.unsubscribe();
+    }
+  }
 }

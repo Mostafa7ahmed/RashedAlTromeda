@@ -3,9 +3,10 @@ import { ICategory } from '../../../Core/Interface/icategory';
 import { environment } from '../../../../environments/environment';
 import { ReactiveModeuls } from '../../../Shared/Modules/ReactiveForms.module';
 import { CategorieService } from '../../../Core/service/categories';
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-categories',
-  imports: [ReactiveModeuls],
+  imports: [ReactiveModeuls , TranslatePipe],
   templateUrl: './categories.html',
   styleUrl: './categories.scss'
 })
