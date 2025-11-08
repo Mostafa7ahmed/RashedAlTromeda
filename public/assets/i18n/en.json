@@ -164,6 +164,21 @@
     "COMPANY": "Company",
     "CENTER": "Center"
   },
+   "CENTERS_PAGE": {
+    "TITLE": "Centers",
+    "SEARCH_PLACEHOLDER": "Search for a center...",
+    "NO_DATA": "No centers to show"
+  },
+  "CENTER": {
+    "SERVICES": "Services",
+    "PRODUCTS": "Products",
+    "PRICE": "Price",
+    "NO_SERVICES": "No services to display",
+    "NO_PRODUCTS": "No products to display",
+    "NO_NAME": "No name available",
+    "NO_ADDRESS": "No address available",
+    "NO_PHONE": "No phone number available"
+  },
     "AUTH": {
     "SLOGAN_TITLE": "Your Home, Your Safety.. Our Services, Your Comfort",
     "SLOGAN_DESC": "Login now and enjoy reliable and fast home services, from cleaning and maintenance to all your home's needs.. in one place"

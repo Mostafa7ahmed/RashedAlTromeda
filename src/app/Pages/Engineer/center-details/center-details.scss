@@ -23,7 +23,7 @@
           display: flex;
           align-items: self-start;
           gap: 10px;
-          color: #fff;
+          color: var(--still-white);
           height: 100%;
           z-index: 55555;
 
@@ -92,7 +92,7 @@
     color: #777;
 
     &.active {
-      background: #fff;
+    background: var(--card-bg);
       color: #000;
     }
   }
@@ -106,7 +106,7 @@
   width: 100%;
 
   .cardpordcut {
-    background: #fff;
+    background: var(--card-bg);
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
@@ -129,7 +129,7 @@
         position: absolute;
         top: 10px;
         left: 10px;
-        background: #ffffffcc;
+    background: var(--card-bg);
         color: #000;
         font-size: 13px;
         padding: 5px 10px;
@@ -189,7 +189,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    background: #fff;
+    background: var(--card-bg);
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     overflow: hidden;
