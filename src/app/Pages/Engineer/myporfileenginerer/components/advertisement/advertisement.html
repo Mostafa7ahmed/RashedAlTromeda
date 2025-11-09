@@ -1,1 +1,34 @@
-<p>advertisement works!</p>
+<div class="suggestion">
+  <div class="headerTitle">
+    <h3>{{ 'suggestions' | translate }}</h3>
+    <button class="btn" >
+      {{ 'SAVE' | translate }} <i class="fa-solid fa-plus"></i>
+    </button>
+  </div>
+
+ <div class="cardads mt-5">
+
+    @for (item of items; track $index) {
+            <div class="cards d-flex align-items-start justify-content-between  mb-3 p-2">
+           <div class="leftSide d-flex align-items-start gap-3">
+     
+            <div class="Image">
+                <img [src]="item.image" alt="">
+            </div>
+            <div class="info  d-flex align-items-start justify-content-between flex-column gap-3">
+                <h3 class="m-0">اسم الاعلان</h3>
+                <span class="colorOrgane ">العرض: 10%</span>
+            </div>
+           </div>
+       <div class="info  d-flex align-items-start justify-content-between flex-column gap-3">
+                <h3 class="m-0">اسم الاعلان</h3>
+                <span class="colorOrgane ">العرض: 10%</span>
+            </div>
+            </div>
+
+      
+    }
+ </div>
+
+
+</div>

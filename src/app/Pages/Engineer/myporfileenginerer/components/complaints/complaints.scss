@@ -92,3 +92,11 @@ background: #6EC733;
   }
 }
 
+
+@media (max-width:550px) {
+ 
+  .searchBox{
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+}

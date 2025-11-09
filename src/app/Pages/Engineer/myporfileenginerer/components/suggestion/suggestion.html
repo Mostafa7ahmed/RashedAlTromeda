@@ -2,7 +2,7 @@
   <div class="headerTitle">
     <h3>{{ 'suggestions' | translate }}</h3>
     <button class="btn" (click)="openPopup()">
-      {{ 'addSuggestion' | translate }} <i class="fa-solid fa-plus"></i>
+      {{ 'SAVE' | translate }} <i class="fa-solid fa-plus"></i>
     </button>
   </div>
 
@@ -36,7 +36,7 @@
 
                       </div>
       <div class="content" [class.open]="expandedCard === card.id">
-        <div class="d-flex mb-4 justify-content-between align-items-start">
+        <div class="d-flex mb-4 justify-content-between align-items-start flex-wrap gap-3">
           @if (card.photoUrls.length) {
           <div class="images">
             @for (img of card.photoUrls; track img) {
